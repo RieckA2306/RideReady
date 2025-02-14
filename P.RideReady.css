@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Klasse des Bodys für die 3 statischen Seiten */
+.static-page-body {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: #F0F0F0;
+    font-family: "Inter", serif;
+    margin: 0;
+}
+
+/* weiße Box in der die Schrift steht für die Seite "Über Uns" */
+.static-page-container-ÜberUns {
+    background-color: white;
+    padding: 40px;
+    width: 800px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    height: 550px; /* unterschiedliche Größe */
+    font-family: "Inter", serif;
+}
+
+/* weiße Box in der die Schrift steht für die Seite "Cookierichtlinien" */
+.static-page-container-Cookierichtlinien {
+    background-color: white;
+    padding: 40px;
+    width: 800px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    height: 1250px; /* unterschiedliche Größe */
+    font-family: "Inter", serif;
+}
+
+/* weiße Box in der die Schrift steht für die Seite "AGBs" */
+.static-page-container-AGBs {
+    background-color: white;
+    padding: 40px;
+    width: 800px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    height: 2050px; /* unterschiedliche Größe */
+    font-family: "Inter", serif;
+}
+
+/* Große Überschrift für die Seite */
+.static-page h1 {
+    font-size: 24px;
+    color:black;
+    margin-bottom: 20px;
+    text-align: center; /* Überschrift mittig */
+}
+
+/* Normale Schrift für die Seite */
+.static-page p {
+    font-size: 16px;
+    color: black;
+    margin-top: 5px;
+    text-align: left; /* Linksbündiger Text */
+}
+
+
+
+/* Footer */
+.footer {
+    background-color: #123472;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    font-family: "Inter", serif;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.footer h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: -6px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer p {
+    color: white;
+}
+
+.footer img {
+    max-width: 30px;
+    margin-right: 10px;
+}
+
+.social-icons img {
+    max-width: 40px;
+}
+
+.app-buttons img {
+    max-width: 120px;
+    margin-top: 10px;
+}
+
+.logo img {
+    max-width: 180px;
+}
+
+/* Klasse des Bodys für die Homepage Seiten */
+.homepage-body{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: #F0F0F0;
+    font-family: "Inter", serif;
+    margin: 0;
+}
+/* Div um das Feedback herum (nicht sichtbar) */
+.feedback-container {
+    margin: 20px auto;
+    background: #F0F0F0;
+    width: 95%;
+}
+/* Overall Rating */
+.feedback-rating {
+    color: gold;
+    font-size: 40px;
+    margin-top: -14px;
+    text-align: center;
+    
+}
+/* aus 312 Bewertungen */
+.feedback-reviews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+/* Einzelne Bewertungskarte */
+.feedback-review {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    width: 20%;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+/* Benutzername vom Feedbackgeber */
+.feedback-user {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+
+}
+/* Benutzer-Icon mit Initialen */
+.feedback-user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+/* individual Rating */
+.feedback-star {
+    color: gold;
+    text-align: left;
+    margin-left: 50px;
+    margin-top: -10px;
+    
+}
+
+.feedback-text {
+    text-align: left;
+    margin-top: -5px;
+    color: #123472;          
+}
+
+.feedback-logo {
+    text-align: center;
+}
+
+/*  */
