@@ -10,6 +10,7 @@
     margin: 0;
 }
 
+
 /* weiße Box in der die Schrift steht für die Seite "Über Uns" */
 .static-page-container-ÜberUns {
     background-color: white;
@@ -81,7 +82,6 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 100%;
     font-family: "Inter", serif;
 }
 
@@ -126,7 +126,7 @@
     max-width: 120px;
     margin-top: 10px;
 }
-
+/* Attention! Class for Logo in Header & Footer */
 .logo img {
     max-width: 180px;
 }
