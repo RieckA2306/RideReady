@@ -9,8 +9,8 @@
     <footer class="footer">
         <!-- Linke Seite mit Logo & Social Media -->
         <div class="footer-column">
-            <div class="logo">
-                <img src="Logo.png" alt="Ride Ready Logo">
+            <div class="Header-Footer-logo">
+                <a href="P.RideReady.Landingpage.php"><img src="Logo.png" alt="Ride Ready Logo"><a>
             </div>
             <div class="social-icons">
                 <img src="Facebook.Icon.png" alt="Facebook">

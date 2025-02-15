@@ -36,12 +36,6 @@
             height: 40px; /* Platzhalter für dein Logo */
         }
         
-        .logo h1 {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
-        }
-        
         .search-box {
             display: flex;
             gap: 10px;
@@ -106,8 +100,8 @@
 </head>
 <body class="header-body">
     <header class="header">
-        <div class="logo"> <!-- Platzhalter für dein Logo -->
-            <P style="align-items:left; width:100%"><img src="logo.png" alt="Ride Ready Logo"></p> <!-- Hier kannst du dein Bild einfügen -->
+        <div class="logo">
+            <a href="P.RideReady.Landingpage.php"><P class="Header-Footer-logo"><img src="logo.png" alt="Ride Ready Logo"></p></a>
             <button class="hamburger-button">
         <span></span>
         <span></span>

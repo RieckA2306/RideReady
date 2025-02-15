@@ -12,7 +12,7 @@
         text-align: center;
     }
 
-    .recommendations-title {
+    .recommendation-title {
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 20px;
@@ -52,11 +52,20 @@
         padding: 20px;
         text-align: center;
         }
+        
     .teaser-content {
         max-width: 1200px;
         margin: auto;
     }
-    .teaser-header-image {
+
+    .teaser-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #123472;
+    }
+
+    .teaser-titlepicture-image {
         width: 100%;
         border-radius: 10px;
     }
@@ -79,11 +88,11 @@
     <!-- Start Empfehlungsabschnitt -->
     <div class="teaser-container">
         <div class="teaser-content">
-            <h2>Willkommen bei Ride Ready</h2>
-            <video autoplay muted playsinline class="teaser-header-image">
+            <h2 class="recommendation-title">⚜️Willkommen bei Ride Ready⚜️</h2>
+            <video autoplay muted playsinline class="teaser-titlepicture-image">
                 <source src="Titlepicture.mp4" type="video/mp4">
             </video>
-            <h2>Unsere verfügbaren Fahrzeugarten:</h2>
+            <h2 class="teaser-title">Mobilität, die zu Ihnen passt – Entdecken Sie unsere Top-Mietwagenangebote!</h2>
             <div class="teaser-grid">
                 <div>
                     <img src="cabrio.jpg" alt="Cabrios" class="teaser-vehicle-image">
@@ -115,7 +124,7 @@
 
     <!-- Start Empfehlungsabschnitt -->
     <div class="recommendations-container">
-        <h2 class="recommendations-title">Unsere Top Empfehlungen</h2>
+        <h2 class="recommendation-title">Unsere Top Empfehlungen:</h2>
         <div class="recommendations-wrapper">
             <div class="recommendation-card">
                 <img src="mercedes-s500l.jpg" alt="Mercedes-Benz S500L" class="recommendation-image">
@@ -130,7 +139,7 @@
     </div>
 
     <div class="recommendations-container">
-        <h2 class="recommendations-title">Unsere Top Empfehlungen</h2>
+        <h2 class="recommendation-title">Unsere Top Empfehlungen:</h2>
         <div class="recommendations-wrapper">
             <div class="recommendation-card">
                 <img src="mercedes-s500l.jpg" alt="Mercedes-Benz S500L" class="recommendation-image">
@@ -146,7 +155,7 @@
 
     <!-- Start Feedbackabschnitt -->
     <div class="feedback-container">
-        <h2 style="text-align:center; color:#123472;">Unsere Kundenbewertungen</h2>
+        <h2 style="text-align:center; color:#123472;">Unsere Kundenbewertungen:</h2>
         <p class="feedback-logo"> <img class="feedback-logo" src="Logo.png" alt="Ride Ready Logo"></p>
         <p class="feedback-rating">★★★★☆</p>
         <p style="margin-top: -30px; text-align:center; color:#123472;">aus 312 Bewertungen</p>
