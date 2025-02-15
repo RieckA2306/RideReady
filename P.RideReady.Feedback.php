@@ -5,11 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="P.RideReady.css">
+    <style>
+    .recommendations-container {
+        background-color: #F0F0F0;
+        padding: 20px;
+        text-align: center;
+    }
 
+    .recommendations-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #123472;
+    }
+
+    .recommendations-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .recommendation-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 300px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .recommendation-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .recommendation-text {
+        background-color: #D6E4FF;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+
+    .teaser-container {
+        background-color: #F0F0F0;
+        padding: 20px;
+        text-align: center;
+        }
+    .teaser-content {
+        max-width: 1200px;
+        margin: auto;
+    }
+    .teaser-header-image {
+        width: 100%;
+        border-radius: 10px;
+    }
+    .teaser-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .teaser-vehicle-image {
+        width: 100%;
+        border-radius: 10px;
+    }
+ 
+    </style>
 </head>
 
 <body class="homepage-body">
     <?php include 'P.RideReadyHeader.php'; ?>
+    <!-- Start Empfehlungsabschnitt -->
+    <div class="teaser-container">
+        <div class="teaser-content">
+            <h2>Willkommen bei Ride Ready</h2>
+            <video autoplay muted playsinline class="teaser-header-image">
+                <source src="Titlepicture.mp4" type="video/mp4">
+            </video>
+            <h2>Unsere verfügbaren Fahrzeugarten:</h2>
+            <div class="teaser-grid">
+                <div>
+                    <img src="cabrio.jpg" alt="Cabrios" class="teaser-vehicle-image">
+                    <p>Cabrios</p>
+                </div>
+                <div>
+                    <img src="suv.jpg" alt="SUVs" class="teaser-vehicle-image">
+                    <p>SUVs</p>
+                </div>
+                <div>
+                    <img src="limousine.jpg" alt="Limousinen" class="teaser-vehicle-image">
+                    <p>Limousinen</p>
+                </div>
+                <div>
+                    <img src="kombi.jpg" alt="Combis" class="teaser-vehicle-image">
+                    <p>Combis</p>
+                </div>
+                <div>
+                    <img src="mehrsitzer.jpg" alt="Mehrsitzer" class="teaser-vehicle-image">
+                    <p>Mehrsitzer</p>
+                </div>
+                <div>
+                    <img src="coupe.jpg" alt="Coupés" class="teaser-vehicle-image">
+                    <p>Coupés</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Empfehlungsabschnitt -->
+    <div class="recommendations-container">
+        <h2 class="recommendations-title">Unsere Top Empfehlungen</h2>
+        <div class="recommendations-wrapper">
+            <div class="recommendation-card">
+                <img src="mercedes-s500l.jpg" alt="Mercedes-Benz S500L" class="recommendation-image">
+                <div class="recommendation-text">Jetzt Neu bei uns:<p>Der Mercedes-Benz S500L</p></div>
+            </div>
+            <div class="recommendation-card">
+                <img src="vw-polo.jpg" alt="VW Polo" class="recommendation-image">
+                <!-- Dadurch, dass kein Absatz gemacht wird, ist nur ein farbiger Balken um die Zeile -->
+                <div class="recommendation-text">Besonders Günstig: <p>Der VW Polo</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recommendations-container">
+        <h2 class="recommendations-title">Unsere Top Empfehlungen</h2>
+        <div class="recommendations-wrapper">
+            <div class="recommendation-card">
+                <img src="mercedes-s500l.jpg" alt="Mercedes-Benz S500L" class="recommendation-image">
+                <div class="recommendation-text">Jetzt Neu bei uns: Der Mercedes-Benz S500L</div>
+            </div>
+            <div class="recommendation-card">
+                <img src="vw-polo.jpg" alt="VW Polo" class="recommendation-image">
+                <!-- Dadurch, dass kein Absatz gemacht wird, ist nur ein farbiger Balken um die Zeile -->
+                <div class="recommendation-text">Besonders Günstig: Der VW Polo</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Feedbackabschnitt -->
     <div class="feedback-container">
         <h2 style="text-align:center; color:#123472;">Unsere Kundenbewertungen</h2>
         <p class="feedback-logo"> <img class="feedback-logo" src="Logo.png" alt="Ride Ready Logo"></p>
