@@ -11,12 +11,13 @@
         padding: 20px;
         text-align: center;
     }
-
-    .recommendation-title {
+    /* ALL of the center alligned titles! */
+    .landingpage-title {
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 20px;
         color: #123472;
+        text-align: center;
     }
 
     .recommendations-wrapper {
@@ -51,19 +52,9 @@
         background-color: #F0F0F0;
         padding: 20px;
         text-align: center;
-        }
-        
-    .teaser-content {
         max-width: 1200px;
         margin: auto;
-    }
-
-    .teaser-title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        color: #123472;
-    }
+        }
 
     .teaser-titlepicture-image {
         width: 100%;
@@ -87,44 +78,43 @@
     <?php include 'P.RideReadyHeader.php'; ?>
     <!-- Start Empfehlungsabschnitt -->
     <div class="teaser-container">
-        <div class="teaser-content">
-            <h2 class="recommendation-title">⚜️Willkommen bei Ride Ready⚜️</h2>
-            <video autoplay muted playsinline class="teaser-titlepicture-image">
-                <source src="Titlepicture.mp4" type="video/mp4">
-            </video>
-            <h2 class="teaser-title">Mobilität, die zu Ihnen passt – Entdecken Sie unsere Top-Mietwagenangebote!</h2>
-            <div class="teaser-grid">
-                <div>
-                    <img src="cabrio.jpg" alt="Cabrios" class="teaser-vehicle-image">
-                    <p>Cabrios</p>
-                </div>
-                <div>
-                    <img src="suv.jpg" alt="SUVs" class="teaser-vehicle-image">
-                    <p>SUVs</p>
-                </div>
-                <div>
-                    <img src="limousine.jpg" alt="Limousinen" class="teaser-vehicle-image">
-                    <p>Limousinen</p>
-                </div>
-                <div>
-                    <img src="kombi.jpg" alt="Combis" class="teaser-vehicle-image">
-                    <p>Combis</p>
-                </div>
-                <div>
-                    <img src="mehrsitzer.jpg" alt="Mehrsitzer" class="teaser-vehicle-image">
-                    <p>Mehrsitzer</p>
-                </div>
-                <div>
-                    <img src="coupe.jpg" alt="Coupés" class="teaser-vehicle-image">
-                    <p>Coupés</p>
-                </div>
+        
+        <h2 class="landingpage-title">⚜️Willkommen bei Ride Ready⚜️</h2>
+        <video autoplay muted playsinline class="teaser-titlepicture-image">
+            <source src="Titlepicture.mp4" type="video/mp4">
+        </video>
+        <h2 class="landingpage-title">Mobilität, die zu Ihnen passt – Entdecken Sie unsere Top-Mietwagenangebote!</h2>
+        <div class="teaser-grid">
+            <div>
+                <img src="cabrio.jpg" alt="Cabrios" class="teaser-vehicle-image">
+                <p>Cabrios</p>
+            </div>
+            <div>
+                <img src="suv.jpg" alt="SUVs" class="teaser-vehicle-image">
+                <p>SUVs</p>
+            </div>
+            <div>
+                <img src="limousine.jpg" alt="Limousinen" class="teaser-vehicle-image">
+                <p>Limousinen</p>
+            </div>
+            <div>
+                <img src="kombi.jpg" alt="Combis" class="teaser-vehicle-image">
+                <p>Combis</p>
+            </div>
+            <div>
+                <img src="mehrsitzer.jpg" alt="Mehrsitzer" class="teaser-vehicle-image">
+                <p>Mehrsitzer</p>
+            </div>
+            <div>
+                <img src="coupe.jpg" alt="Coupés" class="teaser-vehicle-image">
+                <p>Coupés</p>
             </div>
         </div>
     </div>
 
     <!-- Start Empfehlungsabschnitt -->
     <div class="recommendations-container">
-        <h2 class="recommendation-title">Unsere Top Empfehlungen:</h2>
+        <h2 class="landingpage-title ">Unsere Top Empfehlungen:</h2>
         <div class="recommendations-wrapper">
             <div class="recommendation-card">
                 <img src="mercedes-s500l.jpg" alt="Mercedes-Benz S500L" class="recommendation-image">
@@ -139,7 +129,7 @@
     </div>
 
     <div class="recommendations-container">
-        <h2 class="recommendation-title">Unsere Top Empfehlungen:</h2>
+        <h2 class="landingpage-title">Unsere Top Empfehlungen:</h2>
         <div class="recommendations-wrapper">
             <div class="recommendation-card">
                 <img src="mercedes-s500l.jpg" alt="Mercedes-Benz S500L" class="recommendation-image">
@@ -155,7 +145,8 @@
 
     <!-- Start Feedbackabschnitt -->
     <div class="feedback-container">
-        <h2 style="text-align:center; color:#123472;">Unsere Kundenbewertungen:</h2>
+        <!--  -->
+        <h2 class="landingpage-title">Unsere Kundenbewertungen:</h2>
         <p class="feedback-logo"> <img class="feedback-logo" src="Logo.png" alt="Ride Ready Logo"></p>
         <p class="feedback-rating">★★★★☆</p>
         <p style="margin-top: -30px; text-align:center; color:#123472;">aus 312 Bewertungen</p>
