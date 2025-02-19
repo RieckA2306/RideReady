@@ -111,7 +111,6 @@
                 <p>Limousinen</p>
             </div>
         </div>
-        hallo!
     </div>
 
     <!-- Start Recommendation section -->
