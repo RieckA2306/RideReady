@@ -31,7 +31,7 @@
         background-color: white;
         border-radius: 10px;
         overflow: hidden;
-        width: 300px;
+        width: 500px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
@@ -43,8 +43,9 @@
     .recommendation-text {
         background-color: #D6E4FF;
         padding: 10px;
-        font-size: 14px;
+        font-size: 20px;
         font-weight: bold;
+        margin-top: -5px; /* Workaround for gap between IMG and Text*/
     }
 
 
@@ -76,7 +77,7 @@
 
 <body class="homepage-body">
     <?php include 'P.RideReadyHeader.php'; ?>
-    <!-- Start Empfehlungsabschnitt -->
+    <!-- Start Welcome Part -->
     <div class="teaser-container">
         
         <h2 class="landingpage-title">⚜️Willkommen bei Ride Ready⚜️</h2>
@@ -86,66 +87,49 @@
         <h2 class="landingpage-title">Mobilität, die zu Ihnen passt – Entdecken Sie unsere Top-Mietwagenangebote!</h2>
         <div class="teaser-grid">
             <div>
-                <img src="cabrio.jpg" alt="Cabrios" class="teaser-vehicle-image">
+                <img src="Mini Cabrio.LP.webp" alt="Cabrios" class="teaser-vehicle-image">
                 <p>Cabrios</p>
             </div>
             <div>
-                <img src="suv.jpg" alt="SUVs" class="teaser-vehicle-image">
+                <img src="Mercedes GLS.LP.jpeg" alt="SUVs" class="teaser-vehicle-image">
                 <p>SUVs</p>
             </div>
             <div>
-                <img src="limousine.jpg" alt="Limousinen" class="teaser-vehicle-image">
-                <p>Limousinen</p>
+                <img src="BMW M1.LP.jpeg" alt="Limousinen" class="teaser-vehicle-image">
+                <p>Coupés</p>
             </div>
             <div>
-                <img src="kombi.jpg" alt="Combis" class="teaser-vehicle-image">
+                <img src="VW Passat.LP.webp" alt="Combis" class="teaser-vehicle-image">
                 <p>Combis</p>
             </div>
             <div>
-                <img src="mehrsitzer.jpg" alt="Mehrsitzer" class="teaser-vehicle-image">
+                <img src="VW Sharan.LP.webp" alt="Mehrsitzer" class="teaser-vehicle-image">
                 <p>Mehrsitzer</p>
             </div>
             <div>
-                <img src="coupe.jpg" alt="Coupés" class="teaser-vehicle-image">
-                <p>Coupés</p>
+                <img src="Mercedes E-Klasse.LP.webp" alt="Coupés" class="teaser-vehicle-image">
+                <p>Limousinen</p>
             </div>
         </div>
     </div>
 
-    <!-- Start Empfehlungsabschnitt -->
-    <div class="recommendations-container">
-        <h2 class="landingpage-title ">Unsere Top Empfehlungen:</h2>
-        <div class="recommendations-wrapper">
-            <div class="recommendation-card">
-                <img src="mercedes-s500l.jpg" alt="Mercedes-Benz S500L" class="recommendation-image">
-                <div class="recommendation-text">Jetzt Neu bei uns:<p>Der Mercedes-Benz S500L</p></div>
-            </div>
-            <div class="recommendation-card">
-                <img src="vw-polo.jpg" alt="VW Polo" class="recommendation-image">
-                <!-- Dadurch, dass kein Absatz gemacht wird, ist nur ein farbiger Balken um die Zeile -->
-                <div class="recommendation-text">Besonders Günstig: <p>Der VW Polo</p></div>
-            </div>
-        </div>
-    </div>
-
+    <!-- Start Recommendation section -->
     <div class="recommendations-container">
         <h2 class="landingpage-title">Unsere Top Empfehlungen:</h2>
         <div class="recommendations-wrapper">
             <div class="recommendation-card">
-                <img src="mercedes-s500l.jpg" alt="Mercedes-Benz S500L" class="recommendation-image">
+                <img src="Mercedes SKlasse.LP.jpeg" alt="Mercedes-Benz S500L" class="recommendation-image">
                 <div class="recommendation-text">Jetzt Neu bei uns: Der Mercedes-Benz S500L</div>
             </div>
             <div class="recommendation-card">
-                <img src="vw-polo.jpg" alt="VW Polo" class="recommendation-image">
-                <!-- Dadurch, dass kein Absatz gemacht wird, ist nur ein farbiger Balken um die Zeile -->
+                <img src="Mercedes SKlasse.LP.jpeg" alt="VW Polo" class="recommendation-image">
                 <div class="recommendation-text">Besonders Günstig: Der VW Polo</div>
             </div>
         </div>
     </div>
 
-    <!-- Start Feedbackabschnitt -->
+    <!-- Start Feedback section -->
     <div class="feedback-container">
-        <!--  -->
         <h2 class="landingpage-title">Unsere Kundenbewertungen:</h2>
         <p class="feedback-logo"> <img class="feedback-logo" src="Logo.png" alt="Ride Ready Logo"></p>
         <p class="feedback-rating">★★★★☆</p>

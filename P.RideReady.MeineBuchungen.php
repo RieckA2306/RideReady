@@ -71,11 +71,10 @@
         }
 
         .booked-vehicle-div {
-            width: 45%;
+            width: 35%;
             height: 50px;
             background-color: #b3b3b3;
             border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
