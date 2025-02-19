@@ -67,9 +67,7 @@
         }
         .card p {
             margin: 2px 0;
-        }
-
-        
+        }        
     </style>
 </head>
 <body class="produktübersicht-body">

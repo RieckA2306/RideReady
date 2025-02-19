@@ -9,8 +9,10 @@
     <?php
 
 
-session_start();
 
+if (session_status() === PHP_SESSION_NONE && !isset($_SESSION)) {
+    session_start();
+}
 function banner() {
 global $login; 
 if ($_SESSION[$login] == false) {
