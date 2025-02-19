@@ -15,6 +15,7 @@
             color: white;
         }
         
+        
         /* Header Styling */
         .header {
             display: flex;
