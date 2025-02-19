@@ -6,6 +6,22 @@
     <title>Ride Ready - Header</title>
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <?php
+
+
+session_start();
+
+function banner() {
+global $login; 
+if ($_SESSION[$login] == false) {
+
+    include "nologin.php";
+} else {
+    include "login.php";
+}
+
+}
+?>
     <style>
         /* Allgemeines Styling */
         .header-body {
@@ -97,19 +113,52 @@
             background-color: #999;
             margin: 4px auto;
         }
+/* css Style for the Banner/menu */
+        .menu {
+            width: 300px;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 70%;
+            right: 1%;
+            display: none;
+            text-align: left;
+        }
+        .menu a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 5px 0;
+        }
+
+        .menu button {
+            width: 100%;
+            padding: 10px;
+            background-color: #FFC107;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body class="header-body">
     <header class="header">
         <div class="logo">
             <a href="P.RideReady.Landingpage.php"><P class="Header-Footer-logo"><img src="logo.png" alt="Ride Ready Logo"></p></a>
-            <button class="hamburger-button">
+            <button class="hamburger-button"onclick="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>
         </button>
         </div>
-    
+        <?php 
+banner();
+?>
         <div class="search-box" style="margin-top: -65px;">
             <!-- Dropdown für Abholort -->
             <select name="city" id="abholort">
@@ -155,6 +204,17 @@
             });
         });
     </script>
-
+    <!-- script for the button -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "none" || menu.style.display === "") {
+                menu.style.display = "block";
+            } 
+            else {
+                menu.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
