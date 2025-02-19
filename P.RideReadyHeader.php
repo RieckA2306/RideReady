@@ -218,5 +218,3 @@ banner();
     </script>
 </body>
 </html>
-
-Test Josef
