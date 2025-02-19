@@ -6,7 +6,7 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="P.RideReady.css">
     <style>
-    /* ALL of the center alligned titles! */
+    /* ALL of the center alligned Titles! */
     .landingpage-title {
         font-size: 24px;
         font-weight: bold;
@@ -15,6 +15,7 @@
         text-align: center;
     }
 
+    /* Div to allign the Recommendation Section */
     .recommendations-wrapper {
         display: flex;
         justify-content: center;
@@ -26,6 +27,7 @@
         max-height: 340px;
     }
 
+    /* Div for each car */
     .recommendation-card {
         background-color: white;
         border-radius: 10px;
@@ -34,11 +36,13 @@
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
+    /* Div for the IMG in the Card */
     .recommendation-image {
         width: 100%;
         height: auto;
     }
 
+    /* Div for the Text in the Card */
     .recommendation-text {
         background-color: #D6E4FF;
         padding: 10px;
@@ -47,25 +51,30 @@
         margin-top: -5px; /* Workaround for gap between IMG and Text*/
     }
 
-
-    .teaser-container {
+    /* Div to allign the Teaser Section */
+    .teaser-wrapper {
         background-color: #F0F0F0;
         padding: 20px;
         text-align: center;
         max-width: 1200px;
         margin: auto;
-        }
+    }
 
+    /* Div for the MP4 Vid */
     .teaser-titlepicture-image {
         width: 100%;
         border-radius: 10px;
     }
+
+    /* Div for each Car in the Teaser Section */
     .teaser-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(250px, 1fr));
         gap: 20px;
         margin-top: 20px;
     }
+
+    /* Div for the IMG*/
     .teaser-vehicle-image {
         width: 100%;
         border-radius: 10px;
@@ -76,13 +85,14 @@
 
 <body class="homepage-body">
     <?php include 'P.RideReadyHeader.php'; ?>
-    <!-- Start Welcome Part -->
-    <div class="teaser-container">
-        
+    <!-- Start Welcome Section -->
+    <div class="teaser-wrapper">
         <h2 class="landingpage-title">⚜️Willkommen bei Ride Ready⚜️</h2>
         <video autoplay muted playsinline class="teaser-titlepicture-image">
             <source src="Images/Landingpage/Titlepicture.mp4" type="video/mp4">
         </video>
+
+        <!-- Start Teaser Section -->
         <h2 class="landingpage-title">Mobilität, die zu Ihnen passt – Entdecken Sie unsere Top-Mietwagenangebote!</h2>
         <div class="teaser-grid">
             <div>
@@ -112,7 +122,7 @@
         </div>
     </div>
 
-    <!-- Start Recommendation section -->
+    <!-- Start Recommendation Section -->
     <div class="recommendations-container">
         <h2 class="landingpage-title">Unsere Top Empfehlungen:</h2>
         <div class="recommendations-wrapper">
@@ -127,7 +137,7 @@
         </div>
     </div>
 
-    <!-- Start Feedback section -->
+    <!-- Start Feedback Section -->
     <div class="feedback-container">
         <h2 class="landingpage-title">Unsere Kundenbewertungen:</h2>
         <p class="feedback-logo"> <img class="feedback-logo" src="Images/Logo.png" alt="Ride Ready Logo"></p>

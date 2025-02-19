@@ -133,7 +133,12 @@
     object-fit: contain;
 }
 
-/* Klasse des Bodys für die Homepage Seiten */
+
+
+
+/* Start Landing Page*/
+
+
 .homepage-body{
     display: flex;
     flex-direction: column;
@@ -142,7 +147,7 @@
     font-family: "Inter", serif;
     margin: 0;
 }
-/* Div um das Feedback herum (nicht sichtbar) */
+/* Div around the whole Feedback Section */
 .feedback-container {
     margin: 20px auto;
     background: #F0F0F0;
@@ -156,13 +161,14 @@
     text-align: center;
     
 }
-/* aus 312 Bewertungen */
+
+/* Div to allign the 4 Feedback cards */
 .feedback-reviews {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-/* Einzelne Bewertungskarte */
+/* Individual Feedback card */
 .feedback-review {
     background: #fff;
     padding: 15px;
@@ -171,14 +177,14 @@
     margin: 10px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-/* Benutzername vom Feedbackgeber */
+/* Username Feedback giver */
 .feedback-user {
     display: flex;
     align-items: center;
     font-weight: bold;
 
 }
-/* Benutzer-Icon mit Initialen */
+/* User Icon with Initials*/
 .feedback-user-icon {
     width: 40px;
     height: 40px;
@@ -200,12 +206,14 @@
     
 }
 
+/* Text in the Feedback card*/
 .feedback-text {
     text-align: left;
     margin-top: -5px;
     color: #123472;          
 }
 
+/* Big Logo in the Feedback */
 .feedback-logo {
     text-align: center;
 }
