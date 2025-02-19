@@ -15,6 +15,7 @@
             display: flex;  
             flex-direction: column;
             align-items: center;
+            color: black;
     }
  
     .login-container input {
@@ -53,6 +54,7 @@
 </style>
 </head>
 <body>
+<?php include 'P.RideReadyHeader.php'; ?>
     <h2>Login</h2>
     <form class="login-container" action="login.php" method="POST">
         <label>Benutzername:</label>

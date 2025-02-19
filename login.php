@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($passwort_hash);
         $stmt->fetch();
-
+  
         // Passwort überprüfen
         if (password_verify($passwort, $passwort_hash)) {
             $_SESSION["eingeloggt"] = true;

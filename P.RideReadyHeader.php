@@ -10,19 +10,21 @@
 
 
 
-if (session_status() === PHP_SESSION_NONE && !isset($_SESSION)) {
-    session_start();
-}
-function banner() {
-global $login; 
-if ($_SESSION[$login] == false) {
+// if (session_status() === PHP_SESSION_NONE && !isset($_SESSION)) {
+//     session_start();
+//     $login="is_login";
+//     $_SESSION[$login] = false;
+// }
+// function banner() {
+// global $login; 
+// if ($_SESSION[$login] == false) {
 
-    include "nologin.php";
-} else {
-    include "login.php";
-}
+//     include "nologin.php";
+// } else {
+//     include "login.php";
+// }
 
-}
+// }
 ?>
     <style>
         /* Allgemeines Styling */
@@ -159,7 +161,7 @@ if ($_SESSION[$login] == false) {
         </button>
         </div>
         <?php 
-banner();
+// banner();
 ?>
         <div class="search-box" style="margin-top: -65px;">
             <!-- Dropdown für Abholort -->
