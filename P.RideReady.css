@@ -126,9 +126,11 @@
     max-width: 120px;
     margin-top: 10px;
 }
-/* Attention! Class for Logo in Header & Footer */
-.logo img {
+
+/* Attention! Class for the Logo in Header & Footer */
+.Header-Footer-logo img {
     max-width: 180px;
+    object-fit: contain;
 }
 
 /* Klasse des Bodys für die Homepage Seiten */

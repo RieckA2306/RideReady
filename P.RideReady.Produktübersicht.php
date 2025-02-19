@@ -76,7 +76,7 @@
 <header>
 <?php include 'P.RideReadyHeader.php'; ?>
 </header>
-
+<?php include 'Filter.php'; ?>
     <!-- Wrapper für den Hauptinhalt -->
     <div class="produktübersicht-content">
         <div class="produktübersicht-container">
