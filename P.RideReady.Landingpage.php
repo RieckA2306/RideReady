@@ -91,7 +91,7 @@
                 <p>Cabrios</p>
             </div>
             <div>
-                <img src="Mercedes GLS.LP.jpeg" alt="SUVs" class="teaser-vehicle-image">
+                <img src="Mercedes GLS.LP.jpg" alt="SUVs" class="teaser-vehicle-image">
                 <p>SUVs</p>
             </div>
             <div>
@@ -111,6 +111,7 @@
                 <p>Limousinen</p>
             </div>
         </div>
+        hallo!
     </div>
 
     <!-- Start Recommendation section -->
