@@ -13,14 +13,14 @@
                 <a href="P.RideReady.Landingpage.php"><img src="Logo.png" alt="Ride Ready Logo"></a>
             </div>
             <div class="social-icons">
-                <img src="Facebook.Icon.png" alt="Facebook">
-                <img src="Instagram.Icon.png" alt="Instagram">
-                <img src="LinkedIn.Icon.png" alt="LinkedIn">
+                <img src="Images/Footer/Facebook.Icon.png" alt="Facebook">
+                <img src="Images/Footer/Instagram.Icon.png" alt="Instagram">
+                <img src="Images/Footer/LinkedIn.Icon.png" alt="LinkedIn">
             </div>
             <p>Ride Ready mit der App</p>
             <div class="app-buttons">
-                <img src="AppStore.Icon.png" alt="App Store">
-                <img src="PlayStore.Icon.png" alt="Google Play">
+                <img src="Images/Footer/AppStore.Icon.png" alt="App Store">
+                <img src="Images/Footer/PlayStore.Icon.png" alt="Google Play">
             </div>
         </div>
 
