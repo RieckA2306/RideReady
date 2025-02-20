@@ -183,7 +183,6 @@ banner();
          <input type="text" id="rueckgabedatum" placeholder="Rückgabedatum">
          <button id="suchen">Suchen</button>
         </div>
-    </header>
     
         <!-- Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -192,17 +191,20 @@ banner();
         document.addEventListener("DOMContentLoaded", function() {
             let abholDatePicker = flatpickr("#abholdatum", {
                 dateFormat: "d.m.Y",  
-                minDate: "today",      
+                minDate: "today",      // Abholdatum ab heute auswählbar
                 onChange: function(selectedDates, dateStr) {
-                    rueckgabeDatePicker.set("minDate", dateStr);
+                    let rueckgabeMinDate = new Date(selectedDates[0]);
+                    rueckgabeMinDate.setDate(rueckgabeMinDate.getDate() + 1); // Rückgabedatum mindestens einen Tag später
+                    rueckgabeDatePicker.set("minDate", rueckgabeMinDate);
                 }
             });
 
             let rueckgabeDatePicker = flatpickr("#rueckgabedatum", {
                 dateFormat: "d.m.Y",
-                minDate: "today",
+                minDate: new Date(new Date().setDate(new Date().getDate() + 1)), // Standard: Ab morgen auswählbar
             });
         });
+        
     </script>
     <!-- script for the button -->
     <script>
