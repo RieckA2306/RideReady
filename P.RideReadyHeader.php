@@ -183,6 +183,7 @@ banner();
          <input type="text" id="rueckgabedatum" placeholder="Rückgabedatum">
          <button id="suchen">Suchen</button>
         </div>
+    </header>
     
         <!-- Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -204,7 +205,6 @@ banner();
                 minDate: new Date(new Date().setDate(new Date().getDate() + 1)), // Standard: Ab morgen auswählbar
             });
         });
-        
     </script>
     <!-- script for the button -->
     <script>
