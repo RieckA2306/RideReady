@@ -1,36 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 <?php
-session_start();
-$conn = new mysqli("localhost", "root", "", "benutzer");
 
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $benutzername = $_POST["benutzername"];
-    $passwort = $_POST["passwort"];
-
-    // Benutzer in der Datenbank suchen
-    $stmt = $conn->prepare("SELECT passwort_hash FROM benutzer WHERE benutzername = ?");
-    $stmt->bind_param("s", $benutzername);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($passwort_hash);
-        $stmt->fetch();
-  
-        // Passwort überprüfen
-        if (password_verify($passwort, $passwort_hash)) {
-            $_SESSION["eingeloggt"] = true;
-            $_SESSION["benutzername"] = $benutzername;
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            echo "Falsches Passwort!";
-        }
-    } else {
-        echo "Benutzer nicht gefunden!";
-    }
-}
 ?>
+<body>
+<div class="menu" id="menu">
+<div class="menu" id="menu">AD</div>
+    <h2>Hallo Adorjan Rieck!</h2>
+    <a href="#" >Meine Buchungen</a>
+
+    <button oncclick="<?php  $_SESSION[$login] = false ?>;"onclick="window.location.href='P.RideReadyHeader.php'">Logout</button>
+       </div>   
+</body>
+</html>
+
+
