@@ -17,7 +17,7 @@ if ($_SESSION[$login] == false) {
 
     include "nologin.php";
 } else {
-    include "login.php";
+    include "jologin.php";
 }
 
 }
@@ -149,7 +149,7 @@ if ($_SESSION[$login] == false) {
 <body class="header-body">
     <header class="header">
         <div class="logo">
-            <a href="P.RideReady.Landingpage.php"><P class="Header-Footer-logo"><img src="logo.png" alt="Ride Ready Logo"></p></a>
+            <a href="P.RideReady.Landingpage.php"><P class="Header-Footer-logo"><img src="Images/logo.png" alt="Ride Ready Logo"></p></a>
             <button class="hamburger-button"onclick="toggleMenu()">
         <span></span>
         <span></span>
