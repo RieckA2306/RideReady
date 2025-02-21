@@ -32,6 +32,18 @@ $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? '';
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
+<?php
+    function banner() {
+    global $login; 
+    if ($_SESSION[$login] == false) {
+
+        include "nologin.php";
+    } else {
+        include "jologin.php";
+    }
+
+    }
+?>
 
 <style>
         /* Allgemeines Styling */
@@ -191,6 +203,9 @@ $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? '';
             <span></span>
         </button>
     </div>
+    <?php 
+banner();
+?>
     
     <!-- Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
