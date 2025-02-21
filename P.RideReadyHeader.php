@@ -1,3 +1,28 @@
+<?php
+session_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// Werte aus dem Formular in die Session speichern
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if (isset($_GET['reset'])) {
+        // Session-Werte löschen, wenn "Filter zurücksetzen" geklickt wurde
+        unset($_SESSION['city'], $_SESSION['abholdatum'], $_SESSION['rueckgabedatum']);
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit();
+    } else {
+        $_SESSION['city'] = $_GET['city'] ?? '';
+        $_SESSION['abholdatum'] = $_GET['abholdatum'] ?? '';
+        $_SESSION['rueckgabedatum'] = $_GET['rueckgabedatum'] ?? '';
+    }
+}
+
+// Standardwerte setzen, falls Session leer ist
+$city = $_SESSION['city'] ?? '';
+$abholdatum = $_SESSION['abholdatum'] ?? '';
+$rueckgabedatum = $_SESSION['rueckgabedatum'] ?? '';
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -6,23 +31,9 @@
     <title>Ride Ready - Header</title>
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <?php
 
 
-session_start();
-
-function banner() {
-global $login; 
-if ($_SESSION[$login] == false) {
-
-    include "nologin.php";
-} else {
-    include "jologin.php";
-}
-
-}
-?>
-    <style>
+<style>
         /* Allgemeines Styling */
         .header-body {
             font-family: Arial, sans-serif;
@@ -35,12 +46,13 @@ if ($_SESSION[$login] == false) {
         /* Header Styling */
         .header {
             display: flex;
-            flex-direction: column;
+            align-items: center; /* Vertikale Zentrierung */
+            justify-content: space-between;
             padding: 20px;
             background-color: #123472;
             position: sticky;
-            top:0;
-            
+            top: 0;
+            z-index: 1000;
         }
         
         .logo {
@@ -59,11 +71,9 @@ if ($_SESSION[$login] == false) {
             background: white;
             padding: 10px;
             border-radius: 5px;
-            margin-top: -65px;
-            margin:auto
-            
+            margin-right: 130px;
         }
-        
+
         .search-box select, .search-box input, .search-box button {
             padding: 10px;
             border: 1px solid #ccc;
@@ -95,15 +105,13 @@ if ($_SESSION[$login] == false) {
 
         
             }
-        .hamburger-button {
-            margin-left: auto;      /* Schiebt den Button bei Bedarf nach rechts */
+            .hamburger-button {
             background-color: white;
             border: none;
             border-radius: 8px;
             width: 40px;
             height: 40px;
             cursor: pointer;
-            align-items: right;
         }
 
         .hamburger-button span {
@@ -144,76 +152,75 @@ if ($_SESSION[$login] == false) {
             font-weight: bold;
         }
 
-    </style>
+</style>
 </head>
 <body class="header-body">
-    <header class="header">
+    <div class="header">
         <div class="logo">
-            <a href="P.RideReady.Landingpage.php"><P class="Header-Footer-logo"><img src="Images/logo.png" alt="Ride Ready Logo"></p></a>
-            <button class="hamburger-button"onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+            <a href="P.RideReady.Landingpage.php">
+                <p class="Header-Footer-logo">
+                    <img src="Images/logo.png" alt="Ride Ready Logo">
+                </p>
+            </a>
+        </div>
+
+        <form method="get" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+            <div class="search-box">
+                <select name="city" id="abholort">
+                    <option value="">Abholort</option>
+                    <?php
+                    $cities = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
+                    foreach ($cities as $cityOption) {
+                        $selected = ($cityOption == $city) ? 'selected' : '';
+                        echo "<option value='$cityOption' $selected>$cityOption</option>";
+                    }
+                    ?>
+                </select>
+
+                <input type="text" name="abholdatum" id="abholdatum" placeholder="Abholdatum" value="<?php echo htmlspecialchars($abholdatum); ?>">
+                <input type="text" name="rueckgabedatum" id="rueckgabedatum" placeholder="Rückgabedatum" value="<?php echo htmlspecialchars($rueckgabedatum); ?>">
+
+                <button type="submit" id="suchen">Suchen</button>
+                <button type="submit" name="reset" value="1">Filter zurücksetzen</button>
+            </div>
+        </form>
+
+        <button class="hamburger-button" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
-        </div>
-        <?php 
-banner();
-?>
-        <div class="search-box" style="margin-top: -65px;">
-            <!-- Dropdown für Abholort -->
-            <select name="city" id="abholort">
-                <option>Abholort</option> <!-- Check, das Abholort nicht ausgewählt ist, es muss eine Stadt sein -->
-                <option value="Berlin">Berlin</option>
-                <option value="Bielefeld">Bielefeld</option>
-                <option value="Bochum">Bochum</option>
-                <option value="Bremen">Bremen</option>
-                <option value="Dortmund">Dortmund</option>
-                <option value="Dresden">Dresden</option>
-                <option value="Freiburg">Freiburg</option>
-                <option value="Hamburg">Hamburg</option>
-                <option value="Köln">Köln</option>
-                <option value="Leipzig">Leipzig</option>
-                <option value="München">München</option>
-                <option value="Nürnberg">Nürnberg</option>
-                <option value="Paderborn">Paderborn</option>
-                <option value="Rostock">Rostock</option>
-            </select>
-            <!-- Kalenderfelder -->
-         <input type="text" id="abholdatum" placeholder="Abholdatum">
-         <input type="text" id="rueckgabedatum" placeholder="Rückgabedatum">
-         <button id="suchen">Suchen</button>
-        </div>
-    </header>
+    </div>
     
-        <!-- Flatpickr JavaScript -->
+    <!-- Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let abholDatePicker = flatpickr("#abholdatum", {
-                dateFormat: "d.m.Y",  
-                minDate: "today",      // Abholdatum ab heute auswählbar
+                dateFormat: "d.m.Y",
+                minDate: "today",
                 onChange: function(selectedDates, dateStr) {
                     let rueckgabeMinDate = new Date(selectedDates[0]);
-                    rueckgabeMinDate.setDate(rueckgabeMinDate.getDate() + 1); // Rückgabedatum mindestens einen Tag später
+                    rueckgabeMinDate.setDate(rueckgabeMinDate.getDate() + 1);
                     rueckgabeDatePicker.set("minDate", rueckgabeMinDate);
                 }
             });
 
             let rueckgabeDatePicker = flatpickr("#rueckgabedatum", {
                 dateFormat: "d.m.Y",
-                minDate: new Date(new Date().setDate(new Date().getDate() + 1)), // Standard: Ab morgen auswählbar
+                minDate: new Date(new Date().setDate(new Date().getDate() + 1)),
             });
         });
     </script>
-    <!-- script for the button -->
+    
+    <!-- Script für das Menü -->
     <script>
         function toggleMenu() {
             var menu = document.getElementById("menu");
             if (menu.style.display === "none" || menu.style.display === "") {
                 menu.style.display = "block";
-            } 
-            else {
+            } else {
                 menu.style.display = "none";
             }
         }
