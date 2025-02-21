@@ -35,7 +35,7 @@ $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? '';
 <?php
     function banner() {
     global $login; 
-    if ( $_SESSION["eingeloggt"] == true) {
+    if (isset($_SESSION["eingeloggt"])) {
 
         include "jologin.php";
     } else {
