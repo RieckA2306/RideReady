@@ -9,6 +9,7 @@
 
 <div class="menu" id="menu">
         <a href="loginsite.php">Login</a>
+        <a href="Sessionanzeige.php">Sessionanzeigen</a>
         <a href="#">Registrieren</a>
         <a href="#">AGB</a>
         <a href="#">Impressum</a>
