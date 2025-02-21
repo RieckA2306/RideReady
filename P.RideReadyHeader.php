@@ -4,16 +4,16 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Werte aus dem Formular in die Session speichern
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    if (isset($_GET['reset'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['reset'])) {
         // Session-Werte löschen, wenn "Filter zurücksetzen" geklickt wurde
         unset($_SESSION['city'], $_SESSION['abholdatum'], $_SESSION['rueckgabedatum']);
         header('Location: ' . $_SERVER['PHP_SELF']);
         exit();
     } else {
-        $_SESSION['city'] = $_GET['city'] ?? '';
-        $_SESSION['abholdatum'] = $_GET['abholdatum'] ?? '';
-        $_SESSION['rueckgabedatum'] = $_GET['rueckgabedatum'] ?? '';
+        $_SESSION['city'] = $_POST['city'] ?? '';
+        $_SESSION['abholdatum'] = $_POST['abholdatum'] ?? '';
+        $_SESSION['rueckgabedatum'] = $_POST['rueckgabedatum'] ?? '';
     }
 }
 
@@ -176,7 +176,8 @@ $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? '';
             </a>
         </div>
 
-        <form method="get" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+        <!-- Formular auf POST-Methode umgestellt -->
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
             <div class="search-box">
                 <select name="city" id="abholort">
                     <option value="">Abholort</option>
@@ -204,8 +205,8 @@ $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? '';
         </button>
     </div>
     <?php 
-banner();
-?>
+    banner();
+    ?>
     
     <!-- Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
