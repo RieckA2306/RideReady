@@ -142,9 +142,10 @@ $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? '';
             background-color: white;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             position: absolute;
-            top: 70%;
+            top: 10%;
             right: 1%;
             display: none;
+            z-index: 1000;
             text-align: left;
         }
         .menu a {
