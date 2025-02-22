@@ -17,12 +17,18 @@
         $city = $_SESSION['city'] ?? 'Kein Abholort gesetzt';
         $abholdatum = $_SESSION['abholdatum'] ?? 'Kein Abholdatum gesetzt';
         $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? 'Kein Rückgabedatum gesetzt';
+        $username = $_SESSION['benutzername'] ?? 'Kein Nutzernamen gesetzt';
+        
+   
+   
 
         echo '<div class="bg-white p-4 shadow-md rounded-md">';
         echo '<p><strong>City:</strong> ' . htmlspecialchars($city) . '</p>';
         echo '<p><strong>Abholdatum:</strong> ' . htmlspecialchars($abholdatum) . '</p>';
         echo '<p><strong>Rückgabedatum:</strong> ' . htmlspecialchars($rueckgabedatum) . '</p>';
+        echo '<p><strong>username:</strong> ' . htmlspecialchars($username) . '</p>';
         echo '</div>';
+
         ?>
 
         <div class="mt-4">
