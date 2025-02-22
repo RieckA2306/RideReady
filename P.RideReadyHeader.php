@@ -8,13 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['reset'])) {
         // Session-Werte löschen, wenn "Filter zurücksetzen" geklickt wurde
         unset($_SESSION['city'], $_SESSION['abholdatum'], $_SESSION['rueckgabedatum']);
-        header('Location: ' . $_SERVER['PHP_SELF']);
-        exit();
     } else {
         $_SESSION['city'] = $_POST['city'] ?? '';
         $_SESSION['abholdatum'] = $_POST['abholdatum'] ?? '';
         $_SESSION['rueckgabedatum'] = $_POST['rueckgabedatum'] ?? '';
     }
+    
+    // Umleitung, um erneutes Senden des Formulars zu verhindern
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit();
 }
 
 // Standardwerte setzen, falls Session leer ist

@@ -1,3 +1,9 @@
+<!-- Due to Session_Start in the header the session should start on all pages. Nevertheless to ensure it 100% i added this -->
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="de">
