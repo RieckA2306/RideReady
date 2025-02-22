@@ -72,7 +72,19 @@
   
 
     <div class="filter-bar">
-        <div class="filter-group"><label>Hersteller:</label><select><option>alle</option></select></div>
+        <div class="filter-group">
+            <label for="hersteller">Hersteller:</label>
+            <select name="manufacturer" id="hersteller" class="filter-group">
+                <option value="">alle</option>
+                <?php
+                $manufacturers = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
+                foreach ($manufacturers as $manufacturerOption) {
+                    $selected = ($manufacturerOption == $manufacturer) ? 'selected' : '';
+                    echo "<option value='$manufacturerOption' $selected>$manufacturerOption</option>";
+                }
+                ?>
+            </select>
+        </div>
         <div class="filter-group"><label>Sitze:</label><input type="text"></div>
         <div class="filter-group"><label>Türen:</label><input type="text"></div>
         <div class="filter-group"><label>Getriebe:</label><select><option>alle</option></select></div>
