@@ -201,8 +201,8 @@ $returndate = $_SESSION['returndate'] ?? '';
                 <select name="city" id="abholort">
                     <option value="">Abholort</option>
                     <?php
-                    $cities = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
-                    foreach ($cities as $cityOption) {
+                    $a_cities = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
+                    foreach ($a_cities as $cityOption) {
                         $selected = ($cityOption == $city) ? 'selected' : '';
                         echo "<option value='$cityOption' $selected>$cityOption</option>";
                     }
