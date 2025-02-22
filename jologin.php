@@ -9,7 +9,7 @@
  
 
 
-    $username= $_SESSION["benutzername"];
+    $username= $_SESSION["username"];
 ?>
 <body>
 <div class="menu" id="menu">

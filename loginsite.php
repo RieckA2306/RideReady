@@ -57,8 +57,8 @@
 <?php include 'P.RideReadyHeader.php'; ?>
     <h2>Login</h2>
     <form class="login-container" action="login.php" method="POST">
-        <label>Benutzername:</label>
-        <input type="text" name="benutzername" required>
+        <label>username:</label>
+        <input type="text" name="username" required>
         <br>
         <label>Passwort:</label>
         <input type="password" name="passwort" required>

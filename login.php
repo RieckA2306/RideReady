@@ -1,18 +1,22 @@
 <?php
 session_start();
-$conn = new mysqli("localhost", "root", "", "benutzer");
+$servername=$_SERVER['SERVER_NAME'];
+$serverusername="root";
+// $serverpassword="123456";
+$dbname="benutzer";
+$conn = new mysqli("$servername", "$serverusername", "", "$dbname");
 
 if ($conn->connect_error) {
     die("Verbindung fehlgeschlagen: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $benutzername = $_POST["benutzername"];
+    $username = $_POST["username"];
     $passwort = $_POST["passwort"];
 
     // Benutzer in der Datenbank suchen
-    $stmt = $conn->prepare("SELECT passwort_hash FROM benutzer WHERE benutzername = ?");
-    $stmt->bind_param("s", $benutzername);
+    $stmt = $conn->prepare("SELECT passwort_hash FROM benutzer WHERE username = ?");
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
 
@@ -23,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Passwort überprüfen
         if (password_verify($passwort, $passwort_hash)) {
             $_SESSION["eingeloggt"] = true;
-            $_SESSION["benutzername"] = $benutzername;
+            $_SESSION["username"] = $username;
             header("Location: dashboard.php");
             exit();
         } else {
