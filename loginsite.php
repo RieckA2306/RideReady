@@ -66,6 +66,6 @@
         <button type="submit">Login</button>
         <a href="#">Noch Kein Konto?</a>
     </form>
-
+    <?php include 'P.RideReadyFooter.php'; ?>
 </body>
 </html>
