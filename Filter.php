@@ -13,13 +13,6 @@
             width: auto;
         }
 
-        .status-bar {
-            background-color: #222;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-        }
-
         .filter-bar {
             background-color: #f9f9f9;
             padding: 20px;
@@ -31,7 +24,7 @@
             margin: 20px auto;
             width: 90%;
             max-width: 1300px;
-            align-items: center; /* Vertikale Zentrierung im gesamten Grid */
+            align-items: center;
         }
 
         .filter-group {
@@ -41,37 +34,25 @@
             text-align: center;
         }
 
-        .checkbox-container {
-            margin-left: 10px; /* Verschiebt die Checkbox unter das Label */
-        }
-
-
         .filter-bar select, .filter-bar input, .filter-bar button {
             padding: 10px;
             font-size: 14px;
-            border-radius: 12px;
+            border-radius: 5px;
             border: 1px solid #ccc;
             width: 150px;
             text-align: center;
         }
+
         .filter-bar button {
-            background-color: #123472;
+            background-color: #80BFFF;
             color: white;
             border: none;
             cursor: pointer;
         }
+
         .filter-bar button:hover {
-            background-color:  gold;
-            color: black;
+            background-color: #123472;
         }
-        .filter-bar a {
-            text-align: center;
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-
     </style>
 </head>
 <body>
@@ -126,8 +107,13 @@
 
         <div class="filter-group"><label>Preis bis:</label><select><option>alle</option></select></div>
         <div class="filter-group"><label>Sortierung:</label><select><option>Preis ↑</option></select></div>
-        <div class="filter-group"><button>Filtern</button></div>
-        <div class="filter-group"><a href="#">Filter und Sortierung zurücksetzen</a></div>
+        <!-- Buttons für Filtern und Zurücksetzen -->
+        <div class="filter-group">
+            <button type="submit" name="filter">Filtern</button>
+        </div>
+        <div class="filter-group">
+            <button type="submit" name="reset" value="1">Filter zurücksetzen</button>
+        </div>
     </div>
 
 </body>
