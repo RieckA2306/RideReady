@@ -3,7 +3,60 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Werte aus dem Filterformular in die Session speichern
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['reset'])) {
+        // Session-Werte löschen, wenn "Filter zurücksetzen" geklickt wurde
+        unset($_SESSION['manufacturer'], $_SESSION['seats'], $_SESSION['doors'], $_SESSION['transmission'], 
+              $_SESSION['age'], $_SESSION['type'], $_SESSION['drive'], $_SESSION['climate'], $_SESSION['gps']);
+        
+        // Auf der Produktübersichtsseite bleiben
+        header('Location: P.RideReady.Produktübersicht.php');
+        exit();
+    } else {
+        // Werte aus dem Formular abgreifen
+        $manufacturer = $_POST['manufacturer'] ?? '';
+        $seats = $_POST['seats'] ?? '';
+        $doors = $_POST['doors'] ?? '';
+        $transmission = $_POST['transmission'] ?? '';
+        $age = $_POST['age'] ?? '';
+        $type = $_POST['type'] ?? '';
+        $drive = $_POST['drive'] ?? '';
+        
+        // Checkboxen als true/false speichern
+        $climate = isset($_POST['climate']) ? true : false;
+        $gps = isset($_POST['gps']) ? true : false;
+
+        // Speichern der Session-Variablen
+        $_SESSION['manufacturer'] = $manufacturer;
+        $_SESSION['seats'] = $seats;
+        $_SESSION['doors'] = $doors;
+        $_SESSION['transmission'] = $transmission;
+        $_SESSION['age'] = $age;
+        $_SESSION['type'] = $type;
+        $_SESSION['drive'] = $drive;
+        $_SESSION['climate'] = $climate;
+        $_SESSION['gps'] = $gps;
+
+        // Auf der Produktübersichtsseite bleiben
+        header('Location: P.RideReady.Produktübersicht.php');
+        exit();
+    }
+}
+
+// Standardwerte setzen, falls Session leer ist
+$manufacturer = $_SESSION['manufacturer'] ?? '';
+$seats = $_SESSION['seats'] ?? '';
+$doors = $_SESSION['doors'] ?? '';
+$transmission = $_SESSION['transmission'] ?? '';
+$age = $_SESSION['age'] ?? '';
+$type = $_SESSION['type'] ?? '';
+$drive = $_SESSION['drive'] ?? '';
+$climate = $_SESSION['climate'] ?? false;
+$gps = $_SESSION['gps'] ?? false;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="de">

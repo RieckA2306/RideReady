@@ -14,17 +14,40 @@
         session_start();
 
         // Korrekte Session-Variablen verwenden
+        // Session-Variablen laden mit Standardwerten
+        $manufacturer = $_SESSION['manufacturer'] ?? 'Kein Hersteller gesetzt';
+        $seats = $_SESSION['seats'] ?? 'Keine Sitzzahl gesetzt';
+        $doors = $_SESSION['doors'] ?? 'Keine Türanzahl gesetzt';
+        $transmission = $_SESSION['transmission'] ?? 'Kein Getriebe gesetzt';
+        $age = $_SESSION['age'] ?? 'Kein Alter gesetzt';
+        $type = $_SESSION['type'] ?? 'Kein Typ gesetzt';
+        $drive = $_SESSION['drive'] ?? 'Kein Antrieb gesetzt';
+        $climate = $_SESSION['climate'] ?? false;
+        $gps = $_SESSION['gps'] ?? false;
+
+        // Bisherige Variablen
         $city = $_SESSION['city'] ?? 'Kein Abholort gesetzt';
         $pickupdate = $_SESSION['pickupdate'] ?? 'Kein Abholdatum gesetzt';
         $returndate = $_SESSION['returndate'] ?? 'Kein Rückgabedatum gesetzt';
         $username = $_SESSION['benutzername'] ?? 'Kein Nutzernamen gesetzt';
 
+        // HTML-Ausgabe im gleichen Stil
         echo '<div class="bg-white p-4 shadow-md rounded-md">';
+
         echo '<p><strong>City:</strong> ' . htmlspecialchars($city) . '</p>';
         echo '<p><strong>Abholdatum:</strong> ' . htmlspecialchars($pickupdate) . '</p>';
         echo '<p><strong>Rückgabedatum:</strong> ' . htmlspecialchars($returndate) . '</p>';
         echo '<p><strong>Username:</strong> ' . htmlspecialchars($username) . '</p>';
-        echo '</div>';
+
+        echo '<p><strong>Hersteller:</strong> ' . htmlspecialchars($manufacturer) . '</p>';
+        echo '<p><strong>Sitze:</strong> ' . htmlspecialchars($seats) . '</p>';
+        echo '<p><strong>Türen:</strong> ' . htmlspecialchars($doors) . '</p>';
+        echo '<p><strong>Getriebe:</strong> ' . htmlspecialchars($transmission) . '</p>';
+        echo '<p><strong>Alter:</strong> ' . htmlspecialchars($age) . '</p>';
+        echo '<p><strong>Typ:</strong> ' . htmlspecialchars($type) . '</p>';
+        echo '<p><strong>Antrieb:</strong> ' . htmlspecialchars($drive) . '</p>';
+        echo '<p><strong>Klima:</strong> ' . ($climate ? 'true' : 'false') . '</p>';
+        echo '<p><strong>GPS:</strong> ' . ($gps ? 'true' : 'false') . '</p>';
         ?>
 
         <div class="mt-4">
