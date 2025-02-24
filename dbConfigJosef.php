@@ -1,36 +1,53 @@
 <?php
-// Datenbankverbindung
-$pdo = new PDO('mysql:host=localhost;
-                dbname=ridereadydb', 
-                'root', );
+
+$servername = $_SERVER['SERVER_NAME'];
+$username = "RideReadyAdmin";
+$password = "1234";
+$dbname = "ridereadydb";
 
 // Variablen für den Zeitraum
 $startDatum = '2025-03-25';
 $endDatum = '2025-03-28';
 
-// SQL-Abfrage mit JOIN zur Modell-Tabelle und GPS-Filter
+
+try {
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+} catch (PDOException $e) {
+    die("Datenbankverbindung fehlgeschlagen: " . $e->getMessage());
+}
+
+// 2️⃣ Variablen für den Zeitraum (dynamisch anpassbar)
+$startDatum = '2025-03-25';
+$endDatum = '2025-03-28';
+
+// 3️⃣ SQL-Abfrage mit Prepared Statements
 $sql = "SELECT c.car_id 
         FROM Car c
-        JOIN Modell m ON c.type_id = m.type_id  -- Verknüpfung mit Modell-Tabelle
+        JOIN model m ON c.type_id = m.type_id
         WHERE c.loc_name = 'Berlin'
-        AND m.gps = 1  -- Filter für Autos mit GPS
+        AND m.gps = 1
         AND c.car_id NOT IN (
             SELECT car_id 
             FROM Contract 
-            WHERE NOT (end_date < $startDatum OR start_date > $endDatum)
+            WHERE NOT (end_date < ? OR start_date > ?)
         )";
 
-// Prepared Statement vorbereiten
+// 4️⃣ Prepared Statement vorbereiten und ausführen
 $stmt = $pdo->prepare($sql);
-
-// Platzhalter mit den Variablen ersetzen und ausführen
 $stmt->execute([$startDatum, $endDatum]);
 
-// Ergebnisse abrufen
-$freieAutos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// 5️⃣ Ergebnisse abrufen
+$freieAutos = $stmt->fetchAll();
 
-// Ausgabe der freien Autos
-foreach ($freieAutos as $auto) {
-    echo "Freies Auto mit GPS: " . $auto['car_id'] . "<br>";
+// 6️⃣ Ergebnisse ausgeben
+if (count($freieAutos) > 0) {
+    echo "<h3>Freie Autos mit GPS in Berlin:</h3><ul>";
+    foreach ($freieAutos as $auto) {
+        echo "<li>Auto-ID: " . htmlspecialchars($auto['car_id']) . "</li>";
+    }
+    echo "</ul>";
+} else {
+    echo "<p>Keine freien Autos mit GPS in Berlin für den angegebenen Zeitraum.</p>";
 }
 ?>
+
