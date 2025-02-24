@@ -29,7 +29,7 @@ $sql = "SELECT c.car_id
         AND c.car_id NOT IN (
             SELECT car_id 
             FROM Contract 
-            WHERE NOT (end_date < ? OR start_date > ?)
+            WHERE NOT (end_date < '2025-03-25' OR start_date > '2025-03-28')
         )";
 
 // 4️⃣ Prepared Statement vorbereiten und ausführen
