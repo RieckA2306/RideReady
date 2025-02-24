@@ -10,15 +10,13 @@ $startDatum = '2025-03-25';
 $endDatum = '2025-03-28';
 
 // SQL-Abfrage mit JOIN zur Modell-Tabelle und GPS-Filter
-$sql = "SELECT c.car_id 
-        FROM Car c
-        JOIN model m ON c.type_id = m.type_id
-        WHERE c.loc_name = 'Berlin'
-        AND m.gps = 1
-        AND c.car_id NOT IN (
+$sql = "SELECT car_id 
+        FROM Car 
+        WHERE loc_name = $city
+        AND car_id NOT IN (
             SELECT car_id 
             FROM Contract 
-            WHERE NOT (end_date < '2025-03-25' OR start_date > '2025-03-28')
+            WHERE (start_date <= $pickupdate AND end_date >= $returndate)
         )";
 
 // Prepared Statement vorbereiten
