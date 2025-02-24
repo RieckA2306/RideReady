@@ -47,7 +47,7 @@ if (count($freieAutos) > 0) {
     }
     echo "</ul>";
 } else {
-    echo "<p>Keine freien Autos mit GPS in Berlin für den angegebenen Zeitraum.</p>";
+    echo "<p>Keine freien Autos mit angegebenen Parametern für den angegebenen Zeitraum.</p>";
 }
 ?>
 
