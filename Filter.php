@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 // Werte aus dem Formular in die Session speichern
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset']) && $_POST['reset'] === 'product_reset') {
+    if (isset($_POST['reset']) && $_POST['reset'] === 'product_reset') {
         // Nur die Sessionvariablen der Produktübersicht löschen
         unset(
             $_SESSION['manufacturer'],
@@ -22,12 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['price'],
             $_SESSION['sorting']
         );
-    
-        // Auf der aktuellen Seite bleiben
-        header('Location: P.RideReady.Produktübersicht.php');
+
+        // Auf der aktuellen Seite bleiben (ohne header())
+        echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
         exit();
     
-    } else {
+    } elseif (isset($_POST['filter'])) {
         // Filterwerte aus dem POST-Array in die Session speichern
         $_SESSION['manufacturer'] = $_POST['manufacturer'] ?? '';
         $_SESSION['seats'] = $_POST['seats'] ?? '';
@@ -40,12 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['drive'] = $_POST['drive'] ?? '';
         $_SESSION['price'] = $_POST['price'] ?? '';
         $_SESSION['sorting'] = $_POST['sorting'] ?? '';
-        
-        // Nach dem Filtern auf der Seite bleiben
-        header('Location: P.RideReady.Produktübersicht.php');
-        exit();
 
-        
+        // Nach dem Filtern auf der Seite bleiben (ohne header())
+        echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
+        exit();
     }
 }
 
