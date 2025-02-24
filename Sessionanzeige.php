@@ -14,6 +14,16 @@
         session_start();
 
         // Korrekte Session-Variablen verwenden
+        // Session-Variablen laden mit Standardwerten
+        $manufacturer = $_SESSION['manufacturer'] ?? 'Kein Hersteller gesetzt';
+        $seats = $_SESSION['seats'] ?? 'Keine Sitzzahl gesetzt';
+        $doors = $_SESSION['doors'] ?? 'Keine Türanzahl gesetzt';
+        $transmission = $_SESSION['transmission'] ?? 'Kein Getriebe gesetzt';
+        $age = $_SESSION['age'] ?? 'Kein Alter gesetzt';
+        $type = $_SESSION['type'] ?? 'Kein Typ gesetzt';
+        $drive = $_SESSION['drive'] ?? 'Kein Antrieb gesetzt';
+        $climate = $_SESSION['climate'] ?? false;
+        $gps = $_SESSION['gps'] ?? false;
         $city = $_SESSION['city'] ?? 'Kein Abholort gesetzt';
         $abholdatum = $_SESSION['abholdatum'] ?? 'Kein Abholdatum gesetzt';
         $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? 'Kein Rückgabedatum gesetzt';
@@ -22,11 +32,12 @@
    
    
 
+        // HTML-Ausgabe im gleichen Stil
         echo '<div class="bg-white p-4 shadow-md rounded-md">';
         echo '<p><strong>City:</strong> ' . htmlspecialchars($city) . '</p>';
-        echo '<p><strong>Abholdatum:</strong> ' . htmlspecialchars($abholdatum) . '</p>';
-        echo '<p><strong>Rückgabedatum:</strong> ' . htmlspecialchars($rueckgabedatum) . '</p>';
-        echo '<p><strong>username:</strong> ' . htmlspecialchars($username) . '</p>';
+        echo '<p><strong>Abholdatum:</strong> ' . htmlspecialchars($pickupdate) . '</p>';
+        echo '<p><strong>Rückgabedatum:</strong> ' . htmlspecialchars($returndate) . '</p>';
+        echo '<p><strong>Username:</strong> ' . htmlspecialchars($username) . '</p>';
         echo '</div>';
         ?>
 

@@ -1,3 +1,65 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// Werte aus dem Filterformular in die Session speichern
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['reset']) && $_POST['reset'] === '1') {
+        // Nur die Produktfilter-Session-Variablen zurücksetzen, Header-Variablen behalten!
+        $_SESSION['manufacturer'] = '';
+        $_SESSION['seats'] = '';
+        $_SESSION['doors'] = '';
+        $_SESSION['transmission'] = '';
+        $_SESSION['age'] = '';
+        $_SESSION['type'] = '';
+        $_SESSION['drive'] = '';
+        $_SESSION['climate'] = false;
+        $_SESSION['gps'] = false;
+
+        // Header-Session-Variablen (city, pickupdate, returndate) bleiben unberührt
+
+        // Seite neu laden, um Standardwerte anzuzeigen
+        echo "<script>window.location.href='P.RideReady.Produktübersicht.php';</script>";
+        exit();
+    } elseif (isset($_POST['filter'])) {
+        // Produktfilter-Session-Variablen setzen, unabhängig davon, ob Felder ausgefüllt sind
+        $_SESSION['manufacturer'] = $_POST['manufacturer'] ?? '';
+        $_SESSION['seats'] = $_POST['seats'] ?? '';
+        $_SESSION['doors'] = $_POST['doors'] ?? '';
+        $_SESSION['transmission'] = $_POST['transmission'] ?? '';
+        $_SESSION['age'] = $_POST['age'] ?? '';
+        $_SESSION['type'] = $_POST['type'] ?? '';
+        $_SESSION['drive'] = $_POST['drive'] ?? '';
+        
+        // Checkboxen als true/false speichern
+        $_SESSION['climate'] = isset($_POST['climate']) ? true : false;
+        $_SESSION['gps'] = isset($_POST['gps']) ? true : false;
+
+        // Auf der Produktübersichtsseite bleiben
+        echo "<script>window.location.href='P.RideReady.Produktübersicht.php';</script>";
+        exit();
+    }
+}
+
+// Standardwerte setzen, falls Session leer ist oder zurückgesetzt wurde
+$manufacturer = $_SESSION['manufacturer'] ?? '';
+$seats = $_SESSION['seats'] ?? '';
+$doors = $_SESSION['doors'] ?? '';
+$transmission = $_SESSION['transmission'] ?? '';
+$age = $_SESSION['age'] ?? '';
+$type = $_SESSION['type'] ?? '';
+$drive = $_SESSION['drive'] ?? '';
+$climate = $_SESSION['climate'] ?? false;
+$gps = $_SESSION['gps'] ?? false;
+
+// Header-Session-Variablen (bleiben unberührt)
+$city = $_SESSION['city'] ?? 'Kein Abholort gesetzt';
+$pickupdate = $_SESSION['pickupdate'] ?? 'Kein Abholdatum gesetzt';
+$returndate = $_SESSION['returndate'] ?? 'Kein Rückgabedatum gesetzt';
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -13,13 +75,6 @@
             width: auto;
         }
 
-        .status-bar {
-            background-color: #222;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-        }
-
         .filter-bar {
             background-color: #f9f9f9;
             padding: 20px;
@@ -28,158 +83,91 @@
             gap: 15px;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 20px;
+            margin: 20px auto;
             width: 90%;
-            max-width: 1300px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 1200px;
+            align-items: center;
         }
+
         .filter-group {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
+
         .filter-bar select, .filter-bar input, .filter-bar button {
             padding: 10px;
             font-size: 14px;
-            border-radius: 12px;
+            border-radius: 5px;
             border: 1px solid #ccc;
             width: 150px;
             text-align: center;
         }
+
         .filter-bar button {
-            background-color: #123472;
+            background-color: #80BFFF;
             color: white;
             border: none;
             cursor: pointer;
         }
+
         .filter-bar button:hover {
-            background-color:  gold;
-            color: black;
-        }
-        .filter-bar a {
-            text-align: center;
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
+            background-color: #123472;
         }
 
-
+        .form-wrapper {
+            display: contents;
+        }
     </style>
 </head>
 <body>
-  
-
     <div class="filter-bar">
-        <div class="filter-group">
-            <label for="hersteller">Hersteller:</label>
-            <select name="manufacturer" id="hersteller" class="filter-group">
-                <option value="">alle</option>
-                <?php
-                $a_manufacturers = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
-                foreach ($a_manufacturers as $manufacturerOption) {
-                    $selected = ($manufacturerOption == $manufacturer) ? 'selected' : '';
-                    echo "<option value='$manufacturerOption' $selected>$manufacturerOption</option>";
-                }
-                ?>
-            </select>
-        </div>
+        <form method="post" action="P.RideReady.Produktübersicht.php" class="form-wrapper">
+            <?php
+                require_once 'Functions.php';
 
-        <div class="filter-group">
-            <label for="seats">Sitze:</label>
-            <select name="seats" id="seats" class="filter-group">
-                <option value="">alle</option>
-                <?php
-                $a_seats = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
-                foreach ($a_seats as $seatsOption) {
-                    $selected = ($seatsOption == $seats) ? 'selected' : '';
-                    echo "<option value='$seatsOption' $selected>$seatsOption</option>";
-                }
-                ?>
-            </select>
-        </div>
+                // Alle Arrays an einer Stelle definiert:
+                $a_manufacturers = ["Audi", "BMW", "Mercedes", "Volkswagen"];
+                $a_seats = ["2", "4", "5", "7", "9"];
+                $a_doors = ["2", "4", "5"];
+                $a_transmission = ["Automatik", "Manuell"];
+                $a_age = ["Neu", "1 Jahr", "2 Jahre", "3 Jahre+"];
+                $a_type = ["SUV", "Kombi", "Limousine", "Cabrio"];
+                $a_drive = ["Frontantrieb", "Heckantrieb", "Allrad"];
 
-        <div class="filter-group">
-            <label for="doors">Türen:</label>
-            <select name="doors" id="doors" class="filter-group">
-                <option value="">alle</option>
-                <?php
-                $a_doors = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
-                foreach ($a_doors as $doorsOption) {
-                    $selected = ($doorsOption == $doors) ? 'selected' : '';
-                    echo "<option value='$doorsOption' $selected>$doorsOption</option>";
-                }
-                ?>
-            </select>
-        </div>
+                // Dynamische Funktionsaufrufe:
+                renderFilterGroup('Hersteller', 'manufacturer', $a_manufacturers, $manufacturer);
+                renderFilterGroup('Sitze', 'seats', $a_seats, $seats);
+                renderFilterGroup('Türen', 'doors', $a_doors, $doors);
+                renderFilterGroup('Getriebe', 'transmission', $a_transmission, $transmission);
+            ?> 
+                <div class="filter-group">
+                    <label for="climate">Klima:</label>
+                    <input type="checkbox" name="climate" id="climate" 
+                        <?php echo ($climate) ? 'checked' : ''; ?>>
+                </div>
 
-        <div class="filter-group">
-            <label for="transmission">Getriebe:</label>
-            <select name="transmission" id="transmission" class="filter-group">
-                <option value="">alle</option>
-                <?php
-                $a_transmission = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
-                foreach ($a_transmission as $transmissionOption) {
-                    $selected = ($transmissionOption == $transmission) ? 'selected' : '';
-                    echo "<option value='$transmissionOption' $selected>$transmissionOption</option>";
-                }
-                ?>
-            </select>
-        </div>
+                <div class="filter-group">
+                    <label for="gps">GPS:</label>
+                    <input type="checkbox" name="gps" id="gps" 
+                        <?php echo ($gps) ? 'checked' : ''; ?>>
+                </div>
+            
+            <?php
+                renderFilterGroup('Alter', 'age', $a_age, $age);
+                renderFilterGroup('Typ', 'type', $a_type, $type);
+                renderFilterGroup('Antrieb', 'drive', $a_drive, $drive);
+            ?>  
 
-
-        <div class="filter-group"><label>Klima:</label><input type="checkbox"></div>
-        <div class="filter-group"><label>GPS:</label><input type="checkbox"></div>
-
-        <div class="filter-group">
-            <label for="age">Alter:</label>
-            <select name="age" id="age" class="filter-group">
-                <option value="">alle</option>
-                <?php
-                $a_age = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
-                foreach ($a_age as $ageOption) {
-                    $selected = ($ageOption == $age) ? 'selected' : '';
-                    echo "<option value='$ageOption' $selected>$ageOption</option>";
-                }
-                ?>
-            </select>
-        </div>
-
-        <div class="filter-group">
-            <label for="type">Typ:</label>
-            <select name="type" id="type" class="filter-group">
-                <option value="">alle</option>
-                <?php
-                $a_type = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
-                foreach ($a_type as $typeOption) {
-                    $selected = ($typeOption == $type) ? 'selected' : '';
-                    echo "<option value='$typeOption' $selected>$typeOption</option>";
-                }
-                ?>
-            </select>
-        </div>
-
-        <div class="filter-group">
-            <label for="drive">Antrieb:</label>
-            <select name="drive" id="drive" class="filter-group">
-                <option value="">alle</option>
-                <?php
-                $a_drive = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
-                foreach ($a_drive as $driveOption) {
-                    $selected = ($driveOption == $drive) ? 'selected' : '';
-                    echo "<option value='$driveOption' $selected>$driveOption</option>";
-                }
-                ?>
-            </select>
-        </div>
-
-
-        <div class="filter-group"><label>Preis bis:</label><select><option>alle</option></select></div>
-        <div class="filter-group"><label>Sortierung:</label><select><option>Preis ↑</option></select></div>
-        <div class="filter-group"><button>Filtern</button></div>
-        <div class="filter-group"><a href="#">Filter und Sortierung zurücksetzen</a></div>
+            <!-- Buttons für Filtern und Zurücksetzen -->
+            <div class="filter-group">
+                <button type="submit" name="filter">Filtern</button>
+            </div>
+            <div class="filter-group">
+                <button type="submit" name="reset" value="1">Filter zurücksetzen</button>
+            </div>
+        </form>
     </div>
-
 </body>
 </html>

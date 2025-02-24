@@ -1,10 +1,8 @@
-<!-- Due to Session_Start in the header the session should start on all pages. Nevertheless to ensure it 100% i added this -->
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -80,9 +78,9 @@ if (session_status() === PHP_SESSION_NONE) {
     </style>
 </head>
 <body class="produktübersicht-body">
-<header>
+
 <?php include 'P.RideReadyHeader.php'; ?>
-</header>
+
 <?php include 'Filter.php'; ?>
     <!-- Wrapper für den Hauptinhalt -->
     <div class="produktübersicht-content">
