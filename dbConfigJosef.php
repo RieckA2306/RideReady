@@ -2,8 +2,7 @@
 // Datenbankverbindung
 $pdo = new PDO('mysql:host=localhost;
                 dbname=ridereadydb', 
-                'root', 
-                'passwort');
+                'root', );
 
 // Variablen für den Zeitraum
 $startDatum = '2025-03-25';
@@ -18,7 +17,7 @@ $sql = "SELECT c.car_id
         AND c.car_id NOT IN (
             SELECT car_id 
             FROM Contract 
-            WHERE NOT (end_date < ? OR start_date > ?)
+            WHERE NOT (end_date < $startDatum OR start_date > $endDatum)
         )";
 
 // Prepared Statement vorbereiten
