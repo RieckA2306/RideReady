@@ -5,60 +5,62 @@ if (session_status() === PHP_SESSION_NONE) {
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Werte aus dem Filterformular in die Session speichern
+// Werte aus dem Formular in die Session speichern
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['reset']) && $_POST['reset'] === '1') {
-        // Nur die Produktfilter-Session-Variablen zurücksetzen, Header-Variablen behalten!
-        $_SESSION['manufacturer'] = '';
-        $_SESSION['seats'] = '';
-        $_SESSION['doors'] = '';
-        $_SESSION['transmission'] = '';
-        $_SESSION['age'] = '';
-        $_SESSION['type'] = '';
-        $_SESSION['drive'] = '';
-        $_SESSION['climate'] = false;
-        $_SESSION['gps'] = false;
-
-        // Header-Session-Variablen (city, pickupdate, returndate) bleiben unberührt
-
-        // Seite neu laden, um Standardwerte anzuzeigen
-        echo "<script>window.location.href='P.RideReady.Produktübersicht.php';</script>";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset']) && $_POST['reset'] === 'product_reset') {
+        // Nur die Sessionvariablen der Produktübersicht löschen
+        unset(
+            $_SESSION['manufacturer'],
+            $_SESSION['seats'],
+            $_SESSION['doors'],
+            $_SESSION['transmission'],
+            $_SESSION['climate'],
+            $_SESSION['gps'],
+            $_SESSION['age'],
+            $_SESSION['type'],
+            $_SESSION['drive'],
+            $_SESSION['price'],
+            $_SESSION['sorting']
+        );
+    
+        // Auf der aktuellen Seite bleiben
+        header('Location: P.RideReady.Produktübersicht.php');
         exit();
-    } elseif (isset($_POST['filter'])) {
-        // Produktfilter-Session-Variablen setzen, unabhängig davon, ob Felder ausgefüllt sind
+    
+    } else {
+        // Filterwerte aus dem POST-Array in die Session speichern
         $_SESSION['manufacturer'] = $_POST['manufacturer'] ?? '';
         $_SESSION['seats'] = $_POST['seats'] ?? '';
         $_SESSION['doors'] = $_POST['doors'] ?? '';
         $_SESSION['transmission'] = $_POST['transmission'] ?? '';
+        $_SESSION['climate'] = isset($_POST['climate']) ? true : false;
+        $_SESSION['gps'] = isset($_POST['gps']) ? true : false;
         $_SESSION['age'] = $_POST['age'] ?? '';
         $_SESSION['type'] = $_POST['type'] ?? '';
         $_SESSION['drive'] = $_POST['drive'] ?? '';
+        $_SESSION['price'] = $_POST['price'] ?? '';
+        $_SESSION['sorting'] = $_POST['sorting'] ?? '';
         
-        // Checkboxen als true/false speichern
-        $_SESSION['climate'] = isset($_POST['climate']) ? true : false;
-        $_SESSION['gps'] = isset($_POST['gps']) ? true : false;
-
-        // Auf der Produktübersichtsseite bleiben
-        echo "<script>window.location.href='P.RideReady.Produktübersicht.php';</script>";
+        // Nach dem Filtern auf der Seite bleiben
+        header('Location: P.RideReady.Produktübersicht.php');
         exit();
+
+        
     }
 }
 
-// Standardwerte setzen, falls Session leer ist oder zurückgesetzt wurde
+// Filterwerte aus der Session abrufen, um sie im Formular vorauszufüllen
 $manufacturer = $_SESSION['manufacturer'] ?? '';
 $seats = $_SESSION['seats'] ?? '';
 $doors = $_SESSION['doors'] ?? '';
 $transmission = $_SESSION['transmission'] ?? '';
+$climate = $_SESSION['climate'] ?? false;
+$gps = $_SESSION['gps'] ?? false;
 $age = $_SESSION['age'] ?? '';
 $type = $_SESSION['type'] ?? '';
 $drive = $_SESSION['drive'] ?? '';
-$climate = $_SESSION['climate'] ?? false;
-$gps = $_SESSION['gps'] ?? false;
-
-// Header-Session-Variablen (bleiben unberührt)
-$city = $_SESSION['city'] ?? 'Kein Abholort gesetzt';
-$pickupdate = $_SESSION['pickupdate'] ?? 'Kein Abholdatum gesetzt';
-$returndate = $_SESSION['returndate'] ?? 'Kein Rückgabedatum gesetzt';
+$priceuntil = $_SESSION['price'] ?? '';
+$sorting = $_SESSION['sorting'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -123,18 +125,20 @@ $returndate = $_SESSION['returndate'] ?? 'Kein Rückgabedatum gesetzt';
 </head>
 <body>
     <div class="filter-bar">
-        <form method="post" action="P.RideReady.Produktübersicht.php" class="form-wrapper">
+    <form method="post" action="P.RideReady.Produktübersicht.php" class="form-wrapper">
             <?php
                 require_once 'Functions.php';
 
                 // Alle Arrays an einer Stelle definiert:
-                $a_manufacturers = ["Audi", "BMW", "Mercedes", "Volkswagen"];
-                $a_seats = ["2", "4", "5", "7", "9"];
-                $a_doors = ["2", "4", "5"];
+                $a_manufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-AMG", "Mercedes-Benz", "Opel", "Range Rover", "Skoda", "Volkswagen"]; // Bei Mercedes AMG vllt die Daten nochmla anpassen
+                $a_seats = ["2", "4", "5", "7", "8", "9"];
+                $a_doors = ["2", "3", "4", "5"];
                 $a_transmission = ["Automatik", "Manuell"];
-                $a_age = ["Neu", "1 Jahr", "2 Jahre", "3 Jahre+"];
-                $a_type = ["SUV", "Kombi", "Limousine", "Cabrio"];
-                $a_drive = ["Frontantrieb", "Heckantrieb", "Allrad"];
+                $a_age = ["18+", "21+", "25+"];
+                $a_type = ["Cabrio", "Combi", "Coupé" , "Limousine", "Mehrsitzer", "SUV"];
+                $a_drive = ["Verbrenner", "Elektro"];
+                $a_priceuntil = ["100", "150", "200", "300", "400", "500", "600", "700", "800"];
+                $a_sorting = ["Preis aufsteigend", "Preis absteigend",];
 
                 // Dynamische Funktionsaufrufe:
                 renderFilterGroup('Hersteller', 'manufacturer', $a_manufacturers, $manufacturer);
@@ -158,14 +162,17 @@ $returndate = $_SESSION['returndate'] ?? 'Kein Rückgabedatum gesetzt';
                 renderFilterGroup('Alter', 'age', $a_age, $age);
                 renderFilterGroup('Typ', 'type', $a_type, $type);
                 renderFilterGroup('Antrieb', 'drive', $a_drive, $drive);
+                renderFilterGroup('Preis bis', 'price', $a_priceuntil, $priceuntil);
+                renderFilterGroup('Sortierung', 'sorting', $a_sorting, $sorting);
             ?>  
+
 
             <!-- Buttons für Filtern und Zurücksetzen -->
             <div class="filter-group">
                 <button type="submit" name="filter">Filtern</button>
             </div>
             <div class="filter-group">
-                <button type="submit" name="reset" value="1">Filter zurücksetzen</button>
+                <button type="submit" name="reset" value="product_reset">Filter zurücksetzen</button>
             </div>
         </form>
     </div>
