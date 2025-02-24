@@ -7,26 +7,38 @@ error_reporting(E_ALL);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['reset'])) {
         // Session-Werte löschen, wenn "Filter zurücksetzen" geklickt wurde
-        unset($_SESSION['city'], $_SESSION['abholdatum'], $_SESSION['rueckgabedatum']);
+        unset($_SESSION['city'], $_SESSION['pickupdate'], $_SESSION['returndate']);
         
-        // Umleitung zur Landingpage, um doppeltes Senden des Formulars zu verhindern
-        header('Location: P.RideReady.Landingpage.php');
+        // Auf der aktuellen Seite bleiben
+        $currentPage = $_SERVER['HTTP_REFERER'] ?? 'P.RideReady.Landingpage.php';
+        header('Location: ' . $currentPage);
         exit();
     } else {
-        $_SESSION['city'] = $_POST['city'] ?? '';
-        $_SESSION['abholdatum'] = $_POST['abholdatum'] ?? '';
-        $_SESSION['rueckgabedatum'] = $_POST['rueckgabedatum'] ?? '';
-        
-        // Umleitung zur Produktübersicht, um doppeltes Senden des Formulars zu verhindern
-        header('Location: P.RideReady.Produktübersicht.php');
-        exit();
+        $city = $_POST['city'] ?? '';
+        $pickupdate = $_POST['pickupdate'] ?? '';
+        $returndate = $_POST['returndate'] ?? '';
+
+        // Überprüfung, ob ALLE Felder ausgefüllt sind
+        if (!empty($city) && !empty($pickupdate) && !empty($returndate)) {
+            // Nur wenn alle Werte gesetzt sind, werden die Session-Variablen gespeichert
+            $_SESSION['city'] = $city;
+            $_SESSION['pickupdate'] = $pickupdate;
+            $_SESSION['returndate'] = $returndate;
+            
+            // Umleitung zur Produktübersicht
+            header('Location: P.RideReady.Produktübersicht.php');
+            exit();
+        } else {
+            // Keine Werte speichern und auf der aktuellen Seite bleiben
+            echo '<script>alert("Bitte füllen Sie alle Felder aus!");</script>';
+        }
     }
 }
 
 // Standardwerte setzen, falls Session leer ist
 $city = $_SESSION['city'] ?? '';
-$abholdatum = $_SESSION['abholdatum'] ?? '';
-$rueckgabedatum = $_SESSION['rueckgabedatum'] ?? '';
+$pickupdate = $_SESSION['pickupdate'] ?? '';
+$returndate = $_SESSION['returndate'] ?? '';
 ?>
 
 <!DOCTYPE html>
@@ -189,16 +201,17 @@ $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? '';
                 <select name="city" id="abholort">
                     <option value="">Abholort</option>
                     <?php
-                    $cities = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
-                    foreach ($cities as $cityOption) {
+                    $a_cities = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
+                    foreach ($a_cities as $cityOption) {
                         $selected = ($cityOption == $city) ? 'selected' : '';
                         echo "<option value='$cityOption' $selected>$cityOption</option>";
                     }
                     ?>
                 </select>
 
-                <input type="text" name="abholdatum" id="abholdatum" placeholder="Abholdatum" value="<?php echo htmlspecialchars($abholdatum); ?>">
-                <input type="text" name="rueckgabedatum" id="rueckgabedatum" placeholder="Rückgabedatum" value="<?php echo htmlspecialchars($rueckgabedatum); ?>">
+                <!-- Variablenname geändert, Placeholder bleibt gleich -->
+                <input type="text" name="pickupdate" id="abholdatum" placeholder="Abholdatum" value="<?php echo htmlspecialchars($pickupdate); ?>">
+                <input type="text" name="returndate" id="rueckgabedatum" placeholder="Rückgabedatum" value="<?php echo htmlspecialchars($returndate); ?>">
 
                 <button type="submit" id="suchen">Suchen</button>
                 <button type="submit" name="reset" value="1">Filter zurücksetzen</button>
