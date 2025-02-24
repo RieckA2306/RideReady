@@ -10,12 +10,12 @@
 <div class="menu" id="menu">
         <a href="loginsite.php">Login</a>
         <a href="Sessionanzeige.php">Sessionanzeigen</a>
-        <a href="#">Registrieren</a>
+        <a href="signinsite.php">Registrieren</a>
         <a href="#">AGB</a>
         <a href="#">Impressum</a>
         <a href="#">Standorte</a>
         <a href="#">unsere Flotte</a>
-        <button oncclick="<?php  $_SESSION[$login] = true ?>;"onclick="window.location.href='P.RideReadyHeader.php'">Login</button>
+        <button>Login</button>
        </div>   
 </body>
 </html>

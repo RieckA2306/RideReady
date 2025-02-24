@@ -18,6 +18,7 @@
             color: black;
     }
  
+    
     .login-container input {
         margin-bottom: 10px;
         padding: 8px;
@@ -64,7 +65,7 @@
         <input type="password" name="passwort" required>
         <br>
         <button type="submit">Login</button>
-        <a href="#">Noch Kein Konto?</a>
+        <a href="signinsite.php">Noch Kein Konto?</a>
     </form>
     <?php include 'P.RideReadyFooter.php'; ?>
 </body>
