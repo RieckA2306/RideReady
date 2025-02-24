@@ -1,19 +1,22 @@
 <?php
+ob_start(); // Startet den Ausgabepuffer
 session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Werte aus dem Formular in die Session speichern
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['reset'])) {
-        // Session-Werte löschen, wenn "Filter zurücksetzen" geklickt wurde
+    // Nur ausführen, wenn "Suchen" oder "header_reset" gedrückt wurde
+    if (isset($_POST['reset']) && $_POST['reset'] === 'header_reset') {
+        // Nur die Header-Session-Werte zurücksetzen
         unset($_SESSION['city'], $_SESSION['pickupdate'], $_SESSION['returndate']);
         
         // Auf der aktuellen Seite bleiben
         $currentPage = $_SERVER['HTTP_REFERER'] ?? 'P.RideReady.Landingpage.php';
         header('Location: ' . $currentPage);
         exit();
-    } else {
+        
+    } elseif (isset($_POST['city']) || isset($_POST['pickupdate']) || isset($_POST['returndate'])) {
         $city = $_POST['city'] ?? '';
         $pickupdate = $_POST['pickupdate'] ?? '';
         $returndate = $_POST['returndate'] ?? '';
@@ -214,7 +217,7 @@ $returndate = $_SESSION['returndate'] ?? '';
                 <input type="text" name="returndate" id="rueckgabedatum" placeholder="Rückgabedatum" value="<?php echo htmlspecialchars($returndate); ?>">
 
                 <button type="submit" id="suchen">Suchen</button>
-                <button type="submit" name="reset" value="1">Filter zurücksetzen</button>
+                <button type="submit" name="reset" value="header_reset">Filter zurücksetzen</button>
             </div>
         </form>
 
@@ -263,3 +266,6 @@ $returndate = $_SESSION['returndate'] ?? '';
     </script>
 </body>
 </html>
+<?php
+ob_end_flush(); // Sendet den Pufferinhalt und beendet den Puffer
+?>
