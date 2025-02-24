@@ -25,8 +25,8 @@
         $climate = $_SESSION['climate'] ?? false;
         $gps = $_SESSION['gps'] ?? false;
         $city = $_SESSION['city'] ?? 'Kein Abholort gesetzt';
-        $abholdatum = $_SESSION['abholdatum'] ?? 'Kein Abholdatum gesetzt';
-        $rueckgabedatum = $_SESSION['rueckgabedatum'] ?? 'Kein Rückgabedatum gesetzt';
+        $pickupdate = $_SESSION['pickupdate'] ?? 'Kein Abholdatum gesetzt';
+        $returndate = $_SESSION['returndate'] ?? 'Kein Rückgabedatum gesetzt';
         $username = $_SESSION['benutzername'] ?? 'Kein Nutzernamen gesetzt';
         
    
@@ -38,6 +38,15 @@
         echo '<p><strong>Abholdatum:</strong> ' . htmlspecialchars($pickupdate) . '</p>';
         echo '<p><strong>Rückgabedatum:</strong> ' . htmlspecialchars($returndate) . '</p>';
         echo '<p><strong>Username:</strong> ' . htmlspecialchars($username) . '</p>';
+        echo '<p><strong>Hersteller:</strong> ' . htmlspecialchars($manufacturer) . '</p>';
+        echo '<p><strong>Sitze:</strong> ' . htmlspecialchars($seats) . '</p>';
+        echo '<p><strong>Türen:</strong> ' . htmlspecialchars($doors) . '</p>';
+        echo '<p><strong>Getriebe:</strong> ' . htmlspecialchars($transmission) . '</p>';
+        echo '<p><strong>Alter:</strong> ' . htmlspecialchars($age) . '</p>';
+        echo '<p><strong>Typ:</strong> ' . htmlspecialchars($type) . '</p>';
+        echo '<p><strong>Antrieb:</strong> ' . htmlspecialchars($drive) . '</p>';
+        echo '<p><strong>Klima:</strong> ' . ($climate ? 'true' : 'false') . '</p>';
+        echo '<p><strong>GPS:</strong> ' . ($gps ? 'true' : 'false') . '</p>';
         echo '</div>';
         ?>
 
