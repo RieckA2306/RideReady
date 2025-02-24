@@ -24,8 +24,6 @@
         $drive = $_SESSION['drive'] ?? 'Kein Antrieb gesetzt';
         $climate = $_SESSION['climate'] ?? false;
         $gps = $_SESSION['gps'] ?? false;
-
-        // Bisherige Variablen
         $city = $_SESSION['city'] ?? 'Kein Abholort gesetzt';
         $pickupdate = $_SESSION['pickupdate'] ?? 'Kein Abholdatum gesetzt';
         $returndate = $_SESSION['returndate'] ?? 'Kein Rückgabedatum gesetzt';
@@ -33,12 +31,10 @@
 
         // HTML-Ausgabe im gleichen Stil
         echo '<div class="bg-white p-4 shadow-md rounded-md">';
-
         echo '<p><strong>City:</strong> ' . htmlspecialchars($city) . '</p>';
         echo '<p><strong>Abholdatum:</strong> ' . htmlspecialchars($pickupdate) . '</p>';
         echo '<p><strong>Rückgabedatum:</strong> ' . htmlspecialchars($returndate) . '</p>';
         echo '<p><strong>Username:</strong> ' . htmlspecialchars($username) . '</p>';
-
         echo '<p><strong>Hersteller:</strong> ' . htmlspecialchars($manufacturer) . '</p>';
         echo '<p><strong>Sitze:</strong> ' . htmlspecialchars($seats) . '</p>';
         echo '<p><strong>Türen:</strong> ' . htmlspecialchars($doors) . '</p>';
