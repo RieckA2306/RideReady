@@ -1,6 +1,9 @@
 <?php
 // Datenbankverbindung
-$pdo = new PDO('mysql:host=localhost;dbname=deine_datenbank', 'benutzername', 'passwort');
+$pdo = new PDO('mysql:host=localhost;
+                dbname=ridereadydb', 
+                'root', 
+                'passwort');
 
 // Variablen für den Zeitraum
 $startDatum = '2025-03-25';
