@@ -28,7 +28,7 @@
         $pickupdate = $_SESSION['pickupdate'] ?? 'Kein Abholdatum gesetzt';
         $returndate = $_SESSION['returndate'] ?? 'Kein Rückgabedatum gesetzt';
         $username = $_SESSION['benutzername'] ?? 'Kein Nutzernamen gesetzt';
-        
+        $count=$_SESSION['cardcount'] ?? 'Kein count gesetzt';
    
    
 
@@ -47,6 +47,7 @@
         echo '<p><strong>Antrieb:</strong> ' . htmlspecialchars($drive) . '</p>';
         echo '<p><strong>Klima:</strong> ' . ($climate ? 'true' : 'false') . '</p>';
         echo '<p><strong>GPS:</strong> ' . ($gps ? 'true' : 'false') . '</p>';
+        echo '<p><strong>Typ:</strong> ' . htmlspecialchars($count) . '</p>';
         echo '</div>';
         ?>
 
