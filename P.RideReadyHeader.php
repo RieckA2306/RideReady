@@ -1,5 +1,4 @@
 <?php
-ob_start(); // Startet den Ausgabepuffer
 session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -154,7 +153,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             background-color: #999;
             margin: 4px auto;
         }
-/* css Style for the Banner/menu */
+        /* css Style for the Banner/menu */
         .menu {
             width: 300px;
             border: 2px solid black;
@@ -199,7 +198,7 @@ $returndate = $_SESSION['returndate'] ?? '';
         </div>
 
         <!-- Formular auf POST-Methode umgestellt -->
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+        <form id="reservierungsFormular" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
             <div class="search-box">
                 <select name="city" id="abholort">
                     <option value="">Abholort</option>
@@ -212,9 +211,15 @@ $returndate = $_SESSION['returndate'] ?? '';
                     ?>
                 </select>
 
-                <!-- Variablenname geändert, Placeholder bleibt gleich -->
-                <input type="text" name="pickupdate" id="abholdatum" placeholder="Abholdatum" value="<?php echo htmlspecialchars($pickupdate); ?>">
-                <input type="text" name="returndate" id="rueckgabedatum" placeholder="Rückgabedatum" value="<?php echo htmlspecialchars($returndate); ?>">
+                <!-- Sichtbare Datumseingaben für Benutzerfreundlichkeit -->
+                <input type="text" id="abholdatum" placeholder="Abholdatum" 
+                       value="<?php echo htmlspecialchars($pickupdate ? date('d.m.Y', strtotime($pickupdate)) : ''); ?>" autocomplete="off">
+                <input type="text" id="rueckgabedatum" placeholder="Rückgabedatum" 
+                       value="<?php echo htmlspecialchars($returndate ? date('d.m.Y', strtotime($returndate)) : ''); ?>" autocomplete="off">
+
+                <!-- Versteckte Input-Felder für die tatsächliche Formularübermittlung -->
+                <input type="hidden" name="pickupdate" id="hiddenPickupdate">
+                <input type="hidden" name="returndate" id="hiddenReturndate">
 
                 <button type="submit" id="suchen">Suchen</button>
                 <button type="submit" name="reset" value="header_reset">Filter zurücksetzen</button>
@@ -227,6 +232,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             <span></span>
         </button>
     </div>
+    
     <?php 
     banner();
     ?>
@@ -239,16 +245,35 @@ $returndate = $_SESSION['returndate'] ?? '';
             let abholDatePicker = flatpickr("#abholdatum", {
                 dateFormat: "d.m.Y",
                 minDate: "today",
+                defaultDate: "<?php echo !empty($pickupdate) ? date('d.m.Y', strtotime($pickupdate)) : ''; ?>",
                 onChange: function(selectedDates, dateStr) {
-                    let rueckgabeMinDate = new Date(selectedDates[0]);
-                    rueckgabeMinDate.setDate(rueckgabeMinDate.getDate() + 1);
-                    rueckgabeDatePicker.set("minDate", rueckgabeMinDate);
+                    if (selectedDates.length > 0) {
+                        let rueckgabeMinDate = new Date(selectedDates[0]);
+                        rueckgabeMinDate.setDate(rueckgabeMinDate.getDate() + 1);
+                        rueckgabeDatePicker.set("minDate", rueckgabeMinDate);
+                    }
                 }
             });
 
             let rueckgabeDatePicker = flatpickr("#rueckgabedatum", {
                 dateFormat: "d.m.Y",
                 minDate: new Date(new Date().setDate(new Date().getDate() + 1)),
+                defaultDate: "<?php echo !empty($returndate) ? date('d.m.Y', strtotime($returndate)) : ''; ?>"
+            });
+
+            // Konvertierung der Datumsformate in versteckte Felder für das Korrekte Datum Format
+            document.querySelector("#reservierungsFormular").addEventListener("submit", function(e) {
+                // Abholdatum in verstecktes Feld schreiben
+                let abholInput = document.querySelector("#abholdatum");
+                let hiddenAbholInput = document.querySelector("#hiddenPickupdate");
+                let abholDate = flatpickr.parseDate(abholInput.value, "d.m.Y");
+                hiddenAbholInput.value = flatpickr.formatDate(abholDate, "Y-m-d");
+
+                // Rückgabedatum in verstecktes Feld schreiben
+                let rueckgabeInput = document.querySelector("#rueckgabedatum");
+                let hiddenRueckgabeInput = document.querySelector("#hiddenReturndate");
+                let rueckgabeDate = flatpickr.parseDate(rueckgabeInput.value, "d.m.Y");
+                hiddenRueckgabeInput.value = flatpickr.formatDate(rueckgabeDate, "Y-m-d");
             });
         });
     </script>
@@ -266,6 +291,3 @@ $returndate = $_SESSION['returndate'] ?? '';
     </script>
 </body>
 </html>
-<?php
-ob_end_flush(); // Sendet den Pufferinhalt und beendet den Puffer
-?>
