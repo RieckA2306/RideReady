@@ -79,19 +79,59 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 <body class="produktübersicht-body">
 
-<?php include 'P.RideReadyHeader.php'; ?>
-
-<?php include 'Filter.php'; ?>
+<?php 
+    include 'P.RideReadyHeader.php';
+    include 'Filter.php'; ?>
     <!-- Wrapper für den Hauptinhalt -->
+     <?php 
+    //  connection to Database
+     include 'dbConfigJosef.php';
+    // setting filter variables
+
+$pickupdate= $_SESSION['pickupdate']??'';
+$returndate = $_SESSION['returndate']??'';
+$city= $_SESSION['city']??'';
+
+// 3️⃣ SQL-Abfrage mit Prepared Statements
+$sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name
+        FROM Car c
+        JOIN model m ON c.type_id = m.type_id
+        WHERE c.loc_name = '$city'
+        AND c.car_id NOT IN (
+            SELECT car_id 
+            FROM Contract 
+            WHERE NOT (end_date < ? OR start_date > ?)
+        )";
+
+// Prepared Statement vorbereiten und ausführen
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$pickupdate, $returndate]);
+
+// Ergebnisse abrufen
+$freieAutos = $stmt->fetchAll();
+?>
     <div class="produktübersicht-content">
         <div class="produktübersicht-container">
             <?php
-                $cardCount = 10;
-        
-                for ($i = 0; $i < $cardCount; $i++) {
-                    include 'teaser.php';
-                    global $x;
+             if (count($freieAutos) > 0) {
+                // $count=0;
+                    foreach ($freieAutos as $auto) {
+                        $carname = $auto['Name'];
+                        $_SESSION['carname'] = $carname;
+                        $carprice = $auto['carprice'];
+                        $_SESSION['carprice'] = $carprice;
+                        $carVendor = $auto['Vendor_Name'];
+                        $_SESSION['Vendor_Name'] = $carVendor;
+                        // $count=$count+1;
+                        // $_SESSION['count']=$count;
+                        include 'teaser.php';   
+                    }
+                    echo "</ul>";
+                } else {
+                    echo "<p>Keine freien Autos mit angegebenen Parametern für den angegebenen Zeitraum.</p>";
                 }
+                
             ?>
         </div>
     </div>

@@ -10,7 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("SELECT passwort_hash FROM benutzer WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
-    $stmt->store_result();
+    $stmt->store_result()
+    ;
 // looks if there is password connected to the username 
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($passwort_hash);
