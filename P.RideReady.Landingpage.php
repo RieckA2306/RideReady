@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="P.RideReady.css">
     <style>
     /* ALL of the center alligned Titles! */
+    
     .landingpage-title {
         font-size: 24px;
         font-weight: bold;
@@ -178,8 +179,7 @@
             </div>
         </div>
     </div>
-</body>
-<body>
+
     <?php include 'P.RideReadyFooter.php'; ?>
 </body>
 </html>

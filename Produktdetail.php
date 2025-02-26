@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+ini_set('display_errors', 1);
+error_reporting(E_ALL);?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +11,9 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="P.RideReady.css">
     <style>
+        
 
         .container {
             background-color: white;
@@ -210,10 +218,10 @@
 <link rel="stylesheet" href="P.RideReady.css">
 </head>
 
-<body class="static-page-body">
+<body class="homepage-body">
     <header>
 <?php 
-// include 'P.RideReadyHeader.php';
+include 'P.RideReadyHeader.php';
  ?>
     </header>
     <?php 
