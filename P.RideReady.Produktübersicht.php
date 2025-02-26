@@ -55,9 +55,15 @@ if (session_status() === PHP_SESSION_NONE) {
             width: 300px;
             height: 250px;
             background-size: 100%;
+           
+        }
+
+        .cardbild img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Beibehaltung des Seitenverhältnisses */
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
-           
         }
 
         .cardtext {
@@ -92,7 +98,7 @@ $returndate = $_SESSION['returndate']??'';
 $city= $_SESSION['city']??'';
 
 // 3️⃣ SQL-Abfrage mit Prepared Statements
-$sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name
+$sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Name_Extension
         FROM Car c
         JOIN model m ON c.type_id = m.type_id
         WHERE c.loc_name = '$city'
@@ -115,17 +121,24 @@ $freieAutos = $stmt->fetchAll();
             <?php
              if (count($freieAutos) > 0) {
                 // $count=0;
-                    foreach ($freieAutos as $auto) {
-                        $carname = $auto['Name'];
-                        $_SESSION['carname'] = $carname;
-                        $carprice = $auto['carprice'];
-                        $_SESSION['carprice'] = $carprice;
-                        $carVendor = $auto['Vendor_Name'];
-                        $_SESSION['Vendor_Name'] = $carVendor;
-                        // $count=$count+1;
-                        // $_SESSION['count']=$count;
-                        include 'teaser.php';   
-                    }
+                foreach ($freieAutos as $auto) {
+                    $carname = $auto['Name'];
+                    $_SESSION['carname'] = $carname;
+                    
+                    $carprice = $auto['carprice'];
+                    $_SESSION['carprice'] = $carprice;
+                    
+                    $carVendor = $auto['Vendor_Name'];
+                    $_SESSION['Vendor_Name'] = $carVendor;
+                    
+                    $carImage = $auto['Img_File_Name'];
+                    $_SESSION['Img_File_Name'] = $carImage;
+            
+                    $nameExtension = $auto['Name_Extension'];
+                    $_SESSION['Name_Extension'] = $nameExtension;
+            
+                    include 'teaser.php';   
+                }
                     echo "</ul>";
                 } else {
                     echo "<p>Keine freien Autos mit angegebenen Parametern für den angegebenen Zeitraum.</p>";
