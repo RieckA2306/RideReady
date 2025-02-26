@@ -54,7 +54,6 @@ if (session_status() === PHP_SESSION_NONE) {
             position: static;
             width: 300px;
             height: 250px;
-            background-image: url(bmw.png);
             background-size: 100%;
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
