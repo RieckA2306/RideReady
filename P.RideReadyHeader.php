@@ -252,7 +252,6 @@ $returndate = $_SESSION['returndate'] ?? '';
                 onChange: function(selectedDates, dateStr) {
                     if (selectedDates.length > 0) {
                         let rueckgabeMinDate = new Date(selectedDates[0]);
-                        rueckgabeMinDate.setDate(rueckgabeMinDate.getDate() + 1);
                         rueckgabeDatePicker.set("minDate", rueckgabeMinDate);
                     }
                 }
@@ -260,7 +259,7 @@ $returndate = $_SESSION['returndate'] ?? '';
 
             let rueckgabeDatePicker = flatpickr("#rueckgabedatum", {
                 dateFormat: "d.m.Y",
-                minDate: new Date(new Date().setDate(new Date().getDate() + 1)),
+                minDate: "today",
                 defaultDate: "<?php echo !empty($returndate) ? date('d.m.Y', strtotime($returndate)) : ''; ?>"
             });
 
