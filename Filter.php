@@ -5,6 +5,21 @@ if (session_status() === PHP_SESSION_NONE) {
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// Mappings für Getriebe (Transmission) und Antrieb (Drive) um auf die DB richtig zuzugreifen
+function mapFilterValues($input, $mapping) {
+    return isset($mapping[$input]) ? $mapping[$input] : $input;
+}
+
+$transmissionMapping = [
+    "Automatik" => "automatic",
+    "Manuell" => "manually"
+];
+
+$driveMapping = [
+    "Verbrenner" => "Combuster",
+    "Elektro" => "Electric"
+];
+
 // Werte aus dem Formular in die Session speichern
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['reset']) && $_POST['reset'] === 'product_reset') {
@@ -32,12 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['manufacturer'] = $_POST['manufacturer'] ?? '';
         $_SESSION['seats'] = $_POST['seats'] ?? '';
         $_SESSION['doors'] = $_POST['doors'] ?? '';
-        $_SESSION['transmission'] = $_POST['transmission'] ?? '';
-        $_SESSION['climate'] = isset($_POST['climate']) ? true : false;
-        $_SESSION['gps'] = isset($_POST['gps']) ? true : false;
+        $_SESSION['transmission'] = mapFilterValues($_POST['transmission'] ?? '', $transmissionMapping);
+        $_SESSION['climate'] = isset($_POST['climate']) ? 1 : 0;
+        $_SESSION['gps'] = isset($_POST['gps']) ? 1 : 0;
         $_SESSION['age'] = $_POST['age'] ?? '';
         $_SESSION['type'] = $_POST['type'] ?? '';
-        $_SESSION['drive'] = $_POST['drive'] ?? '';
+        $_SESSION['drive'] = mapFilterValues($_POST['drive'] ?? '', $driveMapping);
         $_SESSION['price'] = $_POST['price'] ?? '';
         $_SESSION['sorting'] = $_POST['sorting'] ?? '';
 
@@ -52,8 +67,8 @@ $manufacturer = $_SESSION['manufacturer'] ?? '';
 $seats = $_SESSION['seats'] ?? '';
 $doors = $_SESSION['doors'] ?? '';
 $transmission = $_SESSION['transmission'] ?? '';
-$climate = $_SESSION['climate'] ?? false;
-$gps = $_SESSION['gps'] ?? false;
+$climate = $_SESSION['climate'] ?? 0;
+$gps = $_SESSION['gps'] ?? 0;
 $age = $_SESSION['age'] ?? '';
 $type = $_SESSION['type'] ?? '';
 $drive = $_SESSION['drive'] ?? '';
@@ -123,7 +138,7 @@ $sorting = $_SESSION['sorting'] ?? '';
 </head>
 <body>
     <div class="filter-bar">
-    <form method="post" action="P.RideReady.Produktübersicht.php" class="form-wrapper">
+        <form method="post" action="P.RideReady.Produktübersicht.php" class="form-wrapper">
             <?php
                 require_once 'Functions.php';
 
@@ -132,7 +147,7 @@ $sorting = $_SESSION['sorting'] ?? '';
                 $a_seats = ["2", "4", "5", "7", "8", "9"];
                 $a_doors = ["2", "3", "4", "5"];
                 $a_transmission = ["Automatik", "Manuell"];
-                $a_age = ["18+", "21+", "25+"];
+                $a_age = ["18", "21", "25"];
                 $a_type = ["Cabrio", "Combi", "Coupé" , "Limousine", "Mehrsitzer", "SUV"];
                 $a_drive = ["Verbrenner", "Elektro"];
                 $a_priceuntil = ["100", "150", "200", "300", "400", "500", "600", "700", "800"];
@@ -157,7 +172,7 @@ $sorting = $_SESSION['sorting'] ?? '';
                 </div>
             
             <?php
-                renderFilterGroup('Alter', 'age', $a_age, $age);
+                renderFilterGroup('Mind. Alter', 'age', $a_age, $age);
                 renderFilterGroup('Typ', 'type', $a_type, $type);
                 renderFilterGroup('Antrieb', 'drive', $a_drive, $drive);
                 renderFilterGroup('Preis bis', 'price', $a_priceuntil, $priceuntil);
