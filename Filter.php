@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
+ 
 // Werte aus dem Formular in die Session speichern
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['reset']) && $_POST['reset'] === 'product_reset') {
@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['price'],
             $_SESSION['sorting']
         );
-
+ 
         // Auf der aktuellen Seite bleiben (ohne header())
         echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
         exit();
-    
+   
     } elseif (isset($_POST['filter'])) {
         // Filterwerte aus dem POST-Array in die Session speichern
         $_SESSION['manufacturer'] = $_POST['manufacturer'] ?? '';
@@ -40,13 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['drive'] = $_POST['drive'] ?? '';
         $_SESSION['price'] = $_POST['price'] ?? '';
         $_SESSION['sorting'] = $_POST['sorting'] ?? '';
-
+ 
         // Nach dem Filtern auf der Seite bleiben (ohne header())
         echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
         exit();
     }
 }
-
+ 
 // Filterwerte aus der Session abrufen, um sie im Formular vorauszufüllen
 $manufacturer = $_SESSION['manufacturer'] ?? '';
 $seats = $_SESSION['seats'] ?? '';
@@ -74,7 +74,7 @@ $sorting = $_SESSION['sorting'] ?? '';
             padding: 0;
             width: auto;
         }
-
+ 
         .filter-bar {
             background-color: #f9f9f9;
             padding: 20px;
@@ -88,14 +88,14 @@ $sorting = $_SESSION['sorting'] ?? '';
             max-width: 1200px;
             align-items: center;
         }
-
+ 
         .filter-group {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
-
+ 
         .filter-bar select, .filter-bar input, .filter-bar button {
             padding: 10px;
             font-size: 14px;
@@ -104,18 +104,18 @@ $sorting = $_SESSION['sorting'] ?? '';
             width: 150px;
             text-align: center;
         }
-
+ 
         .filter-bar button {
             background-color: #80BFFF;
             color: white;
             border: none;
             cursor: pointer;
         }
-
+ 
         .filter-bar button:hover {
             background-color: #123472;
         }
-
+ 
         .form-wrapper {
             display: contents;
         }
@@ -126,7 +126,7 @@ $sorting = $_SESSION['sorting'] ?? '';
     <form method="post" action="P.RideReady.Produktübersicht.php" class="form-wrapper">
             <?php
                 require_once 'Functions.php';
-
+ 
                 // Alle Arrays an einer Stelle definiert:
                 $a_manufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-AMG", "Mercedes-Benz", "Opel", "Range Rover", "Skoda", "Volkswagen"]; // Bei Mercedes AMG vllt die Daten nochmla anpassen
                 $a_seats = ["2", "4", "5", "7", "8", "9"];
@@ -137,25 +137,25 @@ $sorting = $_SESSION['sorting'] ?? '';
                 $a_drive = ["Verbrenner", "Elektro"];
                 $a_priceuntil = ["100", "150", "200", "300", "400", "500", "600", "700", "800"];
                 $a_sorting = ["Preis aufsteigend", "Preis absteigend",];
-
+ 
                 // Dynamische Funktionsaufrufe:
                 renderFilterGroup('Hersteller', 'manufacturer', $a_manufacturers, $manufacturer);
                 renderFilterGroup('Sitze', 'seats', $a_seats, $seats);
                 renderFilterGroup('Türen', 'doors', $a_doors, $doors);
                 renderFilterGroup('Getriebe', 'transmission', $a_transmission, $transmission);
-            ?> 
+            ?>
                 <div class="filter-group">
                     <label for="climate">Klima:</label>
-                    <input type="checkbox" name="climate" id="climate" 
+                    <input type="checkbox" name="climate" id="climate"
                         <?php echo ($climate) ? 'checked' : ''; ?>>
                 </div>
-
+ 
                 <div class="filter-group">
                     <label for="gps">GPS:</label>
-                    <input type="checkbox" name="gps" id="gps" 
+                    <input type="checkbox" name="gps" id="gps"
                         <?php echo ($gps) ? 'checked' : ''; ?>>
                 </div>
-            
+           
             <?php
                 renderFilterGroup('Alter', 'age', $a_age, $age);
                 renderFilterGroup('Typ', 'type', $a_type, $type);
@@ -163,8 +163,8 @@ $sorting = $_SESSION['sorting'] ?? '';
                 renderFilterGroup('Preis bis', 'price', $a_priceuntil, $priceuntil);
                 renderFilterGroup('Sortierung', 'sorting', $a_sorting, $sorting);
             ?>  
-
-
+ 
+ 
             <!-- Buttons für Filtern und Zurücksetzen -->
             <div class="filter-group">
                 <button type="submit" name="filter">Filtern</button>
