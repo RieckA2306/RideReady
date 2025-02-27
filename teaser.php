@@ -12,7 +12,7 @@
             <img src="Images/Cars/<?php echo $_SESSION['Img_File_Name']; ?>" alt="Car Image">
         </div>
         <div class="cardtext">
-            <p style="font-size: 24px;"> 
+            <p style="font-size: 23px;"> 
                 <?php echo $_SESSION['Vendor_Name']; ?> <?php echo $_SESSION['carname']; ?>
             </p>
             <p style="font-size: 20px;">
