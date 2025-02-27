@@ -4,59 +4,78 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
- 
+
+// Mapping Arrays for Antrieb and Getriebe to save them in English for the SQL Query
+$driveMapping = [
+    "Elektro" => "Electric",
+    "Verbrenner" => "Combuster"
+];
+
+$transmissionMapping = [
+    "Automatik" => "automatic",
+    "Manuell" => "manually"
+];
+
 // Werte aus dem Formular in die Session speichern
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['reset']) && $_POST['reset'] === 'product_reset') {
-        // Nur die Sessionvariablen der Produktübersicht löschen
-        unset(
-            $_SESSION['manufacturer'],
-            $_SESSION['seats'],
-            $_SESSION['doors'],
-            $_SESSION['transmission'],
-            $_SESSION['climate'],
-            $_SESSION['gps'],
-            $_SESSION['age'],
-            $_SESSION['type'],
-            $_SESSION['drive'],
-            $_SESSION['price'],
-            $_SESSION['sorting']
-        );
- 
-        // Auf der aktuellen Seite bleiben (ohne header())
+        // Filter zurücksetzen: Statt die Session-Variablen komplett zu löschen, 
+        // werden sie auf Standardwerte gesetzt, um Undefined-Array-Key-Warnungen zu vermeiden.
+        $_SESSION['manufacturer'] = '';
+        $_SESSION['seats'] = '';
+        $_SESSION['doors'] = '';
+        $_SESSION['transmission'] = '';
+        $_SESSION['climate'] = false;
+        $_SESSION['gps'] = false;
+        $_SESSION['age'] = '';
+        $_SESSION['type'] = '';
+        $_SESSION['drive'] = '';
+        $_SESSION['price'] = '';
+        $_SESSION['sorting'] = '';
+
+        // Stay on that Page (window.location is needed as a workaround)
         echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
         exit();
-   
+
     } elseif (isset($_POST['filter'])) {
-        // Filterwerte aus dem POST-Array in die Session speichern
         $_SESSION['manufacturer'] = $_POST['manufacturer'] ?? '';
         $_SESSION['seats'] = $_POST['seats'] ?? '';
         $_SESSION['doors'] = $_POST['doors'] ?? '';
-        $_SESSION['transmission'] = $_POST['transmission'] ?? '';
+
+        // Translation of the values is applied
+        $_SESSION['transmission'] = $transmissionMapping[$_POST['transmission']] ?? '';
+        $_SESSION['drive'] = $driveMapping[$_POST['drive']] ?? '';
+
         $_SESSION['climate'] = isset($_POST['climate']) ? true : false;
         $_SESSION['gps'] = isset($_POST['gps']) ? true : false;
         $_SESSION['age'] = $_POST['age'] ?? '';
         $_SESSION['type'] = $_POST['type'] ?? '';
-        $_SESSION['drive'] = $_POST['drive'] ?? '';
         $_SESSION['price'] = $_POST['price'] ?? '';
         $_SESSION['sorting'] = $_POST['sorting'] ?? '';
- 
-        // Nach dem Filtern auf der Seite bleiben (ohne header())
+
         echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
         exit();
     }
 }
- 
-// Filterwerte aus der Session abrufen, um sie im Formular vorauszufüllen
+
+// Umkehr-Mapping für die Anzeige
+$driveDisplay = array_flip($driveMapping);
+$transmissionDisplay = array_flip($transmissionMapping);
+
+// Filterwerte für die Anzeige vorbereiten
 $manufacturer = $_SESSION['manufacturer'] ?? '';
 $seats = $_SESSION['seats'] ?? '';
 $doors = $_SESSION['doors'] ?? '';
-$transmission = $_SESSION['transmission'] ?? '';
+
+// Sicherstellung, dass keine Undefined-Array-Key-Warnung entsteht
+$transmission = isset($_SESSION['transmission']) ? $transmissionDisplay[$_SESSION['transmission']] ?? '' : '';
 $climate = $_SESSION['climate'] ?? false;
 $gps = $_SESSION['gps'] ?? false;
 $age = $_SESSION['age'] ?? '';
 $type = $_SESSION['type'] ?? '';
-$drive = $_SESSION['drive'] ?? '';
+
+// Sicherstellung, dass keine Undefined-Array-Key-Warnung entsteht
+$drive = isset($_SESSION['drive']) ? $driveDisplay[$_SESSION['drive']] ?? '' : '';
 $priceuntil = $_SESSION['price'] ?? '';
 $sorting = $_SESSION['sorting'] ?? '';
 ?>
@@ -74,7 +93,7 @@ $sorting = $_SESSION['sorting'] ?? '';
             padding: 0;
             width: auto;
         }
- 
+
         .filter-bar {
             background-color: #f9f9f9;
             padding: 20px;
@@ -88,14 +107,14 @@ $sorting = $_SESSION['sorting'] ?? '';
             max-width: 1200px;
             align-items: center;
         }
- 
+
         .filter-group {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
- 
+
         .filter-bar select, .filter-bar input, .filter-bar button {
             padding: 10px;
             font-size: 14px;
@@ -104,18 +123,18 @@ $sorting = $_SESSION['sorting'] ?? '';
             width: 150px;
             text-align: center;
         }
- 
+
         .filter-bar button {
             background-color: #80BFFF;
             color: white;
             border: none;
             cursor: pointer;
         }
- 
+
         .filter-bar button:hover {
             background-color: #123472;
         }
- 
+
         .form-wrapper {
             display: contents;
         }
@@ -126,7 +145,7 @@ $sorting = $_SESSION['sorting'] ?? '';
     <form method="post" action="P.RideReady.Produktübersicht.php" class="form-wrapper">
             <?php
                 require_once 'Functions.php';
- 
+
                 // Alle Arrays an einer Stelle definiert:
                 $a_manufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-AMG", "Mercedes-Benz", "Opel", "Range Rover", "Skoda", "Volkswagen"]; // Bei Mercedes AMG vllt die Daten nochmla anpassen
                 $a_seats = ["2", "4", "5", "7", "8", "9"];
@@ -137,25 +156,25 @@ $sorting = $_SESSION['sorting'] ?? '';
                 $a_drive = ["Verbrenner", "Elektro"];
                 $a_priceuntil = ["100", "150", "200", "300", "400", "500", "600", "700", "800"];
                 $a_sorting = ["Preis aufsteigend", "Preis absteigend",];
- 
+
                 // Dynamische Funktionsaufrufe:
                 renderFilterGroup('Hersteller', 'manufacturer', $a_manufacturers, $manufacturer);
                 renderFilterGroup('Sitze', 'seats', $a_seats, $seats);
                 renderFilterGroup('Türen', 'doors', $a_doors, $doors);
                 renderFilterGroup('Getriebe', 'transmission', $a_transmission, $transmission);
-            ?>
+            ?> 
                 <div class="filter-group">
                     <label for="climate">Klima:</label>
-                    <input type="checkbox" name="climate" id="climate"
+                    <input type="checkbox" name="climate" id="climate" 
                         <?php echo ($climate) ? 'checked' : ''; ?>>
                 </div>
- 
+
                 <div class="filter-group">
                     <label for="gps">GPS:</label>
-                    <input type="checkbox" name="gps" id="gps"
+                    <input type="checkbox" name="gps" id="gps" 
                         <?php echo ($gps) ? 'checked' : ''; ?>>
                 </div>
-           
+            
             <?php
                 renderFilterGroup('Alter', 'age', $a_age, $age);
                 renderFilterGroup('Typ', 'type', $a_type, $type);
@@ -163,8 +182,8 @@ $sorting = $_SESSION['sorting'] ?? '';
                 renderFilterGroup('Preis bis', 'price', $a_priceuntil, $priceuntil);
                 renderFilterGroup('Sortierung', 'sorting', $a_sorting, $sorting);
             ?>  
- 
- 
+
+
             <!-- Buttons für Filtern und Zurücksetzen -->
             <div class="filter-group">
                 <button type="submit" name="filter">Filtern</button>
