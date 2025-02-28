@@ -106,7 +106,7 @@ $type = $_SESSION['type'] ?? '';
 $drive = $_SESSION['drive'] ?? '';
 
 // 3️⃣ SQL-Abfrage mit Prepared Statements
-$sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Name_Extension
+$sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Name_Extension,c.type_id
         FROM Car c
         JOIN model m ON c.type_id = m.type_id
         WHERE c.loc_name = :city
@@ -196,6 +196,9 @@ $freieAutos = $stmt->fetchAll();
             
                     $nameExtension = $auto['Name_Extension'];
                     $_SESSION['Name_Extension'] = $nameExtension;
+
+                    $type_id = $auto['type_id'];
+                    $_SESSION['type_id'] = $type_id;
             
                     include 'teaser.php';   
                 }

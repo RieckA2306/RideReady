@@ -226,7 +226,7 @@ include 'P.RideReadyHeader.php';
     </header>
     <?php 
      
-    $priceperday=13;
+    $priceperday=14;
     $startdate=1;
     $enddate=12;
     $days=$enddate-$startdate;
