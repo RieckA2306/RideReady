@@ -14,4 +14,5 @@ function renderFilterGroup($label, $name, $options, $selectedValue) {
     echo "</select>";
     echo "</div>";
 }
+
 ?>

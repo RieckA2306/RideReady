@@ -5,58 +5,77 @@ if (session_status() === PHP_SESSION_NONE) {
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// Mapping Arrays for Antrieb and Getriebe to save them in English for the SQL Query
+$driveMapping = [
+    "Elektro" => "Electric",
+    "Verbrenner" => "Combuster"
+];
+
+$transmissionMapping = [
+    "Automatik" => "automatic",
+    "Manuell" => "manually"
+];
+
 // Werte aus dem Formular in die Session speichern
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['reset']) && $_POST['reset'] === 'product_reset') {
-        // Nur die Sessionvariablen der Produktübersicht löschen
-        unset(
-            $_SESSION['manufacturer'],
-            $_SESSION['seats'],
-            $_SESSION['doors'],
-            $_SESSION['transmission'],
-            $_SESSION['climate'],
-            $_SESSION['gps'],
-            $_SESSION['age'],
-            $_SESSION['type'],
-            $_SESSION['drive'],
-            $_SESSION['price'],
-            $_SESSION['sorting']
-        );
+        // Filter zurücksetzen: Statt die Session-Variablen komplett zu löschen, 
+        // werden sie auf Standardwerte gesetzt, um Undefined-Array-Key-Warnungen zu vermeiden.
+        $_SESSION['manufacturer'] = '';
+        $_SESSION['seats'] = '';
+        $_SESSION['doors'] = '';
+        $_SESSION['transmission'] = '';
+        $_SESSION['climate'] = false;
+        $_SESSION['gps'] = false;
+        $_SESSION['age'] = '';
+        $_SESSION['type'] = '';
+        $_SESSION['drive'] = '';
+        $_SESSION['price'] = '';
+        $_SESSION['sorting'] = '';
 
-        // Auf der aktuellen Seite bleiben (ohne header())
+        // Stay on that Page (window.location is needed as a workaround)
         echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
         exit();
-    
+
     } elseif (isset($_POST['filter'])) {
-        // Filterwerte aus dem POST-Array in die Session speichern
         $_SESSION['manufacturer'] = $_POST['manufacturer'] ?? '';
         $_SESSION['seats'] = $_POST['seats'] ?? '';
         $_SESSION['doors'] = $_POST['doors'] ?? '';
-        $_SESSION['transmission'] = $_POST['transmission'] ?? '';
+
+        // Translation of the values is applied
+        $_SESSION['transmission'] = $transmissionMapping[$_POST['transmission']] ?? '';
+        $_SESSION['drive'] = $driveMapping[$_POST['drive']] ?? '';
+
         $_SESSION['climate'] = isset($_POST['climate']) ? true : false;
         $_SESSION['gps'] = isset($_POST['gps']) ? true : false;
         $_SESSION['age'] = $_POST['age'] ?? '';
         $_SESSION['type'] = $_POST['type'] ?? '';
-        $_SESSION['drive'] = $_POST['drive'] ?? '';
         $_SESSION['price'] = $_POST['price'] ?? '';
         $_SESSION['sorting'] = $_POST['sorting'] ?? '';
 
-        // Nach dem Filtern auf der Seite bleiben (ohne header())
         echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
         exit();
     }
 }
 
-// Filterwerte aus der Session abrufen, um sie im Formular vorauszufüllen
+// Umkehr-Mapping für die Anzeige
+$driveDisplay = array_flip($driveMapping);
+$transmissionDisplay = array_flip($transmissionMapping);
+
+// Filterwerte für die Anzeige vorbereiten
 $manufacturer = $_SESSION['manufacturer'] ?? '';
 $seats = $_SESSION['seats'] ?? '';
 $doors = $_SESSION['doors'] ?? '';
-$transmission = $_SESSION['transmission'] ?? '';
+
+// Sicherstellung, dass keine Undefined-Array-Key-Warnung entsteht
+$transmission = isset($_SESSION['transmission']) ? $transmissionDisplay[$_SESSION['transmission']] ?? '' : '';
 $climate = $_SESSION['climate'] ?? false;
 $gps = $_SESSION['gps'] ?? false;
 $age = $_SESSION['age'] ?? '';
 $type = $_SESSION['type'] ?? '';
-$drive = $_SESSION['drive'] ?? '';
+
+// Sicherstellung, dass keine Undefined-Array-Key-Warnung entsteht
+$drive = isset($_SESSION['drive']) ? $driveDisplay[$_SESSION['drive']] ?? '' : '';
 $priceuntil = $_SESSION['price'] ?? '';
 $sorting = $_SESSION['sorting'] ?? '';
 ?>
