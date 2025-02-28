@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['price'] = '';
         $_SESSION['sorting'] = '';
 
-        // Stay on that Page (window.location is needed as a workaround)
+        // Stay on that Page (window.location is needed as a workaround because some unknown conflict with the header)
         echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
         exit();
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['seats'] = $_POST['seats'] ?? '';
         $_SESSION['doors'] = $_POST['doors'] ?? '';
 
-        // Translation of the values is applied
+        // Translation of the values is applied here
         $_SESSION['transmission'] = $transmissionMapping[$_POST['transmission']] ?? '';
         $_SESSION['drive'] = $driveMapping[$_POST['drive']] ?? '';
 
@@ -73,8 +73,6 @@ $climate = $_SESSION['climate'] ?? false;
 $gps = $_SESSION['gps'] ?? false;
 $age = $_SESSION['age'] ?? '';
 $type = $_SESSION['type'] ?? '';
-
-// Sicherstellung, dass keine Undefined-Array-Key-Warnung entsteht
 $drive = isset($_SESSION['drive']) ? $driveDisplay[$_SESSION['drive']] ?? '' : '';
 $priceuntil = $_SESSION['price'] ?? '';
 $sorting = $_SESSION['sorting'] ?? '';
@@ -154,7 +152,7 @@ $sorting = $_SESSION['sorting'] ?? '';
                 $a_age = ["18+", "21+", "25+"];
                 $a_type = ["Cabrio", "Combi", "Coupé" , "Limousine", "Mehrsitzer", "SUV"];
                 $a_drive = ["Verbrenner", "Elektro"];
-                $a_priceuntil = ["100", "150", "200", "300", "400", "500", "600", "700", "800"];
+                $a_priceuntil = ["100€", "150€", "200€", "250€","300€", "400€", "500€", "600€", "700€", "800€"];
                 $a_sorting = ["Preis aufsteigend", "Preis absteigend",];
 
                 // Dynamische Funktionsaufrufe:

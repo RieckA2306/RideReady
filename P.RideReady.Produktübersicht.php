@@ -88,13 +88,13 @@ if (session_status() === PHP_SESSION_NONE) {
     include 'Filter.php'; ?>
     <!-- Wrapper für den Hauptinhalt -->
      <?php 
-    //  connection to Database
+    //  Verbindung zur Datenbank
      include 'dbConfigJosef.php';
-    // setting filter variables
 
-$pickupdate= $_SESSION['pickupdate']??'';
-$returndate = $_SESSION['returndate']??'';
-$city= $_SESSION['city']??'';
+    // Filtervariablen aus den Sessions abrufen
+$pickupdate= $_SESSION['pickupdate'] ?? '';
+$returndate = $_SESSION['returndate'] ?? '';
+$city= $_SESSION['city'] ?? '';
 $manufacturer = $_SESSION['manufacturer'] ?? '';
 $seats = $_SESSION['seats'] ?? '';
 $doors = $_SESSION['doors'] ?? '';
@@ -104,9 +104,11 @@ $gps = $_SESSION['gps'] ?? '';
 $age = $_SESSION['age'] ?? '';
 $type = $_SESSION['type'] ?? '';
 $drive = $_SESSION['drive'] ?? '';
+$priceuntil = $_SESSION['price'] ?? '';
+$sorting = $_SESSION['sorting'] ?? '';
 
 // 3️⃣ SQL-Abfrage mit Prepared Statements
-$sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Name_Extension,c.type_id
+$sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id
         FROM Car c
         JOIN model m ON c.type_id = m.type_id
         WHERE c.loc_name = :city
@@ -167,6 +169,22 @@ if (!empty($type)) {
 if (!empty($drive)) {
     $sql .= " AND m.Drive = :drive";
     $params[':drive'] = $drive;
+}
+
+// Preisfilter hinzufügen, wenn gesetzt
+if (!empty($priceuntil)) {
+    $maxPrice = intval(str_replace('€', '', $priceuntil)); // "300€" => 300
+    $sql .= " AND m.Price <= :priceuntil";
+    $params[':priceuntil'] = $maxPrice;
+}
+
+// Sortierungsoptionen hinzufügen
+if (!empty($sorting)) {
+    if ($sorting === 'Preis aufsteigend') {
+        $sql .= " ORDER BY m.Price ASC";
+    } elseif ($sorting === 'Preis absteigend') {
+        $sql .= " ORDER BY m.Price DESC";
+    }
 }
 
 // Prepared Statement vorbereiten und ausführen
