@@ -1,32 +1,42 @@
+
 <?php
-//connection to Database
-include "dbConfig.php";
+// Verbindung zur Datenbank mit PDO herstellen
+include "dbConfigJosef.php";
+session_start(); // Session starten
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $passwort = $_POST["passwort"];
 
- // Searches for user in Database 
-    $stmt = $conn->prepare("SELECT passwort_hash FROM benutzer WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result()
-    ;
-// looks if there is password connected to the username 
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($passwort_hash);
-        $stmt->fetch();
-// checks if if the entered password matches to the stored password
-        if (password_verify($passwort, $passwort_hash)) {
-            $_SESSION["eingeloggt"] = true;
-            $_SESSION["username"] = $username;
-            header("Location: dashboard.php");
-            exit();
+    try {
+        // SQL-Statement vorbereiten
+        $stmt = $pdo->prepare("SELECT Password FROM user_account WHERE username = :username");
+        
+        // Parameter binden
+        $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+        
+        // Statement ausführen
+        $stmt->execute();
+
+        // Ergebnis abrufen
+        $dbpassword = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($dbpassword) {
+            // Passwort überprüfen
+            if (password_verify($passwort, $dbpassword["Password"])) {
+                $_SESSION["eingeloggt"] = true;
+                $_SESSION["username"] = $username;
+                header("Location: dashboard.php");
+                exit();
+            } else {
+                echo "Falsches Passwort!";
+            }
         } else {
-            echo "Falsches Passwort!";
+            echo "Benutzer nicht gefunden!";
         }
-    } else {
-        echo "Benutzer nicht gefunden!";
+    } catch (PDOException $e) {
+        die("Fehler bei der Datenbankabfrage: " . $e->getMessage());
     }
 }
 ?>
+
