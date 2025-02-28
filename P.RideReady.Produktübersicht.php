@@ -127,6 +127,8 @@ $freieAutos = $stmt->fetchAll();
                         // $_SESSION['count']=$count;
                         include 'teaser.php';   
                     }
+
+                                                
                     echo "</ul>";
                 } else {
                     echo "<p>Keine freien Autos mit angegebenen Parametern für den angegebenen Zeitraum.</p>";
