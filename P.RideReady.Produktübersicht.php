@@ -126,50 +126,22 @@ $params = [
 ];
 
 // Dynamische Filter hinzufügen
-if (!empty($manufacturer)) {
-    $sql .= " AND m.Vendor_Name = :manufacturer";
-    $params[':manufacturer'] = $manufacturer;
-}
+require_once 'Functions.php';
+sqlfilters($manufacturer, 'manufacturer', 'm.Vendor_Name', $sql, $params);
+sqlfilters($seats, 'seats', 'm.Seats', $sql, $params);
+sqlfilters($doors, 'doors', 'm.Doors', $sql, $params);
+sqlfilters($transmission, 'transmission', 'm.Gear', $sql, $params);
+sqlfilters($climate, 'climate', 'm.Air_Condition', $sql, $params);
+sqlfilters($gps, 'gps', 'm.GPS', $sql, $params);
 
-if (!empty($seats)) {
-    $sql .= " AND m.Seats = :seats";
-    $params[':seats'] = $seats;
-}
-
-if (!empty($doors)) {
-    $sql .= " AND m.Doors = :doors";
-    $params[':doors'] = $doors;
-}
-
-if (!empty($transmission)) {
-    $sql .= " AND m.Gear = :transmission";
-    $params[':transmission'] = $transmission;
-}
-
-if (!empty($climate)) {
-    $sql .= " AND m.Air_Condition = :climate";
-    $params[':climate'] = $climate;
-}
-
-if (!empty($gps)) {
-    $sql .= " AND m.GPS = :gps";
-    $params[':gps'] = $gps;
-}
-
+// Operator is different (<=)
 if (!empty($age)) {
     $sql .= " AND m.Min_Age <= :age";
     $params[':age'] = $age;
 }
 
-if (!empty($type)) {
-    $sql .= " AND m.Type = :type";
-    $params[':type'] = $type;
-}
-
-if (!empty($drive)) {
-    $sql .= " AND m.Drive = :drive";
-    $params[':drive'] = $drive;
-}
+sqlfilters($type, 'type', 'm.Type', $sql, $params);
+sqlfilters($drive, 'drive', 'm.Drive', $sql, $params);
 
 // Preisfilter hinzufügen, wenn gesetzt
 if (!empty($priceuntil)) {

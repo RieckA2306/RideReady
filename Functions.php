@@ -15,4 +15,11 @@ function renderFilterGroup($label, $name, $options, $selectedValue) {
     echo "</div>";
 }
 
+// Functions.php
+function sqlfilters($label2, $name2, $listname, &$sql, &$params) {
+    if (!empty($label2)) {
+        $sql .= " AND $listname = :$name2";
+        $params[":$name2"] = $label2;
+    }
+}
 ?>

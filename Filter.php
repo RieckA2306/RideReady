@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['price'] = '';
         $_SESSION['sorting'] = '';
 
-        // Stay on that Page (window.location is needed as a workaround because some unknown conflict with the header)
+        // Stay on that Page (window.location is needed as a workaround because there is some unknown conflict with the header)
         echo '<script>window.location.href="P.RideReady.Produktübersicht.php";</script>';
         exit();
 

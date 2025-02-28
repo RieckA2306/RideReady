@@ -167,7 +167,7 @@
                     Johannes Ripp
                 </div>
                 <p class="feedback-star">★★★★☆</p>
-                <p class="feedback-text">Das Auto war in sehr gutem Zustand und die Abwicklung verlief problemlos. Ein kleiner Verbesserungspunkt wäre eine etwas schnellere Fahrzeugübergabe.</p>
+                <p class="feedback-text">Das Auto war in einem sehr gutem Zustand und die Abwicklung verlief problemlos. Ein kleiner Verbesserungspunkt wäre eine etwas schnellere Fahrzeugübergabe.</p>
             </div>
             <div class="feedback-review">
                 <div class="feedback-user">
