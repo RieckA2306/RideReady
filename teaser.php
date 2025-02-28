@@ -7,20 +7,23 @@
 <style>
 </style>
 <body>
+<a href="Produktdetail.php?id=<?php echo urlencode($_SESSION['type_id']); ?>">
     <div class="card">
         <div class="cardbild">
-            <img src="Images/Cars/<?php echo $_SESSION['Img_File_Name']; ?>" alt="Car Image">
+            <img src="Images/Cars/<?php echo htmlspecialchars($_SESSION['Img_File_Name']); ?>" alt="Car Image">
         </div>
         <div class="cardtext">
             <p style="font-size: 23px;"> 
-                <?php echo $_SESSION['Vendor_Name']; ?> <?php echo $_SESSION['carname']; ?>
+                <?php echo htmlspecialchars($_SESSION['Vendor_Name'] . ' ' . $_SESSION['carname']); ?>
             </p>
             <p style="font-size: 20px;">
-                <?php echo $_SESSION['Name_Extension']; ?>
+                <?php echo htmlspecialchars($_SESSION['Name_Extension']); ?>
             </p>
             <p style="padding:20px; text-align: right; font-size: 40px;">
-                <?php echo $_SESSION['carprice'] . "€"; ?>
+                <?php echo htmlspecialchars($_SESSION['carprice']) . "€"; ?>
             </p>
         </div>
     </div> 
+</a>
+
 </body>
