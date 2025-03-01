@@ -7,7 +7,7 @@
 <style>
 </style>
 <body>
-<a href="Produktdetail.php?id=<?php echo urlencode($_SESSION['type_id']); ?>">
+<a href="Produktdetail.php? id=<?php echo urlencode($_SESSION['type_id']); ?>">
     <div class="card">
         <div class="cardbild">
             <img src="Images/Cars/<?php echo htmlspecialchars($_SESSION['Img_File_Name']); ?>" alt="Car Image">
