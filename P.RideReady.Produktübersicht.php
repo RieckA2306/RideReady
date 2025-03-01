@@ -8,30 +8,31 @@ if (session_status() === PHP_SESSION_NONE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
-    <title>BMW Karten</title>
+    <title>Produktübersicht</title>
+    <link rel="stylesheet" href="P.RideReady.css">
     <style>
         /* Body nur als generelle Hintergrundgestaltung */
-        .produktübersicht-body {
-            font-family: Arial, sans-serif;
+        .productoverview-body {
             display: flex;
             flex-direction: column;
             margin: auto;
             background-color: #F0F0F0;
-            /* font-family: "Inter", serif; */
+            font-family: "Inter", serif;
             margin: 0;
         }
 
-        /* Wrapper für den Hauptinhalt */
-        .produktübersicht-content {
+        /* Wrapper for the whole page*/
+        .productoverview-content {
             flex: 1; /* Stellt sicher, dass der Inhalt wächst */
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
 
-        /* Container für Karten */
-        .produktübersicht-container {
+        /* Wrapper for the cards */
+        .productoverview-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
@@ -40,6 +41,7 @@ if (session_status() === PHP_SESSION_NONE) {
             align-items: center;
         }
 
+        /* Container for the cards */
         .card {
             width: 300px;
             height: 400px;
@@ -49,15 +51,17 @@ if (session_status() === PHP_SESSION_NONE) {
             font-weight: bold;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .cardbild {
+        
+        /* Container for the cardpicture */
+        .cardimage {
             position: static;
             width: 300px;
             height: 250px;
             background-size: 100%;
         }
 
-        .cardbild img {
+        /* Img in "cardbild" */
+        .cardimage img {
             width: 100%;
             height: 100%;
             object-fit: cover; /* Beibehaltung des Seitenverhältnisses */
@@ -65,6 +69,7 @@ if (session_status() === PHP_SESSION_NONE) {
             border-top-right-radius: 15px;
         }
 
+        /* Text in "cardbild" */
         .cardtext {
             width: 300px;
             height: 150px;
@@ -74,6 +79,8 @@ if (session_status() === PHP_SESSION_NONE) {
             font-weight: bold;
             padding: 15px;
         }
+
+        /* Line spacing */
         .card p {
             margin: 2px 0;
         }
@@ -81,13 +88,14 @@ if (session_status() === PHP_SESSION_NONE) {
         
     </style>
 </head>
-<body class="produktübersicht-body">
+<body class="productoverview-body">
 
 <?php 
     include 'P.RideReadyHeader.php';
-    include 'Filter.php'; ?>
-    <!-- Wrapper für den Hauptinhalt -->
-     <?php 
+    include 'Filter.php'; 
+?>
+    
+<?php 
     //  Verbindung zur Datenbank
      include 'dbConfigJosef.php';
 
@@ -166,8 +174,8 @@ $stmt->execute($params);
 // Ergebnisse abrufen
 $freieAutos = $stmt->fetchAll();
 ?>
-    <div class="produktübersicht-content">
-        <div class="produktübersicht-container">
+    <div class="productoverview-content">
+        <div class="productoverview-container">
             <?php
              if (count($freieAutos) > 0) {
                 // $count=0;

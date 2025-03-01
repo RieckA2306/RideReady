@@ -143,6 +143,7 @@
         <h2 class="landingpage-title">Unsere Kundenbewertungen:</h2>
         <p class="feedback-logo"> <img class="feedback-logo" src="Images/Logo.png" alt="Ride Ready Logo"></p>
         <p class="feedback-rating">★★★★☆</p>
+        <!-- BUG mit CSS!!!! -->
         <p style="margin-top: -30px; text-align:center; color:#123472;">aus 312 Bewertungen</p>
         <div class="feedback-reviews">
             <div class="feedback-review">
