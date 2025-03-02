@@ -108,13 +108,8 @@ $returndate = $_SESSION['returndate'] ?? '';
             border-radius: 5px;
             margin-right: 130px;
         }
-
-        .search-box select, .search-box input, .search-box button {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
         
+        /* Buttons to set/reset Filters */
         .search-box button {
             background-color: #80BFFF;
             color: white;
@@ -124,6 +119,12 @@ $returndate = $_SESSION['returndate'] ?? '';
         
         .search-box button:hover {
             background-color: #123472;
+        }
+
+        .search-box select, .search-box input, .search-box button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         /* Ändert die Hintergrundfarbe des ausgewählten Datums */
         .flatpickr-day.selected, 

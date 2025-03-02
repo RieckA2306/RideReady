@@ -9,84 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
     <title>Produktübersicht</title>
-    <link rel="stylesheet" href="P.RideReady.css">
-    <style>
-        /* Body nur als generelle Hintergrundgestaltung */
-        .productoverview-body {
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-            background-color: #F0F0F0;
-            font-family: "Inter", serif;
-            margin: 0;
-        }
-
-        /* Wrapper for the whole page*/
-        .productoverview-content {
-            flex: 1; /* Stellt sicher, dass der Inhalt wächst */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        /* Wrapper for the cards */
-        .productoverview-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 900px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Container for the cards */
-        .card {
-            width: 300px;
-            height: 400px;
-            background-color: #0a2e6d;
-            border-radius: 15px;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Container for the cardpicture */
-        .cardimage {
-            position: static;
-            width: 300px;
-            height: 250px;
-            background-size: 100%;
-        }
-
-        /* Img in "cardbild" */
-        .cardimage img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Beibehaltung des Seitenverhältnisses */
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-
-        /* Text in "cardbild" */
-        .cardtext {
-            width: 300px;
-            height: 150px;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-            color: white;
-            font-weight: bold;
-            padding: 15px;
-        }
-
-        /* Line spacing */
-        .card p {
-            margin: 2px 0;
-        }
-
-        
-    </style>
+    <link rel="stylesheet" href="P.RideReadyProductoverview.css">
 </head>
 <body class="productoverview-body">
 
@@ -96,10 +19,10 @@ if (session_status() === PHP_SESSION_NONE) {
 ?>
     
 <?php 
-    //  Verbindung zur Datenbank
+    //  Connection to Database
      include 'dbConfigJosef.php';
 
-    // Filtervariablen aus den Sessions abrufen
+    // Retrieve filter variables from the sessions
 $pickupdate= $_SESSION['pickupdate'] ?? '';
 $returndate = $_SESSION['returndate'] ?? '';
 $city= $_SESSION['city'] ?? '';
@@ -115,7 +38,7 @@ $drive = $_SESSION['drive'] ?? '';
 $priceuntil = $_SESSION['price'] ?? '';
 $sorting = $_SESSION['sorting'] ?? '';
 
-// 3️⃣ SQL-Abfrage mit Prepared Statements
+// SQL-Query with Prepared Statements
 $sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id
         FROM Car c
         JOIN model m ON c.type_id = m.type_id
@@ -126,14 +49,14 @@ $sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Na
             WHERE NOT (end_date < :pickupdate OR start_date > :returndate)
         )";
 
-// Array für Parameter erstellen
+// Create array for parameters
 $params = [
     ':city' => $city,
     ':pickupdate' => $pickupdate,
     ':returndate' => $returndate
 ];
 
-// Dynamische Filter hinzufügen
+// Filters that Add to the SQL-Query
 require_once 'Functions.php';
 sqlfilters($manufacturer, 'manufacturer', 'm.Vendor_Name', $sql, $params);
 sqlfilters($seats, 'seats', 'm.Seats', $sql, $params);
@@ -142,7 +65,7 @@ sqlfilters($transmission, 'transmission', 'm.Gear', $sql, $params);
 sqlfilters($climate, 'climate', 'm.Air_Condition', $sql, $params);
 sqlfilters($gps, 'gps', 'm.GPS', $sql, $params);
 
-// Operator is different (<=)
+// Operator is different (<=) (Can´t call the Function here)
 if (!empty($age)) {
     $sql .= " AND m.Min_Age <= :age";
     $params[':age'] = $age;
@@ -151,14 +74,14 @@ if (!empty($age)) {
 sqlfilters($type, 'type', 'm.Type', $sql, $params);
 sqlfilters($drive, 'drive', 'm.Drive', $sql, $params);
 
-// Preisfilter hinzufügen, wenn gesetzt
+// Add the Pricefilter
 if (!empty($priceuntil)) {
     $maxPrice = intval(str_replace('€', '', $priceuntil)); // "300€" => 300
     $sql .= " AND m.Price <= :priceuntil";
     $params[':priceuntil'] = $maxPrice;
 }
 
-// Sortierungsoptionen hinzufügen
+// Add the sort Pricefilter
 if (!empty($sorting)) {
     if ($sorting === 'Preis aufsteigend') {
         $sql .= " ORDER BY m.Price ASC";
@@ -167,18 +90,17 @@ if (!empty($sorting)) {
     }
 }
 
-// Prepared Statement vorbereiten und ausführen
+// Prepare and execute prepared statement
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 
-// Ergebnisse abrufen
+// Retrieve results
 $freieAutos = $stmt->fetchAll();
 ?>
     <div class="productoverview-content">
         <div class="productoverview-container">
             <?php
              if (count($freieAutos) > 0) {
-                // $count=0;
                 foreach ($freieAutos as $auto) {
                     $carname = $auto['Name'];
                     $_SESSION['carname'] = $carname;
@@ -208,11 +130,6 @@ $freieAutos = $stmt->fetchAll();
             ?>
         </div>
     </div>
-
-    <!-- Unabhängiger Footer -->
-    
     <?php include 'P.RideReadyFooter.php'; ?>
-    
-
 </body>
 </html>

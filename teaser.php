@@ -1,3 +1,4 @@
+<!-- In this Document each of the Cards are created -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -26,5 +27,4 @@
         </div>
     </div> 
 </a>
-
 </body>

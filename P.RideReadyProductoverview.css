@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Product Overview Start*/
+    /* Body nur als generelle Hintergrundgestaltung */
+    .productoverview-body {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        background-color: #F0F0F0;
+        font-family: "Inter", serif;
+        margin: 0;
+    }
+
+    /* Wrapper for the whole page*/
+    .productoverview-content {
+        flex: 1; /* Stellt sicher, dass der Inhalt wächst */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    /* Wrapper for the cards */
+    .productoverview-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        max-width: 900px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Container for the cards */
+    .card {
+        width: 300px;
+        height: 400px;
+        background-color: #0a2e6d;
+        border-radius: 15px;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Container for the cardpicture */
+    .cardimage {
+        position: static;
+        width: 300px;
+        height: 250px;
+        background-size: 100%;
+    }
+
+    /* Img in "cardbild" */
+    .cardimage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Beibehaltung des Seitenverhältnisses */
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    /* Text in "cardbild" */
+    .cardtext {
+        width: 300px;
+        height: 150px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+    }
+
+    /* Line spacing */
+    .card p {
+        margin: 2px 0;
+    }
+
+    /* Product Overview Filter Start*/
+    /* Wrapper Filter*/
+    .filter-bar {
+        background-color: #f9f9f9;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        width: 90%;
+        max-width: 1200px;
+        align-items: center;
+    }
+
+    /* each Filter */
+    .filter-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Buttons to set/reset Filters */
+    .filter-bar button {
+        background-color: #80BFFF;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .filter-bar button:hover {
+        background-color: #123472;
+    }
+
+    .filter-bar select, .filter-bar input, .filter-bar button {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 150px;
+        text-align: center;
+    }
+
+    .form-wrapper {
+        display: contents;
+    }
+    /* Product Overview Filter End*/
+
+/* Product Overview End*/
