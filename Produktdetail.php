@@ -302,6 +302,7 @@ include 'P.RideReadyHeader.php';
                 $Type_ID = $auto['Type_ID']; // c.type_id
                 $car_id = $auto['car_id'];
                 echo $car_id;
+                echo " ";
 
             }
      

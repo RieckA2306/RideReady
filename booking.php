@@ -1,46 +1,44 @@
 <?php
+session_start();
 
-    global $login; 
-    if (isset($_SESSION["eingeloggt"])) {
+// Prüfen, ob der Nutzer eingeloggt ist
+if (isset($_SESSION["eingeloggt"])) {
+    // Datenbank-Konfiguration einbinden
+    include('dbConfigJosef.php');
 
-  
-include ('dbConfigJosef.php'); // Stelle sicher, dass $pdo dort richtig definiert ist
+    // Session-Variablen abfragen (zur Sicherheit mit Null coalescing operator)
+    $pickupdate = $_SESSION['pickupdate'] ?? '';
+    $returndate = $_SESSION['returndate'] ?? '';
 
-session_start(); // Falls noch nicht gestartet
+    try {
+        // SQL-Abfrage zum Einfügen eines neuen Vertrags
+        $sql = "INSERT INTO contract (Start_Date, End_Date, Account_ID, Car_ID) 
+                VALUES (:pickupdate, :returndate, :account_id, :car_id)";
 
-$pickupdate = $_SESSION['pickupdate'] ?? '';
-$returndate = $_SESSION['returndate'] ?? '';
+        // Parameter-Array
+        $params = [
+            ':pickupdate' => $pickupdate,
+            ':returndate' => $returndate,
+            ':account_id' => 1, 
+            ':car_id' => 1,
+        ];
 
-try {
-    // SQL-Abfrage zum Einfügen eines neuen Contracts
-    $sql = "INSERT INTO contract (Start_Date, End_Date, Account_ID, Car_ID) 
-            VALUES (:pickupdate, :returndate, :account_id, :car_id)";
+        // Prepared Statement erstellen
+        $stmt = $pdo->prepare($sql);
 
-    $params = [
-        ':pickupdate' => $pickupdate,
-        ':returndate' => $returndate,
-        ':account_id' => 1, // Korrektur des Schreibfehlers
-        ':car_id' => 1,
-    ];
+        // SQL ausführen
+        if ($stmt->execute($params)) {
+            echo "Neue Verträge wurden erfolgreich hinzugefügt.";
+        } else {
+            echo "Fehler beim Hinzufügen des Vertrags.";
+        }
 
-    // Prepared Statement erstellen
-    $stmt = $pdo->prepare($sql);
-    
-    // SQL ausführen
-    if ($stmt->execute($params)) {
-        echo "Neue Verträge wurden erfolgreich hinzugefügt.";
-    } else {
-        echo "Fehler beim Hinzufügen des Vertrags.";
+    } catch (PDOException $e) {
+        die("Datenbankfehler: " . $e->getMessage());
     }
-
-} catch (PDOException $e) {
-    die("Datenbankfehler: " . $e->getMessage());
-}
-
 } else {
-    header("loginsite.php") ;
+    // Weiterleitung, wenn der Nutzer nicht eingeloggt ist
+    header("Location: loginsite.php");
+    exit;
 }
-
-
-
 ?>
