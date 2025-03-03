@@ -6,14 +6,14 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 
-// Werte aus dem Formular in die Session speichern
+// Save values ​​from the form to the session
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Nur ausführen, wenn "Suchen" oder "header_reset" gedrückt wurde
+    // Execute only if "Suchen" or "Filter zurücksetzen" was pressed
     if (isset($_POST['reset']) && $_POST['reset'] === 'header_reset') {
-        // Nur die Header-Session-Werte zurücksetzen
+        // Reset only the header session values
         unset($_SESSION['city'], $_SESSION['pickupdate'], $_SESSION['returndate']);
         
-        // Auf der aktuellen Seite bleiben
+        // Stay on the current page
         $currentPage = $_SERVER['HTTP_REFERER'] ?? 'P.RideReady.Landingpage.php';
         header('Location: ' . $currentPage);
         exit();
@@ -23,24 +23,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pickupdate = $_POST['pickupdate'] ?? '';
         $returndate = $_POST['returndate'] ?? '';
 
-        // Überprüfung, ob ALLE Felder ausgefüllt sind
+        // Check whether ALL fields are filled out
         if (!empty($city) && !empty($pickupdate) && !empty($returndate)) {
-            // Nur wenn alle Werte gesetzt sind, werden die Session-Variablen gespeichert
+            // The session variables are only saved if all values ​​are set
             $_SESSION['city'] = $city;
             $_SESSION['pickupdate'] = $pickupdate;
             $_SESSION['returndate'] = $returndate;
             
-            // Umleitung zur Produktübersicht
+            // Redirect to Productoverview
             header('Location: P.RideReady.Produktübersicht.php');
             exit();
         } else {
-            // Keine Werte speichern und auf der aktuellen Seite bleiben
+            // Don't save any values ​​and stay on the current page
             echo '<script>alert("Bitte füllen Sie alle Felder aus!");</script>';
         }
     }
 }
 
-// Standardwerte setzen, falls Session leer ist
+// set default values
 $city = $_SESSION['city'] ?? '';
 $pickupdate = $_SESSION['pickupdate'] ?? '';
 $returndate = $_SESSION['returndate'] ?? '';
@@ -69,7 +69,6 @@ $returndate = $_SESSION['returndate'] ?? '';
 ?>
 
 <style>
-        /* Allgemeines Styling */
         .header-body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -81,7 +80,7 @@ $returndate = $_SESSION['returndate'] ?? '';
         /* Header Styling */
         .header {
             display: flex;
-            align-items: center; /* Vertikale Zentrierung */
+            align-items: center;
             justify-content: space-between;
             padding: 20px;
             background-color: #123472;
@@ -90,16 +89,16 @@ $returndate = $_SESSION['returndate'] ?? '';
             z-index: 1000;
         }
         
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .Header-logo img {
+        max-width: 180px;
+        object-fit: contain;
         }
         
         .logo img {
-            height: 40px; /* Platzhalter für dein Logo */
+            height: 40px;
         }
         
+        /* Container for the search box */
         .search-box {
             display: flex;
             gap: 10px;
@@ -126,22 +125,16 @@ $returndate = $_SESSION['returndate'] ?? '';
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        /* Ändert die Hintergrundfarbe des ausgewählten Datums */
+        /* Changes the background color of the selected date */
         .flatpickr-day.selected, 
         .flatpickr-day.selected:hover {
             background: #80BFFF !important;
             border-color: #80BFFF !important;
             color: white !important;
         }
-
-        /* Falls mehrere Tage in einem Bereich ausgewählt werden können */
-        .flatpickr-day.inRange {
-        background: #B3DAFF !important;
-        color: white !important;
-
         
-            }
-            .hamburger-button {
+        /* Container for the Button (Top-Right) */
+        .hamburger-button {
             background-color: white;
             border: none;
             border-radius: 8px;
@@ -150,6 +143,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             cursor: pointer;
         }
 
+        /* Three grey stripes */
         .hamburger-button span {
             display: block;
             width: 20px;
@@ -157,7 +151,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             background-color: #999;
             margin: 4px auto;
         }
-        /* css Style for the Banner/menu */
+        /* Container when the Button is clicked*/
         .menu {
             width: 300px;
             border: 2px solid black;
@@ -193,7 +187,7 @@ $returndate = $_SESSION['returndate'] ?? '';
 </head>
 <body class="header-body">
     <div class="header">
-        <div class="logo">
+        <div class="Header-logo">
             <a href="P.RideReady.Landingpage.php">
                 <p class="Header-Footer-logo">
                     <img src="Images/logo.png" alt="Ride Ready Logo">
@@ -201,7 +195,6 @@ $returndate = $_SESSION['returndate'] ?? '';
             </a>
         </div>
 
-        <!-- Formular auf POST-Methode umgestellt -->
         <form id="reservierungsFormular" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
             <div class="search-box">
                 <select name="city" id="abholort">
@@ -215,13 +208,13 @@ $returndate = $_SESSION['returndate'] ?? '';
                     ?>
                 </select>
 
-                <!-- Sichtbare Datumseingaben für Benutzerfreundlichkeit -->
+                <!-- Visible date entries for ease of use -->
                 <input type="text" id="abholdatum" placeholder="Abholdatum" 
                        value="<?php echo htmlspecialchars($pickupdate ? date('d.m.Y', strtotime($pickupdate)) : ''); ?>" autocomplete="off">
                 <input type="text" id="rueckgabedatum" placeholder="Rückgabedatum" 
                        value="<?php echo htmlspecialchars($returndate ? date('d.m.Y', strtotime($returndate)) : ''); ?>" autocomplete="off">
 
-                <!-- Versteckte Input-Felder für die tatsächliche Formularübermittlung -->
+                <!-- Hidden input fields for actual form submission -->
                 <input type="hidden" name="pickupdate" id="hiddenPickupdate">
                 <input type="hidden" name="returndate" id="hiddenReturndate">
 
@@ -264,15 +257,15 @@ $returndate = $_SESSION['returndate'] ?? '';
                 defaultDate: "<?php echo !empty($returndate) ? date('d.m.Y', strtotime($returndate)) : ''; ?>"
             });
 
-            // Konvertierung der Datumsformate in versteckte Felder für das Korrekte Datum Format
+            // Conversion of date formats into hidden fields for the correct date format
             document.querySelector("#reservierungsFormular").addEventListener("submit", function(e) {
-                // Abholdatum in verstecktes Feld schreiben
+                // Write pickup date in hidden field
                 let abholInput = document.querySelector("#abholdatum");
                 let hiddenAbholInput = document.querySelector("#hiddenPickupdate");
                 let abholDate = flatpickr.parseDate(abholInput.value, "d.m.Y");
                 hiddenAbholInput.value = flatpickr.formatDate(abholDate, "Y-m-d");
 
-                // Rückgabedatum in verstecktes Feld schreiben
+                // Write return date in hidden field
                 let rueckgabeInput = document.querySelector("#rueckgabedatum");
                 let hiddenRueckgabeInput = document.querySelector("#hiddenReturndate");
                 let rueckgabeDate = flatpickr.parseDate(rueckgabeInput.value, "d.m.Y");
@@ -281,7 +274,7 @@ $returndate = $_SESSION['returndate'] ?? '';
         });
     </script>
     
-    <!-- Script für das Menü -->
+    <!-- Script for the Menu Button -->
     <script>
         function toggleMenu() {
             var menu = document.getElementById("menu");

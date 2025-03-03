@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $driveDisplay = array_flip($driveMapping);
 $transmissionDisplay = array_flip($transmissionMapping);
 
-// Prepare filter values ​​for displa
+// Prepare filter values ​​for display
 $manufacturer = $_SESSION['manufacturer'] ?? '';
 $seats = $_SESSION['seats'] ?? '';
 $doors = $_SESSION['doors'] ?? '';

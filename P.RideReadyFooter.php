@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="P.RideReady.css">
+    <link rel="stylesheet" href="P.RideReadyProductoverview.css">
 </head>
 <body>
     <footer class="footer">
-        <!-- Linke Seite mit Logo & Social Media -->
+        <!-- Left Side with Logo & Social Media -->
         <div class="footer-column">
-            <div class="Header-Footer-logo">
+            <div class="Footer-logo">
                 <a href="P.RideReady.Landingpage.php"><img src="Images/Logo.png" alt="Ride Ready Logo"></a>
             </div>
             <div class="social-icons">
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <!-- Unternehmen -->
+        <!-- "Unternehmen" -->
         <div class="footer-column">
             <h3>Unternehmen</h3>
             <a href="P.RideReady.ÜberUns.php">Über uns</a>
@@ -33,7 +33,7 @@
             <a href="mailto:service@ride-ready.com">service@ride-ready.com</a>
         </div>
 
-        <!-- Rechtliches -->
+        <!-- "Rechtliches" -->
         <div class="footer-column">
             <h3>Rechtliches</h3>
             <a href="P.RideReady.AGBs.php">AGB</a>
@@ -41,7 +41,7 @@
             <a href="#">Datenschutzrichtlinien</a>
         </div>
 
-        <!-- Kundenservice -->
+        <!-- "Kundenservice" -->
         <div class="footer-column">
             <h3>Kundenservice</h3>
             <a href="#">FAQs</a>

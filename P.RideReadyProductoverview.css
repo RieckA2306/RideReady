@@ -13,7 +13,6 @@
 
     /* Wrapper for the whole page*/
     .productoverview-content {
-        flex: 1; /* Stellt sicher, dass der Inhalt wächst */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -54,7 +53,7 @@
     .cardimage img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Beibehaltung des Seitenverhältnisses */
+        object-fit: cover;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
     }
@@ -76,53 +75,186 @@
     }
 
     /* Product Overview Filter Start*/
-    /* Wrapper Filter*/
-    .filter-bar {
-        background-color: #f9f9f9;
-        padding: 20px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 15px;
-        border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin: 20px auto;
-        width: 90%;
-        max-width: 1200px;
-        align-items: center;
-    }
+        /* Wrapper Filter*/
+        .filter-bar {
+            background-color: #f9f9f9;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1300px;
+            align-items: center;
+        }
 
-    /* each Filter */
-    .filter-group {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+        /* each Filter */
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-    /* Buttons to set/reset Filters */
-    .filter-bar button {
-        background-color: #80BFFF;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
+        /* Buttons to set/reset Filters */
+        .filter-bar button {
+            background-color: #80BFFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-    .filter-bar button:hover {
-        background-color: #123472;
-    }
+        .filter-bar button:hover {
+            background-color: #123472;
+        }
 
-    .filter-bar select, .filter-bar input, .filter-bar button {
-        padding: 10px;
-        font-size: 14px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        width: 150px;
-        text-align: center;
-    }
+        .filter-bar select, .filter-bar input, .filter-bar button {
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 150px;
+            text-align: center;
+        }
 
-    .form-wrapper {
-        display: contents;
-    }
+        .form-wrapper {
+            display: contents;
+        }
     /* Product Overview Filter End*/
 
 /* Product Overview End*/
+
+/* Footer Start*/
+    .footer {
+        background-color: #123472;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-family: "Inter", serif;
+    }
+
+    /* Class for each column*/
+    .footer-column {
+        flex: 1;
+        min-width: 200px;
+        margin: 10px;
+    }
+
+    .footer h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        margin-top: -6px;
+    }
+
+    .footer a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 5px;
+        font-size: 15px;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+
+    .footer p {
+        color: white;
+    }
+
+    .footer img {
+        max-width: 30px;
+        margin-right: 10px;
+    }
+
+    .social-icons img {
+        max-width: 40px;
+    }
+
+    .app-buttons img {
+        max-width: 120px;
+        margin-top: 10px;
+    }
+
+    .Footer-logo img {
+        max-width: 180px;
+        object-fit: contain;
+    }
+/* Footer End*/
+
+
+/* Static Pages Start */
+    .static-page-body {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        background-color: #F0F0F0;
+        font-family: "Inter", serif;
+        margin: 0;
+    }
+
+
+    /* white Box for "Über Uns" */
+    .static-page-container-ÜberUns {
+        background-color: white;
+        padding: 40px;
+        width: 800px;
+        margin: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        height: 550px; /* height difference */
+        font-family: "Inter", serif;
+    }
+
+    /* white Box for "Cookierichtlinien" */
+    .static-page-container-Cookierichtlinien {
+        background-color: white;
+        padding: 40px;
+        width: 800px;
+        margin: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        height: 1250px; /* height difference */
+        font-family: "Inter", serif;
+    }
+
+    /* weiße Box in der die Schrift steht für die Seite "AGBs" */
+    .static-page-container-AGBs {
+        background-color: white;
+        padding: 40px;
+        width: 800px;
+        margin: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        height: 2050px; /* height difference */
+        font-family: "Inter", serif;
+    }
+
+    /* Große Überschrift für die Seite */
+    .static-page h1 {
+        font-size: 24px;
+        color:black;
+        margin-bottom: 20px;
+        text-align: center; /* Überschrift mittig */
+    }
+
+    /* Normale Schrift für die Seite */
+    .static-page p {
+        font-size: 16px;
+        color: black;
+        margin-top: 5px;
+        text-align: left; /* Linksbündiger Text */
+    }
+/* Static Pages End */
