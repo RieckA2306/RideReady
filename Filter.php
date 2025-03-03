@@ -16,11 +16,10 @@ $transmissionMapping = [
     "Manuell" => "manually"
 ];
 
-// Werte aus dem Formular in die Session speichern
+// Save values ​​from the form to the session
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['reset']) && $_POST['reset'] === 'product_reset') {
-        // Filter zurücksetzen: Statt die Session-Variablen komplett zu löschen, 
-        // werden sie auf Standardwerte gesetzt, um Undefined-Array-Key-Warnungen zu vermeiden.
+        // Reset filter: Instead of deleting the session variables completely, they are set to default values ​​to avoid undefined array key warnings.
         $_SESSION['manufacturer'] = '';
         $_SESSION['seats'] = '';
         $_SESSION['doors'] = '';
@@ -58,16 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Umkehr-Mapping für die Anzeige
+// Reverse mapping for display
 $driveDisplay = array_flip($driveMapping);
 $transmissionDisplay = array_flip($transmissionMapping);
 
-// Filterwerte für die Anzeige vorbereiten
+// Prepare filter values ​​for display
 $manufacturer = $_SESSION['manufacturer'] ?? '';
 $seats = $_SESSION['seats'] ?? '';
 $doors = $_SESSION['doors'] ?? '';
-
-// Sicherstellung, dass keine Undefined-Array-Key-Warnung entsteht
 $transmission = isset($_SESSION['transmission']) ? $transmissionDisplay[$_SESSION['transmission']] ?? '' : '';
 $climate = $_SESSION['climate'] ?? false;
 $gps = $_SESSION['gps'] ?? false;
@@ -83,60 +80,7 @@ $sorting = $_SESSION['sorting'] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produktübersicht</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #e5e5e5;
-            margin: 0;
-            padding: 0;
-            width: auto;
-        }
-
-        .filter-bar {
-            background-color: #f9f9f9;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            width: 90%;
-            max-width: 1200px;
-            align-items: center;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .filter-bar select, .filter-bar input, .filter-bar button {
-            padding: 10px;
-            font-size: 14px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            width: 150px;
-            text-align: center;
-        }
-
-        .filter-bar button {
-            background-color: #80BFFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .filter-bar button:hover {
-            background-color: #123472;
-        }
-
-        .form-wrapper {
-            display: contents;
-        }
-    </style>
+    <link rel="stylesheet" href="P.RideReadyProductoverview.css">
 </head>
 <body>
     <div class="filter-bar">
@@ -144,8 +88,8 @@ $sorting = $_SESSION['sorting'] ?? '';
             <?php
                 require_once 'Functions.php';
 
-                // Alle Arrays an einer Stelle definiert:
-                $a_manufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-AMG", "Mercedes-Benz", "Opel", "Range Rover", "Skoda", "Volkswagen"]; // Bei Mercedes AMG vllt die Daten nochmla anpassen
+                // Define all Arrays for the Filteroptions:
+                $a_manufacturers = ["Audi", "BMW", "Ford", "Jaguar", "Maserati", "Mercedes-AMG", "Mercedes-Benz", "Opel", "Range Rover", "Skoda", "Volkswagen"];
                 $a_seats = ["2", "4", "5", "7", "8", "9"];
                 $a_doors = ["2", "3", "4", "5"];
                 $a_transmission = ["Automatik", "Manuell"];
@@ -155,7 +99,7 @@ $sorting = $_SESSION['sorting'] ?? '';
                 $a_priceuntil = ["100€", "150€", "200€", "250€","300€", "400€", "500€", "600€", "700€", "800€"];
                 $a_sorting = ["Preis aufsteigend", "Preis absteigend",];
 
-                // Dynamische Funktionsaufrufe:
+                // Call the create Filter Function:
                 renderFilterGroup('Hersteller', 'manufacturer', $a_manufacturers, $manufacturer);
                 renderFilterGroup('Sitze', 'seats', $a_seats, $seats);
                 renderFilterGroup('Türen', 'doors', $a_doors, $doors);
@@ -182,7 +126,7 @@ $sorting = $_SESSION['sorting'] ?? '';
             ?>  
 
 
-            <!-- Buttons für Filtern und Zurücksetzen -->
+            <!-- Buttons to set/reset Filters -->
             <div class="filter-group">
                 <button type="submit" name="filter">Filtern</button>
             </div>
