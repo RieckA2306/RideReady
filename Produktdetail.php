@@ -364,11 +364,20 @@ include 'P.RideReadyHeader.php';
             </div>
             <div class="feature">
                 <img src="icon3.png" alt="Automatik">
-                <p> <?php echo"$Gear"?></p>
+                <?php if($Gear=="manually"){
+                    echo"Manuelle Schaltung"; } 
+                    else{
+                    echo"Automatik";
+                } ?>
             </div>
             <div class="feature">
                 <img src="icon4.png" alt="Benzin">
-                <p><?php echo"$Drive"?></p>
+                <?php if($Drive=="Combuster"){
+                    echo"Verbrenner"; } 
+                    else{
+                    echo"Elektroantrieb";
+                } ?>
+                
             </div>
             <div class="feature">
                 <img src="icon5.png" alt="Klima">
@@ -381,7 +390,11 @@ include 'P.RideReadyHeader.php';
             </div>
             <div class="feature">
                 <img src="icon6.png" alt="GPS">
-                <p><?php echo"$GPS"."GPS"?></p>
+                <?php if($GPS==1){
+                    echo"Enthält GPS"; } 
+                    else{
+                    echo"Kein GPS";
+                } ?>
             </div>
             <div class="feature">
                 <img src="icon7.png" alt="Mindestalter">
