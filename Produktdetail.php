@@ -381,7 +381,12 @@ include 'P.RideReadyHeader.php';
             </div>
             <div class="feature">
                 <img src="icon6.png" alt="GPS">
-                <p><?php echo"$GPS"."GPS"?></p>
+
+                <?php if($GPS==1){
+                    echo"Enthält GPS"; } 
+                    else{
+                    echo"Kein GPS";
+                } ?>
             </div>
             <div class="feature">
                 <img src="icon7.png" alt="Mindestalter">
