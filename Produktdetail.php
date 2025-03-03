@@ -302,6 +302,7 @@ include 'P.RideReadyHeader.php';
                 $Type_ID = $auto['Type_ID']; // c.type_id
                 $car_id = $auto['car_id'];
                 echo $car_id;
+                $_SESSION['bookingcar_id']=$car_id;
                 echo " ";
 
             }
@@ -311,7 +312,9 @@ include 'P.RideReadyHeader.php';
                 echo "ID: $ID, City: $city, Pickupdate: $pickupdate, Returndate: $returndate";
 
             }
-        
+    
+     
+
     ?>
 
     
@@ -418,7 +421,13 @@ include 'P.RideReadyHeader.php';
                 <div class="timebox">  <h4>Ende</h4> <p><?php echo"$returndate"?></p></div>
 
             </div>
-            <button class="bookingbutton">Reservieren</button>
+     
+
+ 
+
+<button onclick="window.location.href='bookingstaging.php?<?= (int)$car_id ?>'" class="bookingbutton">
+    Reservieren
+</button>
     </div>
 </div> 
 

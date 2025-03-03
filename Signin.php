@@ -23,8 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $_SESSION["eingeloggt"] = true;
 $_SESSION["username"] = $username;
 
-header("Location: P.RideReady.Landingpage.php");
+if(isset($_SESSION['bookingcar_id'])){
+                    
+
+    header("Location: booking.php");
+    exit();
+    
+}else{
+header("Location: Landingpage.php");
 exit();
+ }
 // } catch (PDOException $e) {
 //     die("Fehler beim Einfügen in die Datenbank: " . $e->getMessage());
 // }

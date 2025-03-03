@@ -1,5 +1,7 @@
 <?php
 session_start();
+// $_SESSION['bookingstart']=1;
+$car_id=$_SESSION['bookingcar_id'];
 
 // Prüfen, ob der Nutzer eingeloggt ist
 if (isset($_SESSION["eingeloggt"])) {
@@ -9,7 +11,9 @@ if (isset($_SESSION["eingeloggt"])) {
     // Session-Variablen abfragen (zur Sicherheit mit Null coalescing operator)
     $pickupdate = $_SESSION['pickupdate'] ?? '';
     $returndate = $_SESSION['returndate'] ?? '';
-
+  
+    echo"$car_id";
+    $account_id=$_SESSION["account_id"];
     try {
         // SQL-Abfrage zum Einfügen eines neuen Vertrags
         $sql = "INSERT INTO contract (Start_Date, End_Date, Account_ID, Car_ID) 
@@ -18,9 +22,9 @@ if (isset($_SESSION["eingeloggt"])) {
         // Parameter-Array
         $params = [
             ':pickupdate' => $pickupdate,
-            ':returndate' => $returndate,
-            ':account_id' => 1, 
-            ':car_id' => 1,
+            ':returndate' => $returndate,   
+            ':account_id' => $account_id,
+            ':car_id' => $car_id,
         ];
 
         // Prepared Statement erstellen
@@ -29,6 +33,7 @@ if (isset($_SESSION["eingeloggt"])) {
         // SQL ausführen
         if ($stmt->execute($params)) {
             echo "Neue Verträge wurden erfolgreich hinzugefügt.";
+            
         } else {
             echo "Fehler beim Hinzufügen des Vertrags.";
         }
