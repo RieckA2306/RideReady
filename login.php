@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     exit();
                     
                 }else{
-                header("Location: Landingpage.php");
+                header("Location: P.RideReady.Landingpage.php");
                 exit();
                  }
             } else {
