@@ -372,7 +372,6 @@ include 'P.RideReadyHeader.php';
             </div>
             <div class="feature">
                 <img src="icon4.png" alt="Benzin">
-                <p><?php echo"$Drive"?></p>
                 <?php if($Drive=="Combuster"){
                     echo"Verbrenner"; } 
                     else{
