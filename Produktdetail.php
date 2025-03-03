@@ -46,18 +46,18 @@ error_reporting(E_ALL);?>
         display: flex;
         flex-direction: column;
         align-items: center; 
-
         padding: 10px;
         border-radius: 10px;
         margin: 10px;
         margin-top: 30px;
         margin-left: 30px;
-        width: 420px; /* Oder eine andere gewünschte Breite */
+        margin-left: 30px;
+        width: 720px; /* Oder eine andere gewünschte Breite */
         height: 300px;
         display: flex;
         justify-content: center;
         align-items: center;
-        object-fit: contain;
+        object-fit: cover;
         overflow: hidden; /* Verhindert, dass das Bild zu groß wird */
         border-radius: 10px; /* Falls gewünscht */}
 
@@ -258,7 +258,8 @@ include 'P.RideReadyHeader.php';
             m.Drive,  
             m.Doors,  
             m.Seats,
-            c.type_id
+            c.type_id,
+            c.car_id
 
         FROM Car c
         JOIN model m ON c.type_id = m.type_id
@@ -299,6 +300,8 @@ include 'P.RideReadyHeader.php';
                 $Doors = $auto['Doors'];
                 $Seats = $auto['Seats'];
                 $Type_ID = $auto['Type_ID']; // c.type_id
+                $car_id = $auto['car_id'];
+                echo $car_id;
 
             }
      
@@ -307,6 +310,7 @@ include 'P.RideReadyHeader.php';
                 echo "ID: $ID, City: $city, Pickupdate: $pickupdate, Returndate: $returndate";
 
             }
+        
     ?>
 
     
@@ -368,7 +372,12 @@ include 'P.RideReadyHeader.php';
             </div>
             <div class="feature">
                 <img src="icon5.png" alt="Klima">
-                <p><?php echo"$Air_Condition"?></p>
+                <?php if($Air_Condition==1){
+                    echo"Enthält Klimaanlage"; } 
+                    else{
+                    echo"Keine Klimaanlage";
+                } ?>
+
             </div>
             <div class="feature">
                 <img src="icon6.png" alt="GPS">
