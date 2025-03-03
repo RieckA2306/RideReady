@@ -1,5 +1,5 @@
 <?php
-// Creation for the select dropdown menus
+// Creats the select dropdown menus for the Filters on the Productoverview
 function renderFilterGroup($label, $name, $options, $selectedValue) {
     echo '<div class="filter-group">';
     echo "<label for='$name'>$label:</label>";
@@ -15,7 +15,7 @@ function renderFilterGroup($label, $name, $options, $selectedValue) {
     echo "</div>";
 }
 
-// Functions.php
+// Adds to the SQL-Query for the Filters on the Productoverview
 function sqlfilters($label2, $name2, $listname, &$sql, &$params) {
     if (!empty($label2)) {
         $sql .= " AND $listname = :$name2";
