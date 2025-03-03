@@ -1,5 +1,9 @@
 <?php
 
+    global $login; 
+    if (isset($_SESSION["eingeloggt"])) {
+
+  
 include ('dbConfigJosef.php'); // Stelle sicher, dass $pdo dort richtig definiert ist
 
 session_start(); // Falls noch nicht gestartet
@@ -32,5 +36,11 @@ try {
 } catch (PDOException $e) {
     die("Datenbankfehler: " . $e->getMessage());
 }
+
+} else {
+    header("loginsite.php") ;
+}
+
+
 
 ?>
