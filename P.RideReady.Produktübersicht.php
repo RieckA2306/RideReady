@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
-    <title>BMW Karten</title>
+    <title>Produktübersicht</title>
     <style>
         /* Body nur als generelle Hintergrundgestaltung */
         .produktübersicht-body {

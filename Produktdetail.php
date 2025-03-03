@@ -40,20 +40,26 @@ error_reporting(E_ALL);?>
         margin-top: 10px;
         width: 800px;
         height: 450px;
+        
         } 
         .picture{
         display: flex;
         flex-direction: column;
         align-items: center; 
-        background-image: url(bmw.png);
-        background-size: 100%;
+
         padding: 10px;
         border-radius: 10px;
         margin: 10px;
         margin-top: 30px;
         margin-left: 30px;
-        width: 420px;
-        height: 300px;}
+        width: 420px; /* Oder eine andere gewünschte Breite */
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        object-fit: contain;
+        overflow: hidden; /* Verhindert, dass das Bild zu groß wird */
+        border-radius: 10px; /* Falls gewünscht */}
 
         .price{
         flex-direction: column;
@@ -301,7 +307,6 @@ include 'P.RideReadyHeader.php';
                 echo "ID: $ID, City: $city, Pickupdate: $pickupdate, Returndate: $returndate";
 
             }
-
     ?>
 
     
@@ -317,7 +322,7 @@ include 'P.RideReadyHeader.php';
 
     <div>     
         <div class="pictureandprice">
-            <div class="picture"></div>
+            <div class="picture"><img src="Images/Cars/<?php echo htmlspecialchars($carImage); ?>" alt="Car Image"></div>
             <div class="price">  <h2><?php echo"$carprice"." €"?> pro Tag</h2><p> Gesamtpreis </p>  </div>
         </div>
         <button type="button" class="collapsible">Buchungdetails</button>
