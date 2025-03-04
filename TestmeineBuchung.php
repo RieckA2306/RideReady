@@ -102,7 +102,7 @@
 </head>
 <body class="produktübersicht-body">
 
-    <?php include 'dbConfigsalwa.php'; ?>
+    
     <?php include 'P.RideReadyHeader.php'; ?>
     
 
@@ -131,4 +131,6 @@
        ?>
     </div>
 
+
+    <?php include '"RideReadyFooter.php'; ?>
 
