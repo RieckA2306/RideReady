@@ -359,15 +359,15 @@ include 'P.RideReadyHeader.php';
         </div>  
         <div class="detailt">
             <div class="feature">
-                <img src="icon1.png" alt="Sitzplätze">
+                <img src="/images/Icons/Seats.jpg">
                 <p> <?php echo"$Seats"." Sitzplätze"?></p>
             </div>
             <div class="feature">
-                <img src="icon2.png" alt="Türen">
+                <img src="/images/Icons/Doors.jpg">
                 <p><?php echo"$Doors"." Türen"?></p>
             </div>
             <div class="feature">
-                <img src="icon3.png" alt="Automatik">
+                <img src="/images/Icons/Gear.jpg">
                 <?php if($Gear=="manually"){
                     echo"Manuelle Schaltung"; } 
                     else{
@@ -375,7 +375,7 @@ include 'P.RideReadyHeader.php';
                 } ?>
             </div>
             <div class="feature">
-                <img src="icon4.png" alt="Benzin">
+                <img src="/images/Icons/Fuel.jpg">
                 <?php if($Drive=="Combuster"){
                     echo"Verbrenner"; } 
                     else{
@@ -384,7 +384,7 @@ include 'P.RideReadyHeader.php';
                 
             </div>
             <div class="feature">
-                <img src="icon5.png" alt="Klima">
+                <img src="/images/Icons/AirConditioning.jpg">
                 <?php if($Air_Condition==1){
                     echo"Enthält Klimaanlage"; } 
                     else{
@@ -393,7 +393,7 @@ include 'P.RideReadyHeader.php';
 
             </div>
             <div class="feature">
-                <img src="icon6.png" alt="GPS">
+                <img src="/images/Icons/GPS.jpg">
                 <?php if($GPS==1){
                     echo"Enthält GPS"; } 
                     else{
@@ -401,15 +401,15 @@ include 'P.RideReadyHeader.php';
                 } ?>
             </div>
             <div class="feature">
-                <img src="icon7.png" alt="Mindestalter">
+                <img src="/images/Icons/Age.jpg">
                 <p><?php echo"Mindestalter: "."$Min_Age"?></p>
             </div>
             <div class="feature">
-                <img src="icon8.png" alt="Koffer">
+                <img src="/images/Icons/suitcase.jpg">
                 <p><?php echo"$Trunk"." Koffer"?></p>
             </div>
             <div class="feature">
-                <img src="icon9.png" alt="Hamburg">
+                <img src="/images/Icons/Location.jpg">
                 <p><?php echo"$city"?></p>
             </div>
 
