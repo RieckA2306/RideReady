@@ -1,6 +1,6 @@
 <?php
 session_start();
-// $_SESSION['bookingstart']=1;
+
 $car_id=$_SERVER['QUERY_STRING'];
 $_SESSION['bookingcar_id']=$car_id;
 
@@ -13,3 +13,4 @@ if (isset($_SESSION["eingeloggt"])) {
     header('location:loginsite.php');
     exit();
 }
+?>
