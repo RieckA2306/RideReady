@@ -32,11 +32,11 @@
         }
         
         /* Balkem für die Buchung, in denen dann die einzelnen Divs sind*/
-        .card {
+        .card-MB {
             width: 100% !important;
             max-height: 50px;
             height: 50px;
-            background-color: yellow !important; /* Somit nicht sichtbar*/
+            background-color: yellow;
             border-radius: 10px;
             margin-top: 15px;
             display: flex;
@@ -106,7 +106,7 @@
 
     <!-- Wrapper für den Hauptinhalt -->
     <div class="produktübersicht-content">
-        <div class="card">
+        <div class="card-MB">
             <div class="bookingnumber-div"><p class="textforbookingnumber">Buchungsnummer</p>
             </div>
             <div class="pickup-retunr-dates-div "><p class="textforbookingnumber">Abholdatum</p>
