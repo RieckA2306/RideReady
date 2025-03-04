@@ -1,4 +1,3 @@
-
 <?php
 // Verbindung zur Datenbank mit PDO herstellen
 include "dbConfigJosef.php";
@@ -10,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // SQL-Statement vorbereiten
-        $stmt = $pdo->prepare("SELECT Password FROM user_account WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT account_id, Password FROM user_account WHERE username = :username");
         
         // Parameter binden
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
@@ -19,15 +18,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         // Ergebnis abrufen
-        $dbpassword = $stmt->fetch(PDO::FETCH_ASSOC);
+        $dbResult = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($dbpassword) {
+        if ($dbResult) {
             // Passwort überprüfen
-            if (password_verify($passwort, $dbpassword["Password"])) {
-                $_SESSION["eingeloggt"] = true;
-                $_SESSION["username"] = $username;
-                header("Location: dashboard.php");
+            if (password_verify($passwort, $dbResult["Password"])) {
+                // Session-Variablen setzen
+                $_SESSION["eingeloggt"]   = true;
+                $_SESSION["username"]     = $username;
+                $_SESSION["account_id"]   = $dbResult["account_id"];  // Hier wird die account_id in die Session geschrieben
+
+                // Weiterleitung
+                if(isset($_SESSION['bookingcar_id'])){
+                    
+
+                    header("Location: booking.php");
+                    exit();
+                    
+                }else{
+                header("Location: P.RideReady.Landingpage.php");
                 exit();
+                 }
             } else {
                 echo "Falsches Passwort!";
             }
@@ -39,4 +50,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-

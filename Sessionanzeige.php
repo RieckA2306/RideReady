@@ -29,8 +29,10 @@
         $returndate = $_SESSION['returndate'] ?? 'Kein Rückgabedatum gesetzt';
         $username = $_SESSION['benutzername'] ?? 'Kein Nutzernamen gesetzt';
         $count=$_SESSION['cardcount'] ?? 'Kein count gesetzt';
-   
-   
+        $car_id=$_SESSION['bookingcar_id'] ?? 'kein auot ims staging';
+        $account_id=$_SESSION["account_id"] ??'     ';
+        $bookingstart=$_SESSION['bookingstart']??' ';
+
 
         // HTML-Ausgabe im gleichen Stil
         echo '<div class="bg-white p-4 shadow-md rounded-md">';
@@ -48,6 +50,9 @@
         echo '<p><strong>Klima:</strong> ' . ($climate ? 'true' : 'false') . '</p>';
         echo '<p><strong>GPS:</strong> ' . ($gps ? 'true' : 'false') . '</p>';
         echo '<p><strong>Typ:</strong> ' . htmlspecialchars($count) . '</p>';
+        echo '<p><booking>Typ:</strong> ' . htmlspecialchars($car_id) . '</p>';
+        echo '<p><strong>account:</strong> ' . htmlspecialchars($account_id) . '</p>';
+        echo '<p><strong>bookingstart:</strong> ' . htmlspecialchars($bookingstart) . '</p>';
         echo '</div>';
         ?>
 

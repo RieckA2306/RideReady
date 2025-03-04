@@ -126,7 +126,7 @@ error_reporting(E_ALL);?>
             width: 50px;
             height: 50px;
             background-color: white;
-            border-radius: 50%;
+            border-radius: 10%;
             padding: 10px;
         }
         .feature p {
@@ -302,6 +302,8 @@ include 'P.RideReadyHeader.php';
                 $Type_ID = $auto['Type_ID']; // c.type_id
                 $car_id = $auto['car_id'];
                 echo $car_id;
+                $_SESSION['bookingcar_id']=$car_id;
+                echo " ";
 
             }
      
@@ -310,7 +312,9 @@ include 'P.RideReadyHeader.php';
                 echo "ID: $ID, City: $city, Pickupdate: $pickupdate, Returndate: $returndate";
 
             }
-        
+    
+     
+
     ?>
 
     
@@ -348,22 +352,22 @@ include 'P.RideReadyHeader.php';
         <div class="CarName">
             <h1>
                 <?php
-                echo"$carVendor "."$carname";
+                echo"$carVendor "."$carname "."$nameExtension";
                 ?>
 
             </h1>
         </div>  
         <div class="detailt">
             <div class="feature">
-                <img src="icon1.png" alt="Sitzplätze">
+                <img src="Images\Icons\Seats.jpg">
                 <p> <?php echo"$Seats"." Sitzplätze"?></p>
             </div>
             <div class="feature">
-                <img src="icon2.png" alt="Türen">
+                <img src="images/Icons/Doors.jpg">
                 <p><?php echo"$Doors"." Türen"?></p>
             </div>
             <div class="feature">
-                <img src="icon3.png" alt="Automatik">
+                <img src="images/Icons/Gear.jpg">
                 <?php if($Gear=="manually"){
                     echo"Manuelle Schaltung"; } 
                     else{
@@ -371,7 +375,7 @@ include 'P.RideReadyHeader.php';
                 } ?>
             </div>
             <div class="feature">
-                <img src="icon4.png" alt="Benzin">
+                <img src="images/Icons/Fuel.jpg">
                 <?php if($Drive=="Combuster"){
                     echo"Verbrenner"; } 
                     else{
@@ -380,7 +384,7 @@ include 'P.RideReadyHeader.php';
                 
             </div>
             <div class="feature">
-                <img src="icon5.png" alt="Klima">
+                <img src="images/Icons/AirConditioning.jpg">
                 <?php if($Air_Condition==1){
                     echo"Enthält Klimaanlage"; } 
                     else{
@@ -389,7 +393,7 @@ include 'P.RideReadyHeader.php';
 
             </div>
             <div class="feature">
-                <img src="icon6.png" alt="GPS">
+                <img src="images/Icons/GPS.jpg">
                 <?php if($GPS==1){
                     echo"Enthält GPS"; } 
                     else{
@@ -397,15 +401,15 @@ include 'P.RideReadyHeader.php';
                 } ?>
             </div>
             <div class="feature">
-                <img src="icon7.png" alt="Mindestalter">
+                <img src="images/Icons/Age.jpg">
                 <p><?php echo"Mindestalter: "."$Min_Age"?></p>
             </div>
             <div class="feature">
-                <img src="icon8.png" alt="Koffer">
+                <img src="images/Icons/suitcase.jpg">
                 <p><?php echo"$Trunk"." Koffer"?></p>
             </div>
             <div class="feature">
-                <img src="icon9.png" alt="Hamburg">
+                <img src="images/Icons/Location.jpg">
                 <p><?php echo"$city"?></p>
             </div>
 
@@ -413,11 +417,23 @@ include 'P.RideReadyHeader.php';
         </div>
         <div class="booking">
             <div class="time">
-                <div class="timebox">  <h4>Start</h4> <p><?php echo"$pickupdate"?></p></div>
-                <div class="timebox">  <h4>Ende</h4> <p><?php echo"$returndate"?></p></div>
+                <?php 
+                    $date = "2025-03-05"; // Date from database
+                    $formattedDatePickup = DateTime::createFromFormat("Y-m-d", $pickupdate)->format("d.m.Y");
+                    $formattedDateReturn = DateTime::createFromFormat("Y-m-d", $returndate)->format("d.m.Y");
+                ?>
+
+                <div class="timebox">  <h4>Start</h4> <p><?php echo"$formattedDatePickup"?></p></div>
+                <div class="timebox">  <h4>Ende</h4> <p><?php echo"$formattedDateReturn"?></p></div>
 
             </div>
-            <button class="bookingbutton">Reservieren</button>
+     
+
+ 
+
+<button onclick="window.location.href='bookingstaging.php?<?= (int)$car_id ?>'" class="bookingbutton">
+    Reservieren
+</button>
     </div>
 </div> 
 
