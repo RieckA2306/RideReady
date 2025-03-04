@@ -352,7 +352,7 @@ include 'P.RideReadyHeader.php';
         <div class="CarName">
             <h1>
                 <?php
-                echo"$carVendor "."$carname";
+                echo"$carVendor "."$carname "."$nameExtension";
                 ?>
 
             </h1>
@@ -417,8 +417,14 @@ include 'P.RideReadyHeader.php';
         </div>
         <div class="booking">
             <div class="time">
-                <div class="timebox">  <h4>Start</h4> <p><?php echo"$pickupdate"?></p></div>
-                <div class="timebox">  <h4>Ende</h4> <p><?php echo"$returndate"?></p></div>
+                <?php 
+                    $date = "2025-03-05"; // Date from database
+                    $formattedDatePickup = DateTime::createFromFormat("Y-m-d", $pickupdate)->format("d.m.Y");
+                    $formattedDateReturn = DateTime::createFromFormat("Y-m-d", $returndate)->format("d.m.Y");
+                ?>
+
+                <div class="timebox">  <h4>Start</h4> <p><?php echo"$formattedDatePickup"?></p></div>
+                <div class="timebox">  <h4>Ende</h4> <p><?php echo"$formattedDateReturn"?></p></div>
 
             </div>
      
