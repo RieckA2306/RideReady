@@ -32,8 +32,8 @@ if (isset($_SESSION["eingeloggt"])) {
 
         // SQL ausführen
         if ($stmt->execute($params)) {
-            echo "Neue Verträge wurden erfolgreich hinzugefügt.";
-            
+            // echo "Neue Verträge wurden erfolgreich hinzugefügt.";
+            header('Location:TestmeineBuchung.php');
         } else {
             echo "Fehler beim Hinzufügen des Vertrags.";
         }
