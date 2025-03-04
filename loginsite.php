@@ -3,19 +3,28 @@
 <head>
     <title>Login</title>
     <style>
+    .login-body{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        background-color: #F0F0F0;
+        font-family: "Inter", serif;
+        margin: 0;
+    }
+    
     .login-container {
         background-color: white;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            width: 600px;
-            height: 300px;
-            text-align: right;
-            display: flex;  
-            flex-direction: column;
-            align-items: center;
-            color: black;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;            
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        width: 600px;
+        height: 300px;
+        text-align: right;
+        display: flex;  
+        flex-direction: column;
+        align-items: center;
+        color: black;
     }
  
     
@@ -37,7 +46,7 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        width: 100%; /* Ensure button takes full width */
+        width: 20%; /* Size!! */
         box-sizing: border-box; /* Include padding and border in element's total width */
     }
     .login-container button:hover {
@@ -54,9 +63,8 @@
     }
 </style>
 </head>
-<body>
+<body class="login-body">
 <?php include 'P.RideReadyHeader.php'; ?>
-    <h2>Login</h2>
     <form class="login-container" action="login.php" method="POST">
         <label>username:</label>
         <input type="text" name="username" required>
