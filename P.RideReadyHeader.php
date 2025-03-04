@@ -160,13 +160,14 @@ $returndate = $_SESSION['returndate'] ?? '';
             padding: 10px;
             background-color: white;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            top: 10%;
+            position: fixed; /* Statt absolute oder sticky */
+            top: 8%;
             right: 1%;
             display: none;
-            z-index: 1000;
+            z-index: 1000; /* Stellt sicher, dass es über dem Content bleibt */
             text-align: left;
         }
+
         .menu a {
             display: block;
             text-decoration: none;
