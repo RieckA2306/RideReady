@@ -35,7 +35,7 @@
         .card {
             width: 100%;
             height: 50px;
-            background-color: white; /* Somit nicht sichtbar*/
+            background-color: red; /* Somit nicht sichtbar*/
             border-radius: 10px;
             margin-top: 15px;
             display: flex;

@@ -150,6 +150,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             height: 3px;
             background-color: #999;
             margin: 4px auto;
+            position: sticky;
         }
         /* Container when the Button is clicked*/
         .menu {

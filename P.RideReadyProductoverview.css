@@ -1,7 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 /* Product Overview Start*/
-    /* Body nur als generelle Hintergrundgestaltung */
+    /* Product Overview Filter Start*/
+        /* Wrapper Filter*/
+        .filter-bar {
+            background-color: #f9f9f9;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1300px;
+            align-items: center;
+        }
+
+        /* each Filter */
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Buttons to set/reset Filters */
+        .filter-bar button {
+            background-color: #80BFFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .filter-bar button:hover {
+            background-color: #123472;
+        }
+
+        .filter-bar select, .filter-bar input, .filter-bar button {
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 150px;
+            text-align: center;
+        }
+
+        .form-wrapper {
+            display: contents;
+        }
+    /* Product Overview Filter End*/
+
+
     .productoverview-body {
         display: flex;
         flex-direction: column;
@@ -73,55 +122,6 @@
     .card p {
         margin: 2px 0;
     }
-
-    /* Product Overview Filter Start*/
-        /* Wrapper Filter*/
-        .filter-bar {
-            background-color: #f9f9f9;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            max-width: 1300px;
-            align-items: center;
-        }
-
-        /* each Filter */
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* Buttons to set/reset Filters */
-        .filter-bar button {
-            background-color: #80BFFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .filter-bar button:hover {
-            background-color: #123472;
-        }
-
-        .filter-bar select, .filter-bar input, .filter-bar button {
-            padding: 10px;
-            font-size: 14px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            width: 150px;
-            text-align: center;
-        }
-
-        .form-wrapper {
-            display: contents;
-        }
-    /* Product Overview Filter End*/
 
 /* Product Overview End*/
 
@@ -258,3 +258,165 @@
         text-align: left; /* Linksbündiger Text */
     }
 /* Static Pages End */
+
+/* Landing Page Start*/
+    .homepage-body{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        background-color: #F0F0F0;
+        font-family: "Inter", serif;
+        margin: 0;
+    }
+
+    /* ALL of the center alligned Titles! */
+    .landingpage-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #123472;
+        text-align: center;
+    }
+
+    /* Div to allign the Teaser Section */
+    .teaser-wrapper {
+        background-color: #F0F0F0;
+        padding: 20px;
+        text-align: center;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /* Div for the MP4 Vid */
+    .teaser-titlepicture-image {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    /* Div for each Car in the Teaser Section */
+    .teaser-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    /* Div for the IMG*/
+    .teaser-vehicle-image {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    /* Div to allign the Recommendation Section */
+    .recommendations-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        background-color: #F0F0F0;
+        padding: 20px;
+        text-align: center;
+        max-height: 340px;
+    }
+
+    /* Div for each car */
+    .recommendation-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 500px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Div for the IMG in the Card */
+    .recommendation-image {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Div for the Text in the Card */
+    .recommendation-text {
+        background-color: #D6E4FF;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: -5px; /* Workaround for gap between IMG and Text*/
+    }
+
+    /* Div around the whole Feedback Section */
+    .feedback-container {
+        margin: 20px auto;
+        background: #F0F0F0;
+        width: 95%;
+    }
+    /* Overall Rating */
+    .feedback-rating {
+        color: gold;
+        font-size: 40px;
+        margin-top: -14px;
+        text-align: center;
+        
+    }
+
+    /* Text in the Feedback card*/
+    .feedback-overall-reviews {
+        margin-top: -30px; 
+        text-align: center !important;
+        color: #123472;           
+    }
+
+    /* Div to allign the 4 Feedback cards */
+    .feedback-reviews {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    /* Individual Feedback card */
+    .feedback-review {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        width: 20%;
+        margin: 10px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    /* Username Feedback giver */
+    .feedback-user {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+
+    }
+    /* User Icon with Initials*/
+    .feedback-user-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    /* individual Rating */
+    .feedback-star {
+        color: gold;
+        text-align: left;
+        margin-left: 50px;
+        margin-top: -10px;
+        
+    }
+    /* Text in the Feedback card*/
+    .feedback-text {
+        text-align: left;
+        margin-top: -5px;
+        color: #123472;          
+    }
+
+    /* Big Logo in the Feedback */
+    .feedback-logo {
+        text-align: center;
+    }
+/* Landing Page End*/
