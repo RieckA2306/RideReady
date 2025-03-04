@@ -32,10 +32,11 @@
         }
         
         /* Balkem für die Buchung, in denen dann die einzelnen Divs sind*/
-        .card {
+        .card-MB {
             width: 100%;
+            max-height: 50px;
             height: 50px;
-            background-color: white; /* Somit nicht sichtbar*/
+            background-color: white;
             border-radius: 10px;
             margin-top: 15px;
             display: flex;
@@ -43,7 +44,7 @@
         /* Obere Divs Start*/
         /* Klasse für die einzelnen Felder (Buchungsnummer) */
         .bookingnumber-div {
-            width: 13%;
+            width: 14%;
             height: 50px;
             background-color: #b3b3b3;
             border-radius: 10px;
@@ -57,7 +58,7 @@
 
         /* Klasse für die einzelnen Felder (Abholdatum) */
         .pickup-retunr-dates-div {
-            width: 13%;
+            width: 14%;
             height: 50px;
             background-color: #b3b3b3;
             border-radius: 10px;
@@ -67,11 +68,11 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            margin-left: 10px; /* Abstand zum nächsten Feld */
+            margin-left: 20px; /* Abstand zum nächsten Feld */
         }
 
         .booked-vehicle-div {
-            width: 35%;
+            width: 39%;
             height: 50px;
             background-color: #b3b3b3;
             border-radius: 10px;
@@ -80,11 +81,11 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            margin-left: 10px; /* Abstand zum nächsten Feld */
+            margin-left: 20px; /* Abstand zum nächsten Feld */
         }
 
         .booked-on-div {
-            width: 13%;
+            width: 14%;
             height: 50px;
             background-color: #b3b3b3;
             border-radius: 10px;
@@ -94,7 +95,7 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            margin-left: 10px; /* Abstand zum nächsten Feld */
+            margin-left: 20px; /* Abstand zum nächsten Feld */
         }
         /* Obere Divs Ende */
         
@@ -105,7 +106,7 @@
 
     <!-- Wrapper für den Hauptinhalt -->
     <div class="produktübersicht-content">
-        <div class="card">
+        <div class="card-MB">
             <div class="bookingnumber-div"><p class="textforbookingnumber">Buchungsnummer</p>
             </div>
             <div class="pickup-retunr-dates-div "><p class="textforbookingnumber">Abholdatum</p>
