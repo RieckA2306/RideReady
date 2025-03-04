@@ -21,7 +21,10 @@
             <p style="font-size: 20px;">
                 <?php echo htmlspecialchars($_SESSION['Name_Extension']); ?>
             </p>
-            <p style="padding:20px; text-align: right; font-size: 40px;">
+            <p style="font-size: 20px;">
+                <?php echo "<p>Verfügbar: $availableCount</p>"; ?>
+            </p>
+            <p style="padding: 15px; px; text-align: right; font-size: 40px;">
                 <?php echo htmlspecialchars($_SESSION['carprice']) . "€"; ?>
             </p>
         </div>

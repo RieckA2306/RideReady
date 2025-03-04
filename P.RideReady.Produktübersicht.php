@@ -38,8 +38,8 @@ $drive = $_SESSION['drive'] ?? '';
 $priceuntil = $_SESSION['price'] ?? '';
 $sorting = $_SESSION['sorting'] ?? '';
 
-// SQL-Query with Prepared Statements
-$sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id
+
+$sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id, COUNT(c.car_id) AS available_count
         FROM Car c
         JOIN model m ON c.type_id = m.type_id
         WHERE c.loc_name = :city
@@ -47,7 +47,9 @@ $sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Na
             SELECT car_id 
             FROM Contract 
             WHERE NOT (end_date < :pickupdate OR start_date > :returndate)
-        )";
+        )
+        GROUP BY m.Name, m.Price, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id";
+
 
 // Create array for parameters
 $params = [
@@ -94,12 +96,15 @@ if (!empty($sorting)) {
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 
+
 // Retrieve results
 $freieAutos = $stmt->fetchAll();
 ?>
+
     <div class="productoverview-content">
         <div class="productoverview-container">
             <?php
+            
              if (count($freieAutos) > 0) {
                 foreach ($freieAutos as $auto) {
                     $carname = $auto['Name'];
@@ -119,6 +124,8 @@ $freieAutos = $stmt->fetchAll();
 
                     $type_id = $auto['type_id'];
                     $_SESSION['type_id'] = $type_id;
+
+                    $availableCount = $auto['available_count'];
             
                     include 'teaser.php';   
                 }
