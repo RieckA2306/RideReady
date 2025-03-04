@@ -20,22 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(":password_hash", $password_hash, PDO::PARAM_STR);
     $stmt->execute();
 
-$_SESSION["eingeloggt"] = true;
-$_SESSION["username"] = $username;
-
-if(isset($_SESSION['bookingcar_id'])){
-                    
-
-    header("Location: booking.php");
+    header('Location:UserControl.php');
+    $_SESSION['username']=$username;
     exit();
-    
-}else{
-header("Location: Landingpage.php");
-exit();
- }
-// } catch (PDOException $e) {
-//     die("Fehler beim Einfügen in die Datenbank: " . $e->getMessage());
-// }
 }
 
 ?>

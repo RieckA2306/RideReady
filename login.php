@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // SQL-Statement vorbereiten
-        $stmt = $pdo->prepare("SELECT account_id, Password FROM user_account WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT Account_ID, Password FROM user_account WHERE username = :username");
         
         // Parameter binden
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
@@ -23,22 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($dbResult) {
             // Passwort überprüfen
             if (password_verify($passwort, $dbResult["Password"])) {
-                // Session-Variablen setzen
-                $_SESSION["eingeloggt"]   = true;
-                $_SESSION["username"]     = $username;
-                $_SESSION["account_id"]   = $dbResult["account_id"];  // Hier wird die account_id in die Session geschrieben
-
-                // Weiterleitung
-                if(isset($_SESSION['bookingcar_id'])){
-                    
-
-                    header("Location: booking.php");
-                    exit();
-                    
-                }else{
-                header("Location: P.RideReady.Landingpage.php");
-                exit();
-                 }
+              header('Location:UserControl.php');
+              $_SESSION['username']=$username;
+              exit();
             } else {
                 echo "Falsches Passwort!";
             }

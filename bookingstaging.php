@@ -13,4 +13,5 @@ if (isset($_SESSION["eingeloggt"])) {
     header('location:loginsite.php');
     exit();
 }
+
 ?>
