@@ -24,9 +24,11 @@
             <p style="font-size: 20px;">
                 <?php echo "<p>Verfügbar: $availableCount</p>"; ?>
             </p>
+
             <p style="padding: 15px; text-align: right; font-size: 40px;">
-                <?php echo htmlspecialchars($_SESSION['carprice']) . "€"; ?>
+                <?php echo number_format($_SESSION['carprice'], 2, ',', '.') . "€"; ?>
             </p>
+
         </div>
     </div> 
 </a>

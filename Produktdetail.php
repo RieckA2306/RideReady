@@ -331,7 +331,7 @@ include 'P.RideReadyHeader.php';
     <div>     
         <div class="pictureandprice">
             <div class="picture"><img src="Images/Cars/<?php echo htmlspecialchars($carImage); ?>" alt="Car Image"></div>
-            <div class="price">  <h2><?php echo"$carprice"." €"?> pro Tag</h2><p> Gesamtpreis </p>  </div>
+            <div class="price">  <h2><?php echo number_format($carprice, 2, ',', '.') . "€"; ?> pro Tag</h2><p> Gesamtpreis </p>  </div>
         </div>
         <button type="button" class="collapsible">Buchungdetails</button>
         <div class="content">
