@@ -1,6 +1,6 @@
 <html>
 <body>
-    <div class="card">
+    <div class="card-MB">
         <div class="bookingnumber-div" style="background-color: #123472"><p class="textforbookingnumber">1</p>
         </div>
         <div class="pickup-retunr-dates-div" style="background-color: #123472"><p class="textforbookingnumber">12.04.2025</p>

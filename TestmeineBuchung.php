@@ -32,11 +32,10 @@
         }
         
         /* Balkem für die Buchung, in denen dann die einzelnen Divs sind*/
-        .card-MB {
+        .card {
             width: 100%;
-            max-height: 50px;
             height: 50px;
-            background-color: white;
+            background-color: white; /* Somit nicht sichtbar*/
             border-radius: 10px;
             margin-top: 15px;
             display: flex;
@@ -44,7 +43,7 @@
         /* Obere Divs Start*/
         /* Klasse für die einzelnen Felder (Buchungsnummer) */
         .bookingnumber-div {
-            width: 14%;
+            width: 13%;
             height: 50px;
             background-color: #b3b3b3;
             border-radius: 10px;
@@ -58,7 +57,7 @@
 
         /* Klasse für die einzelnen Felder (Abholdatum) */
         .pickup-retunr-dates-div {
-            width: 14%;
+            width: 13%;
             height: 50px;
             background-color: #b3b3b3;
             border-radius: 10px;
@@ -68,11 +67,11 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            margin-left: 20px; /* Abstand zum nächsten Feld */
+            margin-left: 10px; /* Abstand zum nächsten Feld */
         }
 
         .booked-vehicle-div {
-            width: 39%;
+            width: 35%;
             height: 50px;
             background-color: #b3b3b3;
             border-radius: 10px;
@@ -81,11 +80,11 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            margin-left: 20px; /* Abstand zum nächsten Feld */
+            margin-left: 10px; /* Abstand zum nächsten Feld */
         }
 
         .booked-on-div {
-            width: 14%;
+            width: 13%;
             height: 50px;
             background-color: #b3b3b3;
             border-radius: 10px;
@@ -95,18 +94,21 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            margin-left: 20px; /* Abstand zum nächsten Feld */
+            margin-left: 10px; /* Abstand zum nächsten Feld */
         }
         /* Obere Divs Ende */
         
     </style>
 </head>
 <body class="produktübersicht-body">
+
+    
     <?php include 'P.RideReadyHeader.php'; ?>
+    
 
     <!-- Wrapper für den Hauptinhalt -->
     <div class="produktübersicht-content">
-        <div class="card-MB">
+        <div class="card">
             <div class="bookingnumber-div"><p class="textforbookingnumber">Buchungsnummer</p>
             </div>
             <div class="pickup-retunr-dates-div "><p class="textforbookingnumber">Abholdatum</p>
@@ -123,12 +125,12 @@
             $cardCount = 5; 
 
             for ($i = 0; $i < $cardCount; $i++) {
-                include 'P.MeineBuchungVerlinkung.php';
+                include 'P.MeineBuchungVerlinkungSalwa.php';
                 global $x;
             }         
        ?>
     </div>
 
-    <?php include 'P.RideReadyFooter.php'; ?>
-</body>
-</html>
+
+    <?php include '"RideReadyFooter.php'; ?>
+
