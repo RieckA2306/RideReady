@@ -33,10 +33,10 @@
         
         /* Balkem für die Buchung, in denen dann die einzelnen Divs sind*/
         .card-MB {
-            width: 100% !important;
+            width: 100%;
             max-height: 50px;
             height: 50px;
-            background-color: yellow;
+            background-color: white;
             border-radius: 10px;
             margin-top: 15px;
             display: flex;
