@@ -126,7 +126,7 @@ error_reporting(E_ALL);?>
             width: 50px;
             height: 50px;
             background-color: white;
-            border-radius: 50%;
+            border-radius: 10%;
             padding: 10px;
         }
         .feature p {
@@ -359,15 +359,15 @@ include 'P.RideReadyHeader.php';
         </div>  
         <div class="detailt">
             <div class="feature">
-                <img src="/images/Icons/Seats.jpg">
+                <img src="Images\Icons\Seats.jpg">
                 <p> <?php echo"$Seats"." Sitzplätze"?></p>
             </div>
             <div class="feature">
-                <img src="/images/Icons/Doors.jpg">
+                <img src="images/Icons/Doors.jpg">
                 <p><?php echo"$Doors"." Türen"?></p>
             </div>
             <div class="feature">
-                <img src="/images/Icons/Gear.jpg">
+                <img src="images/Icons/Gear.jpg">
                 <?php if($Gear=="manually"){
                     echo"Manuelle Schaltung"; } 
                     else{
@@ -375,7 +375,7 @@ include 'P.RideReadyHeader.php';
                 } ?>
             </div>
             <div class="feature">
-                <img src="/images/Icons/Fuel.jpg">
+                <img src="images/Icons/Fuel.jpg">
                 <?php if($Drive=="Combuster"){
                     echo"Verbrenner"; } 
                     else{
@@ -384,7 +384,7 @@ include 'P.RideReadyHeader.php';
                 
             </div>
             <div class="feature">
-                <img src="/images/Icons/AirConditioning.jpg">
+                <img src="images/Icons/AirConditioning.jpg">
                 <?php if($Air_Condition==1){
                     echo"Enthält Klimaanlage"; } 
                     else{
@@ -393,7 +393,7 @@ include 'P.RideReadyHeader.php';
 
             </div>
             <div class="feature">
-                <img src="/images/Icons/GPS.jpg">
+                <img src="images/Icons/GPS.jpg">
                 <?php if($GPS==1){
                     echo"Enthält GPS"; } 
                     else{
@@ -401,15 +401,15 @@ include 'P.RideReadyHeader.php';
                 } ?>
             </div>
             <div class="feature">
-                <img src="/images/Icons/Age.jpg">
+                <img src="images/Icons/Age.jpg">
                 <p><?php echo"Mindestalter: "."$Min_Age"?></p>
             </div>
             <div class="feature">
-                <img src="/images/Icons/suitcase.jpg">
+                <img src="images/Icons/suitcase.jpg">
                 <p><?php echo"$Trunk"." Koffer"?></p>
             </div>
             <div class="feature">
-                <img src="/images/Icons/Location.jpg">
+                <img src="images/Icons/Location.jpg">
                 <p><?php echo"$city"?></p>
             </div>
 
