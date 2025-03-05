@@ -125,7 +125,7 @@
             $cardCount = 5; 
 
             for ($i = 0; $i < $cardCount; $i++) {
-                include 'P.MeineBuchungVerlinkungSalwa.php';
+                include 'P.MeineBuchungVerlinkung.php';
                 global $x;
             }         
        ?>

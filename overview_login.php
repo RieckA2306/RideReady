@@ -15,7 +15,7 @@
 <div class="menu" id="menu">
 <div class="menu" id="menu">AD</div>
     <h2><?php  echo "Willkommen "."$username"?></h2>
-    <a href="P.RideReady.MeineBuchungen.php" >Meine Buchungen</a>
+    <a href="P.MeineBuchung.php" >Meine Buchungen</a>
     <a href="Sessionanzeige.php">Sessionanzeigen</a>
     <a href="P.RideReady.ÜberUns.php">Über Uns</a>
     <a href="P.RideReady.Cookierichtlinien.php">Cookierichtlinien</a>

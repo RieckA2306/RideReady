@@ -1,17 +1,42 @@
-<html>
-<body>
-    <div class="card-MB">
-        <div class="bookingnumber-div" style="background-color: #123472"><p class="textforbookingnumber">1</p>
-        </div>
-        <div class="pickup-retunr-dates-div" style="background-color: #123472"><p class="textforbookingnumber">12.04.2025</p>
-        </div>
-        <div class="pickup-retunr-dates-div" style="background-color: #123472"><p class="textforbookingnumber">23.04.2025</p>
-        </div>
-        <div class="booked-vehicle-div" style="background-color: #123472"><p class="textforbookingnumber">Mercedes E-Klasse Coupé</p>
-        </div>
-        <div class="booked-on-div" style="background-color: #123472"><p class="textforbookingnumber">06.03.2025 11:59</p>
-        </div>
-    </div>  
+<?php
+include 'dbConfigJosef.php'; // Stellt sicher, dass die $pdo-Verbindung vorhanden ist
 
-</body>
-</html>
+try {
+    // SQL-Abfrage vorbereiten und ausführen
+    $sql = "SELECT c.Contract_ID AS buchungsnummer, 
+                   c.Start_Date AS abholdatum, 
+                   c.End_Date AS rueckgabedatum, 
+                   m.Name AS fahrzeug, 
+                   c.Start_Date AS buchungsdatum 
+            FROM contract c
+            JOIN car ca ON c.Car_ID = ca.Car_ID
+            JOIN model m ON ca.Type_ID = m.Type_ID";
+    
+    $stmt = $pdo->prepare($sql);  // PDO-Statement vorbereiten
+    $stmt->execute();             // Statement ausführen
+    $buchungen = $stmt->fetchAll(PDO::FETCH_ASSOC); // Alle Ergebnisse als assoziatives Array abrufen
+
+    if ($buchungen) {
+        foreach ($buchungen as $row) {
+            // Ausgabe der Buchungsdaten
+            echo '<div class="card">';
+            echo '<div class="bookingnumber-div"><p>' . htmlspecialchars($row["buchungsnummer"]) . '</p></div>';
+            echo '<div class="pickup-retunr-dates-div"><p>' . formatDate($row["abholdatum"]) . '</p></div>';
+            echo '<div class="pickup-retunr-dates-div"><p>' . formatDate($row["rueckgabedatum"]) . '</p></div>';
+            echo '<div class="booked-vehicle-div"><p>' . htmlspecialchars($row["fahrzeug"]) . '</p></div>';
+            echo '<div class="booked-on-div"><p>' . formatDate($row["buchungsdatum"]) . '</p></div>';
+            echo '</div>';
+        }
+    } else {
+        echo "<p>Keine Buchungen gefunden :(</p>";
+    }
+} catch (PDOException $e) {
+    echo "<p>SQL Fehler: " . $e->getMessage() . "</p>";
+}
+
+// Funktion zum Formatieren des Datums (falls nötig)
+function formatDate($date) {
+    $timestamp = strtotime($date);
+    return date('d.m.Y', $timestamp); // Format: Tag.Monat.Jahr
+}
+?>
