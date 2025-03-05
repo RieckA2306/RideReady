@@ -450,13 +450,10 @@ include 'P.RideReadyHeader.php';
                 <div class="timebox">  <h4>Ende</h4> <p><?php echo"$formattedDateReturn"?></p></div>
 
             </div>
-     
-
- 
-
-<button onclick="window.location.href='bookingstaging.php?<?= (int)$car_id ?>'" class="bookingbutton">
-    Reservieren
-</button>
+            <button onclick="window.location.href='bookingstaging.php?<?= (int)$car_id ?>'" class="bookingbutton">
+            Reservieren
+            </button>
+        </div>
     </div>
 </div> 
 
