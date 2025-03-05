@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -10,7 +12,7 @@ error_reporting(E_ALL);?>
 <meta charset="UTF-8">
 <title>Document</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="P.RideReady.css">
+<link rel="stylesheet" href="P.RideReadyProductoverview.css">
 <style>
         .homepage-body{
             display: flex;
@@ -320,9 +322,13 @@ error_reporting(E_ALL);?>
             }
         
             } else {
-                echo "<p>Keine freien Autos mit angegebenen Parametern für den angegebenen Zeitraum.</p>";
-                echo "ID: $ID, City: $city, Pickupdate: $pickupdate, Returndate: $returndate";
+                header('Location:P.RideReady.Produktübersicht.php');
+                
             }
+            
+            
+            ob_end_flush();
+
     ?>
 
 <div class="container">
