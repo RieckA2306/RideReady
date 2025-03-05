@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Über uns – RideReady</title>
-    <link rel="stylesheet" href="P.RideReady.css">
+   <link rel="stylesheet" href="P.RideReadyProductoverview.css">
 </head>
 
 <body class="static-page-body">
