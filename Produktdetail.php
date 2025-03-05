@@ -179,7 +179,7 @@ error_reporting(E_ALL);?>
             border-radius: 10px;
             margin: 10px;
             margin-top: 3px;
-            width: 800px;
+            width: 585px;
             height:auto;
         }
 
