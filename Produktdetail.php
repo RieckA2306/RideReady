@@ -14,72 +14,77 @@ error_reporting(E_ALL);?>
     <link rel="stylesheet" href="P.RideReady.css">
     <style>
         .homepage-body{
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        background-color: #F0F0F0;
-        font-family: "Inter", serif;
-        margin: 0;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            background-color: #F0F0F0;
+            font-family: "Inter", serif;
+            margin: 0;
         }
         
         .container {
-        background-color: white;
-        margin: auto;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        width: 1300px;
-        height: auto;
-        text-align: right;
-        display: flex;  
-        justify-content: space-between;
+            background-color: white;
+            margin: auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 1100px;
+            height: auto;
+            text-align: right;
+            display: flex;  
+            justify-content: space-between;
         }
 
-        .pictureandprice {
-        display: grid;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #002b5e;
-        color: white;
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-        margin-top: 10px;
-        width: 800px;
-        height: 450px; 
+        .pictureandprice-wrapper {
+            display: grid;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #002b5e;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            margin-top: 10px;
+            width: 600px;
+            height: 450px; 
         } 
 
         .picture{
-        display: flex;
-        flex-direction: column;
-        align-items: center; 
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-        margin-top: 30px;
-        margin-left: 30px;
-        margin-left: 30px;
-        width: 720px; /* Oder eine andere gewünschte Breite */
-        height: 300px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        object-fit: cover;
-        overflow: hidden; /* Verhindert, dass das Bild zu groß wird */
-        border-radius: 10px; /* Falls gewünscht */
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            padding: 10px;
+            margin: 10px;
+            margin-top: 30px;
+            margin-left: 30px;
+            margin-left: 30px;
+            width: 500px; /* Oder eine andere gewünschte Breite */
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            object-fit: cover;
+            overflow: hidden; /* Verhindert, dass das Bild zu groß wird */
+        }
+
+        .picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px
         }
 
         .price  {
-        flex-direction: column;
-        background-color: white;
-        color:#002b5e;
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-        margin-left: 30px;
-        width: 420px;
-        height: 50px;
-        text-align: left;
+            flex-direction: column;
+            background-color: white;
+            color:#002b5e;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            margin-left: 30px;
+            width: 420px;
+            height: 50px;
+            text-align: left;
         }
 
         .price h2 {
@@ -94,49 +99,49 @@ error_reporting(E_ALL);?>
         
         
         .detail {
-        display: grid;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #002b5e;
-        color: white;
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-        width: 420px;
-        height: 450px;
+            display: grid;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #002b5e;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            width: 420px;
+            height: 450px;
         }
         
         .CarName{
-        display: flex;
-        height: 50px;
-        width: 80%; 
-        overflow: hidden; 
-        text-align: start;
-        padding: 10px;
+            display: flex;
+            height: 50px;
+            width: 80%; 
+            overflow: hidden; 
+            text-align: start;
+            padding: 10px;
         }
 
         .detailt    {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        text-align: center;
-        width: 420px;
-        height: 350px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+            width: 420px;
+            height: 350px;
         } 
 
         .feature {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
         }
 
         .feature img {
-        width: 50px;
-        height: 50px;
-        background-color: white;
-        border-radius: 10%;
-        padding: 10px;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 10%;
+            padding: 10px;
         }
 
         .feature p {
@@ -145,91 +150,91 @@ error_reporting(E_ALL);?>
         }
 
         .collapsible {
-        display: flex;
-        background-color: #002b5e;
-        color: white;
-        cursor: pointer;
-        padding: 10px;
-        margin: 10px;
-        border-radius: 10px;
-        width: 820px;
-        height: 66px;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 15px;
+            display: flex;
+            background-color: #002b5e;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 620px;
+            height: 66px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
         }
         
         .active, .collapsible:hover {
-        background-color: #FFC107;
-        color:#002b5e;
+            background-color: #FFC107;
+            color:#002b5e;
         }
 
         .content {
-        display: none;
-        overflow: hidden;
-        background-color: #80BFFF;
-        color: #002b5e;
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-        margin-top: 3px;
-        width: 800px;
-        height:auto;
+            display: none;
+            overflow: hidden;
+            background-color: #80BFFF;
+            color: #002b5e;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            margin-top: 3px;
+            width: 800px;
+            height:auto;
         }
 
         .booking {
-        display: flex;
-        flex-direction: column;
-        align-items: center; 
-        justify-content: center; 
-        gap:20%;
-        background-color: #002b5e;
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-        width: 420px;
-        height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            gap:20%;
+            background-color: #002b5e;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            width: 420px;
+            height: 200px;
         }
 
         .time {
-        display: flex;
-        width: 80%; 
-        border: 1px solid #ccc; 
-        border-radius: 10px; 
-        overflow: hidden; 
-        text-align: center;
+            display: flex;
+            width: 80%; 
+            border: 1px solid #ccc; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            text-align: center;
         }
 
         .timebox {
-        flex: 1; 
-        padding: 10px;
-        background-color: white;
+            flex: 1; 
+            padding: 10px;
+            background-color: white;
         }
 
         .timebox:not(:last-child) {
-        border-right: 1px solid #ccc; 
+            border-right: 1px solid #ccc; 
         }
 
         .timebox h4 {
-        font-size: 12px;
-        font-weight: bold;
-        margin: 0;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 0;
         }
 
         .timebox p {
-        font-size: 14px;
-        margin: 5px 0 0;
+            font-size: 14px;
+            margin: 5px 0 0;
         }
 
         .bookingbutton {
-        background-color: #FFC107;
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-        margin-bottom: 20px;
-        width:70%;
-        height: 60px;
+            background-color: #FFC107;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            margin-bottom: 20px;
+            width:70%;
+            height: 60px;
         }
 
     </style>
@@ -323,7 +328,7 @@ error_reporting(E_ALL);?>
 
 <div class="container">
     <div>     
-        <div class="pictureandprice">
+        <div class="pictureandprice-wrapper">
             <div class="picture"><img src="Images/Cars/<?php echo htmlspecialchars($carImage); ?>" alt="Car Image"></div>
             <div class="price">  <h2><?php echo number_format($carprice, 2, ',', '.') . "€"; ?> pro Tag</h2><p> Gesamtpreis </p>  </div>
         </div>
@@ -342,17 +347,16 @@ error_reporting(E_ALL);?>
 
     </div>
     <div>
-        <div class="detail">
+    <div class="detail">
         <div class="CarName">
             <h1>
                 <?php
                 echo"$carVendor "."$carname "."$nameExtension";
                 ?>
-
             </h1>
-        </div>  
-        <div class="detailt">
-            <div class="feature">
+    </div>  
+    <div class="detailt">
+        <div class="feature">
                 <img src="Images\Icons\Seats.jpg">
                 <p> <?php echo"$Seats"." Sitzplätze"?></p>
             </div>
