@@ -8,14 +8,12 @@
 <body>
 
 <div class="menu" id="menu">
-        <a href="loginsite.php">Login</a>
-        <a href="Sessionanzeige.php">Sessionanzeigen</a>
-        <a href="signinsite.php">Registrieren</a>
-        <a href="#">AGB</a>
-        <a href="#">Impressum</a>
-        <a href="#">Standorte</a>
-        <a href="#">unsere Flotte</a>
-        <button>Login</button>
-       </div>   
+    <a href="Sessionanzeige.php">Sessionanzeigen</a>
+    <a href="signinsite.php">Registrieren</a>
+    <a href="P.RideReady.ÜberUns.php">Über Uns</a>
+    <a href="P.RideReady.Cookierichtlinien.php">Cookierichtlinien</a>
+    <a href="P.RideReady.AGBs.php">AGBs</a>
+    <a href="loginsite.php"><button>Login</button></a>
+</div>   
 </body>
 </html>

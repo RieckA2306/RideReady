@@ -13,22 +13,38 @@ error_reporting(E_ALL);?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="P.RideReady.css">
     <style>
-        
-
-        .container {
-            background-color: white;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            width: 1300px;
-            height: auto;
-            text-align: right;
-            display: flex;  
-             justify-content: space-between;
+        .homepage-body{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        background-color: #F0F0F0;
+        font-family: "Inter", serif;
+        margin: 0;
         }
-        .pictureandprice {
         
+        .container {
+        background-color: white;
+        margin: auto;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        width: 1300px;
+        height: auto;
+        text-align: right;
+        display: flex;  
+        justify-content: space-between;
+        }
+
+        .static-page-container-ÜberUns {
+        background-color: white;
+        
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        height: 550px; /* height difference */
+        }
+
+        .pictureandprice {
         display: grid;
         justify-content: space-between;
         align-items: center;
@@ -39,9 +55,9 @@ error_reporting(E_ALL);?>
         margin: 10px;
         margin-top: 10px;
         width: 800px;
-        height: 450px;
-        
+        height: 450px; 
         } 
+
         .picture{
         display: flex;
         flex-direction: column;
@@ -59,9 +75,10 @@ error_reporting(E_ALL);?>
         align-items: center;
         object-fit: cover;
         overflow: hidden; /* Verhindert, dass das Bild zu groß wird */
-        border-radius: 10px; /* Falls gewünscht */}
+        border-radius: 10px; /* Falls gewünscht */
+        }
 
-        .price{
+        .price  {
         flex-direction: column;
         background-color: white;
         color:#002b5e;
@@ -73,19 +90,19 @@ error_reporting(E_ALL);?>
         height: 50px;
         text-align: left;
         }
-        .price h2 {
-                font-weight: bold;
-                margin: 0;
-            }
 
-            .price p {
-                text-align: end;
-                margin: 5px ;
-            }
+        .price h2 {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .price p {
+            text-align: end;
+            margin: 5px ;
+        }
         
         
         .detail {
-        
         display: grid;
         justify-content: space-between;
         align-items: center;
@@ -96,17 +113,18 @@ error_reporting(E_ALL);?>
         margin: 10px;
         width: 420px;
         height: 450px;
-    }
-    .CarName{
+        }
+        
+        .CarName{
         display: flex;
         height: 50px;
         width: 80%; 
         overflow: hidden; 
         text-align: start;
         padding: 10px;
-        
         }
-        .detailt{
+
+        .detailt    {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
@@ -115,13 +133,13 @@ error_reporting(E_ALL);?>
         height: 350px;
         } 
 
-
         .feature {
             display: flex;
             flex-direction: column;
             align-items: center;
             color: white;
         }
+
         .feature img {
             width: 50px;
             height: 50px;
@@ -129,14 +147,14 @@ error_reporting(E_ALL);?>
             border-radius: 10%;
             padding: 10px;
         }
+
         .feature p {
             margin-top: 5px;
             font-size: 14px;
         }
 
-        
         .collapsible {
-            display: flex;
+        display: flex;
         background-color: #002b5e;
         color: white;
         cursor: pointer;
@@ -149,25 +167,26 @@ error_reporting(E_ALL);?>
         text-align: left;
         outline: none;
         font-size: 15px;
-}
-.active, .collapsible:hover {
-  background-color: #FFC107;
-  color:#002b5e;
-}
+        }
+        
+        .active, .collapsible:hover {
+        background-color: #FFC107;
+        color:#002b5e;
+        }
 
-.content {
- 
-    display: none;
-    overflow: hidden;
-    background-color: #80BFFF;
-    color: #002b5e;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 10px;
-    margin-top: 3px;
-    width: 800px;
-    height:auto;
-}
+        .content {
+        display: none;
+        overflow: hidden;
+        background-color: #80BFFF;
+        color: #002b5e;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+        margin-top: 3px;
+        width: 800px;
+        height:auto;
+        }
+
         .booking {
         display: flex;
         flex-direction: column;
@@ -181,6 +200,7 @@ error_reporting(E_ALL);?>
         width: 420px;
         height: 200px;
         }
+
         .time {
         display: flex;
         width: 80%; 
@@ -195,9 +215,11 @@ error_reporting(E_ALL);?>
         padding: 10px;
         background-color: white;
         }
+
         .timebox:not(:last-child) {
              border-right: 1px solid #ccc; 
         }
+
         .timebox h4 {
             font-size: 12px;
             font-weight: bold;
@@ -208,8 +230,9 @@ error_reporting(E_ALL);?>
             font-size: 14px;
             margin: 5px 0 0;
         }
+
         .bookingbutton {
-            background-color: #FFC107;
+        background-color: #FFC107;
         padding: 10px;
         border-radius: 10px;
         margin: 10px;
@@ -218,7 +241,7 @@ error_reporting(E_ALL);?>
         height: 60px;
         }
 
-        </style>
+    </style>
 
 
 <link rel="stylesheet" href="P.RideReady.css">
@@ -454,7 +477,9 @@ include 'P.RideReadyHeader.php';
         });
     });
 </script>
-
+<?php 
+include 'P.RideReadyFooter.php'; 
+?>
 </body>
 </html>
 
