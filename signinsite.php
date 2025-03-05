@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>signin</title>
     <style>
-        /* .static-page {
+        .signin-body{
             display: flex;
-    flex-direction: column;
-    margin: auto;
-    background-color: #F0F0F0;
-    font-family: "Inter", serif;
-    margin: 0;
-    }    */
+            flex-direction: column;
+            margin: auto;
+            background-color: #F0F0F0;
+            font-family: "Inter", serif;
+            margin: 0;
+        }
 
-            .form-container {
-                background-color: white;
+        .form-container {
+            background-color: white;
             margin: auto;
             padding: 20px;
             border-radius: 10px;
@@ -29,6 +29,7 @@
             align-items: center;
             color: black;
         }
+
         .form-container input {
             margin-bottom: 10px;
             padding: 8px;
@@ -38,6 +39,7 @@
             border-radius: 4px;
             width:100%;
         }
+
         .form-container button {
             padding: 10px;
             font-size: 16px;
@@ -47,15 +49,14 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
         .form-container button:hover {
             background-color: #0056b3;
         }
-    
-    
     </style>
 </head>
 
-<body class="static-page">
+<body class="signin-body">
     <?php include 'P.RideReadyHeader.php'; ?>
     <form class="form-container" action="signin.php" method="POST">
         <input type="text" id="vorname" name="firstname" placeholder="Vorname" required     >

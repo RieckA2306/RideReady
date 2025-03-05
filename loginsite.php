@@ -66,7 +66,7 @@
 <body class="login-body">
 <?php include 'P.RideReadyHeader.php'; ?>
     <form class="login-container" action="login.php" method="POST">
-        <label>username:</label>
+        <label>Username:</label>
         <input type="text" name="username" required>
         <br>
         <label>Passwort:</label>
