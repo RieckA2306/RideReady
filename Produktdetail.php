@@ -35,15 +35,6 @@ error_reporting(E_ALL);?>
         justify-content: space-between;
         }
 
-        .static-page-container-ÜberUns {
-        background-color: white;
-        
-        flex-direction: column;
-        display: flex;
-        justify-content: center;
-        height: 550px; /* height difference */
-        }
-
         .pictureandprice {
         display: grid;
         justify-content: space-between;
@@ -134,18 +125,18 @@ error_reporting(E_ALL);?>
         } 
 
         .feature {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
         }
 
         .feature img {
-            width: 50px;
-            height: 50px;
-            background-color: white;
-            border-radius: 10%;
-            padding: 10px;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 10%;
+        padding: 10px;
         }
 
         .feature p {
@@ -217,18 +208,18 @@ error_reporting(E_ALL);?>
         }
 
         .timebox:not(:last-child) {
-             border-right: 1px solid #ccc; 
+        border-right: 1px solid #ccc; 
         }
 
         .timebox h4 {
-            font-size: 12px;
-            font-weight: bold;
-            margin: 0;
+        font-size: 12px;
+        font-weight: bold;
+        margin: 0;
         }
 
         .timebox p {
-            font-size: 14px;
-            margin: 5px 0 0;
+        font-size: 14px;
+        margin: 5px 0 0;
         }
 
         .bookingbutton {
@@ -242,47 +233,42 @@ error_reporting(E_ALL);?>
         }
 
     </style>
-
-
-<link rel="stylesheet" href="P.RideReady.css">
 </head>
 
 <body class="homepage-body">
-    <header>
-<?php 
-include 'P.RideReadyHeader.php';
- ?>
-    </header>
     <?php 
-    $pickupdate= $_SESSION['pickupdate'] ?? '';
-    $returndate = $_SESSION['returndate'] ?? '';
-    $city= $_SESSION['city'] ?? '';
-    $ID=$_SERVER['QUERY_STRING'];
-    $ID=substr($ID,6);
-    $priceperday=14;
-  
- 
+    include 'P.RideReadyHeader.php';
+    ?>
+    <?php 
+        $pickupdate= $_SESSION['pickupdate'] ?? '';
+        $returndate = $_SESSION['returndate'] ?? '';
+        $city= $_SESSION['city'] ?? '';
+        $ID=$_SERVER['QUERY_STRING'];
+        $ID=substr($ID,6);
+        $priceperday=14;
+    
+    
 
-    include 'dbConfigJosef.php';
+        include 'dbConfigJosef.php';
 
-    $sql = "SELECT 
-            m.Type_ID,  
-            m.Name,  
-            m.Name_Extension,  
-            m.Vendor_Name,  
-            m.Price,  
-            m.Img_File_Name,  
-            m.Gear,  
-            m.Trunk,  
-            m.Air_Condition,  
-            m.GPS,  
-            m.Min_Age,  
-            m.Type,  
-            m.Drive,  
-            m.Doors,  
-            m.Seats,
-            c.type_id,
-            c.car_id
+        $sql = "SELECT 
+        m.Type_ID,  
+        m.Name,  
+        m.Name_Extension,  
+        m.Vendor_Name,  
+        m.Price,  
+        m.Img_File_Name,  
+        m.Gear,  
+        m.Trunk,  
+        m.Air_Condition,  
+        m.GPS,  
+        m.Min_Age,  
+        m.Type,  
+        m.Drive,  
+        m.Doors,  
+        m.Seats,
+        c.type_id,
+        c.car_id
 
         FROM Car c
         JOIN model m ON c.type_id = m.type_id
@@ -304,7 +290,7 @@ include 'P.RideReadyHeader.php';
         $car = $stmt->fetchAll();
 
         if (count($car) > 0) {
-      
+        
             foreach ($car as $auto) {
                 $carname = $auto['Name'];
                 $carprice = $auto['Price'];
@@ -312,7 +298,6 @@ include 'P.RideReadyHeader.php';
                 $carImage = $auto['Img_File_Name'];
                 $nameExtension = $auto['Name_Extension'];
                 $type_id = $auto['type_id'];   
-
                 $Gear = $auto['Gear'];
                 $Trunk = $auto['Trunk'];
                 $Air_Condition = $auto['Air_Condition'];
@@ -329,28 +314,14 @@ include 'P.RideReadyHeader.php';
                 echo " ";
 
             }
-     
+        
             } else {
                 echo "<p>Keine freien Autos mit angegebenen Parametern für den angegebenen Zeitraum.</p>";
                 echo "ID: $ID, City: $city, Pickupdate: $pickupdate, Returndate: $returndate";
-
             }
-    
-     
-
     ?>
 
-    
-
-
-
-
-
-
-
-
 <div class="container">
-
     <div>     
         <div class="pictureandprice">
             <div class="picture"><img src="Images/Cars/<?php echo htmlspecialchars($carImage); ?>" alt="Car Image"></div>
@@ -437,7 +408,7 @@ include 'P.RideReadyHeader.php';
             </div>
 
         </div>    
-        </div>
+    </div>
         <div class="booking">
             <div class="time">
                 <?php 
