@@ -28,7 +28,7 @@ error_reporting(E_ALL);?>
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            width: 1100px;
+            width: 1085px;
             height: auto;
             text-align: right;
             display: flex;  
@@ -45,7 +45,7 @@ error_reporting(E_ALL);?>
             border-radius: 10px;
             margin: 10px;
             margin-top: 10px;
-            width: 600px;
+            width: 585px;
             height: 450px; 
         } 
 
@@ -81,7 +81,7 @@ error_reporting(E_ALL);?>
             padding: 10px;
             border-radius: 10px;
             margin: 10px;
-            margin-left: 30px;
+            margin-left: 70px;
             width: 420px;
             height: 50px;
             text-align: left;
@@ -157,7 +157,7 @@ error_reporting(E_ALL);?>
             padding: 10px;
             margin: 10px;
             border-radius: 10px;
-            width: 620px;
+            width: 605px;
             height: 66px;
             border: none;
             text-align: left;
