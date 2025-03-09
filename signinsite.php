@@ -5,55 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>signin</title>
-    <style>
-        .signin-body{
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-            background-color: #F0F0F0;
-            font-family: "Inter", serif;
-            margin: 0;
-        }
+    <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
 
-        .form-container {
-            background-color: white;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            width: 600px;
-            height: 300px;
-            text-align: right;
-            display: flex;  
-            flex-direction: column;
-            align-items: center;
-            color: black;
-        }
-
-        .form-container input {
-            margin-bottom: 10px;
-            padding: 8px;
-            font-size: 16px;
-            background-color:  #D3D3D3;;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width:100%;
-        }
-
-        .form-container button {
-            padding: 10px;
-            font-size: 16px;
-            background-color: #80BFFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .form-container button:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 
 <body class="signin-body">
