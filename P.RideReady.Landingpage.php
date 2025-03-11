@@ -8,7 +8,7 @@
 </head>
 
 <body class="homepage-body">
-    <?php include 'P.RideReadyHeader.php'; ?>
+    <?php include 'P.RideReadyHeaderAdmin.php'; ?>
     <!-- Start Welcome Section -->
     <div class="teaser-wrapper">
         <h2 class="landingpage-title">⚜️Willkommen bei Ride Ready⚜️</h2>
