@@ -1,5 +1,5 @@
 <?php
-// ob_start();
+ob_start();
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -27,9 +27,12 @@ error_reporting(E_ALL);
         $city= $_SESSION['city'] ?? '';
         $ID=$_SERVER['QUERY_STRING'];
         $ID=substr($ID,6);
-        $priceperday=14;
-    
-    
+        $Numbererofcars=0;
+        
+
+
+      
+        
 
         include 'dbConfigJosef.php';
 
@@ -93,6 +96,7 @@ error_reporting(E_ALL);
                 $car_id = $auto['car_id'];
                 echo $car_id;
                 $_SESSION['bookingcar_id']=$car_id;
+                $Numbererofcars=$Numbererofcars+1;
                 echo " ";
 
             }
@@ -101,19 +105,33 @@ error_reporting(E_ALL);
                 header('Location:P.RideReady.Produktübersicht.php');
                 
             }
-            
-            
-            // ob_end_flush();
+          
+// convertion of the pickupdate and the returndate into an Intervall 
+// and calcalculation of the overallprice
+        
+            $istartDate = new DateTime($pickupdate);
+            $iendDate = new DateTime($returndate);
+            $dateDifference = $istartDate->diff($iendDate);
+            $dateDifference = (int) $dateDifference->days;
+            $overallprice=number_format($carprice*$dateDifference,2,',','.');
 
+// counting of the avaliable cars with that modle.
+ob_end_flush();
     ?>
 
 <div class="productdetailcontainer">
     <div>     
         <div class="pictureandprice-wrapper">
             <div class="picture"><img src="Images/Cars/<?php echo htmlspecialchars($carImage); ?>" alt="Car Image"></div>
-            <div class="price">  <h2><?php echo number_format($carprice, 2, ',', '.') . "€"; ?> pro Tag</h2><p> Gesamtpreis </p>  </div>
+            <div class="price">  <h2><?php echo number_format($carprice, 2, ',', '.') . "€"; ?> pro Tag</h2>
+            <p>
+                <?php echo("Dein Gesamtpreis für "."$dateDifference". " dein Zeitraum ist "."$overallprice"." €");?> 
+            </p> 
+         </div>
         </div>
-        <button type="button" class="collapsible">Buchungdetails</button>
+        <button type="button" class="collapsible">
+            <?php echo"Es sind nur noch  " ."$Numbererofcars"." Autos verfügbar. Klicke für mehr Information."?>
+        </button>
         <div class="content">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
