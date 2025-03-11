@@ -27,10 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               $_SESSION['username']=$username;
               exit();
             } else {
-                echo "Falsches Passwort!";
+                echo  ('<script>
+                alert("Falsches Passwort");
+                window.location.href = "loginsite.php";
+            </script>');
             }
         } else {
-            echo "Benutzer nicht gefunden!";
+            echo  ('<script>
+            alert("Benutzer nicht gefunden");
+            window.location.href = "loginsite.php";
+        </script>');
         }
     } catch (PDOException $e) {
         die("Fehler bei der Datenbankabfrage: " . $e->getMessage());

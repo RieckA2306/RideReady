@@ -103,8 +103,9 @@
 <body class="produktübersicht-body">
 
     
-    <?php include 'P.RideReadyHeader.php'; ?>
-    
+    <?php include 'P.RideReadyHeader.php';
+    ?>
+
 
     <!-- Wrapper für den Hauptinhalt -->
     <div class="produktübersicht-content">

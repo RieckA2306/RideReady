@@ -18,7 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userExists = $stmt->fetchColumn();
 
         if ($userExists > 0) {
-            echo "Fehler: Der Benutzername ist bereits vergeben!";
+           
+            echo  ('<script>
+            alert("Fehler: Der Benutzername ist bereits vergeben!");
+            window.location.href = "signinsite.php";
+             </script>');
         } else {
             // Benutzer registrieren
             $stmt = $pdo->prepare("INSERT INTO user_account (Lastname, Firstname, username, email_adress, Password) 

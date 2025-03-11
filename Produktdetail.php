@@ -113,9 +113,17 @@ error_reporting(E_ALL);
             $iendDate = new DateTime($returndate);
             $dateDifference = $istartDate->diff($iendDate);
             $dateDifference = (int) $dateDifference->days;
+            $dateDifference=$dateDifference+1;
             $overallprice=number_format($carprice*$dateDifference,2,',','.');
 
-// counting of the avaliable cars with that modle.
+// creating the content for the booking Button:
+    $bookingcontent="$dateDifference"." Tag(e) Reservieren";
+    if (isset($_SESSION["eingeloggt"])) {
+    //no content change
+    }else
+    {
+        $bookingcontent="Login und "." $bookingcontent";
+    }
 ob_end_flush();
     ?>
 
@@ -225,7 +233,7 @@ ob_end_flush();
 
             </div>
             <button onclick="window.location.href='bookingstaging.php?<?= (int)$car_id ?>'" class="bookingbutton">
-            Reservieren
+           <?php echo  $bookingcontent?>
             </button>
         </div>
     </div>
