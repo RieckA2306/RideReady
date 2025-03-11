@@ -42,3 +42,4 @@ try {
     die("Fehler bei der Datenbankabfrage: " . $e->getMessage());
 }
 ?>
+    

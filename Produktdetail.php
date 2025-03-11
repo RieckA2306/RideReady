@@ -1,5 +1,5 @@
 <?php
-ob_start();
+// ob_start();
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -103,7 +103,7 @@ error_reporting(E_ALL);
             }
             
             
-            ob_end_flush();
+            // ob_end_flush();
 
     ?>
 
