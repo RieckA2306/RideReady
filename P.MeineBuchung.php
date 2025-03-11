@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
+    <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
     <title>BMW Karten</title>
     <style>
         /* Body nur als generelle Hintergrundgestaltung */
@@ -45,7 +46,7 @@
         .bookingnumber-div {
             width: 13%;
             height: 50px;
-            background-color: #b3b3b3;
+            background-color:#123472;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -59,7 +60,7 @@
         .pickup-retunr-dates-div {
             width: 13%;
             height: 50px;
-            background-color: #b3b3b3;
+            background-color: #123472;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -73,7 +74,7 @@
         .booked-vehicle-div {
             width: 35%;
             height: 50px;
-            background-color: #b3b3b3;
+            background-color:#123472;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -86,7 +87,7 @@
         .booked-on-div {
             width: 13%;
             height: 50px;
-            background-color: #b3b3b3;
+            background-color: #123472;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -123,15 +124,13 @@
 
         </div>
         <?php
-            $cardCount = 5; 
 
-            for ($i = 0; $i < $cardCount; $i++) {
+
                 include 'P.MeineBuchungVerlinkung.php';
-                global $x;
-            }         
+            
+        
        ?>
     </div>
 
-
-    <?php include '"RideReadyFooter.php'; ?>
+    <?php include 'P.RideReadyFooter.php'; ?>
 
