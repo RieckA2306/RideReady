@@ -185,6 +185,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             font-weight: bold;
         }
 
+        /* This div is shown, when you have an Admin Acc*/
         .add-cars-admin {
             width: 10%;
             padding: 10px;
@@ -196,6 +197,12 @@ $returndate = $_SESSION['returndate'] ?? '';
             color: black;
         }
 
+        .add-cars-admin a{
+            text-decoration: none;
+            color: black;
+        }
+
+        /* This div is shown, when you have an Admin Acc*/
         .cancel-bookings-admin {
             width: 10%;
             padding: 10px;
@@ -206,6 +213,27 @@ $returndate = $_SESSION['returndate'] ?? '';
             cursor: pointer;
             font-weight: bold;
             color: black;
+        }
+
+        .cancel-bookings-admin a{
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Placeholder if you are not an Admin Acc*/
+        .add-cars-no-admin {
+            width: 10%;
+            padding: 10px;
+            background-color: #123472;
+            border: none;
+        }
+
+        /* Placeholder if you are not an Admin Acc*/
+        .cancel-bookings-no-admin {
+            width: 10%;
+            padding: 10px;
+            background-color: #123472;
+            border: none;
         }
 
 </style>
@@ -247,41 +275,30 @@ $returndate = $_SESSION['returndate'] ?? '';
                 <button type="submit" name="reset" value="header_reset">Filter zurücksetzen</button>
             </div>
         </form>
-
+        <!-- Check if you are an Admin -->
         <?php
-        // Verbindung zur Datenbank herstellen
-        include 'dbConfigJosef.php';
-
-        $adminPermission = false; // Default Value
-
-        if (isset($_SESSION['user_id'])) {
-            $userId = $_SESSION['user_id'];
-            
-            // Nachnamen aus der Datenbank abrufen
-            $stmt = $conn->prepare("SELECT Lastname FROM user_account WHERE Account_ID = ?");
-            $stmt->bind_param("i", $userId);
-            $stmt->execute();
-            $stmt->bind_result($lastname);
-            $stmt->fetch();
-            $stmt->close();
-        
-            // Überprüfen, ob der Benutzer "Rieck" heißt
-            if ($lastname === "Rieck") {
-                $adminPermission = true;
+            if (isset($_SESSION['username']) && $_SESSION['username'] === 'Admin') {
+                echo '
+                
+                <div class="add-cars-admin">
+                    <a href="add-cars.php">Autos hinzufügen</a>
+                </div>
+                
+                
+                <div class="cancel-bookings-admin">
+                    <a href="cancel-bookings.php">Buchungen Stornieren</a>
+                </div>
+                </a>';
+            } else {
+                echo '
+                <div class="add-cars-no-admin">
+                    Autos hinzufügen
+                </div>
+                <div class="cancel-bookings-no-admin">
+                    Buchungen Stornieren
+                </div>';
             }
-        }
         ?>
-        <?php if ($adminPermission): ?>
-        <div class="add-cars-admin">
-            Autos hinzufügen
-        </div>
-        <?php endif; ?>
-        
-        <?php if ($adminPermission): ?>
-        <div class="cancel-bookings-admin">
-            Buchungen Stornieren
-        </div>
-        <?php endif; ?>
 
         <button class="hamburger-button" onclick="toggleMenu()">
             <span></span>
