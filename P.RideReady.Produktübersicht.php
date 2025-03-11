@@ -127,7 +127,8 @@ $freieAutos = $stmt->fetchAll();
                     $_SESSION['type_id'] = $type_id;
 
                     $availableCount = $auto['available_count'];
-            
+
+                    // Document for the Cards in the Productoverview
                     include 'teaser.php';   
                 }
                     echo "</ul>";

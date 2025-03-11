@@ -22,4 +22,23 @@ function sqlfilters($label2, $name2, $listname, &$sql, &$params) {
         $params[":$name2"] = $label2;
     }
 }
+
+// Checks if the Session ist already started
+function check_if_session_started() {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+}
+
+// Gets the Session Variables for Product Overview
+function set_car_session($variablename, $databasevariablename) {
+    global $auto; // Gets the variable from the global context
+
+    if (isset($auto[$databasevariablename])) //Avoidance of undefined index
+    {
+        $variablename = $auto[$databasevariablename];
+        $_SESSION[$databasevariablename] = $variablename;
+    }
+}
+
 ?>
