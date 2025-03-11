@@ -48,7 +48,8 @@ $sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Na
             FROM Contract 
             WHERE NOT (end_date < :pickupdate OR start_date > :returndate)
         )
-        GROUP BY m.Name, m.Price, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id";
+        GROUP BY m.Name, m.Price, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id
+        HAVING COUNT(c.car_id) > 0"; // only cars with availability are considered
 
 
 // Create array for parameters
