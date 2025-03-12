@@ -105,7 +105,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             background: white;
             padding: 10px;
             border-radius: 5px;
-            margin-left: 145px;
+            margin-left: 170px;
         }
         
         /* Buttons to set/reset Filters */
