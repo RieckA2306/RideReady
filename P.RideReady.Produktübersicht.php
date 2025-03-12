@@ -2,6 +2,22 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// If data comes via POST, store it in the session (for click on the Teaser from the Landingpage)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['city'])) {
+        $_SESSION['city'] = $_POST['city'];
+    }
+    if (isset($_POST['pickupdate'])) {
+        $_SESSION['pickupdate'] = $_POST['pickupdate'];
+    }
+    if (isset($_POST['returndate'])) {
+        $_SESSION['returndate'] = $_POST['returndate'];
+    }
+    if (isset($_POST['type'])) {
+        $_SESSION['type'] = $_POST['type'];
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -48,7 +64,7 @@ $sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Na
             FROM Contract 
             WHERE NOT (end_date < :pickupdate OR start_date > :returndate)
         )
-        GROUP BY m.Name, m.Price, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id, m.Seats, m.Doors, m.Gear, m.Air_Condition, m.GPS
+        GROUP BY m.Name, m.Price, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id, m.Seats, m.Doors, m.Gear, m.Air_Condition, m.GPS, m.Min_Age, m.Type, m.Drive
         HAVING COUNT(c.car_id) > 0"; // only cars with availability are considered
 
 

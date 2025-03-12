@@ -18,32 +18,48 @@
 
         <!-- Start Teaser Section -->
         <h2 class="landingpage-title">Mobilität, die zu Ihnen passt – Entdecken Sie unsere Top-Mietwagenangebote!</h2>
+        <!-- Invisible form for POST forwarding -->
+        <form id="redirectForm" method="post" action="P.RideReady.Produktübersicht.php">
+            <input type="hidden" name="city" value="Hamburg">
+            <input type="hidden" name="pickupdate" id="pickupdate">
+            <input type="hidden" name="returndate" id="returndate">
+            <input type="hidden" name="type" id="cartype">
+        </form>
+
         <div class="teaser-grid">
-            <div>
-                <img src="Images/Landingpage/Mini-Cabrio.LP.webp" alt="Cabrios" class="teaser-vehicle-image">
-                <p>Cabrios</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/Mercedes-GLS.LP.webp" alt="SUVs" class="teaser-vehicle-image">
-                <p>SUVs</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/BMW-M1.LP.webp" alt="Limousinen" class="teaser-vehicle-image">
-                <p>Coupés</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/VW-Passat.LP.webp" alt="Combis" class="teaser-vehicle-image">
-                <p>Combis</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/VW-Sharan.LP.webp" alt="Mehrsitzer" class="teaser-vehicle-image">
-                <p>Mehrsitzer</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/Mercedes-E-Klasse.LP.webp" alt="Coupés" class="teaser-vehicle-image">
-                <p>Limousinen</p>
-            </div>
+            <?php
+            // Current date
+            $today = date('Y-m-d');
+
+            // Vehicle types array with the corresponding image paths and types
+            $vehicles = [
+                ["img" => "Images/Landingpage/Mini-Cabrio.LP.webp", "alt" => "Cabrios", "type" => "Cabrio"],
+                ["img" => "Images/Landingpage/Mercedes-GLS.LP.webp", "alt" => "SUVs", "type" => "SUV"],
+                ["img" => "Images/Landingpage/BMW-M1.LP.webp", "alt" => "Coupés", "type" => "Coupé"],
+                ["img" => "Images/Landingpage/VW-Passat.LP.webp", "alt" => "Combis", "type" => "Combi"],
+                ["img" => "Images/Landingpage/VW-Sharan.LP.webp", "alt" => "Mehrsitzer", "type" => "Mehrsitzer"],
+                ["img" => "Images/Landingpage/Mercedes-E-Klasse.LP.webp", "alt" => "Limousinen", "type" => "Limousine"]
+            ];
+
+            // Loop for the buttons
+            foreach ($vehicles as $vehicle) {
+                echo '
+                <div class="teaser-vehicle-link" onclick="submitForm(\''.$vehicle["type"].'\')">
+                    <img src="'.$vehicle["img"].'" alt="'.$vehicle["alt"].'" class="teaser-vehicle-image">
+                    <p>'.$vehicle["alt"].'</p>
+                </div>';
+            }
+            ?>
         </div>
+
+        <script>
+            function submitForm(type) {
+                document.getElementById("cartype").value = type;
+                document.getElementById("pickupdate").value = "<?php echo $today; ?>";
+                document.getElementById("returndate").value = "<?php echo $today; ?>";
+                document.getElementById("redirectForm").submit();
+            }
+        </script>
     </div>
 
     <!-- Start Recommendation Section -->
