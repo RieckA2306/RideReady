@@ -105,7 +105,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             background: white;
             padding: 10px;
             border-radius: 5px;
-            margin-right: 130px;
+            margin-left: 380px;
         }
         
         /* Buttons to set/reset Filters */
@@ -185,6 +185,57 @@ $returndate = $_SESSION['returndate'] ?? '';
             font-weight: bold;
         }
 
+        /* This div is shown, when you have an Admin Acc*/
+        .add-cars-admin {
+            width: 10%;
+            padding: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: black;
+        }
+
+        .add-cars-admin a{
+            text-decoration: none;
+            color: black;
+        }
+
+        /* This div is shown, when you have an Admin Acc*/
+        .cancel-bookings-admin {
+            width: 10%;
+            padding: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: black;
+        }
+
+        .cancel-bookings-admin a{
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Placeholder if you are not an Admin Acc*/
+        .add-cars-no-admin {
+            width: 10%;
+            padding: 10px;
+            background-color: #123472;
+            border: none;
+        }
+
+        /* Placeholder if you are not an Admin Acc*/
+        .cancel-bookings-no-admin {
+            width: 10%;
+            padding: 10px;
+            background-color: #123472;
+            border: none;
+        }
+
 </style>
 </head>
 <body class="header-body">
@@ -224,6 +275,28 @@ $returndate = $_SESSION['returndate'] ?? '';
                 <button type="submit" name="reset" value="header_reset">Filter zurücksetzen</button>
             </div>
         </form>
+        <!-- Check if you are an Admin -->
+        <?php
+            if (isset($_SESSION['username']) && $_SESSION['username'] === 'Admin') {
+                echo '
+                
+                <div class="add-cars-admin">
+                    <a href="add-cars.php">Autos hinzufügen</a>
+                </div>
+                
+                
+                <div class="cancel-bookings-admin">
+                    <a href="cancel-bookings.php">Buchungen Stornieren</a>
+                </div>
+                </a>';
+            } else {
+                echo '
+                <div class="add-cars-no-admin">
+                </div>
+                <div class="cancel-bookings-no-admin">
+                </div>';
+            }
+        ?>
 
         <button class="hamburger-button" onclick="toggleMenu()">
             <span></span>
@@ -275,7 +348,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             });
         });
     </script>
-    
+
     <!-- Script for the Menu Button -->
     <script>
         function toggleMenu() {
