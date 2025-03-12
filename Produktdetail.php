@@ -54,6 +54,7 @@ error_reporting(E_ALL);
         m.Seats,
         c.type_id,
         c.car_id
+    
 
         FROM Car c
         JOIN model m ON c.type_id = m.type_id
