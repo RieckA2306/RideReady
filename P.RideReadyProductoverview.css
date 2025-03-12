@@ -115,6 +115,7 @@
         border-bottom-right-radius: 15px;
         color: white;
         font-weight: bold;
+        text-decoration: none !important;
         /* padding: 15px; */
     }
 

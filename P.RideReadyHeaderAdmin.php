@@ -292,10 +292,8 @@ $returndate = $_SESSION['returndate'] ?? '';
             } else {
                 echo '
                 <div class="add-cars-no-admin">
-                    Autos hinzufügen
                 </div>
                 <div class="cancel-bookings-no-admin">
-                    Buchungen Stornieren
                 </div>';
             }
         ?>
