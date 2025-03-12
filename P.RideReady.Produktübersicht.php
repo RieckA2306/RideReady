@@ -2,6 +2,20 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Check if GET parameters exist and save them to the session (for click on the Teaser from the Landingpage)
+if (isset($_GET['city'])) {
+    $_SESSION['city'] = $_GET['city'];
+}
+if (isset($_GET['pickupdate'])) {
+    $_SESSION['pickupdate'] = $_GET['pickupdate'];
+}
+if (isset($_GET['returndate'])) {
+    $_SESSION['returndate'] = $_GET['returndate'];
+}
+if (isset($_GET['type'])) {
+    $_SESSION['type'] = $_GET['type'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">

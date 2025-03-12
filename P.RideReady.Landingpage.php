@@ -19,30 +19,31 @@
         <!-- Start Teaser Section -->
         <h2 class="landingpage-title">Mobilität, die zu Ihnen passt – Entdecken Sie unsere Top-Mietwagenangebote!</h2>
         <div class="teaser-grid">
-            <div>
-                <img src="Images/Landingpage/Mini-Cabrio.LP.webp" alt="Cabrios" class="teaser-vehicle-image">
-                <p>Cabrios</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/Mercedes-GLS.LP.webp" alt="SUVs" class="teaser-vehicle-image">
-                <p>SUVs</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/BMW-M1.LP.webp" alt="Limousinen" class="teaser-vehicle-image">
-                <p>Coupés</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/VW-Passat.LP.webp" alt="Combis" class="teaser-vehicle-image">
-                <p>Combis</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/VW-Sharan.LP.webp" alt="Mehrsitzer" class="teaser-vehicle-image">
-                <p>Mehrsitzer</p>
-            </div>
-            <div>
-                <img src="Images/Landingpage/Mercedes-E-Klasse.LP.webp" alt="Coupés" class="teaser-vehicle-image">
-                <p>Limousinen</p>
-            </div>
+            <?php
+            // Current date for handover as default value
+            $today = date('Y-m-d');
+
+            // Vehicle type array with the corresponding image paths and filter values
+            $vehicles = [
+                ["img" => "Images/Landingpage/Mini-Cabrio.LP.webp", "alt" => "Cabrios", "type" => "Cabrio"],
+                ["img" => "Images/Landingpage/Mercedes-GLS.LP.webp", "alt" => "SUVs", "type" => "SUV"],
+                ["img" => "Images/Landingpage/BMW-M1.LP.webp", "alt" => "Coupés", "type" => "Coupé"],
+                ["img" => "Images/Landingpage/VW-Passat.LP.webp", "alt" => "Combis", "type" => "Combi"],
+                ["img" => "Images/Landingpage/VW-Sharan.LP.webp", "alt" => "Mehrsitzer", "type" => "Mehrsitzer"],
+                ["img" => "Images/Landingpage/Mercedes-E-Klasse.LP.webp", "alt" => "Limousinen", "type" => "Limousine"]
+            ];
+
+            // Loop for dynamic creation of vehicle links
+            foreach ($vehicles as $vehicle) {
+                echo '
+                <a href="P.RideReady.Produktübersicht.php?city=Hamburg&pickupdate='.$today.'&returndate='.$today.'&type='.$vehicle["type"].'" class="teaser-vehicle-link">
+                    <div>
+                        <img src="'.$vehicle["img"].'" alt="'.$vehicle["alt"].'" class="teaser-vehicle-image">
+                        <p>'.$vehicle["alt"].'</p>
+                    </div>
+                </a>';
+            }
+            ?>
         </div>
     </div>
 
