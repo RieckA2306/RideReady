@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>NeueAutosHinzufügen</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
 
@@ -189,13 +189,12 @@ ob_end_flush();
                 <p><?php echo"$city"?></p>
             </div>
 
-        </div>    
+        </div>  
     </div>
-        <div class="booking">
-        <form id="reservierungsFormular" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-            <div class="search-box">
-                <select name="city" id="abholort">
-                    <option value="">Abholort</option>
+    <form id="StadtAuswahl_NeuesAuto" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+        <div class="creatingNewCars">
+                <select name="city" id="NewCar_Location">
+                    <option value="">Ort</option>
                     <?php
                     $a_cities = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
                     foreach ($a_cities as $cityOption) {
@@ -203,11 +202,14 @@ ob_end_flush();
                         echo "<option value='$cityOption' $selected>$cityOption</option>";
                     }
                     ?>
-            <button onclick="window.location.href='bookingstaging.php?<?= (int)$car_id ?>'" class="bookingbutton">
-           <?php echo  "Neues Auto Hinzufügen"?>
-            </button>
+                </select>
+                <button onclick="window.location.href='?<?= (int)$car_id ?>'" class="bookingbutton">
+                    <?php echo "Neues Auto Eintragen"; ?>
+                </button>
         </div>
-    </div>
+    </form>
+    </div> 
+ 
 </div> 
 
 <script>

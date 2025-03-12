@@ -663,6 +663,49 @@
     }
 
 /* End Productdetail */
+/* Start Admin-new Cars Changes to Usual CSS */
+.creatingNewCars {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    gap:10%;
+    background-color: #002b5e;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 420px;
+    height: 200px;
+}
+
+.creatingNewCars select, 
+.creatingNewCars button {
+    width: 100%; /* Gleiche Breite */
+    max-width: 250px; /* Begrenzte maximale Breite */
+    height: 50px; /* Gleiche Höhe */
+    font-size: 18px; /* Lesbare Schriftgröße */
+    padding: 10px; /* Innenabstand */
+    border-radius: 10px; /* Abgerundete Ecken */
+    border: 2px solid #ccc; /* Schwarzer Rand */
+    display: block;
+    margin: 10px auto; /* Zentriert */
+    background-color: #002b5e;
+}
+
+.creatingNewCars select {
+    background-color: white; /* Hintergrundfarbe für das Dropdown */
+    color: black;
+}
+
+.creatingNewCars button {
+    background-color: #FFC107; /* Gelb, wie im Bild */
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* End Admin-new Cars Changes to Usual CSS */
 /* Start Signinsite */
     .signin-body{
         display: flex;
