@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: P.RideReady.Produktübersicht.php');
             exit();
         } else if($_SESSION['username']=="Admin"){
-            //Admin Test Mode
+            //Admin Testing Mode
         }else{
             // Don't save any values ​​and stay on the current page
             echo '<script>alert("Bitte füllen Sie alle Felder aus!");</script>';
