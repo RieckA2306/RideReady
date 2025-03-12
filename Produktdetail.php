@@ -63,7 +63,8 @@ error_reporting(E_ALL);
             SELECT car_id 
             FROM Contract 
             WHERE NOT (end_date < :pickupdate OR start_date > :returndate)
-        )";
+        )
+        ORDER BY RAND() LIMIT 1";
         $params = [
             ':ID' =>$ID,
             ':city' => $city,
