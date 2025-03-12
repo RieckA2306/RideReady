@@ -186,7 +186,7 @@ ob_end_flush();
             </div>
             <div class="feature">
                 <img src="images/Icons/Location.jpg">
-                <p><?php echo"$city"?></p>
+                <p><?php echo"Bitte Auswählen";?></p>
             </div>
 
         </div>  
