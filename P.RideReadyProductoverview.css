@@ -308,6 +308,22 @@
         border-radius: 10px;
     }
 
+    .teaser-vehicle-link {
+        text-decoration: none !important;
+        color: inherit !important;
+        display: block; /* Macht den Link zu einem Blockelement */
+    }
+    
+    .teaser-vehicle-link p {
+        text-decoration: none !important;
+        color: inherit !important;
+    }
+
+    .teaser-vehicle-link a {
+        text-decoration: none !important;
+        color: inherit !important;
+    }
+
     /* Div to allign the Recommendation Section */
     .recommendations-wrapper {
         display: flex;

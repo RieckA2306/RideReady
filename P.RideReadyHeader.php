@@ -188,7 +188,7 @@ $returndate = $_SESSION['returndate'] ?? '';
         /* This div is shown, when you have an Admin Acc*/
         .add-cars-admin {
             width: 7%;
-            padding: 10px;
+            padding: 5px;
             background-color: #f9f9f9;
             text-align: center;
             border-radius: 10px;
@@ -205,7 +205,7 @@ $returndate = $_SESSION['returndate'] ?? '';
         /* This div is shown, when you have an Admin Acc*/
         .cancel-bookings-admin {
             width: 7%;
-            padding: 10px;
+            padding: 5px;
             background-color: #f9f9f9;
             text-align: center;
             border: none;
@@ -223,7 +223,7 @@ $returndate = $_SESSION['returndate'] ?? '';
         /* Placeholder if you are not an Admin Acc*/
         .add-cars-no-admin {
             width: 7%;
-            padding: 10px;
+            padding: 5px;
             background-color: #123472;
             border: none;
         }
@@ -231,7 +231,7 @@ $returndate = $_SESSION['returndate'] ?? '';
         /* Placeholder if you are not an Admin Acc*/
         .cancel-bookings-no-admin {
             width: 7%;
-            padding: 10px;
+            padding: 5px;
             background-color: #123472;
             border: none;
         }
@@ -290,6 +290,7 @@ $returndate = $_SESSION['returndate'] ?? '';
                 </div>
                 </a>';
             } else {
+                // Just Placeholders
                 echo '
                 <div class="add-cars-no-admin">
                 </div>
