@@ -33,10 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Redirect to Productoverview
             header('Location: P.RideReady.Produktübersicht.php');
             exit();
-        } else {
+        } else if($_SESSION['username']=="Admin"){
+            //Admin Test Mode
+        }else{
             // Don't save any values ​​and stay on the current page
             echo '<script>alert("Bitte füllen Sie alle Felder aus!");</script>';
         }
+
     }
 }
 
