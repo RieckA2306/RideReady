@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
     <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
-    <title>BMW Karten</title>
+    <title>Meine Buchungen</title>
     <style>
         /* Body nur als generelle Hintergrundgestaltung */
         .produktübersicht-body {
