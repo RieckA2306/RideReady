@@ -105,7 +105,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             background: white;
             padding: 10px;
             border-radius: 5px;
-            margin-left: 380px;
+            margin-left: 145px;
         }
         
         /* Buttons to set/reset Filters */
@@ -187,7 +187,7 @@ $returndate = $_SESSION['returndate'] ?? '';
 
         /* This div is shown, when you have an Admin Acc*/
         .add-cars-admin {
-            width: 10%;
+            width: 7%;
             padding: 10px;
             background-color: #f9f9f9;
             text-align: center;
@@ -204,7 +204,7 @@ $returndate = $_SESSION['returndate'] ?? '';
 
         /* This div is shown, when you have an Admin Acc*/
         .cancel-bookings-admin {
-            width: 10%;
+            width: 7%;
             padding: 10px;
             background-color: #f9f9f9;
             text-align: center;
@@ -222,7 +222,7 @@ $returndate = $_SESSION['returndate'] ?? '';
 
         /* Placeholder if you are not an Admin Acc*/
         .add-cars-no-admin {
-            width: 10%;
+            width: 7%;
             padding: 10px;
             background-color: #123472;
             border: none;
@@ -230,7 +230,7 @@ $returndate = $_SESSION['returndate'] ?? '';
 
         /* Placeholder if you are not an Admin Acc*/
         .cancel-bookings-no-admin {
-            width: 10%;
+            width: 7%;
             padding: 10px;
             background-color: #123472;
             border: none;
@@ -286,7 +286,7 @@ $returndate = $_SESSION['returndate'] ?? '';
                 
                 
                 <div class="cancel-bookings-admin">
-                    <a href="cancel-bookings.php">Buchungen Stornieren</a>
+                    <a href="cancel-bookings.php">Buchungen stornieren</a>
                 </div>
                 </a>';
             } else {
