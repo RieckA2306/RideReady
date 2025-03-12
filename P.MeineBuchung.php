@@ -1,136 +1,158 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  
 <html lang="de">
-<head>
+<head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
     <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
     <title>Meine Buchungen</title>
     <style>
-        /* Body nur als generelle Hintergrundgestaltung */
+        /* Allgemeine Body-Styling */
         .produktübersicht-body {
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
             margin: auto;
             background-color: #F0F0F0;
-            /* font-family: "Inter", serif; */
             margin: 0;
-
         }
 
-        /* Wrapper für den Hauptinhalt */
+        /* Hauptinhalt */
         .produktübersicht-content {
             flex-direction: column;
             display: flex;
             padding: 20px;
-            background-color:white;
-            width:80%;
+            background-color: white;
+            width: 80%;
             margin: auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            min-height: 430px; /* So, dass der Footer unten bleibt */
-            
+            min-height: 430px;
         }
-        
-        /* Balkem für die Buchung, in denen dann die einzelnen Divs sind*/
-        .card {
+
+        /* Container für die gesamte Tabelle */
+        .table-container {
             width: 100%;
-            height: 50px;
-            background-color: white; /* Somit nicht sichtbar*/
-            border-radius: 10px;
-            margin-top: 15px;
             display: flex;
-        }
-        /* Obere Divs Start*/
-        /* Klasse für die einzelnen Felder (Buchungsnummer) */
-        .bookingnumber-div {
-            width: 13%;
-            height: 50px;
-            background-color:#123472;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
+            flex-direction: column;
         }
 
-        /* Klasse für die einzelnen Felder (Abholdatum) */
-        .pickup-retunr-dates-div {
-            width: 13%;
-            height: 50px;
-            background-color: #123472;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        /* Header-Zeile */
+        .header-row {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            margin-left: 10px; /* Abstand zum nächsten Feld */
+            justify-content: space-between;
+            margin-bottom: 10px;
         }
 
-        .booked-vehicle-div {
-            width: 35%;
+        .header-box {
+            width: 18%;
             height: 50px;
-            background-color:#123472;
-            border-radius: 10px;
+            background-color: #80BFFF;
+            color: white;
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            margin-left: 10px; /* Abstand zum nächsten Feld */
+            border-radius: 10px;
+            margin: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .booked-on-div {
-            width: 13%;
+        /* Styling für Daten-Zeilen */
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .entry-box {
+            width: 18%;
             height: 50px;
-            background-color: #123472;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #D3D3D3;
+            color: black;
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            margin-left: 10px; /* Abstand zum nächsten Feld */
+            border-radius: 10px;
+            margin: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
-        /* Obere Divs Ende */
-        
     </style>
 </head>
 <body class="produktübersicht-body">
 
-    
-    <?php include 'P.RideReadyHeader.php';
-    ?>
-
+    <?php include 'P.RideReadyHeader.php'; ?>
 
     <!-- Wrapper für den Hauptinhalt -->
     <div class="produktübersicht-content">
-        <div class="card">
-            <div class="bookingnumber-div"><p class="textforbookingnumber">Buchungsnummer</p>
-            </div>
-            <div class="pickup-retunr-dates-div "><p class="textforbookingnumber">Abholdatum</p>
-            </div>
-            <div class="pickup-retunr-dates-div "><p class="textforbookingnumber">Rückgabedatum</p>
-            </div>
-            <div class="booked-vehicle-div"><p class="textforbookingnumber">gebuchtes Fahrzeug</p>
-            </div>
-            <div class="booked-on-div"><p class="textforbookingnumber">Buchungsdatum</p>
-            </div>
-
-        </div>
-        <?php
-
-
-                include 'P.MeineBuchungVerlinkung.php';
-            
         
-       ?>
+        <!-- Tabelle -->
+        <div class="table-container">
+            <!-- Header-Zeile -->
+            <div class="header-row">
+                <div class="header-box">Buchungsnummer</div>
+                <div class="header-box">Abholdatum</div>
+                <div class="header-box">Rückgabedatum</div>
+                <div class="header-box">Gebuchtes Fahrzeug</div>
+                <div class="header-box">Buchungsdatum</div>
+            </div>
+
+            <!-- PHP: Dynamische Buchungseinträge -->
+            <?php 
+            include 'dbConfigJosef.php';
+
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            if (!isset($_SESSION['account_id'])) {
+                echo "<p>Bitte melden Sie sich an, um Ihre Buchungen zu sehen.</p>";
+                exit;
+            }
+
+            $user_id = $_SESSION['account_id']; // ID des aktuellen Benutzers
+
+        
+                try {
+                    
+                    $sql = "SELECT c.Contract_ID, 
+                                   c.Start_Date,  
+                                   c.End_Date,
+                                   CONCAT(m.Vendor_Name, ' ', m.Name, ' ', IFNULL(m.Name_Extension, '')) AS ConcatName, 
+                                   c.DateOfBooking
+                            FROM contract c
+                            JOIN car ca ON c.Car_ID = ca.Car_ID
+                            JOIN model m ON ca.Type_ID = m.Type_ID
+                            WHERE c.Account_ID = :user_id";
+                
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $buchungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                    if ($buchungen) {
+                        foreach ($buchungen as $row) {
+                            echo '<div class="data-row">';
+                            echo '<div class="entry-box">' . htmlspecialchars($row["Contract_ID"]) . '</div>';
+                            echo '<div class="entry-box">' . htmlspecialchars($row["Start_Date"]) . '</div>';
+                            echo '<div class="entry-box">' . htmlspecialchars($row["End_Date"]) . '</div>';
+                            echo '<div class="entry-box">' . htmlspecialchars($row["ConcatName"]) . '</div>'; // 
+                            echo '<div class="entry-box">' . htmlspecialchars($row["DateOfBooking"]) . '</div>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo "<p>Keine Buchungen gefunden. Sie haben noch keine Buchung getätigt.</p>";
+                    }
+                } catch (PDOException $e) {
+                    echo "<p>SQL Fehler: " . $e->getMessage() . "</p>";
+                }
+                
+    
+            ?>
+        </div>
     </div>
 
     <?php include 'P.RideReadyFooter.php'; ?>
 
+</body>
+</html>
