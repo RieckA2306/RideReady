@@ -42,7 +42,7 @@ $sorting = $_SESSION['sorting'] ?? '';
 $sql = "SELECT m.Name, m.Price AS carprice, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id, COUNT(c.car_id) AS available_count
         FROM Car c
         JOIN model m ON c.type_id = m.type_id
-        GROUP BY m.Name, m.Price, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id, m.Seats, m.Doors, m.Gear, m.Air_Condition, m.GPS
+        GROUP BY m.Name, m.Price, m.Vendor_Name, m.Img_File_Name, m.Name_Extension, c.type_id, m.Seats, m.Doors, m.Gear, m.Air_Condition, m.GPS, m.Min_Age, m.Type, m.Drive
         HAVING COUNT(c.car_id) > 0";
 
 
