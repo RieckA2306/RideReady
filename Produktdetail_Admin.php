@@ -191,7 +191,7 @@ ob_end_flush();
             <form id="StadtAuswahl_NeuesAuto" method="post">
                 <div class="creatingNewCars">
                     <input type="hidden" name="type_id" value="<?php echo htmlspecialchars($ID); ?>">
-                    <select name="AddCar_city" id="NewCar_Location">
+                    <select name="city" id="NewCar_Location">
                         <option value="">Ort auswählen</option>
                         <?php
                         $a_cities = ["Berlin", "Bielefeld", "Bochum", "Bremen", "Dortmund", "Dresden", "Freiburg", "Hamburg", "Köln", "Leipzig", "München", "Nürnberg", "Paderborn", "Rostock"];
