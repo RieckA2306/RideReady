@@ -1,5 +1,5 @@
 <?php
-// Verbindung zur Datenbank
+// connection to Database 
 include "dbConfigJosef.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
     try {
-        // Überprüfen, ob der Benutzername bereits existiert
+        // checks if user name already exists 
         $stmt = $pdo->prepare("SELECT COUNT(*) FROM user_account WHERE username = :username");
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
         $stmt->execute();
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             window.location.href = "signinsite.php";
              </script>');
         } else {
-            // Benutzer registrieren
+            //Inserting Userdata into Databse 
             $stmt = $pdo->prepare("INSERT INTO user_account (Lastname, Firstname, username, email_adress, Password) 
                                    VALUES (:Lastname, :Firstname, :username, :email_adress, :password_hash)");
             $stmt->bindParam(":Lastname", $lastname, PDO::PARAM_STR);
@@ -33,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(":email_adress", $email, PDO::PARAM_STR);
             $stmt->bindParam(":password_hash", $password_hash, PDO::PARAM_STR);
             
+
             if ($stmt->execute()) {
+                // if executed creating session username 
                 $_SESSION['username'] = $username;
                 header('Location: UserControl.php');
                 exit();
