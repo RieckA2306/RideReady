@@ -41,7 +41,7 @@
                 ["img" => "Images/Landingpage/Mercedes-E-Klasse.LP.webp", "alt" => "Limousinen", "type" => "Limousine"]
             ];
 
-            // Loop for the buttons
+            // Loop for the Teaser Pictures/Buttons
             foreach ($vehicles as $vehicle) {
                 echo '
                 <div class="teaser-vehicle-link" onclick="submitForm(\''.$vehicle["type"].'\')">
