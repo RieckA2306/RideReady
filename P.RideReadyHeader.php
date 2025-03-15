@@ -57,6 +57,7 @@ $returndate = $_SESSION['returndate'] ?? '';
     <title>Ride Ready - Header</title>
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="P.RideReady.css">
 
 <?php
     function banner() {
@@ -188,7 +189,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             font-weight: bold;
         }
 
-        /* This div is shown, when you have an Admin Acc*/
+        /* This div is shown, when you have an Admin Acc */
         .add-cars-admin {
             width: 7%;
             padding: 5px;
@@ -200,6 +201,7 @@ $returndate = $_SESSION['returndate'] ?? '';
             color: black;
         }
 
+        /* Text in the Admin div */
         .add-cars-admin a{
             text-decoration: none;
             color: black;
@@ -217,7 +219,8 @@ $returndate = $_SESSION['returndate'] ?? '';
             font-weight: bold;
             color: black;
         }
-
+        
+        /* Text in the Admin div */
         .cancel-bookings-admin a{
             text-decoration: none;
             color: black;
@@ -250,7 +253,8 @@ $returndate = $_SESSION['returndate'] ?? '';
                 </p>
             </a>
         </div>
-
+        
+        <!-- Start of the Searchbar -->
         <form id="reservierungsFormular" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
             <div class="search-box">
                 <select name="city" id="abholort">
@@ -293,7 +297,7 @@ $returndate = $_SESSION['returndate'] ?? '';
                 </div>
                 </a>';
             } else {
-                // Just Placeholders
+                // Just Placeholders that the bar does not slip to the right
                 echo '
                 <div class="add-cars-no-admin">
                 </div>
