@@ -572,10 +572,10 @@
     /* Individual Feedback card */
     .feedback-review {
         background: #fff;
-        padding: 15px;
+        padding: 10px;
         border-radius: 8px;
         width: 20%;
-        margin: 10px 0;
+        margin: 15px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     /* Username Feedback giver */
@@ -600,7 +600,7 @@
     }
 
     /* User Icon with Initials*/
-    .feedback-user-icon-AR {
+    .feedback-user-icon-SA {
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -611,7 +611,37 @@
         color: white;
         font-size: 18px;
         font-weight: bold;
-        background: green;
+        background: blue;
+    }
+
+    /* User Icon with Initials*/
+    .feedback-user-icon-JR {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        background: red;
+    }
+
+    /* User Icon with Initials*/
+    .feedback-user-icon-JD {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        background: orange;
     }
 
     /* individual Rating */
@@ -640,8 +670,7 @@
     .feedback-logo {
         text-align: center;
     }
-
-
+    
 /* Landing Page End*/
 
 /* start Productdetail */

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="P.RideReadyProductoverview.css">
 </head>
 <style>
+    
+
     /* Div around the whole Feedback Section */
     .feedback-container {
         background: #F0F0F0;
@@ -39,10 +41,10 @@
     /* Individual Feedback card */
     .feedback-review {
         background: #fff;
-        padding: 15px;
+        padding: 10px;
         border-radius: 8px;
         width: 20%;
-        margin: 10px 0;
+        margin: 15px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     /* Username Feedback giver */
@@ -67,7 +69,7 @@
     }
 
     /* User Icon with Initials*/
-    .feedback-user-icon-AR {
+    .feedback-user-icon-SA {
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -78,7 +80,37 @@
         color: white;
         font-size: 18px;
         font-weight: bold;
-        background: green;
+        background: blue;
+    }
+
+    /* User Icon with Initials*/
+    .feedback-user-icon-JR {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        background: red;
+    }
+
+    /* User Icon with Initials*/
+    .feedback-user-icon-JD {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        background: orange;
     }
 
     /* individual Rating */
@@ -189,7 +221,7 @@
         <div class="feedback-reviews">
             <div class="feedback-review">
                 <div class="feedback-user">
-                    <div class="feedback-user-icon" style="background: green;">AR</div>
+                    <div class="feedback-user-icon-AR">AR</div>
                     Adorjan Rieck
                 </div>
                 <p class="feedback-star">★★★★★</p>
@@ -197,7 +229,7 @@
             </div>
             <div class="feedback-review">
                 <div class="feedback-user">
-                    <div class="feedback-user-icon" style="background: blue;">SA</div>
+                    <div class="feedback-user-icon-SA">SA</div>
                     Salwa Alkiani
                 </div>
                 <p class="feedback-star">★★★★★</p>
@@ -205,7 +237,7 @@
             </div>
             <div class="feedback-review">
                 <div class="feedback-user">
-                    <div class="feedback-user-icon" style="background: red;">JR</div>
+                    <div class="feedback-user-icon-JR">JR</div>
                     Johannes Ripp
                 </div>
                 <p class="feedback-star">★★★★☆</p>
@@ -213,7 +245,7 @@
             </div>
             <div class="feedback-review">
                 <div class="feedback-user">
-                    <div class="feedback-user-icon" style="background: orange;">JD</div>
+                    <div class="feedback-user-icon-JD">JD</div>
                     Josef Dreischulte
                 </div>
                 <p class="feedback-star">★★★★★</p>
