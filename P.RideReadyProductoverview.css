@@ -115,13 +115,38 @@
         border-bottom-right-radius: 15px;
         color: white;
         font-weight: bold;
-        text-decoration: none !important;
-        /* padding: 15px; */
+        text-decoration: none !important; 
+        padding: 5px;
     }
 
-    /* Line spacing */
-    .card p {
+    .cardtext-Vendor_Name {
+        font-size: 23px;
         margin: 2px 0;
+    }
+
+    .cardtext-Name_Extension {
+        font-size: 20px;
+        margin: 2px 0;
+        height: 24px; /* Feste Höhe, damit immer Platz reserviert ist */
+        display: flex;
+    }
+
+    .cardtext-available {
+        font-size: 18px;
+        margin: 2px 0;
+    }
+
+    .cardtext-price {
+        font-size: 40px;
+        text-align: right;
+        padding: 10px;
+        margin-top: auto; /* Drückt den Preis nach unten */
+    }
+
+    .card a {
+        text-decoration: none !important;
+        color: inherit !important;
+        display: block;
     }
 
 /* Product Overview End*/
@@ -491,13 +516,14 @@
         max-height: 340px;
     }
 
-    /* Div for each car */
+    /* Div for bothe car */
     .recommendation-card {
         background-color: white;
         border-radius: 10px;
         overflow: hidden;
         width: 500px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        height: 380px;
     }
 
     /* Div for the IMG in the Card */
@@ -512,14 +538,14 @@
         padding: 10px;
         font-size: 20px;
         font-weight: bold;
-        margin-top: -5px; /* Workaround for gap between IMG and Text*/
+        margin-top: -4px; /* Workaround for gap between IMG and Text*/
     }
-
     /* Div around the whole Feedback Section */
     .feedback-container {
         background: #F0F0F0;
-        width: 95%;
+        width: 100%;
         align-items: center;
+        margin-top: 50px;
     }
     /* Overall Rating */
     .feedback-rating {
@@ -546,10 +572,10 @@
     /* Individual Feedback card */
     .feedback-review {
         background: #fff;
-        padding: 15px;
+        padding: 10px;
         border-radius: 8px;
         width: 20%;
-        margin: 10px 0;
+        margin: 15px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     /* Username Feedback giver */
@@ -574,7 +600,7 @@
     }
 
     /* User Icon with Initials*/
-    .feedback-user-icon-AR {
+    .feedback-user-icon-SA {
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -585,7 +611,37 @@
         color: white;
         font-size: 18px;
         font-weight: bold;
-        background: green;
+        background: blue;
+    }
+
+    /* User Icon with Initials*/
+    .feedback-user-icon-JR {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        background: red;
+    }
+
+    /* User Icon with Initials*/
+    .feedback-user-icon-JD {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        background: orange;
     }
 
     /* individual Rating */
@@ -614,9 +670,9 @@
     .feedback-logo {
         text-align: center;
     }
-
-
+    
 /* Landing Page End*/
+
 /* start Productdetail */
 
     .homepage-body{

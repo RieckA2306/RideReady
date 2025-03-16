@@ -7,29 +7,70 @@
     <link rel="stylesheet" href="P.RideReadyProductoverview.css">
 </head>
 <style>
+    .cardtext {
+        width: 300px;
+        height: 150px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        color: white;
+        font-weight: bold;
+        text-decoration: none !important; 
+        padding: 5px;
+    }
+
+    .cardtext-Vendor_Name {
+        font-size: 23px;
+        margin: 2px 0;
+    }
+
+    .cardtext-Name_Extension {
+        font-size: 20px;
+        margin: 2px 0;
+        height: 24px; /* Fixed height so that space is always reserved */
+        display: flex;
+    }
+
+    .cardtext-available {
+        font-size: 18px;
+        margin: 2px 0;
+    }
+
+    .cardtext-price {
+        font-size: 40px;
+        text-align: right;
+        padding: 10px;
+        margin-top: auto; /* Pushes the price down */
+    }
+
+    .card a {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+    }
 </style>
 <body>
-<a href="Produktdetail.php?<?php echo urlencode($_SESSION['type_id']); ?>">
-    <div class="card">
+
+ <div class="card">
+    <a href="Produktdetail.php? id=<?php echo urlencode($_SESSION['type_id']); ?>">
         <div class="cardimage">
             <img src="Images/Cars/<?php echo htmlspecialchars($_SESSION['Img_File_Name']); ?>" alt="Car Image">
         </div>
         <div class="cardtext">
-            <p style="font-size: 23px;"> 
+            <div class="cardtext-Vendor_Name"> 
                 <?php echo htmlspecialchars($_SESSION['Vendor_Name'] . ' ' . $_SESSION['carname']); ?>
-            </p>
-            <p style="font-size: 20px;">
+            </div>
+            <div class="cardtext-Name_Extension">
                 <?php echo htmlspecialchars($_SESSION['Name_Extension']); ?>
-            </p>
-            <p style="font-size: 20px;">
+            </div>
+            <div class="cardtext-available">
                 <?php echo "<p>Verfügbar: $availableCount</p>"; ?>
-            </p>
+            </div>
 
-            <p style="padding: 15px; text-align: right; font-size: 40px;">
+            <div class="cardtext-price">
                 <?php echo number_format($_SESSION['carprice'], 2, ',', '.') . "€"; ?>
-            </p>
+            </div>
 
         </div>
-    </div> 
-</a>
+    </a>
+</div> 
 </body>
