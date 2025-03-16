@@ -516,13 +516,14 @@
         max-height: 340px;
     }
 
-    /* Div for each car */
+    /* Div for bothe car */
     .recommendation-card {
         background-color: white;
         border-radius: 10px;
         overflow: hidden;
         width: 500px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        height: 380px;
     }
 
     /* Div for the IMG in the Card */
@@ -537,14 +538,14 @@
         padding: 10px;
         font-size: 20px;
         font-weight: bold;
-        margin-top: -5px; /* Workaround for gap between IMG and Text*/
+        margin-top: -4px; /* Workaround for gap between IMG and Text*/
     }
-
     /* Div around the whole Feedback Section */
     .feedback-container {
         background: #F0F0F0;
-        width: 95%;
+        width: 100%;
         align-items: center;
+        margin-top: 50px;
     }
     /* Overall Rating */
     .feedback-rating {
