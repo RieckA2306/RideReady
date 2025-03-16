@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Password check 
             if (password_verify($password, $dbResult["Password"])) {
               header('Location:UserControl.php');
-            //   if correct creating session username 
+            //   if correct password creating session username 
               $_SESSION['username']=$username;
               exit();
             } else {
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             window.location.href = "loginsite.php";
         </script>');
         }
-
+        // if db error create a error message 
     } catch (PDOException) {
         echo  ('<script>
             alert("Da ist wohl etwas schief gelaufen");
