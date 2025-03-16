@@ -11,6 +11,7 @@ $driveMapping = [
     "Verbrenner" => "Combuster"
 ];
 
+// Changes the input from the german words to the options in the Database
 $transmissionMapping = [
     "Automatik" => "automatic",
     "Manuell" => "manually"
