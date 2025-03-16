@@ -16,12 +16,7 @@ error_reporting(E_ALL);
 <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
 
 </head>
-
-<body class="homepage-body">
-    <?php 
-    include 'P.RideReadyHeader.php';
-    ?>
-    <?php 
+<?php 
         $pickupdate= $_SESSION['pickupdate'] ?? '';
         $returndate = $_SESSION['returndate'] ?? '';
         $city= $_SESSION['city'] ?? '';
@@ -94,7 +89,7 @@ error_reporting(E_ALL);
                 $Drive = $auto['Drive'];
                 $Doors = $auto['Doors'];
                 $Seats = $auto['Seats'];
-                $Type_ID = $auto['Type_ID']; // c.type_id
+                $Type_ID = $auto['Type_ID']; 
                 $car_id = $auto['car_id'];
                 echo $car_id;
                 $_SESSION['bookingcar_id']=$car_id;
@@ -103,32 +98,35 @@ error_reporting(E_ALL);
 
             }
         
-            } else {
-                header('Location:P.RideReady.Produktübersicht.php');
+        } else {
+            header('Location:P.RideReady.Produktübersicht.php');
                 
-            }
+        }
           
-// convertion of the pickupdate and the returndate into an Intervall 
-// and calcalculation of the overallprice
-        
-            $istartDate = new DateTime($pickupdate);
-            $iendDate = new DateTime($returndate);
-            $dateDifference = $istartDate->diff($iendDate);
-            $dateDifference = (int) $dateDifference->days;
-            $dateDifference=$dateDifference+1;
-            $overallprice=number_format($carprice*$dateDifference,2,',','.');
+        // convertion of the pickupdate and the returndate into an Intervall 
+        // and calcalculation of the overallprice
+    
+        $istartDate = new DateTime($pickupdate);
+        $iendDate = new DateTime($returndate);
+        $dateDifference = $istartDate->diff($iendDate);
+        $dateDifference = (int) $dateDifference->days;
+        $dateDifference=$dateDifference+1;
+        $overallprice=number_format($carprice*$dateDifference,2,',','.');
 
-// creating the content for the booking Button:
-    $bookingcontent="$dateDifference"." Tag(e) Reservieren";
-    if (isset($_SESSION["eingeloggt"])) {
-    //no content change
-    }else
-    {
+        // creating the content for the booking Button:
+        $bookingcontent="$dateDifference"." Tag(e) Reservieren";
+        if (isset($_SESSION["eingeloggt"])) {
+            //no content change
+        }else
+        {
         $bookingcontent="Login und "." $bookingcontent";
-    }
-ob_end_flush();
+        }
+        ob_end_flush();
     ?>
 
+<body class="homepage-body">
+    <?php include 'P.RideReadyHeader.php'; ?>
+   
 <div class="productdetailcontainer">
     <div>     
         <div class="pictureandprice-wrapper">
@@ -225,7 +223,6 @@ ob_end_flush();
         <div class="booking">
             <div class="time">
                 <?php 
-                    $date = "2025-03-05"; // Date from database
                     $formattedDatePickup = DateTime::createFromFormat("Y-m-d", $pickupdate)->format("d.m.Y");
                     $formattedDateReturn = DateTime::createFromFormat("Y-m-d", $returndate)->format("d.m.Y");
                 ?>
@@ -240,7 +237,7 @@ ob_end_flush();
         </div>
     </div>
 </div> 
-
+<!-- Dynamic script for collapsible -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var coll = document.querySelectorAll(".collapsible");
