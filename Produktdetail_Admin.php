@@ -3,6 +3,7 @@
 <?php
 ob_start();
 
+// Check if Session is already active 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -11,7 +12,7 @@ error_reporting(E_ALL);
 
 include 'dbConfigJosef.php';
 
-// Hole die ID aus der URL
+// Gets the Type_Id from the URL, which tells the DB, what car it has to show
 $ID = isset($_GET['id']) ? intval($_GET['id']) : null;
 
 if (isset($_GET['id']) && !$ID) {
@@ -19,7 +20,8 @@ if (isset($_GET['id']) && !$ID) {
 }
 
 
-// Verarbeitung des Formulars (Einfügen eines neuen Autos)
+// If the Admin Presses the Button to create a new car, the site is reloaded with the Post method.
+// This is then processed here and a new car gets added to the Database. A popup tells the Admin about their success/failure
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['city'])) {
     $selectedCity = $_POST['city'];
 
@@ -34,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['city'])) {
     }
 }
 
-
+// the SQL Request to the Database, to show the Car Details related to the Type_ID
 $sql = "SELECT 
             Type_ID,  
             Name,  
@@ -59,13 +61,10 @@ $params = [':ID' => $ID];
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
-$car = $stmt->fetch(PDO::FETCH_ASSOC); // Holt genau EIN Ergebnis
+$car = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$car) {
-    header('Location: add-cars.php');
-    exit();
-}
-
+// //If for any reason there is no car related to the ID in the URL, the websites routes you back to the car selection page
+// Otherwise the Site will show the details of the car related to the Type_ID 
 if ($car) { // Prüft, ob ein Ergebnis vorhanden ist
     $carname = $car['Name'];
     $carprice = $car['Price'];
@@ -82,7 +81,7 @@ if ($car) { // Prüft, ob ein Ergebnis vorhanden ist
     $Doors = $car['Doors'];
     $Seats = $car['Seats'];
 } else {
-    header('Location: P.RideReady.Produktübersicht.php');
+    header('Location: add-cars.php');
     exit();
 }
 
@@ -103,94 +102,89 @@ ob_end_flush();
     <?php include 'P.RideReadyHeader.php'; ?>
 
     <div class="productdetailcontainer">
-   <div>     
-       <div class="pictureandprice-wrapper">
-           <div class="picture"><img src="Images/Cars/<?php echo htmlspecialchars($carImage); ?>" alt="Car Image"></div>
-           <div class="price">  <h2><?php echo number_format($carprice, 2, ',', '.') . "€"; ?> pro Tag</h2>
+        <div>     
+            <div class="pictureandprice-wrapper">
+                <div class="picture"><img src="Images/Cars/<?php echo htmlspecialchars($carImage); ?>" alt="Car Image"></div>
+                <div class="price">  <h2><?php echo number_format($carprice, 2, ',', '.') . "€"; ?> pro Tag</h2>
+                </div>
+            </div>
+            <button type="button" class="collapsible">
+                <?php echo"Für mehr Detailinformationen klicken Sie hier."?>
+            </button>
+            <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <button type="button" class="collapsible">Open Collapsible</button>
+            <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <button type="button" class="collapsible">Open Collapsible</button>
+            <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
         </div>
-       </div>
-       <button type="button" class="collapsible">
-           <?php echo"Es sind insgesamt Autos dieses Typs im System eingetragen."?>
-       </button>
-       <div class="content">
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-       </div>
-       <button type="button" class="collapsible">Open Collapsible</button>
-       <div class="content">
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-       </div>
-       <button type="button" class="collapsible">Open Collapsible</button>
-       <div class="content">
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-       </div>
-   </div>
         <div>
-   <div class="detail">
-       <div class="CarName">
-           <h1>
-               <?php
-               echo"$carVendor "."$carname "."$nameExtension";
-               ?>
-           </h1>
-   </div>  
-   <div class="detailt">
-       <div class="feature">
-               <img src="Images\Icons\Seats.jpg">
-               <p> <?php echo"$Seats"." Sitzplätze"?></p>
-           </div>
-           <div class="feature">
-               <img src="images/Icons/Doors.jpg">
-               <p><?php echo"$Doors"." Türen"?></p>
-           </div>
-           <div class="feature">
-               <img src="images/Icons/Gear.jpg">
-               <?php if($Gear=="manually"){
-                   echo"Manuelle Schaltung"; } 
-                   else{
-                   echo"Automatik";
-               } ?>
-           </div>
-           <div class="feature">
-               <img src="images/Icons/Fuel.jpg">
-               <?php if($Drive=="Combuster"){
-                   echo"Verbrenner"; } 
-                   else{
-                   echo"Elektroantrieb";
-               } ?>
-               
-           </div>
-           <div class="feature">
-               <img src="images/Icons/AirConditioning.jpg">
-               <?php if($Air_Condition==1){
-                   echo"Enthält Klimaanlage"; } 
-                   else{
-                   echo"Keine Klimaanlage";
-               } ?>
-           </div>
-           <div class="feature">
-               <img src="images/Icons/GPS.jpg">
-               <?php if($GPS==1){
-                   echo"Enthält GPS"; } 
-                   else{
-                   echo"Kein GPS";
-               } ?>
-           </div>
-           <div class="feature">
-               <img src="images/Icons/Age.jpg">
-               <p><?php echo"Mindestalter: "."$Min_Age"?></p>
-           </div>
-           <div class="feature">
-               <img src="images/Icons/suitcase.jpg">
-               <p><?php echo"$Trunk"." Koffer"?></p>
-           </div>
-           <div class="feature">
-               <img src="images/Icons/Location.jpg">
-               <p><?php echo"Bitte Auswählen";?></p>
-           </div>
-       </div>  
-   </div>
+            <div class="detail">
+                <div class="CarName">
+                    <h1> <?php echo"$carVendor "."$carname "."$nameExtension";?> </h1>
+                </div>  
+                <div class="detailt">
+                    <div class="feature">
+                        <img src="Images\Icons\Seats.jpg">
+                        <p> <?php echo"$Seats"." Sitzplätze"?></p>
+                    </div>
+                    <div class="feature">
+                        <img src="images/Icons/Doors.jpg">
+                        <p><?php echo"$Doors"." Türen"?></p>
+                    </div>
+                    <div class="feature">
+                        <img src="images/Icons/Gear.jpg">
+                        <?php if($Gear=="manually"){
+                            echo"Manuelle Schaltung"; } 
+                            else{
+                            echo"Automatik";
+                        } ?>
+                    </div>
+                    <div class="feature">
+                        <img src="images/Icons/Fuel.jpg">
+                        <?php if($Drive=="Combuster"){
+                            echo"Verbrenner"; } 
+                            else{
+                            echo"Elektroantrieb";
+                        } ?>
+                        
+                    </div>
+                    <div class="feature">
+                        <img src="images/Icons/AirConditioning.jpg">
+                        <?php if($Air_Condition==1){
+                            echo"Enthält Klimaanlage"; } 
+                            else{
+                            echo"Keine Klimaanlage";
+                        } ?>
+                    </div>
+                    <div class="feature">
+                        <img src="images/Icons/GPS.jpg">
+                        <?php if($GPS==1){
+                            echo"Enthält GPS"; } 
+                            else{
+                            echo"Kein GPS";
+                        } ?>
+                    </div>
+                    <div class="feature">
+                        <img src="images/Icons/Age.jpg">
+                        <p><?php echo"Mindestalter: "."$Min_Age"?></p>
+                    </div>
+                    <div class="feature">
+                        <img src="images/Icons/suitcase.jpg">
+                        <p><?php echo"$Trunk"." Koffer"?></p>
+                    </div>
+                    <div class="feature">
+                        <img src="images/Icons/Location.jpg">
+                        <p><?php echo"Bitte Auswählen";?></p>
+                    </div>
+                </div>  
+            </div>
    
-
             <form id="StadtAuswahl_NeuesAuto" method="post">
                 <div class="creatingNewCars">
                     <input type="hidden" name="type_id" value="<?php echo htmlspecialchars($ID); ?>">
