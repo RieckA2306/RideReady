@@ -21,7 +21,7 @@ error_reporting(E_ALL);
         $returndate = $_SESSION['returndate'] ?? '';
         $city= $_SESSION['city'] ?? '';
         $ID=$_SERVER['QUERY_STRING'];
-        $ID=substr($ID,6);
+        // $ID=substr($ID,6);
         $Numbererofcars=0;
         
 
