@@ -1,3 +1,4 @@
+<!-- This script will open if someone pushes the button "Noch kein Konto" on Loginsite.php -->
 
 <!DOCTYPE html>
 <html lang="de">
@@ -10,6 +11,7 @@
 </head>
 
 <body class="signin-body">
+
     <?php include 'P.RideReadyHeader.php'; ?>
     <form class="form-container" action="signin.php" method="POST">
         <input type="text" id="vorname" name="firstname" placeholder="Vorname" required     >

@@ -1,25 +1,24 @@
 <?php
 session_start();
-// $_SESSION['bookingstart']=1;
-$car_id=$_SESSION['bookingcar_id'];
-
-// Prüfen, ob der Nutzer eingeloggt ist
+// check if user is loged in 
 if (isset($_SESSION["eingeloggt"])) {
-    // Datenbank-Konfiguration einbinden
-    include('dbConfigJosef.php');
 
-    // Session-Variablen abfragen (zur Sicherheit mit Null coalescing operator)
+    // request for session variable 
     $pickupdate = $_SESSION['pickupdate'] ?? '';
     $returndate = $_SESSION['returndate'] ?? '';
-  
-    echo"$car_id";
     $account_id=$_SESSION["account_id"];
+    // gettig carId from session
+    $car_id=$_SESSION['bookingcar_id'];
+
+    // Connection to Database and Start SQL Insert
+    include('dbConfigJosef.php');
+
     try {
-        // SQL-Abfrage zum Einfügen eines neuen Vertrags
+        // SQL-Request 
         $sql = "INSERT INTO contract (Start_Date, End_Date, Account_ID, Car_ID) 
                 VALUES (:pickupdate, :returndate, :account_id, :car_id)";
 
-        // Parameter-Array
+        //varaibles for SQL-Request 
         $params = [
             ':pickupdate' => $pickupdate,
             ':returndate' => $returndate,   
@@ -27,22 +26,26 @@ if (isset($_SESSION["eingeloggt"])) {
             ':car_id' => $car_id,
         ];
 
-        // Prepared Statement erstellen
         $stmt = $pdo->prepare($sql);
 
-        // SQL ausführen
+        // SQL Execution if succesful direction to my booking
         if ($stmt->execute($params)) {
-            // echo "Neue Verträge wurden erfolgreich hinzugefügt.";
+            // deleting the bookingcar_id so double booking by opening booking.php is not possible
+            unset($_SESSION['bookingcar_id']);
             header('Location:P.MeineBuchung.php');
         } else {
             echo "Fehler beim Hinzufügen des Vertrags.";
         }
-
-    } catch (PDOException $e) {
-        die("Datenbankfehler: " . $e->getMessage());
+    // error Message for Database errors 
+    } catch (PDOException) {
+        echo('<script>
+            alert("Da ist wohl etwas schief gelaufen. Versuche es nochmal.");
+            window.location.href = "P.RideReady.Produktübersicht.php";
+        </script>');
+   ;
     }
 } else {
-    // Weiterleitung, wenn der Nutzer nicht eingeloggt ist
+// if user is not loged in the user is sent to login
     header("Location: loginsite.php");
     exit;
 }

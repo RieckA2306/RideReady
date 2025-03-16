@@ -1,3 +1,5 @@
+<!-- This Site will open if someone pushes the Button "Autos hinzufügen" in the Header -->
+
 <?php
 ob_start();
 

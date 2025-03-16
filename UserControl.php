@@ -1,40 +1,34 @@
 <?php
-// Verbindung zur Datenbank mit PDO herstellen
 include "dbConfigJosef.php";
-session_start(); // Session starten
-
+session_start(); 
+// get username from session
 $username = $_SESSION['username'] ?? null;
 
+// check if user is already loged in 
 if (!$username) {
-    die("Fehler: Kein Benutzername in der Session gefunden.");
+    die("Fehler: Kein Benutzername in der Session gefunden. Gehe zurück zum Login!");
 }
 
 try {
-    // SQL-Statement mit FROM korrigieren
+    // Request of Account_ID from username
     $stmt = $pdo->prepare("SELECT Account_ID FROM user_account WHERE username = :username");
-
-    // Parameter binden
     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-
-    // Statement ausführen
     $stmt->execute();
-
-    // Ergebnis abrufen
     $dbResult = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($dbResult !== false) {
-        // Session-Variablen setzen
+    // if request successful, storing the variables in session
+    if ($dbResult ==true ) {
         $_SESSION["eingeloggt"]   = true;
         $_SESSION["username"]     = $username;
-        $_SESSION["account_id"]   = $dbResult["Account_ID"]; // Korrekte Schreibweise beachten
+        $_SESSION["account_id"]   = $dbResult["Account_ID"]; 
 
-        // Weiterleitung
+        // if booking is started, heading to booking otherwise to Landingpage
         if (isset($_SESSION['bookingcar_id'])) {
             header("Location: booking.php");
         } else {
             header("Location: P.RideReady.Landingpage.php");
         }
-        exit(); // Nach header() immer exit();
+        exit(); 
     } else {
         die("Fehler: Benutzer nicht gefunden.");
     }

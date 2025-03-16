@@ -1,163 +1,171 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-/* Landing Page Start*/
-    .homepage-body{
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        background-color: #F0F0F0;
-        font-family: "Inter", serif;
-        margin: 0;
-    }
+.header-body {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: #F0F0F0;
+    font-family: "Inter", serif;
+    margin: 0;
+}
 
-    /* ALL of the center alligned Titles! */
-    .landingpage-title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        color: #123472;
-        text-align: center;
-    }
+/* Header Styling */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #123472;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-    /* Div to allign the Teaser Section */
-    .teaser-wrapper {
-        background-color: #F0F0F0;
-        padding: 20px;
-        text-align: center;
-        max-width: 1200px;
-        margin: auto;
-    }
+.Header-logo img {
+max-width: 180px;
+object-fit: contain;
+}
 
-    /* Div for the MP4 Vid */
-    .teaser-titlepicture-image {
-        width: 100%;
-        border-radius: 10px;
-    }
+.logo img {
+    height: 40px;
+}
 
-    /* Div for each Car in the Teaser Section */
-    .teaser-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
-    }
+/* Container for the search box */
+.search-box {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 170px;
+}
 
-    /* Div for the IMG*/
-    .teaser-vehicle-image {
-        width: 100%;
-        border-radius: 10px;
-    }
+/* Buttons to set/reset Filters */
+.search-box button {
+    background-color: #80BFFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 
-    /* Div to allign the Recommendation Section */
-    .recommendations-wrapper {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        background-color: #F0F0F0;
-        padding: 20px;
-        text-align: center;
-        max-height: 340px;
-    }
+.search-box button:hover {
+    background-color: #123472;
+}
 
-    /* Div for each car */
-    .recommendation-card {
-        background-color: white;
-        border-radius: 10px;
-        overflow: hidden;
-        width: 500px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+.search-box select, .search-box input, .search-box button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Changes the background color of the selected date */
+.flatpickr-day.selected, 
+.flatpickr-day.selected:hover {
+    background: #80BFFF !important;
+    border-color: #80BFFF !important;
+    color: white !important;
+}
 
-    /* Div for the IMG in the Card */
-    .recommendation-image {
-        width: 100%;
-        height: auto;
-    }
+/* Container for the Button (Top-Right) */
+.hamburger-button {
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
 
-    /* Div for the Text in the Card */
-    .recommendation-text {
-        background-color: #D6E4FF;
-        padding: 10px;
-        font-size: 20px;
-        font-weight: bold;
-        margin-top: -5px; /* Workaround for gap between IMG and Text*/
-    }
+/* Three grey stripes */
+.hamburger-button span {
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: #999;
+    margin: 4px auto;
+    position: sticky;
+}
+/* Container when the Button is clicked*/
+.menu {
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Statt absolute oder sticky */
+    top: 8%;
+    right: 1%;
+    display: none;
+    z-index: 1000; /* Stellt sicher, dass es über dem Content bleibt */
+    text-align: left;
+}
 
-    /* Div around the whole Feedback Section */
-    .feedback-container {
-        margin: 20px auto;
-        background: #F0F0F0;
-        width: 95%;
-    }
-    /* Overall Rating */
-    .feedback-rating {
-        color: gold;
-        font-size: 40px;
-        margin-top: -14px;
-        text-align: center;
-        
-    }
+.menu a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 5px 0;
+}
 
-    /* Text in the Feedback card*/
-    .feedback-overall-reviews {
-        margin-top: -30px; 
-        text-align: center !important;
-        color: #123472;           
-    }
+.menu button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFC107;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-    /* Div to allign the 4 Feedback cards */
-    .feedback-reviews {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    /* Individual Feedback card */
-    .feedback-review {
-        background: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        width: 20%;
-        margin: 10px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    /* Username Feedback giver */
-    .feedback-user {
-        display: flex;
-        align-items: center;
-        font-weight: bold;
+/* This div is shown, when you have an Admin Acc */
+.add-cars-admin {
+    width: 7%;
+    padding: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+}
 
-    }
-    /* User Icon with Initials*/
-    .feedback-user-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 10px;
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-    }
-    /* individual Rating */
-    .feedback-star {
-        color: gold;
-        text-align: left;
-        margin-left: 50px;
-        margin-top: -10px;
-        
-    }
-    /* Text in the Feedback card*/
-    .feedback-text {
-        text-align: left;
-        margin-top: -5px;
-        color: #123472;          
-    }
+/* Text in the Admin div */
+.add-cars-admin a{
+    text-decoration: none;
+    color: black;
+}
 
-    /* Big Logo in the Feedback */
-    .feedback-logo {
-        text-align: center;
-    }
-/* Landing Page End*/
+/* This div is shown, when you have an Admin Acc*/
+.cancel-bookings-admin {
+    width: 7%;
+    padding: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+}
+
+/* Text in the Admin div */
+.cancel-bookings-admin a{
+    text-decoration: none;
+    color: black;
+}
+
+/* Placeholder if you are not an Admin Acc*/
+.add-cars-no-admin {
+    width: 7%;
+    padding: 5px;
+    background-color: #123472;
+    border: none;
+}
+
+/* Placeholder if you are not an Admin Acc*/
+.cancel-bookings-no-admin {
+    width: 7%;
+    padding: 5px;
+    background-color: #123472;
+    border: none;
+}

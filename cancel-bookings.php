@@ -1,3 +1,4 @@
+<!-- This Site will open if someone pushes the Button "Buchung Stornieren in the Header -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -110,7 +111,7 @@
 
     <div class="produktübersicht-content">
         <div class="table-container">
-            <!-- Header-Zeile -->
+            <!-- Headline of rows -->
             <div class="header-row">
                 <div class="header-box">Vertrag Stornieren</div>
                 <div class="header-box">Buchungsnummer</div>
@@ -120,7 +121,7 @@
                 <div class="header-box">Buchungsdatum</div>
             </div>
 
-            <!-- PHP: Dynamische Buchungseinträge mit Pagination -->
+     
             <?php 
             include 'dbConfigJosef.php';
   
@@ -131,19 +132,19 @@
 
             $user_id = $_SESSION['account_id'];
 
-            // Pagination Einstellungen
-            $limit = 5; // Anzahl der Buchungen pro Seite
+            // Pagination settings and variables 
+            $limit = 5; // Number of rows 
             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $offset = ($page - 1) * $limit;
 
             try {
-                // Gesamtanzahl der Buchungen abrufen
+                // counting all bookings and setting number of pages
                 $stmt = $pdo->prepare("SELECT COUNT(*) FROM contract");
                 $stmt->execute();
                 $totalRows = $stmt->fetchColumn();
                 $totalPages = ceil($totalRows / $limit);
 
-                // Buchungen für die aktuelle Seite abrufen
+                // SQL Request for current site 
                 $sql = "SELECT c.Contract_ID, 
                                c.Start_Date,  
                                c.End_Date,
@@ -158,10 +159,12 @@
                 $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
                 $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
                 $stmt->execute();
-                $buchungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $booking = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                if ($buchungen) {
-                    foreach ($buchungen as $row) {
+                // creating a Delete-Button for every car_ID. The Delete-Button executes deletContract.php
+                // printing Bookingdata from Array 
+                if ($booking) {
+                    foreach ($booking as $row) {
                         echo '<div class="data-row">';
                         echo '<div class="entry-box"><a href="deleteContract.php?'. urlencode($row["Contract_ID"]) .'">Löschen</a></div>';
                         echo '<div class="entry-box">' . htmlspecialchars($row["Contract_ID"]) . '</div>';

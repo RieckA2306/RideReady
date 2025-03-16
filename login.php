@@ -1,45 +1,48 @@
+<!-- This script will open if someone pushes the button "Login" on Lginsite.php -->
 <?php
-// Verbindung zur Datenbank mit PDO herstellen
+// conncetion to database 
 include "dbConfigJosef.php";
-session_start(); // Session starten
-
+session_start(); 
+// 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
-    $passwort = $_POST["passwort"];
+    $password = $_POST["passwort"];
 
     try {
-        // SQL-Statement vorbereiten
+        // SQL Request of Password and UserID for the User 
         $stmt = $pdo->prepare("SELECT Account_ID, Password FROM user_account WHERE username = :username");
-        
-        // Parameter binden
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-        
-        // Statement ausführen
         $stmt->execute();
-
-        // Ergebnis abrufen
         $dbResult = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($dbResult) {
-            // Passwort überprüfen
-            if (password_verify($passwort, $dbResult["Password"])) {
+            // Password check 
+            if (password_verify($password, $dbResult["Password"])) {
               header('Location:UserControl.php');
+            //   if correct creating session username 
               $_SESSION['username']=$username;
               exit();
             } else {
+                // sctipt if password is wrong 
                 echo  ('<script>
                 alert("Falsches Passwort");
                 window.location.href = "loginsite.php";
             </script>');
             }
         } else {
+            // script if username doesent exist 
             echo  ('<script>
             alert("Benutzer nicht gefunden");
             window.location.href = "loginsite.php";
         </script>');
         }
-    } catch (PDOException $e) {
-        die("Fehler bei der Datenbankabfrage: " . $e->getMessage());
+
+    } catch (PDOException) {
+        echo  ('<script>
+            alert("Da ist wohl etwas schief gelaufen");
+            window.location.href = "loginsite.php";
+        </script>');
+
     }
 }
 ?>
