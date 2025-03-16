@@ -12,9 +12,10 @@ include 'dbConfigJosef.php';
 // Hole die ID aus der URL
 $ID = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-if (!$ID) {
+if (isset($_GET['id']) && !$ID) {
     die("Fehler: Keine gültige Type_ID angegeben.");
 }
+
 
 // Verarbeitung des Formulars (Einfügen eines neuen Autos)
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['city'])) {
