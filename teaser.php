@@ -6,9 +6,52 @@
     <meta name="viewport">
     <link rel="stylesheet" href="P.RideReadyProductoverview.css">
 </head>
+<style>
+    .cardtext {
+        width: 300px;
+        height: 150px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        color: white;
+        font-weight: bold;
+        text-decoration: none !important; 
+        padding: 5px;
+    }
+
+    .cardtext-Vendor_Name {
+        font-size: 23px;
+        margin: 2px 0;
+    }
+
+    .cardtext-Name_Extension {
+        font-size: 20px;
+        margin: 2px 0;
+        height: 24px; /* Feste Höhe, damit immer Platz reserviert ist */
+        display: flex;
+    }
+
+    .cardtext-available {
+        font-size: 18px;
+        margin: 2px 0;
+    }
+
+    .cardtext-price {
+        font-size: 40px;
+        text-align: right;
+        padding: 10px;
+        margin-top: auto; /* Drückt den Preis nach unten */
+    }
+
+    .card a {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+}
+</style>
 <body>
-<a href="Produktdetail.php? id=<?php echo urlencode($_SESSION['type_id']); ?>">
-    <div class="card">
+
+<div class="card">
+    <a href="Produktdetail.php? id=<?php echo urlencode($_SESSION['type_id']); ?>">
         <div class="cardimage">
             <img src="Images/Cars/<?php echo htmlspecialchars($_SESSION['Img_File_Name']); ?>" alt="Car Image">
         </div>
@@ -28,6 +71,6 @@
             </div>
 
         </div>
-    </div> 
-</a>
+    </a>
+</div> 
 </body>
