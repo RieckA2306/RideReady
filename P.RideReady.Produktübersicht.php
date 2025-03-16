@@ -1,3 +1,4 @@
+<!-- This Page will be opened if the User is pressing on "Suchen" in the Header -->
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

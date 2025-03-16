@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Fehler beim Speichern des Benutzers.";
             }
         }
+        // if db connetion fails (should not happen)
     } catch (PDOException $e) {
         echo "Datenbankfehler: " . $e->getMessage();
     }

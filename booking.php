@@ -1,6 +1,6 @@
 <?php
 session_start();
-// check if user is loged in 
+// check if user is logged in 
 if (isset($_SESSION["eingeloggt"])) {
 
     // request for session variable 
