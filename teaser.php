@@ -26,7 +26,7 @@
     .cardtext-Name_Extension {
         font-size: 20px;
         margin: 2px 0;
-        height: 24px; /* Feste Höhe, damit immer Platz reserviert ist */
+        height: 24px; /* Fixed height so that space is always reserved */
         display: flex;
     }
 
@@ -39,14 +39,14 @@
         font-size: 40px;
         text-align: right;
         padding: 10px;
-        margin-top: auto; /* Drückt den Preis nach unten */
+        margin-top: auto; /* Pushes the price down */
     }
 
     .card a {
     text-decoration: none !important;
     color: inherit !important;
     display: block;
-}
+    }
 </style>
 <body>
 

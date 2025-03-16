@@ -143,6 +143,12 @@
         margin-top: auto; /* Drückt den Preis nach unten */
     }
 
+    .card a {
+        text-decoration: none !important;
+        color: inherit !important;
+        display: block;
+    }
+
 /* Product Overview End*/
 
 /* Header Start*/
