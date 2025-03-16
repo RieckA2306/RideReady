@@ -1,3 +1,8 @@
+<!-- 
+ This script will open if someone pushes the button "Login" on overview.php
+or tries to book a car without login
+ -->
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
