@@ -1,4 +1,5 @@
-<!-- Salwa -->
+<!-- This script will open if someone pushes the button "Noch kein Konto" on Loginsite.php -->
+
 <!DOCTYPE html>
 <html lang="de">
 <head>

@@ -1,3 +1,4 @@
+<!-- This code is executed if the button "Löschen" on cancel-bookings.php is pushed  -->
 <?php
 session_start();
 // getting Contract ID that is supposed to be deleted

@@ -1,3 +1,4 @@
+<!-- This Site will open if someone pushes the Button "Buchung Stornieren in the Header -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -160,7 +161,7 @@
                 $stmt->execute();
                 $booking = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                // creating a Delete-Button for every car_ID
+                // creating a Delete-Button for every car_ID. The Delete-Button executes deletContract.php
                 // printing Bookingdata from Array 
                 if ($booking) {
                     foreach ($booking as $row) {

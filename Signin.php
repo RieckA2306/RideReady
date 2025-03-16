@@ -1,3 +1,4 @@
+<!-- This script will open if someone pushes the button "Registrieren" on Signinsite.php -->
 <?php
 // connection to Database 
 include "dbConfigJosef.php";

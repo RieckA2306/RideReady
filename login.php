@@ -1,3 +1,4 @@
+<!-- This script will open if someone pushes the button "Login" on Lginsite.php -->
 <?php
 // conncetion to database 
 include "dbConfigJosef.php";
@@ -22,14 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               $_SESSION['username']=$username;
               exit();
             } else {
-                // sktipt if password is wrong 
+                // sctipt if password is wrong 
                 echo  ('<script>
                 alert("Falsches Passwort");
                 window.location.href = "loginsite.php";
             </script>');
             }
         } else {
-            // skript if username doesent exist 
+            // script if username doesent exist 
             echo  ('<script>
             alert("Benutzer nicht gefunden");
             window.location.href = "loginsite.php";
