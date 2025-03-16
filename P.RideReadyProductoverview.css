@@ -115,13 +115,32 @@
         border-bottom-right-radius: 15px;
         color: white;
         font-weight: bold;
-        text-decoration: none !important;
-        /* padding: 15px; */
+        text-decoration: none !important; 
+        padding: 5px;
     }
 
-    /* Line spacing */
-    .card p {
+    .cardtext-Vendor_Name {
+        font-size: 23px;
         margin: 2px 0;
+    }
+
+    .cardtext-Name_Extension {
+        font-size: 20px;
+        margin: 2px 0;
+        height: 24px; /* Feste Höhe, damit immer Platz reserviert ist */
+        display: flex;
+    }
+
+    .cardtext-available {
+        font-size: 18px;
+        margin: 2px 0;
+    }
+
+    .cardtext-price {
+        font-size: 40px;
+        text-align: right;
+        padding: 10px;
+        margin-top: auto; /* Drückt den Preis nach unten */
     }
 
 /* Product Overview End*/

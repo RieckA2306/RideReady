@@ -6,8 +6,6 @@
     <meta name="viewport">
     <link rel="stylesheet" href="P.RideReadyProductoverview.css">
 </head>
-<style>
-</style>
 <body>
 <a href="Produktdetail.php? id=<?php echo urlencode($_SESSION['type_id']); ?>">
     <div class="card">
@@ -15,19 +13,19 @@
             <img src="Images/Cars/<?php echo htmlspecialchars($_SESSION['Img_File_Name']); ?>" alt="Car Image">
         </div>
         <div class="cardtext">
-            <p style="font-size: 23px;"> 
+            <div class="cardtext-Vendor_Name"> 
                 <?php echo htmlspecialchars($_SESSION['Vendor_Name'] . ' ' . $_SESSION['carname']); ?>
-            </p>
-            <p style="font-size: 20px;">
+            </div>
+            <div class="cardtext-Name_Extension">
                 <?php echo htmlspecialchars($_SESSION['Name_Extension']); ?>
-            </p>
-            <p style="font-size: 20px;">
+            </div>
+            <div class="cardtext-available">
                 <?php echo "<p>Verfügbar: $availableCount</p>"; ?>
-            </p>
+            </div>
 
-            <p style="padding: 15px; text-align: right; font-size: 40px;">
+            <div class="cardtext-price">
                 <?php echo number_format($_SESSION['carprice'], 2, ',', '.') . "€"; ?>
-            </p>
+            </div>
 
         </div>
     </div> 
