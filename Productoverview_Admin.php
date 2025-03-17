@@ -15,9 +15,7 @@ check_if_session_started();
 <?php 
     include 'Header.php';
     include 'Productoverview_Filter_Admin.php'; 
-?>
-    
-<?php 
+
     //  Connection to Database
      include 'dbConfig.php';
 
@@ -54,7 +52,7 @@ sqlfilters($transmission, 'transmission', 'm.Gear', $sql, $params);
 sqlfilters($climate, 'climate', 'm.Air_Condition', $sql, $params);
 sqlfilters($gps, 'gps', 'm.GPS', $sql, $params);
 
-// Operator is different (<=) (Can´t call the Function here)
+// If the Filter for age is set, this adds to the sql code and filters for cars you can use
 if (!empty($age)) {
     $sql .= " AND m.Min_Age <= :age";
     $params[':age'] = $age;

@@ -257,7 +257,7 @@
         top: 8%;
         right: 1%;
         display: none;
-        z-index: 1000; /* Stellt sicher, dass es über dem Content bleibt */
+        z-index: 1000;
         text-align: left;
     }
 
@@ -434,7 +434,7 @@
         font-family: "Inter", serif;
     }
 
-    /* weiße Box in der die Schrift steht für die Seite "AGBs" */
+    /* white background for the static page text */
     .static-page-container-AGBs {
         background-color: white;
         padding: 40px;
@@ -729,13 +729,13 @@
         margin-top: 30px;
         margin-left: 30px;
         margin-left: 30px;
-        width: 500px; /* Oder eine andere gewünschte Breite */
+        width: 500px; 
         height: 300px;
         display: flex;
         justify-content: center;
         align-items: center;
         object-fit: cover;
-        overflow: hidden; /* Verhindert, dass das Bild zu groß wird */
+        overflow: hidden; 
     }
 
     .picture img {
@@ -1005,25 +1005,25 @@
 
 .creatingNewCars select, 
 .creatingNewCars button {
-    width: 100%; /* Gleiche Breite */
-    max-width: 250px; /* Begrenzte maximale Breite */
-    height: 50px; /* Gleiche Höhe */
-    font-size: 18px; /* Lesbare Schriftgröße */
-    padding: 10px; /* Innenabstand */
-    border-radius: 10px; /* Abgerundete Ecken */
-    border: 2px solid #ccc; /* Schwarzer Rand */
+    width: 100%; 
+    max-width: 250px; 
+    height: 50px; 
+    font-size: 18px;
+    padding: 10px; 
+    border-radius: 10px; 
+    border: 2px solid #ccc;
     display: block;
-    margin: 10px auto; /* Zentriert */
+    margin: 10px auto; 
     background-color: #002b5e;
 }
 
 .creatingNewCars select {
-    background-color: white; /* Hintergrundfarbe für das Dropdown */
+    background-color: white;
     color: black;
 }
 
 .creatingNewCars button {
-    background-color: #FFC107; /* Gelb, wie im Bild */
+    background-color: #FFC107; 
     color: black;
     cursor: pointer;
     font-weight: bold;
