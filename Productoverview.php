@@ -1,7 +1,6 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once 'Functions.php';
+check_if_session_started();
 
 // If data comes via POST, store it in the session (for click on the Teaser from the Landingpage)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

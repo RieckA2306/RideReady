@@ -1,7 +1,6 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once 'Functions.php';
+check_if_session_started();
 ?>
 <!DOCTYPE html>
 <html lang="de">

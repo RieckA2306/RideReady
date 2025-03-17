@@ -2,13 +2,8 @@
 
 <?php
 ob_start();
-
-// Check if Session is already active 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require_once 'Functions.php';
+check_if_session_started();
 
 include 'dbConfig.php';
 

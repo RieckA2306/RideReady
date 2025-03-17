@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         unset($_SESSION['city'], $_SESSION['pickupdate'], $_SESSION['returndate']);
         
         // Stay on the current page
-        $currentPage = $_SERVER['HTTP_REFERER'] ?? 'Landingpage.php';
+        $currentPage = $_SERVER['HTTP_REFERER'] ?? 'P.RideReady.Landingpage.php';
         header('Location: ' . $currentPage);
         exit();
         
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['returndate'] = $returndate;
             
             // Redirect to Productoverview
-            header('Location: Productoverview.php');
+            header('Location: P.RideReady.Produktübersicht.php');
             exit();
         } elseif (isset($_SESSION['username']) && $_SESSION['username'] === "Admin") {
             // Admin Testing Mode
@@ -53,16 +53,16 @@ $returndate = $_SESSION['returndate'] ?? '';
     <title>Ride Ready - Header</title>
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="RideReady.css?v=1.1">
+    <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
 
 <?php
     function banner() {
     global $login; 
     if (isset($_SESSION["eingeloggt"])) {
 
-        include "Header_Menu_LoggedIn.php";
+        include "overview_login.php";
     } else {
-        include "Header_Menu.php";
+        include "overview.php";
     }
 
     }
@@ -74,7 +74,7 @@ $returndate = $_SESSION['returndate'] ?? '';
 <body class="header-body">
     <div class="header">
         <div class="Header-logo">
-            <a href="Landingpage.php">
+            <a href="P.RideReady.Landingpage.php">
                 <p class="Header-Footer-logo">
                     <img src="Images/logo.png" alt="Ride Ready Logo">
                 </p>
@@ -115,12 +115,12 @@ $returndate = $_SESSION['returndate'] ?? '';
                 echo '
                 
                 <div class="add-cars-admin">
-                    <a href="Productoverview_Admin.php">Autos hinzufügen</a>
+                    <a href="add-cars.php">Autos hinzufügen</a>
                 </div>
                 
                 
                 <div class="cancel-bookings-admin">
-                    <a href="AllBookings_Admin.php">Buchungen stornieren</a>
+                    <a href="cancel-bookings.php">Buchungen stornieren</a>
                 </div>
                 </a>';
             } else {

@@ -1,9 +1,6 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require_once 'Functions.php';
+check_if_session_started();
 
 // Mapping Arrays for Antrieb and Getriebe to save them in English for the SQL Query
 $driveMapping = [
