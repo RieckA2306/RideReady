@@ -14,6 +14,19 @@ if (isset($_SESSION["eingeloggt"])) {
     include('dbConfig.php');
 
     try {
+        // checks if user name already exists 
+        $stmt = $pdo->prepare("SELECT * FROM contract  WHERE Car_id = :car_id");
+        $stmt->bindParam(":car_id", $car_id, PDO::PARAM_STR);
+        $stmt->execute();
+        $userExists = $stmt->fetchColumn();
+
+        if ($userExists > 0) {
+           
+            echo  ('<script>
+            alert("Das Auto ist nun leider schon vergeben!");
+            window.location.href = "Productoverview.php";
+             </script>');
+        } else 
         // SQL-Request 
         $sql = "INSERT INTO contract (Start_Date, End_Date, Account_ID, Car_ID) 
                 VALUES (:pickupdate, :returndate, :account_id, :car_id)";
