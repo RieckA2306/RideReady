@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: loginsite.php");
+header("Location: Landingpage.php");
 exit();
 ?>
