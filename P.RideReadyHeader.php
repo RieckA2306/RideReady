@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['returndate'] = $returndate;
             
             // Redirect to Productoverview
-            header('Location: P.RideReady.Produktübersicht.php');
+            header('Location: Productoverview.php');
             exit();
         } elseif (isset($_SESSION['username']) && $_SESSION['username'] === "Admin") {
             // Admin Testing Mode
