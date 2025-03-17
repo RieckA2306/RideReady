@@ -1,6 +1,6 @@
 <!-- This script will open if someone pushes the button "Login" on Lginsite.php -->
 <?php
-// conncetion to database 
+// conncetion to sql database 
 include "dbConfigJosef.php";
 session_start(); 
 // 
