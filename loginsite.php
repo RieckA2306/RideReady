@@ -1,5 +1,5 @@
 <!-- 
- This script will open when a user clicks the "Login" button on overview.php
+ This script will open when a user clicks the "Login" button on Header_Menu.php
  or tries to book a car without logging in.
 -->
 

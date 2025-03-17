@@ -40,7 +40,7 @@ if (isset($_SESSION["eingeloggt"])) {
     } catch (PDOException) {
         echo('<script>
             alert("Da ist wohl etwas schief gelaufen. Versuche es nochmal.");
-            window.location.href = "Productoverview.php";
+            window.location.href = "ProductHeader_Menu.php";
         </script>');
    ;
     }

@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['returndate'] = $returndate;
             
             // Redirect to Productoverview
-            header('Location: Productoverview.php');
+            header('Location: ProductHeader_Menu.php');
             exit();
         } elseif (isset($_SESSION['username']) && $_SESSION['username'] === "Admin") {
             // Admin Testing Mode
@@ -64,9 +64,9 @@ $returndate = $_SESSION['returndate'] ?? '';
     global $login; 
     if (isset($_SESSION["eingeloggt"])) {
 
-        include "overview_login.php";
+        include "Header_Menu_LoggedIn.php";
     } else {
-        include "overview.php";
+        include "Header_Menu.php";
     }
 
     }
