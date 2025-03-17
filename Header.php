@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         unset($_SESSION['city'], $_SESSION['pickupdate'], $_SESSION['returndate']);
         
         // Stay on the current page
-        $currentPage = $_SERVER['HTTP_REFERER'] ?? 'P.RideReady.Landingpage.php';
+        $currentPage = $_SERVER['HTTP_REFERER'] ?? 'Landingpage.php';
         header('Location: ' . $currentPage);
         exit();
         
@@ -78,7 +78,7 @@ $returndate = $_SESSION['returndate'] ?? '';
 <body class="header-body">
     <div class="header">
         <div class="Header-logo">
-            <a href="P.RideReady.Landingpage.php">
+            <a href="Landingpage.php">
                 <p class="Header-Footer-logo">
                     <img src="Images/logo.png" alt="Ride Ready Logo">
                 </p>

@@ -38,7 +38,7 @@ if (isset($_SESSION["eingeloggt"]) && $car_id) {
         // SQL ausführen
         if ($stmt->execute($params)) {
             // Erfolgreich gespeichert, Weiterleitung zur Buchungsübersicht
-            header('Location: P.MeineBuchung.php');
+            header('Location: MyBookings.php');
             exit;
         } else {
             echo "Fehler beim Hinzufügen des Vertrags.";

@@ -26,7 +26,7 @@ try {
         if (isset($_SESSION['bookingcar_id'])) {
             header("Location: booking.php");
         } else {
-            header("Location: P.RideReady.Landingpage.php");
+            header("Location: Landingpage.php");
         }
         exit(); 
     } else {

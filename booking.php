@@ -32,7 +32,7 @@ if (isset($_SESSION["eingeloggt"])) {
         if ($stmt->execute($params)) {
             // deleting the bookingcar_id so double booking by opening booking.php is not possible
             unset($_SESSION['bookingcar_id']);
-            header('Location:P.MeineBuchung.php');
+            header('Location:MyBookings.php');
         } else {
             echo "Fehler beim Hinzufügen des Vertrags.";
         }

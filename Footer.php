@@ -10,7 +10,7 @@
         <!-- Left Side with Logo & Social Media -->
         <div class="footer-column">
             <div class="Footer-logo">
-                <a href="P.RideReady.Landingpage.php"><img src="Images/Logo.png" alt="Ride Ready Logo"></a>
+                <a href="Landingpage.php"><img src="Images/Logo.png" alt="Ride Ready Logo"></a>
             </div>
             <div class="social-icons">
                 <img src="Images/Footer/Facebook.Icon.png" alt="Facebook">
