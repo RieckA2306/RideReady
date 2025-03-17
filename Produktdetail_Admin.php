@@ -81,7 +81,7 @@ if ($car) { // Prüft, ob ein Ergebnis vorhanden ist
     $Doors = $car['Doors'];
     $Seats = $car['Seats'];
 } else {
-    header('Location: add-cars.php');
+    header('Location: Productoverview_Admin.php');
     exit();
 }
 

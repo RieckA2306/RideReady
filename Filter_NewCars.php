@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['sorting'] = '';
 
         // Stay on that Page (window.location is needed as a workaround because there is some unknown conflict with the header)
-        echo '<script>window.location.href="add-cars.php";</script>';
+        echo '<script>window.location.href="Productoverview_Admin.php";</script>';
         exit();
 
     } elseif (isset($_POST['filter'])) {
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['price'] = $_POST['price'] ?? '';
         $_SESSION['sorting'] = $_POST['sorting'] ?? '';
 
-        echo '<script>window.location.href="add-cars.php";</script>';
+        echo '<script>window.location.href="Productoverview_Admin.php";</script>';
         exit();
     }
 }
@@ -85,7 +85,7 @@ $sorting = $_SESSION['sorting'] ?? '';
 </head>
 <body>
     <div class="filter-bar">
-    <form method="post" action="add-cars.php" class="form-wrapper">
+    <form method="post" action="Productoverview_Admin.php" class="form-wrapper">
             <?php
                 require_once 'Functions.php';
 
