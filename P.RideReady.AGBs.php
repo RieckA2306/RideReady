@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
 </head>
 <body class="static-page-body">
-    <?php include 'P.RideReadyHeader.php'; ?>
+    <?php include 'Header.php'; ?>
     <div class="static-page-container-AGBs">
         <h1>Allgemeine Geschäftsbedingungen (AGB) von <strong>RideReady</strong></h1>  
         

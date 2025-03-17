@@ -99,7 +99,7 @@ ob_end_flush();
 </head>
 
 <body class="homepage-body">
-    <?php include 'P.RideReadyHeader.php'; ?>
+    <?php include 'Header.php'; ?>
 
     <div class="productdetailcontainer">
         <div>     

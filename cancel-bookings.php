@@ -107,7 +107,7 @@
 </head>
 <body class="produktübersicht-body">
 
-    <?php include 'P.RideReadyHeader.php'; ?>
+    <?php include 'Header.php'; ?>
 
     <div class="produktübersicht-content">
         <div class="table-container">

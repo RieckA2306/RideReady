@@ -8,7 +8,7 @@
 </head>
 
 <body class="static-page-body">
-    <?php include 'P.RideReadyHeader.php'; ?>
+    <?php include 'Header.php'; ?>
     <div class="static-page-container-Cookierichtlinien"> 
         <h1>Cookie-Richtlinien von <strong>RideReady</strong></h1> 
 

@@ -97,7 +97,7 @@ error_reporting(E_ALL);
 ?>
 
 <body class="homepage-body">
-    <?php include 'P.RideReadyHeader.php'; ?>
+    <?php include 'Header.php'; ?>
    
     <div class="productdetailcontainer">
         <div>     

@@ -93,7 +93,7 @@
 <body class="produktübersicht-body"> <!-- Applies a CSS class to the body for styling -->
 
     <!-- Includes the header section -->
-    <?php include 'P.RideReadyHeader.php'; ?>
+    <?php include 'Header.php'; ?>
 
     <!-- Main content wrapper -->
     <div class="produktübersicht-content">

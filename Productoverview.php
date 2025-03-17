@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="productoverview-body">
 
 <?php 
-    include 'P.RideReadyHeader.php';
+    include 'Header.php';
     include 'Filter.php'; 
 ?>
     

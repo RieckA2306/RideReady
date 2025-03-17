@@ -14,7 +14,7 @@
 <body class="signin-body">
 
     <!-- Includes the header section -->
-    <?php include 'P.RideReadyHeader.php'; ?>
+    <?php include 'Header.php'; ?>
 
 
      <!-- User registration form that submits data via POST to signin.php -->
