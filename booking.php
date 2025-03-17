@@ -11,7 +11,7 @@ if (isset($_SESSION["eingeloggt"])) {
     $car_id=$_SESSION['bookingcar_id'];
 
     // Connection to Database and Start SQL Insert
-    include('dbConfigJosef.php');
+    include('dbConfig.php');
 
     try {
         // SQL-Request 

@@ -25,7 +25,7 @@ error_reporting(E_ALL);
     $ID = filter_var($ID, FILTER_VALIDATE_INT);// To make sure no sql injections can be used here
     
     // Gaining access to the Database 
-    include 'dbConfigJosef.php';
+    include 'dbConfig.php';
 
     // Grabbing all the information we need for the Detailspage from the DatabaseS
     $sql = "SELECT 
@@ -202,7 +202,7 @@ error_reporting(E_ALL);
                     <div class="timebox">  <h4>Ende</h4> <p><?php echo"$formattedDateReturn"?></p></div>
 
                 </div>
-                <button onclick="window.location.href='bookingstaging.php?<?= (int)$car_id ?>'" class="bookingbutton">
+                <button onclick="window.location.href='BookingPreparation.php?<?= (int)$car_id ?>'" class="bookingbutton">
                     <?php echo  $bookingcontent?>
                 </button>
             </div>

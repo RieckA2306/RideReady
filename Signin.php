@@ -1,7 +1,7 @@
 <!-- This script will open if someone pushes the button "Registrieren" on Signinsite.php -->
 <?php
 // connection to Database 
-include "dbConfigJosef.php";
+include "dbConfig.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST["username"]);

@@ -123,7 +123,7 @@
 
      
             <?php 
-            include 'dbConfigJosef.php';
+            include 'dbConfig.php';
   
             if (!isset($_SESSION['account_id'])) {
                 echo "<p>Bitte melden Sie sich an, um Ihre Buchungen zu sehen.</p>";

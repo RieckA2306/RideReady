@@ -20,7 +20,7 @@ if (session_status() === PHP_SESSION_NONE) {
     
 <?php 
     //  Connection to Database
-     include 'dbConfigJosef.php';
+     include 'dbConfig.php';
 
     // Retrieve filter variables from the sessions
 $pickupdate= $_SESSION['pickupdate'] ?? '';

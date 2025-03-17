@@ -1,5 +1,5 @@
 <?php
-include "dbConfigJosef.php";
+include "dbConfig.php";
 session_start(); 
 // get username from session
 $username = $_SESSION['username'] ?? null;

@@ -124,7 +124,7 @@ $returndate = $_SESSION['returndate'] ?? '';
                 
                 
                 <div class="cancel-bookings-admin">
-                    <a href="cancel-bookings.php">Buchungen stornieren</a>
+                    <a href="AllBookings_Admin.php">Buchungen stornieren</a>
                 </div>
                 </a>';
             } else {

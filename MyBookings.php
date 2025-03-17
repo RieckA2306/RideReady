@@ -112,7 +112,7 @@
 
             <!-- PHP: Fetch and display user bookings dynamically -->
             <?php 
-            include 'dbConfigJosef.php'; // Includes database connection
+            include 'dbConfig.php'; // Includes database connection
 
             // Start session if not already started
             if (session_status() == PHP_SESSION_NONE) {

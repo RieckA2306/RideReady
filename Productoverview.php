@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 <?php 
     //  Connection to Database
-     include 'dbConfigJosef.php';
+     include 'dbConfig.php';
 
     // Retrieve filter variables from the sessions
 $pickupdate= $_SESSION['pickupdate'] ?? '';

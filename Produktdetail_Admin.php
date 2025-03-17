@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-include 'dbConfigJosef.php';
+include 'dbConfig.php';
 
 // Gets the Type_Id from the URL, which tells the DB, what car it has to show
 $ID = isset($_GET['id']) ? intval($_GET['id']) : null;

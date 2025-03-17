@@ -1,9 +1,9 @@
-<!-- This code is executed if the button "Löschen" on cancel-bookings.php is pushed  -->
+<!-- This code is executed if the button "Löschen" on AllBookings_Admin.php is pushed  -->
 <?php
 session_start();
 // getting Contract ID that is supposed to be deleted
 $Contract_ID=$_SERVER['QUERY_STRING'];
-    include('dbConfigJosef.php');
+    include('dbConfig.php');
 if ($Contract_ID) {
     try {
         // SQL Delete-Statement
@@ -15,13 +15,13 @@ if ($Contract_ID) {
         if ($stmt->rowCount() > 0) {
             echo  ('<script>
             alert("Diese Buchung wurde erfolgreich storniert.");
-            window.location.href = "cancel-bookings.php";
+            window.location.href = "AllBookings_Admin.php";
         </script>');
         } else {
             // in case someone refreshes the Site no error will occur 
             echo  ('<script>
             alert("Kein Eintrag mit dieser Contract_ID gefunde.");
-            window.location.href = "cancel-bookings.php";
+            window.location.href = "AllBookings_Admin.php";
         </script>');
         }
         // in case there is a Database error 

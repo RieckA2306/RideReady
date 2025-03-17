@@ -6,7 +6,7 @@ $car_id = $_SESSION['bookingcar_id'] ?? null;
 // Prüfen, ob der Nutzer eingeloggt ist
 if (isset($_SESSION["eingeloggt"]) && $car_id) {
     // Datenbank-Konfiguration einbinden
-    include('dbConfigJosef.php');
+    include('dbConfig.php');
 
     // Session-Variablen abrufen
     $pickupdate = $_SESSION['pickupdate'] ?? null;
