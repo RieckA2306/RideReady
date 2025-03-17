@@ -1,3 +1,9 @@
+<?php
+if (!defined('ALLOW_FOOTER_INCLUDE')) {
+    die('Direct access to this file is not allowed.');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>

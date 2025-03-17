@@ -95,7 +95,9 @@
     </div>
 
     <!-- Includes the footer section -->
-    <?php include 'Footer.php'; ?>
+    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    include 'Footer.php';
+     ?>
 
 </body>
 </html>

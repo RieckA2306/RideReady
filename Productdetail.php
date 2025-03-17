@@ -226,7 +226,9 @@ check_if_session_started();
         });
     </script>
     <?php 
-    include 'Footer.php'; 
+    define('ALLOW_FOOTER_INCLUDE', true);
+    include 'Footer.php';
+     
     ?>
 </body>
 </html>

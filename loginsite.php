@@ -39,7 +39,9 @@
     </form>
 
     <!-- Includes the footer, likely containing additional links or copyright info -->
-    <?php include 'Footer.php'; ?>
+    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    include 'Footer.php';
+     ?>
 
 </body>
 </html>

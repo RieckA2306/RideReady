@@ -39,6 +39,8 @@
         <p>Falls Sie Fragen zu unseren Cookie-Richtlinien haben oder weitere Informationen benötigen, können Sie uns jederzeit unter <a href="mailto:service@ride-ready.com">service@ride-ready.com</a> kontaktieren.</p>  
 
     </div>
-    <?php include 'Footer.php'; ?>
+    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    include 'Footer.php';
+     ?>
 </body>
 </html>
