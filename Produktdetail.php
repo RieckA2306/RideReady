@@ -76,7 +76,7 @@ error_reporting(E_ALL);
         $_SESSION['bookingcar_id'] = $car_id;
     } else {
         //If No car was found -> return to car selection
-        header('Location: ProductHeader_Menu.php');
+        header('Location: Productoverview.php');
         exit;
     }
         

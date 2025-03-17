@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['returndate'] = $returndate;
             
             // Redirect to Productoverview
-            header('Location: ProductHeader_Menu.php');
+            header('Location: Productoverview.php');
             exit();
         } elseif (isset($_SESSION['username']) && $_SESSION['username'] === "Admin") {
             // Admin Testing Mode
@@ -60,7 +60,7 @@ $returndate = $_SESSION['returndate'] ?? '';
     <link rel="stylesheet" href="RideReady.css?v=1.1">
 
 <?php
-    function menu_banner() {
+    function banner() {
     global $login; 
     if (isset($_SESSION["eingeloggt"])) {
 
@@ -145,7 +145,7 @@ $returndate = $_SESSION['returndate'] ?? '';
     </div>
     
     <?php 
-    menu_banner();
+    banner();
     ?>
     
     <!-- Flatpickr JavaScript -->

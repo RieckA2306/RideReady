@@ -21,7 +21,7 @@
         <!-- Start Teaser Section -->
         <h2 class="landingpage-title">Mobilität, die zu Ihnen passt – Entdecken Sie unsere Top-Mietwagenangebote!</h2>
         <!-- Invisible form for POST forwarding -->
-        <form id="redirectForm" method="post" action="ProductHeader_Menu.php">
+        <form id="redirectForm" method="post" action="Productoverview.php">
             <input type="hidden" name="city" value="Hamburg">
             <input type="hidden" name="pickupdate" id="pickupdate">
             <input type="hidden" name="returndate" id="returndate">
