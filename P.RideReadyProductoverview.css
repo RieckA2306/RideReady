@@ -127,7 +127,7 @@
     .cardtext-Name_Extension {
         font-size: 20px;
         margin: 2px 0;
-        height: 24px; /* Feste Höhe, damit immer Platz reserviert ist */
+        height: 10px; /* Fixed height so that space is always reserved */
         display: flex;
     }
 
@@ -140,7 +140,8 @@
         font-size: 40px;
         text-align: right;
         padding: 10px;
-        margin-top: auto; /* Drückt den Preis nach unten */
+        margin-top: auto; /* Pushes the price down */
+        margin-top: -20px;
     }
 
     .card a {
@@ -161,6 +162,15 @@
 
 
     /* Header Styling */
+    .header-body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: white;
+    }
+    
+    
+    /* Header Styling */
     .header {
         display: flex;
         align-items: center;
@@ -171,16 +181,16 @@
         top: 0;
         z-index: 1000;
     }
-
+    
     .Header-logo img {
-    max-width: 180px;
-    object-fit: contain;
+        max-width: 180px;
+        object-fit: contain;
     }
-
+    
     .logo img {
         height: 40px;
     }
-
+    
     /* Container for the search box */
     .search-box {
         display: flex;
@@ -190,7 +200,7 @@
         border-radius: 5px;
         margin-left: 170px;
     }
-
+    
     /* Buttons to set/reset Filters */
     .search-box button {
         background-color: #80BFFF;
@@ -198,7 +208,7 @@
         border: none;
         cursor: pointer;
     }
-
+    
     .search-box button:hover {
         background-color: #123472;
     }
@@ -215,7 +225,7 @@
         border-color: #80BFFF !important;
         color: white !important;
     }
-
+    
     /* Container for the Button (Top-Right) */
     .hamburger-button {
         background-color: white;
@@ -298,7 +308,7 @@
         font-weight: bold;
         color: black;
     }
-
+    
     /* Text in the Admin div */
     .cancel-bookings-admin a{
         text-decoration: none;
@@ -586,7 +596,7 @@
 
     }
     /* User Icon with Initials*/
-    .feedback-user-icon {
+    .feedback-user-icon-AR {
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -597,6 +607,7 @@
         color: white;
         font-size: 18px;
         font-weight: bold;
+        background: green;
     }
 
     /* User Icon with Initials*/
@@ -670,7 +681,6 @@
     .feedback-logo {
         text-align: center;
     }
-    
 /* Landing Page End*/
 
 /* start Productdetail */

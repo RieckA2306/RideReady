@@ -4,50 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport">
-    <link rel="stylesheet" href="P.RideReadyProductoverview.css">
+    <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
 </head>
-<style>
-    .cardtext {
-        width: 300px;
-        height: 150px;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        color: white;
-        font-weight: bold;
-        text-decoration: none !important; 
-        padding: 5px;
-    }
-
-    .cardtext-Vendor_Name {
-        font-size: 23px;
-        margin: 2px 0;
-    }
-
-    .cardtext-Name_Extension {
-        font-size: 20px;
-        margin: 2px 0;
-        height: 10px; /* Fixed height so that space is always reserved */
-        display: flex;
-    }
-
-    .cardtext-available {
-        font-size: 18px;
-        margin: 2px 0;
-    }
-
-    .cardtext-price {
-        font-size: 40px;
-        text-align: right;
-        padding: 10px;
-        margin-top: auto; /* Pushes the price down */
-        margin-top: -20px;
-    }
-
-    .card a {
-    text-decoration: none !important;
-    color: inherit !important;
-    display: block;
-    }
+<style>  
 </style>
 <body>
 
