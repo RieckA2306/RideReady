@@ -1,3 +1,12 @@
+<?php
+require_once 'Functions.php';
+check_if_session_started();
+
+// Prüfen, ob der Benutzer eingeloggt ist und Admin-Rechte hat
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
+    die('Zugriff verweigert. Diese Seite ist nur für Administratoren.');
+}
+?>
 <!-- This Site will open if someone pushes the Button "Buchung Stornieren in the Header -->
 <!DOCTYPE html>
 <html lang="de">

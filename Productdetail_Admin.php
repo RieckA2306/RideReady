@@ -5,6 +5,10 @@ ob_start();
 require_once 'Functions.php';
 check_if_session_started();
 
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
+    die('Zugriff verweigert. Diese Seite ist nur für Administratoren.');
+}
+
 include 'dbConfig.php';
 
 // Gets the Type_Id from the URL, which tells the DB, what car it has to show

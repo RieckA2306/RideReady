@@ -1,6 +1,10 @@
 <?php
 require_once 'Functions.php';
 check_if_session_started();
+
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
+    die('Zugriff verweigert. Diese Seite ist nur für Administratoren.');
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
