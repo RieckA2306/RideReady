@@ -97,12 +97,14 @@ ob_end_flush();
     <?php include 'Header.php'; ?>
 
     <div class="productdetailcontainer">
-        <div>     
+        <div>
+                 <!-- The left side of the Site is added here with the Image, Price and below the collapsibles -->
             <div class="pictureandprice-wrapper">
                 <div class="picture"><img src="Images/Cars/<?php echo htmlspecialchars($carImage); ?>" alt="Car Image"></div>
                 <div class="price">  <h2><?php echo number_format($carprice, 2, ',', '.') . "€"; ?> pro Tag</h2>
                 </div>
             </div>
+            <!-- The Collapsibles are included here -->
             <button type="button" class="collapsible">
                 <?php echo"Für mehr Detailinformationen klicken Sie hier."?>
             </button>
@@ -118,12 +120,14 @@ ob_end_flush();
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
+        <!-- The Right side of the Site is included here  -->
         <div>
             <div class="detail">
                 <div class="CarName">
                     <h1> <?php echo"$carVendor "."$carname "."$nameExtension";?> </h1>
                 </div>  
                 <div class="detailt">
+                    <!-- The Icons and the according Details from the DB are included -->
                     <div class="feature">
                         <img src="Images\Icons\Seats.jpg">
                         <p> <?php echo"$Seats"." Sitzplätze"?></p>
@@ -179,7 +183,7 @@ ob_end_flush();
                     </div>
                 </div>  
             </div>
-   
+            <!-- In this part, the selection of the City adn the Submit button to create a new car are added -->
             <form id="StadtAuswahl_NeuesAuto" method="post">
                 <div class="creatingNewCars">
                     <input type="hidden" name="type_id" value="<?php echo htmlspecialchars($ID); ?>">

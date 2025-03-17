@@ -4,7 +4,7 @@ require_once 'Functions.php';
 check_if_session_started();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <title>Detailseite</title>
