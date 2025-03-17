@@ -17,9 +17,9 @@
     <h2><?php  echo "Willkommen "."$username"?></h2>
     <a href="P.MeineBuchung.php" >Meine Buchungen</a>
     <a href="Sessionanzeige.php">Sessionanzeigen</a>
-    <a href="P.RideReady.ÜberUns.php">Über Uns</a>
-    <a href="P.RideReady.Cookierichtlinien.php">Cookierichtlinien</a>
-    <a href="P.RideReady.AGBs.php">AGBs</a>
+    <a href="AboutUs.php">Über Uns</a>
+    <a href="Cookieguidelines.php">Cookierichtlinien</a>
+    <a href="AGBs.php">AGBs</a>
     <a href="logout.php"><button>Logout</button></a>
        </div>   
 </body>

@@ -27,7 +27,7 @@
         <!-- "Unternehmen" -->
         <div class="footer-column">
             <h3>Unternehmen</h3>
-            <a href="P.RideReady.ÜberUns.php">Über uns</a>
+            <a href="AboutUs.php">Über uns</a>
             <a href="#">Karriere</a>
             <a href="#">Impressum</a>
             <a href="mailto:service@ride-ready.com">service@ride-ready.com</a>
@@ -36,8 +36,8 @@
         <!-- "Rechtliches" -->
         <div class="footer-column">
             <h3>Rechtliches</h3>
-            <a href="P.RideReady.AGBs.php">AGB</a>
-            <a href="P.RideReady.Cookierichtlinien.php">Cookierichtlinien</a>
+            <a href="AGBs.php">AGB</a>
+            <a href="Cookieguidelines.php">Cookierichtlinien</a>
             <a href="#">Datenschutzrichtlinien</a>
         </div>
 
