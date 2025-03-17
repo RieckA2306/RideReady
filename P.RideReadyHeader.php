@@ -33,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Redirect to Productoverview
             header('Location: P.RideReady.Produktübersicht.php');
             exit();
-        } else if($_SESSION['username']=="Admin"){
-            //Admin Testing Mode
-        }else{
+        } elseif (isset($_SESSION['username']) && $_SESSION['username'] === "Admin") {
+            // Admin Testing Mode
+        } else {
             // Don't save any values ​​and stay on the current page
             echo '<script>alert("Bitte füllen Sie alle Felder aus!");</script>';
         }
@@ -57,7 +57,7 @@ $returndate = $_SESSION['returndate'] ?? '';
     <title>Ride Ready - Header</title>
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="P.RideReady.css">
+    <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
 
 <?php
     function banner() {
@@ -73,175 +73,6 @@ $returndate = $_SESSION['returndate'] ?? '';
 ?>
 
 <style>
-        .header-body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: white;
-        }
-        
-        
-        /* Header Styling */
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background-color: #123472;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .Header-logo img {
-        max-width: 180px;
-        object-fit: contain;
-        }
-        
-        .logo img {
-            height: 40px;
-        }
-        
-        /* Container for the search box */
-        .search-box {
-            display: flex;
-            gap: 10px;
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            margin-left: 170px;
-        }
-        
-        /* Buttons to set/reset Filters */
-        .search-box button {
-            background-color: #80BFFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .search-box button:hover {
-            background-color: #123472;
-        }
-
-        .search-box select, .search-box input, .search-box button {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        /* Changes the background color of the selected date */
-        .flatpickr-day.selected, 
-        .flatpickr-day.selected:hover {
-            background: #80BFFF !important;
-            border-color: #80BFFF !important;
-            color: white !important;
-        }
-        
-        /* Container for the Button (Top-Right) */
-        .hamburger-button {
-            background-color: white;
-            border: none;
-            border-radius: 8px;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-        }
-
-        /* Three grey stripes */
-        .hamburger-button span {
-            display: block;
-            width: 20px;
-            height: 3px;
-            background-color: #999;
-            margin: 4px auto;
-            position: sticky;
-        }
-        /* Container when the Button is clicked*/
-        .menu {
-            width: 300px;
-            border: 2px solid black;
-            border-radius: 10px;
-            padding: 10px;
-            background-color: white;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            position: fixed; /* Statt absolute oder sticky */
-            top: 8%;
-            right: 1%;
-            display: none;
-            z-index: 1000; /* Stellt sicher, dass es über dem Content bleibt */
-            text-align: left;
-        }
-
-        .menu a {
-            display: block;
-            text-decoration: none;
-            color: black;
-            padding: 5px 0;
-        }
-
-        .menu button {
-            width: 100%;
-            padding: 10px;
-            background-color: #FFC107;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* This div is shown, when you have an Admin Acc */
-        .add-cars-admin {
-            width: 7%;
-            padding: 5px;
-            background-color: #f9f9f9;
-            text-align: center;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            color: black;
-        }
-
-        /* Text in the Admin div */
-        .add-cars-admin a{
-            text-decoration: none;
-            color: black;
-        }
-
-        /* This div is shown, when you have an Admin Acc*/
-        .cancel-bookings-admin {
-            width: 7%;
-            padding: 5px;
-            background-color: #f9f9f9;
-            text-align: center;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            color: black;
-        }
-        
-        /* Text in the Admin div */
-        .cancel-bookings-admin a{
-            text-decoration: none;
-            color: black;
-        }
-
-        /* Placeholder if you are not an Admin Acc*/
-        .add-cars-no-admin {
-            width: 7%;
-            padding: 5px;
-            background-color: #123472;
-            border: none;
-        }
-
-        /* Placeholder if you are not an Admin Acc*/
-        .cancel-bookings-no-admin {
-            width: 7%;
-            padding: 5px;
-            background-color: #123472;
-            border: none;
-        }
-
 </style>
 </head>
 <body class="header-body">
