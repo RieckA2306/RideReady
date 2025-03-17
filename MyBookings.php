@@ -14,90 +14,14 @@
     <!-- Links an external CSS file for styling with a version parameter to prevent caching issues -->
     <link rel="stylesheet" href="RideReady.css?v=1.1">
 
-    <!-- Das hier auf jeden fall in CSS Dokument -->
-    <style>
-        /* General body styling */
-        .produktübersicht-body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-            background-color: #F0F0F0;
-            margin: 0;
-        }
-
-        /* Main content container */
-        .produktübersicht-content {
-            flex-direction: column;
-            display: flex;
-            padding: 20px;
-            background-color: white;
-            width: 80%;
-            margin: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            min-height: 430px;
-        }
-
-        /* Table container */
-        .table-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header row */
-        .header-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        /* Styling for header boxes */
-        .header-box {
-            width: 18%;
-            height: 50px;
-            background-color: #80BFFF;
-            color: white;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            margin: 5px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Styling for data rows */
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        /* Styling for individual booking entries */
-        .entry-box {
-            width: 18%;
-            height: 50px;
-            background-color: #D3D3D3;
-            color: black;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            margin: 5px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-<body class="produktübersicht-body"> <!-- Applies a CSS class to the body for styling -->
+   
+<body class="productoverview-body"> <!-- Applies a CSS class to the body for styling -->
 
     <!-- Includes the header section -->
     <?php include 'Header.php'; ?>
 
     <!-- Main content wrapper -->
-    <div class="produktübersicht-content">
+    <div class="productoverview-content">
         
         <!-- Booking Table -->
         <div class="table-container">
