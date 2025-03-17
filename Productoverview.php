@@ -145,7 +145,7 @@ $freieAutos = $stmt->fetchAll();
                     $availableCount = $auto['available_count'];
 
                     // Document for the Cards in the Productoverview
-                    include 'teaser.php';   
+                    include 'Productoverview_Teaser.php';   
                 }
                     echo "</ul>";
                 } else {
