@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="RideReady.css?v=1.1">
 
    
-<body class="productoverview-body"> <!-- Applies a CSS class to the body for styling -->
+<body class="Booking-body"> <!-- Applies a CSS class to the body for styling -->
 
     <!-- Includes the header section -->
     <?php include 'Header.php'; ?>
 
     <!-- Main content wrapper -->
-    <div class="productoverview-content">
+    <div class="Booking-content">
         
         <!-- Booking Table -->
         <div class="table-container">
