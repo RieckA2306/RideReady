@@ -57,7 +57,7 @@ $returndate = $_SESSION['returndate'] ?? '';
     <title>Ride Ready - Header</title>
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
+    <link rel="stylesheet" href="RideReady.css?v=1.1">
 
 <?php
     function banner() {

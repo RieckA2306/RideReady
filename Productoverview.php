@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
     <title>Produktübersicht</title>
-    <link rel="stylesheet" href="P.RideReadyProductoverview.css">
+    <link rel="stylesheet" href="RideReady.css">
 </head>
 <body class="productoverview-body">
 

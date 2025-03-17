@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
-    <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
+    <link rel="stylesheet" href="RideReady.css?v=1.1">
     <title>Meine Buchungen</title>
     <style>
         /* Allgemeine Body-Styling */

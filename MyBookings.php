@@ -12,7 +12,7 @@
     <title>Meine Buchungen</title> <!-- Sets the title of the page -->
 
     <!-- Links an external CSS file for styling with a version parameter to prevent caching issues -->
-    <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
+    <link rel="stylesheet" href="RideReady.css?v=1.1">
 
     <!-- Das hier auf jeden fall in CSS Dokument -->
     <style>

@@ -80,7 +80,7 @@ $sorting = $_SESSION['sorting'] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produktübersicht</title>
-    <!-- <link rel="stylesheet" href="P.RideReadyProductoverview.css"> -->
+    <!-- <link rel="stylesheet" href="RideReady.css"> -->
 </head>
 <body>
     <div class="filter-bar">

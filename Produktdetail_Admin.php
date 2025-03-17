@@ -95,7 +95,7 @@ ob_end_flush();
 <meta charset="UTF-8">
 <title>Neue Autos Hinzufügen</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
+<link rel="stylesheet" href="RideReady.css?v=1.1">
 </head>
 
 <body class="homepage-body">

@@ -9,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
     <title>Autos Hinzufügen</title>
-    <link rel="stylesheet" href="P.RideReadyProductoverview.css">
+    <link rel="stylesheet" href="RideReady.css">
 </head>
 <body class="productoverview-body">
 

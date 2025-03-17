@@ -8,7 +8,7 @@
     <title>Sign In</title>
 
     <!-- Links an external CSS file with a version parameter to prevent caching issues -->
-    <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
+    <link rel="stylesheet" href="RideReady.css?v=1.1">
 </head>
 
 <body class="signin-body">
