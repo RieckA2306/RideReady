@@ -1,10 +1,19 @@
+<!-- 
+    This page displays a user's car rental bookings.
+    It retrieves data from the database and presents it in a table format.
+    This page appears when the user clicks on "My Bookings"
+-->
+
 <!DOCTYPE html>  
-<html lang="de">
+<html lang="de"> <!-- Sets the document language to German -->
 <head>  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=1920">
+    <meta charset="UTF-8"> <!-- Ensures proper character encoding -->
+    <meta name="viewport" content="width=1920"> <!-- Defines the viewport width for better responsiveness -->
+    <title>Meine Buchungen</title> <!-- Sets the title of the page -->
+
+    <!-- Links an external CSS file for styling with a version parameter to prevent caching issues -->
     <link rel="stylesheet" href="P.RideReadyProductoverview.css?v=1.1">
-    <title>Meine Buchungen</title>
+
     <style>
         /* General body styling */
         .produktübersicht-body {
@@ -16,7 +25,7 @@
             margin: 0;
         }
 
-        /* Main content styling */
+        /* Main content container */
         .produktübersicht-content {
             flex-direction: column;
             display: flex;
@@ -29,20 +38,21 @@
             min-height: 430px;
         }
 
-        /* Container for the entire table */
+        /* Table container */
         .table-container {
             width: 100%;
             display: flex;
             flex-direction: column;
         }
 
-        /* Header row styling */
+        /* Header row */
         .header-row {
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
         }
 
+        /* Styling for header boxes */
         .header-box {
             width: 18%;
             height: 50px;
@@ -64,6 +74,7 @@
             margin-bottom: 5px;
         }
 
+        /* Styling for individual booking entries */
         .entry-box {
             width: 18%;
             height: 50px;
@@ -79,43 +90,44 @@
         }
     </style>
 </head>
-<body class="produktübersicht-body">
+<body class="produktübersicht-body"> <!-- Applies a CSS class to the body for styling -->
 
+    <!-- Includes the header section -->
     <?php include 'P.RideReadyHeader.php'; ?>
 
-    <!-- Wrapper for the main content section -->
+    <!-- Main content wrapper -->
     <div class="produktübersicht-content">
         
-        <!-- Table container -->
+        <!-- Booking Table -->
         <div class="table-container">
-            <!-- Header row (column titles) -->
+            <!-- Table header row -->
             <div class="header-row">
-                <div class="header-box">Booking Number</div>
-                <div class="header-box">Pick-up Date</div>
-                <div class="header-box">Return Date</div>
-                <div class="header-box">Booked Vehicle</div>
-                <div class="header-box">Booking Date</div>
+                <div class="header-box">Buchungsnummer</div>
+                <div class="header-box">Abholdatum</div>
+                <div class="header-box">Rückgabedatum</div>
+                <div class="header-box">Gebuchtes Fahrzeug</div>
+                <div class="header-box">Buchungsdatum</div>
             </div>
 
-            <!-- PHP: Dynamically fetch and display booking entries -->
+            <!-- PHP: Fetch and display user bookings dynamically -->
             <?php 
-            include 'dbConfigJosef.php';
+            include 'dbConfigJosef.php'; // Includes database connection
 
-            // Start the session if it hasn't been started yet
+            // Start session if not already started
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }
 
-            // Check if the user is logged in
+            // Check if user is logged in
             if (!isset($_SESSION['account_id'])) {
-                echo "<p>Please log in to view your bookings.</p>";
-                exit;
+                echo "<p>Bitte melden Sie sich an, um Ihre Buchungen zu sehen.</p>";
+                exit; // Exit the script if the user is not logged in
             }
 
-            $user_id = $_SESSION['account_id']; // ID of the current user
+            $user_id = $_SESSION['account_id']; // Get the logged-in user's ID
 
             try {
-                // Query to retrieve user-specific bookings
+                // SQL query to fetch booking details for the logged-in user
                 $sql = "SELECT c.Contract_ID, 
                                c.Start_Date,  
                                c.End_Date,
@@ -126,34 +138,35 @@
                         JOIN model m ON ca.Type_ID = m.Type_ID
                         WHERE c.Account_ID = :user_id";
             
-                // Prepare and execute the query
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
                 $stmt->execute();
-                $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $buchungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
-                // If bookings exist, display them in table rows
-                if ($bookings) {
-                    foreach ($bookings as $row) {
+                // If bookings are found, display them in table rows
+                if ($buchungen) {
+                    foreach ($buchungen as $row) {
                         echo '<div class="data-row">';
                         echo '<div class="entry-box">' . htmlspecialchars($row["Contract_ID"]) . '</div>';
                         echo '<div class="entry-box">' . htmlspecialchars($row["Start_Date"]) . '</div>';
                         echo '<div class="entry-box">' . htmlspecialchars($row["End_Date"]) . '</div>';
-                        echo '<div class="entry-box">' . htmlspecialchars($row["ConcatName"]) . '</div>'; 
+                        echo '<div class="entry-box">' . htmlspecialchars($row["ConcatName"]) . '</div>';
                         echo '<div class="entry-box">' . htmlspecialchars($row["DateOfBooking"]) . '</div>';
                         echo '</div>';
                     }
                 } else {
-                    echo "<p>No bookings found. You have not made any bookings yet.</p>";
+                    // Display message if no bookings are found
+                    echo "<p>Keine Buchungen gefunden. Sie haben noch keine Buchung getätigt.</p>";
                 }
             } catch (PDOException $e) {
-                // Handle any SQL errors
-                echo "<p>SQL Error: " . $e->getMessage() . "</p>";
+                // Display an error message if the SQL query fails
+                echo "<p>SQL Fehler: " . $e->getMessage() . "</p>";
             }
             ?>
         </div>
     </div>
 
+    <!-- Includes the footer section -->
     <?php include 'P.RideReadyFooter.php'; ?>
 
 </body>
