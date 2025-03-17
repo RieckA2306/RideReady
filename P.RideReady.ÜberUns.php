@@ -25,5 +25,5 @@
         
     </div>
 </body>
-<?php include 'P.RideReadyFooter.php'; ?>
+<?php include 'Footer.php'; ?>
 </html>

@@ -122,6 +122,6 @@
         </div>
     </div>
 
-    <?php include 'P.RideReadyFooter.php'; ?>
+    <?php include 'Footer.php'; ?>
 </body>
 </html>

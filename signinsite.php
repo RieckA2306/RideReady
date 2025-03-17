@@ -29,7 +29,7 @@
     </form>
 
     <!-- Includes the footer section -->
-    <?php include 'P.RideReadyFooter.php'; ?>
+    <?php include 'Footer.php'; ?>
 
 </body>
 </html>

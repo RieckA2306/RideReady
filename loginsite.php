@@ -36,7 +36,7 @@
     </form>
 
     <!-- Includes the footer, likely containing additional links or copyright info -->
-    <?php include 'P.RideReadyFooter.php'; ?>
+    <?php include 'Footer.php'; ?>
 
 </body>
 </html>

@@ -216,6 +216,6 @@ ob_end_flush();
         });
     </script>
 
-    <?php include 'P.RideReadyFooter.php'; ?>
+    <?php include 'Footer.php'; ?>
 </body>
 </html>

@@ -227,7 +227,7 @@ error_reporting(E_ALL);
         });
     </script>
     <?php 
-    include 'P.RideReadyFooter.php'; 
+    include 'Footer.php'; 
     ?>
 </body>
 </html>
