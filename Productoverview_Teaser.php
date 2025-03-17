@@ -11,7 +11,7 @@
 <body>
 
  <div class="card">
-    <a href="Produktdetail.php?<?php echo urlencode($_SESSION['type_id']); ?>">
+    <a href="Productdetail.php?<?php echo urlencode($_SESSION['type_id']); ?>">
         <div class="cardimage">
             <img src="Images/Cars/<?php echo htmlspecialchars($_SESSION['Img_File_Name']); ?>" alt="Car Image">
         </div>
