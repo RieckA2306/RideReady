@@ -17,12 +17,12 @@ error_reporting(E_ALL);
 
 </head>
 <?php 
-    // Taking the Variables from the Session and the Type ID from the URL    
+    // Taking the Variables from the Session and the Type ID from the URL 
     $pickupdate= $_SESSION['pickupdate'] ?? '';
     $returndate = $_SESSION['returndate'] ?? '';
     $city= $_SESSION['city'] ?? '';
     $ID = $_SERVER['QUERY_STRING'];
-    $ID = filter_var($ID, FILTER_VALIDATE_INT);
+    $ID = filter_var($ID, FILTER_VALIDATE_INT);// To make sure no sql injections can be used here
     
     // Gaining access to the Database 
     include 'dbConfigJosef.php';
@@ -218,9 +218,9 @@ error_reporting(E_ALL);
                     this.classList.toggle("active");
                     var content = this.nextElementSibling;
                     if (content.style.display === "block") {
-                        content.style.display = "none"; // Schließen
+                        content.style.display = "none";
                     } else {
-                        content.style.display = "block"; // Öffnen
+                        content.style.display = "block"; 
                     }
                 });
             });
