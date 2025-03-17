@@ -15,7 +15,10 @@
 <body class="login-body"> <!-- Adds a CSS class for styling the login page -->
 
     <!-- Includes the header, likely containing navigation or branding -->
-    <?php include 'Header.php'; ?>
+    <?php 
+    define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; 
+    ?>
 
     <!-- Login form that submits data via POST to login.php -->
     <form class="login-container" action="login.php" method="POST">

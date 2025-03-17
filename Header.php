@@ -1,4 +1,8 @@
 <?php
+if (!defined('ALLOW_HEADER_INCLUDE')) {
+    die('Direct access to this file is not allowed.');
+}
+
 require_once 'Functions.php';
 check_if_session_started();
 
@@ -35,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Don't save any values ​​and stay on the current page
             echo '<script>alert("Bitte füllen Sie alle Felder aus!");</script>';
         }
-
     }
 }
 
@@ -64,7 +67,6 @@ $returndate = $_SESSION['returndate'] ?? '';
     } else {
         include "Header_Menu.php";
     }
-
     }
 ?>
 
@@ -117,8 +119,6 @@ $returndate = $_SESSION['returndate'] ?? '';
                 <div class="add-cars-admin">
                     <a href="Productoverview_Admin.php">Autos hinzufügen</a>
                 </div>
-                
-                
                 <div class="cancel-bookings-admin">
                     <a href="AllBookings_Admin.php">Buchungen stornieren</a>
                 </div>

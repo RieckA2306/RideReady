@@ -18,7 +18,10 @@
 <body class="Booking-body"> <!-- Applies a CSS class to the body for styling -->
 
     <!-- Includes the header section -->
-    <?php include 'Header.php'; ?>
+    <?php 
+    define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; 
+    ?>
 
     <!-- Main content wrapper -->
     <div class="Booking-content">

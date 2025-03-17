@@ -14,7 +14,8 @@
 <body class="signin-body">
 
     <!-- Includes the header section -->
-    <?php include 'Header.php'; ?>
+    <?php  define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; ?>
 
 
      <!-- User registration form that submits data via POST to signin.php -->

@@ -93,7 +93,10 @@ check_if_session_started();
 ?>
 
 <body class="homepage-body">
-    <?php include 'Header.php'; ?>
+<?php 
+    define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; 
+    ?>
    
     <div class="productdetailcontainer">
         <div>     

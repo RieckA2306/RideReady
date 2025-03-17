@@ -94,7 +94,10 @@ ob_end_flush();
 </head>
 
 <body class="homepage-body">
-    <?php include 'Header.php'; ?>
+<?php 
+    define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; 
+    ?>
 
     <div class="productdetailcontainer">
         <div>

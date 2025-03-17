@@ -107,7 +107,8 @@
 </head>
 <body class="produktübersicht-body">
 
-    <?php include 'Header.php'; ?>
+    <?php  define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; ?>
 
     <div class="produktübersicht-content">
         <div class="table-container">

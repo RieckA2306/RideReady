@@ -13,7 +13,9 @@ check_if_session_started();
 <body class="productoverview-body">
 
 <?php 
-    include 'Header.php';
+    define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; 
+    
     include 'Productoverview_Filter_Admin.php'; 
 
     //  Connection to Database

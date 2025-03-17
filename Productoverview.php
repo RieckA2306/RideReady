@@ -29,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="productoverview-body">
 
 <?php 
-    include 'Header.php';
+    define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; 
     include 'Productoverview_Filter.php'; 
 ?>
     

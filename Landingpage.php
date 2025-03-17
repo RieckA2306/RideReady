@@ -10,7 +10,10 @@
 </style>
 
 <body class="homepage-body">
-    <?php include 'Header.php'; ?>
+    <?php 
+    define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; 
+    ?>
     <!-- Start Welcome Section -->
     <div class="teaser-wrapper">
         <h2 class="landingpage-title">⚜️Willkommen bei Ride Ready⚜️</h2>

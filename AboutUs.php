@@ -8,7 +8,8 @@
 </head>
 
 <body class="static-page-body">
-    <?php include 'Header.php'; ?>
+    <?php  define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php'; ?>
     <div class="static-page-container-ÜberUns">
         <h1>Über uns – <strong>RideReady</strong></h1>
         <p>Willkommen bei <strong>RideReady</strong> – deiner Autovermietung für ein unkompliziertes und perfektes Fahrerlebnis!</p>
