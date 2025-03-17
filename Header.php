@@ -60,7 +60,7 @@ $returndate = $_SESSION['returndate'] ?? '';
     <link rel="stylesheet" href="RideReady.css?v=1.1">
 
 <?php
-    function banner() {
+    function menu_banner() {
     global $login; 
     if (isset($_SESSION["eingeloggt"])) {
 
@@ -145,7 +145,7 @@ $returndate = $_SESSION['returndate'] ?? '';
     </div>
     
     <?php 
-    banner();
+    menu_banner();
     ?>
     
     <!-- Flatpickr JavaScript -->
