@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php 
     include 'Header.php';
-    include 'Filter.php'; 
+    include 'Productoverview_Filter.php'; 
 ?>
     
 <?php 
