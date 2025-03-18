@@ -1,6 +1,7 @@
 <?php
 include "dbConfig.php";
-session_start(); 
+require_once 'Functions.php';
+check_if_session_started();
 // get username from session
 $username = $_SESSION['username'] ?? null;
 
