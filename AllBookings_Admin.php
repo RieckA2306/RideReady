@@ -14,113 +14,19 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920">
-    <link rel="stylesheet" href="RideReady.css?v=1.1">
     <title>Meine Buchungen</title>
-    <style>
-        /* Allgemeine Body-Styling */
-        .produktübersicht-body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-            background-color: #F0F0F0;
-            margin: 0;
-        }
 
-        /* Hauptinhalt */
-        .produktübersicht-content {
-            flex-direction: column;
-            display: flex;
-            padding: 20px;
-            background-color: white;
-            width: 80%;
-            margin: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            min-height: 430px;
-        }
 
-        /* Container für die gesamte Tabelle */
-        .table-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+    <link rel="stylesheet" href="RideReady.css?v=1.1">
 
-        /* Header-Zeile */
-        .header-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
+<body class="Booking-body">
 
-        .header-box {
-            width: 18%;
-            height: 50px;
-            background-color: #80BFFF;
-            color: white;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            margin: 5px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    <?php  
+    define('ALLOW_HEADER_INCLUDE', true);
+    include 'Header.php';
+     ?>
 
-        /* Styling für Daten-Zeilen */
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        .entry-box {
-            width: 18%;
-            height: 50px;
-            background-color: #D3D3D3;
-            color: black;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            margin: 5px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Pagination Styling */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .pagination a {
-            margin: 5px;
-            padding: 10px 15px;
-            background-color: #80BFFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .pagination a:hover {
-            background-color: #0056b3;
-        }
-
-        .pagination .active {
-            background-color: #0056b3;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body class="produktübersicht-body">
-
-    <?php  define('ALLOW_HEADER_INCLUDE', true);
-    include 'Header.php'; ?>
-
-    <div class="produktübersicht-content">
+    <div class="Booking-content">
         <div class="table-container">
             <!-- Headline of rows -->
             <div class="header-row">
