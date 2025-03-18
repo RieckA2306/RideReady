@@ -16,8 +16,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
     <meta name="viewport" content="width=1920">
     <title>Meine Buchungen</title>
 
-
-    <link rel="stylesheet" href="RideReady.css?v=1.1">
+    <link rel="stylesheet" href="RideReady.css?v=1.2">
 
 <body class="Booking-body">
 
