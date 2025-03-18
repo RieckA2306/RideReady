@@ -1,10 +1,7 @@
 <?php
-if (!defined('ALLOW_HEADER_INCLUDE')) {
-    die('Direct access to this file is not allowed.');
-}
-
 require_once 'Functions.php';
 check_if_session_started();
+deny_allowance_for_direct_access();
 
 // Save values ​​from the form to the session
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

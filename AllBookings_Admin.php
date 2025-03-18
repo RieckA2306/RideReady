@@ -1,6 +1,7 @@
 <?php
 require_once 'Functions.php';
 check_if_session_started();
+deny_allowance_for_direct_access_just_Admins();
 
 // Prüfen, ob der Benutzer eingeloggt ist und Admin-Rechte hat
 if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {

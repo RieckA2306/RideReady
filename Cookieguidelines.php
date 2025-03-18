@@ -1,3 +1,4 @@
+<!-- Static Page for the Footer -->
 <!DOCTYPE html>
 <html lang="de">
 <head>

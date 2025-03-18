@@ -4,10 +4,7 @@
 ob_start();
 require_once 'Functions.php';
 check_if_session_started();
-
-if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
-    die('Zugriff verweigert. Diese Seite ist nur für Administratoren.');
-}
+deny_allowance_for_direct_access_just_Admins();
 
 include 'dbConfig.php';
 

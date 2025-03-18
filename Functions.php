@@ -30,6 +30,18 @@ function check_if_session_started() {
     }
 }
 
+function deny_allowance_for_direct_access() {
+    if (!defined('ALLOW_HEADER_INCLUDE')) {
+        die('Direct access to this file is not allowed.');
+    }
+}
+
+function deny_allowance_for_direct_access_just_Admins() {
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
+    die('Zugriff verweigert. Diese Seite ist nur für Administratoren.');
+}
+}
+
 // Gets the Session Variables for Product Overview
 function set_car_session($variablename, $databasevariablename) {
     global $auto; // Gets the variable from the global context

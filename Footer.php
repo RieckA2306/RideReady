@@ -1,7 +1,6 @@
 <?php
-if (!defined('ALLOW_FOOTER_INCLUDE')) {
-    die('Direct access to this file is not allowed.');
-}
+require_once 'Functions.php';
+deny_allowance_for_direct_access();
 ?>
 
 <!DOCTYPE html>
