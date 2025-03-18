@@ -33,9 +33,9 @@ $params = [
         // checks if user name already exists 
         $stmt = $pdo->prepare($sql);
         $stmt->execute($params);
-        $userExists = $stmt->fetch();
+        $carisbooked = $stmt->fetch();
 
-        if ($userExists > 0) {
+        if ($carisbooked > 0) {
            
             echo  ('<script>
             alert("Das Auto ist nun leider schon vergeben!");
