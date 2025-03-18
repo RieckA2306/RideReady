@@ -42,7 +42,7 @@ deny_allowance_for_direct_access();
         <div class="footer-column">
             <h3>Rechtliches</h3>
             <a href="AGBs.php">AGB</a>
-            <a href="Cookieguidelines.php">Cookierichtlinien</a>
+            <a href="Cookieguidelines.php">Cookie-Richtlinien</a>
             <a href="#">Datenschutzrichtlinien</a>
         </div>
 
