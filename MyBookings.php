@@ -9,7 +9,7 @@
 <head>  
     <meta charset="UTF-8"> <!-- Ensures proper character encoding -->
     <meta name="viewport" content="width=1920"> <!-- Defines the viewport width for better responsiveness -->
-    <title>Meine Buchungen</title> <!-- Sets the title of the page -->
+    <title>Meine Buchungen</title> 
 
     <!-- Links an external CSS file for styling with a version parameter to prevent caching issues -->
     <link rel="stylesheet" href="RideReady.css?v=1.1">
