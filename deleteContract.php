@@ -1,5 +1,9 @@
 <!-- This code is executed if the button "Löschen" on AllBookings_Admin.php is pushed  -->
 <?php
+require_once 'Functions.php';
+check_if_session_started();
+deny_allowance_for_direct_access_just_Admins();
+
 session_start();
 // getting Contract ID that is supposed to be deleted
 $Contract_ID=$_SERVER['QUERY_STRING'];
