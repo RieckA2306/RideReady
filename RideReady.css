@@ -707,6 +707,10 @@
         display: flex;  
         justify-content: space-between;
     }
+    
+    .productdetailcontainer p {
+    text-align: left;
+    }
 
     .pictureandprice-wrapper {
         display: grid;
