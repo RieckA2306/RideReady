@@ -110,7 +110,7 @@ check_if_session_started();
             </div>
             <button type="button" class="collapsible"><h3>Versicherung</h3></button>
             <div class="content">
-                <div class="">Unsere Mietfahrzeuge sind umfassend versichert, sodass du sorgenfrei unterwegs bist. Optional bieten wir Vollkasko- und Diebstahlschutz für maximale Sicherheit. Im Schadensfall kümmern wir uns schnell und unkompliziert um die Abwicklung.</div>
+                <p>Unsere Mietfahrzeuge sind umfassend versichert, sodass du sorgenfrei unterwegs bist. Optional bieten wir Vollkasko- und Diebstahlschutz für maximale Sicherheit. Im Schadensfall kümmern wir uns schnell und unkompliziert um die Abwicklung.</p>
             </div>
             <button type="button" class="collapsible"><h3>Pannenhilfe</h3></button>
             <div class="content">

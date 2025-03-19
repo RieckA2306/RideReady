@@ -902,6 +902,7 @@
     .timebox p {
         font-size: 14px;
         margin: 5px 0 0;
+        text-align: center;
     }
 
     .bookingbutton {
