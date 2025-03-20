@@ -17,7 +17,7 @@ deny_allowance_for_direct_access_just_Admins();
 <body class="Booking-body">
 
     <?php  
-    define('ALLOW_HEADER_INCLUDE', true);
+    define('ALLOW_HEADER_AND_FOOTER_INCLUDE', true);
     include 'Header.php';
      ?>
 
@@ -107,7 +107,7 @@ deny_allowance_for_direct_access_just_Admins();
         </div>
     </div>
 
-    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    <?php 
     include 'Footer.php';
      ?>
 
