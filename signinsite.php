@@ -14,7 +14,7 @@
 <body class="signin-body">
 
     <!-- Includes the header section -->
-    <?php  define('ALLOW_HEADER_INCLUDE', true);
+    <?php  define('ALLOW_HEADER_AND_FOOTER_INCLUDE', true);
     include 'Header.php'; ?>
 
 
@@ -30,7 +30,7 @@
     </form>
 
     <!-- Includes the footer section -->
-    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    <?php 
     include 'Footer.php';
      ?>
 

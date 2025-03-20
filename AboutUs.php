@@ -9,7 +9,7 @@
 </head>
 
 <body class="static-page-body">
-    <?php  define('ALLOW_HEADER_INCLUDE', true);
+    <?php  define('ALLOW_HEADER_AND_FOOTER_INCLUDE', true);
     include 'Header.php'; ?>
     <div class="static-page-container-ÜberUns">
         <h1>Über uns – <strong>RideReady</strong></h1>
@@ -27,7 +27,7 @@
         
     </div>
 </body>
-<?php define('ALLOW_FOOTER_INCLUDE', true);
+<?php 
 include 'Footer.php';
      ?>
 </html>

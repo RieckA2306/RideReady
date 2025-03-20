@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="productoverview-body">
 
 <?php 
-    define('ALLOW_HEADER_INCLUDE', true);
+    define('ALLOW_HEADER_AND_FOOTER_INCLUDE', true);
     include 'Header.php'; 
     include 'Productoverview_Filter.php'; 
 ?>
@@ -155,7 +155,7 @@ $freeCars = $stmt->fetchAll();
             ?>
         </div>
     </div>
-    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    <?php 
     include 'Footer.php';
      ?>
 </body>

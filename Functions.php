@@ -32,7 +32,7 @@ function check_if_session_started() {
 
 // Denies the Access via URL Access
 function deny_allowance_for_direct_access() {
-    if (!defined('ALLOW_HEADER_INCLUDE')) {
+    if (!defined('ALLOW_HEADER_AND_FOOTER_INCLUDE')) {
         die('Direct access to this file is not allowed.');
     }
 }
@@ -43,16 +43,4 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
     die('Zugriff verweigert. Diese Seite ist nur für Administratoren.');
 }
 }
-
-// Gets the Session Variables for Product Overview
-function set_car_session($variablename, $databasevariablename) {
-    global $auto; // Gets the variable from the global context
-
-    if (isset($auto[$databasevariablename])) //Avoidance of undefined index
-    {
-        $variablename = $auto[$databasevariablename];
-        $_SESSION[$databasevariablename] = $variablename;
-    }
-}
-
 ?>
