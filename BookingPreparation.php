@@ -7,7 +7,7 @@ $_SESSION['bookingcar_id']=$car_id;
 
 // check if customer is already loged in if yes user is sent to login otherwise to booking 
 if (isset($_SESSION["eingeloggt"])) {
-    header('location:booking.php');
+    header('location:UserControl.php');
     exit();
  
 

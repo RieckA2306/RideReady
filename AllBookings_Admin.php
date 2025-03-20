@@ -3,10 +3,6 @@ require_once 'Functions.php';
 check_if_session_started();
 deny_allowance_for_direct_access_just_Admins();
 
-// Prüfen, ob der Benutzer eingeloggt ist und Admin-Rechte hat
-if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
-    die('Zugriff verweigert. Diese Seite ist nur für Administratoren.');
-}
 ?>
 <!-- This Site will open if someone pushes the Button "Buchung Stornieren in the Header -->
 <!DOCTYPE html>
@@ -16,8 +12,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
     <meta name="viewport" content="width=1920">
     <title>Meine Buchungen</title>
 
-
-    <link rel="stylesheet" href="RideReady.css?v=1.1">
+    <link rel="stylesheet" href="RideReady.css?v=1.2">
 
 <body class="Booking-body">
 
@@ -42,10 +37,6 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
             <?php 
             include 'dbConfig.php';
   
-            if (!isset($_SESSION['account_id'])) {
-                echo "<p>Bitte melden Sie sich an, um Ihre Buchungen zu sehen.</p>";
-                exit;
-            }
 
             $user_id = $_SESSION['account_id'];
 

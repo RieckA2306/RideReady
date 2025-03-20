@@ -14,13 +14,28 @@ if (isset($_SESSION["eingeloggt"])) {
     include('dbConfig.php');
 
     try {
-        // checks if user name already exists 
-        $stmt = $pdo->prepare("SELECT * FROM contract  WHERE Car_id = :car_id");
-        $stmt->bindParam(":car_id", $car_id, PDO::PARAM_STR);
-        $stmt->execute();
-        $userExists = $stmt->fetchColumn();
+        $sql = "SELECT c.car_ID
+                FROM Car c
+                WHERE c.car_ID = :car_id 
+                AND c.car_ID  IN (
+                    SELECT car_ID 
+                    FROM Contract 
+                    WHERE NOT (end_date < :pickupdate OR start_date > :returndate)
+                )"; 
 
-        if ($userExists > 0) {
+
+// Create array for parameters
+$params = [
+    ':car_id' => $car_id,
+    ':pickupdate' => $pickupdate,
+    ':returndate' => $returndate
+];
+        // checks if user name already exists 
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
+        $carisbooked = $stmt->fetch();
+
+        if ($carisbooked > 0) {
            
             echo  ('<script>
             alert("Das Auto ist nun leider schon vergeben!");
