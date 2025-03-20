@@ -58,7 +58,7 @@ $returndate = $_SESSION['returndate'] ?? '';
 <?php
     function banner() {
     global $login; 
-    if (isset($_SESSION["eingeloggt"])) {
+    if (isset($_SESSION["isloggedin"])) {
 
         include "Header_Menu_LoggedIn.php";
     } else {

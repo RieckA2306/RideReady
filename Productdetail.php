@@ -85,7 +85,7 @@ check_if_session_started();
 
         // creating the content for the booking Button:
         $bookingcontent = "$dateDifference Tag(e) Reservieren";
-        if (!isset($_SESSION["eingeloggt"])) {
+        if (!isset($_SESSION["isloggedin"])) {
             $bookingcontent = "Login und $bookingcontent";
         }
 

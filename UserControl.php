@@ -19,7 +19,7 @@ try {
 
     // if request successful, storing the variables in session
     if ($dbResult ==true ) {
-        $_SESSION["eingeloggt"]   = true;
+        $_SESSION["isloggedin"]   = true;
         $_SESSION["username"]     = $username;
         $_SESSION["account_id"]   = $dbResult["Account_ID"]; 
 
