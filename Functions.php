@@ -43,16 +43,4 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
     die('Zugriff verweigert. Diese Seite ist nur für Administratoren.');
 }
 }
-
-// Gets the Session Variables for Product Overview
-function set_car_session($variablename, $databasevariablename) {
-    global $auto; // Gets the variable from the global context
-
-    if (isset($auto[$databasevariablename])) //Avoidance of undefined index
-    {
-        $variablename = $auto[$databasevariablename];
-        $_SESSION[$databasevariablename] = $variablename;
-    }
-}
-
 ?>
