@@ -32,7 +32,7 @@ function check_if_session_started() {
 
 // Denies the Access via URL Access
 function deny_allowance_for_direct_access() {
-    if (!defined('ALLOW_HEADER_INCLUDE')) {
+    if (!defined('ALLOW_HEADER_AND_FOOTER_INCLUDE')) {
         die('Direct access to this file is not allowed.');
     }
 }

@@ -11,7 +11,7 @@
 
 <body class="homepage-body">
     <?php 
-    define('ALLOW_HEADER_INCLUDE', true);
+    define('ALLOW_HEADER_AND_FOOTER_INCLUDE', true);
     include 'Header.php'; 
     ?>
     <!-- Start Welcome Section -->
@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    <?php 
     include 'Footer.php';
      ?>
 </body>

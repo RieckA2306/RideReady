@@ -17,7 +17,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
 <body class="productoverview-body">
 
 <?php 
-    define('ALLOW_HEADER_INCLUDE', true);
+    define('ALLOW_HEADER_AND_FOOTER_INCLUDE', true);
     include 'Header.php'; 
     
     include 'Productoverview_Filter_Admin.php'; 
@@ -129,7 +129,7 @@ $freieAutos = $stmt->fetchAll();
             ?>
         </div>
     </div>
-    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    <?php 
     include 'Footer.php';
      ?>
 </body>

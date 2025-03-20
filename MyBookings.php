@@ -19,7 +19,7 @@
 
     <!-- Includes the header section -->
     <?php 
-    define('ALLOW_HEADER_INCLUDE', true);
+    define('ALLOW_HEADER_AND_FOOTER_INCLUDE', true);
     include 'Header.php'; 
     ?>
 
@@ -95,7 +95,7 @@
     </div>
 
     <!-- Includes the footer section -->
-    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    <?php 
     include 'Footer.php';
      ?>
 
