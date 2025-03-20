@@ -94,7 +94,7 @@ check_if_session_started();
 
 <body class="homepage-body">
 <?php 
-    define('ALLOW_HEADER_INCLUDE', true);
+    define('ALLOW_HEADER_AND_FOOTER_INCLUDE', true);
     include 'Header.php'; 
     ?>
    
@@ -224,7 +224,7 @@ check_if_session_started();
         });
     </script>
     <?php 
-    define('ALLOW_FOOTER_INCLUDE', true);
+    
     include 'Footer.php';
      
     ?>

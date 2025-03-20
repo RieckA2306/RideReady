@@ -16,7 +16,7 @@
 
     <!-- Includes the header, likely containing navigation or branding -->
     <?php 
-    define('ALLOW_HEADER_INCLUDE', true);
+    define('ALLOW_HEADER_AND_FOOTER_INCLUDE', true);
     include 'Header.php'; 
     ?>
 
@@ -39,7 +39,7 @@
     </form>
 
     <!-- Includes the footer, likely containing additional links or copyright info -->
-    <?php define('ALLOW_FOOTER_INCLUDE', true);
+    <?php 
     include 'Footer.php';
      ?>
 
