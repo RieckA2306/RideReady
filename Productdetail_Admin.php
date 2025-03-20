@@ -109,19 +109,17 @@ ob_end_flush();
                 </div>
             </div>
             <!-- The Collapsibles are included here -->
-            <button type="button" class="collapsible">
-                <?php echo"Für mehr Detailinformationen klicken Sie hier."?>
-            </button>
+            <button type="button" class="collapsible"><h3>Versicherung</h3></button>
             <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Unsere Mietfahrzeuge sind umfassend versichert, sodass du sorgenfrei unterwegs bist. Optional bieten wir Vollkasko- und Diebstahlschutz für maximale Sicherheit. Im Schadensfall kümmern wir uns schnell und unkompliziert um die Abwicklung.</p>
             </div>
-            <button type="button" class="collapsible">Open Collapsible</button>
+            <button type="button" class="collapsible"><h3>Pannenhilfe</h3></button>
             <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Solltest du eine Panne haben, stehen wir dir rund um die Uhr zur Verfügung. Unser Pannendienst bringt dich schnellstmöglich wieder auf die Straße. Falls eine Reparatur vor Ort nicht möglich ist, organisieren wir einen Ersatzwagen. Unsere Hotline ist jederzeit für dich erreichbar – wir helfen sofort..</p>
             </div>
-            <button type="button" class="collapsible">Open Collapsible</button>
+            <button type="button" class="collapsible"><h3>Stornierung</h3></button>
             <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Falls sich deine Pläne ändern, kannst du deine Buchung flexibel stornieren. Kostenlose Stornierungen sind bis 24 Stunden vor Mietbeginn möglich. Für kurzfristige Absagen bieten wir faire Erstattungsbedingungen. Setze dich einfach mit uns in Verbindung – wir finden eine Lösung.</p>
             </div>
         </div>
         <!-- The Right side of the Site is included here  -->
