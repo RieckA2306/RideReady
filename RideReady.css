@@ -1079,7 +1079,7 @@
         border-radius: 10px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         width: 600px;
-        height: 300px;
+        height: 440px;
         text-align: right;
         display: flex;  
         flex-direction: column;
@@ -1128,14 +1128,13 @@
         border-radius: 10px;            
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         width: 600px;
-        height: 300px;
         text-align: right;
         display: flex;  
         flex-direction: column;
         align-items: center;
         color: black;
+        height: 440px;
     }
-
 
     .login-container input {
         margin-bottom: 10px;
