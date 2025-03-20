@@ -89,15 +89,15 @@ $stmt->execute($params);
 
 
 // Retrieve results
-$freieAutos = $stmt->fetchAll();
+$freeCars = $stmt->fetchAll();
 ?>
 
     <div class="productoverview-content">
         <div class="productoverview-container">
             <?php
             
-             if (count($freieAutos) > 0) {
-                foreach ($freieAutos as $auto) {
+             if (count($freeCars) > 0) {
+                foreach ($freeCars as $auto) {
                     $carname = $auto['Name'];
                     $_SESSION['carname'] = $carname;
                     
