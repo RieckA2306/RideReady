@@ -97,26 +97,26 @@ $freeCars = $stmt->fetchAll();
             <?php
             
              if (count($freeCars) > 0) {
-                foreach ($freeCars as $auto) {
-                    $carname = $auto['Name'];
+                foreach ($freeCars as $car) {
+                    $carname = $car['Name'];
                     $_SESSION['carname'] = $carname;
                     
-                    $carprice = $auto['carprice'];
+                    $carprice = $car['carprice'];
                     $_SESSION['carprice'] = $carprice;
                     
-                    $carVendor = $auto['Vendor_Name'];
+                    $carVendor = $car['Vendor_Name'];
                     $_SESSION['Vendor_Name'] = $carVendor;
                     
-                    $carImage = $auto['Img_File_Name'];
+                    $carImage = $car['Img_File_Name'];
                     $_SESSION['Img_File_Name'] = $carImage;
             
-                    $nameExtension = $auto['Name_Extension'];
+                    $nameExtension = $car['Name_Extension'];
                     $_SESSION['Name_Extension'] = $nameExtension;
 
-                    $type_id = $auto['type_id'];
+                    $type_id = $car['type_id'];
                     $_SESSION['type_id'] = $type_id;
 
-                    $availableCount = $auto['available_count'];
+                    $availableCount = $car['available_count'];
 
                     // Document for the Cards in the Productoverview
                     include 'Productoverview_Teaser_Admin.php';   

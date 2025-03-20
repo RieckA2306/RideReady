@@ -48,27 +48,27 @@ check_if_session_started();
     try {
         $stmt = $pdo->prepare($sql);
         $stmt->execute($params);
-        $auto = $stmt->fetch();
+        $car = $stmt->fetch();
     } catch (PDOException $e) {
         die("Fehler bei der Datenbankabfrage: " . $e->getMessage());
     }
     // Making sure, the Database found a car with the given Parameters, and setting the Variables accordingly.
-    if ($auto) {
-        $carname = $auto['Name'];
-        $carprice = $auto['Price'];
-        $carVendor = $auto['Vendor_Name'];
-        $carImage = $auto['Img_File_Name'];
-        $nameExtension = $auto['Name_Extension'];
-        $Gear = $auto['Gear'];
-        $Trunk = $auto['Trunk'];
-        $Air_Condition = $auto['Air_Condition'];
-        $GPS = $auto['GPS'];
-        $Min_Age = $auto['Min_Age'];
-        $Type = $auto['Type'];
-        $Drive = $auto['Drive'];
-        $Doors = $auto['Doors'];
-        $Seats = $auto['Seats'];
-        $car_id = $auto['car_id'];
+    if ($car) {
+        $carname = $car['Name'];
+        $carprice = $car['Price'];
+        $carVendor = $car['Vendor_Name'];
+        $carImage = $car['Img_File_Name'];
+        $nameExtension = $car['Name_Extension'];
+        $Gear = $car['Gear'];
+        $Trunk = $car['Trunk'];
+        $Air_Condition = $car['Air_Condition'];
+        $GPS = $car['GPS'];
+        $Min_Age = $car['Min_Age'];
+        $Type = $car['Type'];
+        $Drive = $car['Drive'];
+        $Doors = $car['Doors'];
+        $Seats = $car['Seats'];
+        $car_id = $car['car_id'];
         $_SESSION['bookingcar_id'] = $car_id;
     } else {
         //If No car was found -> return to car selection
