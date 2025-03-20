@@ -5,7 +5,7 @@ deny_allowance_for_direct_access();
 
 // Save values ​​from the form to the session
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Execute only if "Suchen" or "Filter zurücksetzen" was pressed
+    // Execute only if "Filter zurücksetzen" was pressed
     if (isset($_POST['reset']) && $_POST['reset'] === 'header_reset') {
         // Reset only the header session values
         unset($_SESSION['city'], $_SESSION['pickupdate'], $_SESSION['returndate']);
@@ -112,7 +112,6 @@ $returndate = $_SESSION['returndate'] ?? '';
         <?php
             if (isset($_SESSION['username']) && $_SESSION['username'] === 'Admin') {
                 echo '
-                
                 <div class="add-cars-admin">
                     <a href="Productoverview_Admin.php">Autos hinzufügen</a>
                 </div>
