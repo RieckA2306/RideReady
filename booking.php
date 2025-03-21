@@ -1,7 +1,7 @@
 <?php
 session_start();
 // check if user is loged in 
-if (isset($_SESSION["eingeloggt"])) {
+if (isset($_SESSION["isloggedin"])) {
 
     // request for session variable 
     $pickupdate = $_SESSION['pickupdate'] ?? '';
