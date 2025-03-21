@@ -7,7 +7,6 @@
 <body>
 
 <div class="menu" id="menu">
-    <a href="Sessionanzeige.php">Sessionanzeigen</a>
     <a href="signinsite.php">Registrieren</a>
     <a href="AboutUs.php">Über Uns</a>
     <a href="Cookieguidelines.php">Cookierichtlinien</a>
